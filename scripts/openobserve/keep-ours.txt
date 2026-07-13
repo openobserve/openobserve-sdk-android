@@ -1,0 +1,18 @@
+# Paths always taken from the `openobserve` branch during an upstream sync,
+# restored after the tree has been replaced with the upstream commit. One path
+# per line; directories apply recursively. Lines starting with '#' are comments.
+#
+# Rule of thumb: OpenObserve-authored + fork-identity files. Everything else
+# comes from upstream (rebranded by rebrand.mjs, then the functional patch series
+# in scripts/openobserve/patches is re-applied).
+
+# Fork identity / legal
+LICENSE
+NOTICE
+README.md
+
+# CI + docs are fork-owned (workflows point at OpenObserve repos/registries).
+.github
+
+# Sync + rebrand tooling itself (includes the functional patch series).
+scripts/openobserve
