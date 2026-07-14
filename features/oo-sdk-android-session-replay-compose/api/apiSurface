@@ -1,0 +1,10 @@
+class com.openobserve.android.sessionreplay.compose.ComposeExtensionSupport : com.openobserve.android.sessionreplay.ExtensionSupport
+  override fun getCustomViewMappers(): List<com.openobserve.android.sessionreplay.MapperTypeWrapper<*>>
+  override fun getOptionSelectorDetectors(): List<com.openobserve.android.sessionreplay.recorder.OptionSelectorDetector>
+  override fun getCustomDrawableMapper(): List<com.openobserve.android.sessionreplay.utils.DrawableToColorMapper>
+  override fun name(): String
+annotation com.openobserve.android.sessionreplay.compose.ExperimentalSessionReplayApi
+fun androidx.compose.ui.Modifier.sessionReplayHide(Boolean): androidx.compose.ui.Modifier
+fun androidx.compose.ui.Modifier.sessionReplayImagePrivacy(com.openobserve.android.sessionreplay.ImagePrivacy): androidx.compose.ui.Modifier
+fun androidx.compose.ui.Modifier.sessionReplayTextAndInputPrivacy(com.openobserve.android.sessionreplay.TextAndInputPrivacy): androidx.compose.ui.Modifier
+fun androidx.compose.ui.Modifier.sessionReplayTouchPrivacy(com.openobserve.android.sessionreplay.TouchPrivacy): androidx.compose.ui.Modifier

@@ -1,0 +1,200 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.profiling.internal
+
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.api.context.OpenObserveContext
+import com.openobserve.android.api.feature.EventWriteScope
+import com.openobserve.android.api.feature.Feature
+import com.openobserve.android.api.feature.FeatureScope
+import com.openobserve.android.api.feature.FeatureSdkCore
+import com.openobserve.android.api.storage.EventBatchWriter
+import com.openobserve.android.api.storage.EventType
+import com.openobserve.android.api.storage.RawBatchEvent
+import com.openobserve.android.internal.profiling.TTIDRumContext
+import com.openobserve.android.internal.utils.formatIsoUtc
+import com.openobserve.android.profiling.assertj.ProfileEventAssert.Companion.assertThat
+import com.openobserve.android.profiling.forge.Configurator
+import com.openobserve.android.profiling.internal.perfetto.PerfettoResult
+import com.openobserve.android.profiling.model.ProfileEvent
+import fr.xgouchet.elmyr.Forge
+import fr.xgouchet.elmyr.annotation.Forgery
+import fr.xgouchet.elmyr.junit5.ForgeConfiguration
+import fr.xgouchet.elmyr.junit5.ForgeExtension
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.extension.Extensions
+import org.junit.jupiter.api.io.TempDir
+import org.mockito.Mock
+import org.mockito.Mockito.verify
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.junit.jupiter.MockitoSettings
+import org.mockito.kotlin.any
+import org.mockito.kotlin.argumentCaptor
+import org.mockito.kotlin.doAnswer
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.isNull
+import org.mockito.kotlin.verifyNoMoreInteractions
+import org.mockito.kotlin.whenever
+import org.mockito.quality.Strictness
+import java.io.File
+
+@Extensions(
+    ExtendWith(MockitoExtension::class),
+    ExtendWith(ForgeExtension::class)
+)
+@MockitoSettings(strictness = Strictness.LENIENT)
+@ForgeConfiguration(Configurator::class)
+internal class ProfilingDataWriterTest {
+
+    private lateinit var testedDataWriterTest: ProfilingDataWriter
+
+    @Mock
+    private lateinit var mockSdkCore: FeatureSdkCore
+
+    @Mock
+    lateinit var mockProfilingFeature: FeatureScope
+
+    @Mock
+    lateinit var mockEventWriteScope: EventWriteScope
+
+    @Mock
+    lateinit var mockEventBatchWriter: EventBatchWriter
+
+    lateinit var fakeByteArray: ByteArray
+
+    @Mock
+    private lateinit var mockInternalLogger: InternalLogger
+
+    @TempDir
+    lateinit var tmp: File
+
+    @Forgery
+    lateinit var fakeOpenObserveContext: OpenObserveContext
+
+    @BeforeEach
+    fun `set up`(forge: Forge) {
+        testedDataWriterTest = ProfilingDataWriter(mockSdkCore)
+        whenever(mockEventWriteScope.invoke(any())) doAnswer {
+            val callback = it.getArgument<(EventBatchWriter) -> Unit>(0)
+            callback.invoke(mockEventBatchWriter)
+        }
+        whenever(mockProfilingFeature.withWriteContext(eq(emptySet()), any())) doAnswer {
+            val callback =
+                it.getArgument<(OpenObserveContext, EventWriteScope) -> Unit>(it.arguments.lastIndex)
+            callback.invoke(fakeOpenObserveContext, mockEventWriteScope)
+        }
+        whenever(mockSdkCore.getFeature(Feature.PROFILING_FEATURE_NAME))
+            .thenReturn(mockProfilingFeature)
+
+        whenever(mockSdkCore.internalLogger) doReturn mockInternalLogger
+        fakeByteArray = forge.aString().toByteArray()
+    }
+
+    @Test
+    fun `M write the result in a batch W write`(
+        @Forgery fakeResult: PerfettoResult,
+        @Forgery fakeTTIDRumContext: TTIDRumContext
+    ) {
+        // Given
+        val file = tmp.resolve(fakeResult.resultFilePath)
+        file.writeBytes(fakeByteArray)
+
+        // When
+        testedDataWriterTest.write(
+            profilingResult = fakeResult.copy(resultFilePath = file.absolutePath),
+            ttidRumContext = fakeTTIDRumContext
+        )
+
+        // Then
+        val argumentCaptor = argumentCaptor<RawBatchEvent>()
+        verify(mockEventBatchWriter).write(
+            event = argumentCaptor.capture(),
+            batchMetadata = isNull(),
+            eventType = eq(EventType.DEFAULT)
+        )
+        val actualEvent = ProfileEvent.fromJson(String(argumentCaptor.firstValue.data))
+        val expectedTagList = arrayListOf(
+            "service:${fakeOpenObserveContext.service}",
+            "env:${fakeOpenObserveContext.env}",
+            "version:${fakeOpenObserveContext.version}",
+            "sdk_version:${fakeOpenObserveContext.sdkVersion}",
+            "profiler_version:${fakeOpenObserveContext.sdkVersion}",
+            "runtime_version:${fakeOpenObserveContext.deviceInfo.osVersion}",
+            "operation:launch"
+        )
+        fakeOpenObserveContext.appBuildId?.let {
+            expectedTagList.add("build_id:${fakeOpenObserveContext.appBuildId}")
+        }
+
+        assertThat(actualEvent)
+            .hasStart(formatIsoUtc(fakeResult.start))
+            .hasEnd(formatIsoUtc(fakeResult.end))
+            .hasAttachments(listOf("perfetto.proto"))
+            .hasFamily(ProfileEvent.Family.ANDROID)
+            .hasRuntime(ProfileEvent.Family.ANDROID)
+            .hasVersion(4)
+            .hasTags(expectedTagList)
+            .hasApplicationId(fakeTTIDRumContext.applicationId)
+            .hasSessionId(fakeTTIDRumContext.sessionId)
+            .hasVitalIds(listOf(fakeTTIDRumContext.vitalId))
+            .hasVitalNames(listOf(fakeTTIDRumContext.vitalName.orEmpty()))
+            .apply {
+                if (fakeTTIDRumContext.viewId != null && fakeTTIDRumContext.viewName != null) {
+                    hasViewIds(listOf(fakeTTIDRumContext.viewId.orEmpty()))
+                    hasViewNames(listOf(fakeTTIDRumContext.viewName.orEmpty()))
+                } else {
+                    hasViewIds(null)
+                    hasViewNames(null)
+                }
+            }
+        assertThat(argumentCaptor.firstValue.metadata).isEqualTo(
+            fakeByteArray
+        )
+        verifyNoMoreInteractions(mockEventBatchWriter)
+    }
+
+    @Test
+    fun `M skip writing W write {can't read perfetto File}`(
+        @Forgery fakeResult: PerfettoResult,
+        @Forgery fakeTTIDRumContext: TTIDRumContext
+    ) {
+        // Given
+        // Don't create the tmp file so it can't be found
+
+        // When
+        testedDataWriterTest.write(
+            profilingResult = fakeResult,
+            ttidRumContext = fakeTTIDRumContext
+        )
+
+        // Then
+        verifyNoMoreInteractions(mockInternalLogger, mockEventBatchWriter)
+    }
+
+    @Test
+    fun `M skip writing W file is empty`(
+        @Forgery fakeResult: PerfettoResult,
+        @Forgery fakeTTIDRumContext: TTIDRumContext
+    ) {
+        // Given
+        val file = tmp.resolve(fakeResult.resultFilePath)
+        file.writeBytes(ByteArray(0))
+
+        // When
+        testedDataWriterTest.write(
+            profilingResult = fakeResult.copy(resultFilePath = file.absolutePath),
+            ttidRumContext = fakeTTIDRumContext
+        )
+
+        // Then
+        verifyNoMoreInteractions(mockInternalLogger, mockEventBatchWriter)
+    }
+}

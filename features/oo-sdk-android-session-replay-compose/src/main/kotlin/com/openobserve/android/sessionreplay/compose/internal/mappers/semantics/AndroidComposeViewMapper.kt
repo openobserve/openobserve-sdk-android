@@ -1,0 +1,51 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+@file:Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
+
+package com.openobserve.android.sessionreplay.compose.internal.mappers.semantics
+
+import androidx.annotation.UiThread
+import androidx.compose.ui.platform.AndroidComposeView
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.sessionreplay.model.MobileSegment
+import com.openobserve.android.sessionreplay.recorder.MappingContext
+import com.openobserve.android.sessionreplay.recorder.mapper.BaseWireframeMapper
+import com.openobserve.android.sessionreplay.utils.AsyncJobStatusCallback
+import com.openobserve.android.sessionreplay.utils.ColorStringFormatter
+import com.openobserve.android.sessionreplay.utils.DrawableToColorMapper
+import com.openobserve.android.sessionreplay.utils.ViewBoundsResolver
+import com.openobserve.android.sessionreplay.utils.ViewIdentifierResolver
+
+internal class AndroidComposeViewMapper(
+    viewIdentifierResolver: ViewIdentifierResolver,
+    colorStringFormatter: ColorStringFormatter,
+    viewBoundsResolver: ViewBoundsResolver,
+    drawableToColorMapper: DrawableToColorMapper,
+    private val rootSemanticsNodeMapper: RootSemanticsNodeMapper
+) : BaseWireframeMapper<AndroidComposeView>(
+    viewIdentifierResolver,
+    colorStringFormatter,
+    viewBoundsResolver,
+    drawableToColorMapper
+) {
+    @UiThread
+    override fun map(
+        view: AndroidComposeView,
+        mappingContext: MappingContext,
+        asyncJobStatusCallback: AsyncJobStatusCallback,
+        internalLogger: InternalLogger
+    ): List<MobileSegment.Wireframe> {
+        val density =
+            mappingContext.systemInformation.screenDensity.let { if (it == 0.0f) 1.0f else it }
+        return rootSemanticsNodeMapper.createComposeWireframes(
+            view.semanticsOwner.unmergedRootSemanticsNode,
+            density,
+            mappingContext,
+            asyncJobStatusCallback
+        )
+    }
+}

@@ -1,0 +1,135 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.profiling.internal
+
+import com.openobserve.android.api.context.OpenObserveContext
+import com.openobserve.android.api.net.RequestExecutionContext
+import com.openobserve.android.api.net.RequestFactory
+import com.openobserve.android.api.storage.RawBatchEvent
+import com.openobserve.android.profiling.forge.Configurator
+import fr.xgouchet.elmyr.Forge
+import fr.xgouchet.elmyr.annotation.Forgery
+import fr.xgouchet.elmyr.annotation.StringForgery
+import fr.xgouchet.elmyr.junit5.ForgeConfiguration
+import fr.xgouchet.elmyr.junit5.ForgeExtension
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.extension.Extensions
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.junit.jupiter.MockitoSettings
+import org.mockito.quality.Strictness
+
+@Extensions(
+    ExtendWith(MockitoExtension::class),
+    ExtendWith(ForgeExtension::class)
+)
+@MockitoSettings(strictness = Strictness.LENIENT)
+@ForgeConfiguration(Configurator::class)
+class ProfilingRequestFactoryTest {
+
+    @StringForgery
+    private lateinit var fakeEndpoint: String
+
+    @Forgery
+    lateinit var fakeOpenObserveContext: OpenObserveContext
+
+    private lateinit var testedFactory: ProfilingRequestFactory
+
+    @BeforeEach
+    fun `set up`() {
+        testedFactory = ProfilingRequestFactory(
+            customEndpointUrl = null
+        )
+    }
+
+    @Test
+    fun `M create a proper request W create()`(
+        @Forgery batchData: List<RawBatchEvent>,
+        @Forgery executionContext: RequestExecutionContext,
+        forge: Forge
+    ) {
+        // Given
+        val batchMetadata = forge.aNullable { forge.aString().toByteArray() }
+
+        // When
+        val request =
+            testedFactory.create(fakeOpenObserveContext, executionContext, batchData, batchMetadata)
+
+        // Then
+        requireNotNull(request)
+        assertThat(request.url).isEqualTo("${fakeOpenObserveContext.site.intakeEndpoint}/api/v2/profile")
+        assertThat(request.contentType).contains("multipart/form-data;")
+        assertThat(request.headers.minus(RequestFactory.HEADER_REQUEST_ID)).isEqualTo(
+            mapOf(
+                RequestFactory.HEADER_API_KEY to fakeOpenObserveContext.clientToken,
+                RequestFactory.HEADER_EVP_ORIGIN to fakeOpenObserveContext.source,
+                RequestFactory.HEADER_EVP_ORIGIN_VERSION to fakeOpenObserveContext.sdkVersion
+            )
+        )
+        assertThat(request.headers[RequestFactory.HEADER_REQUEST_ID]).isNotEmpty()
+        assertThat(request.id).isEqualTo(request.headers[RequestFactory.HEADER_REQUEST_ID])
+        assertThat(request.description).isEqualTo("Profiling Request")
+        assertThat(request.body).isNotEmpty()
+        batchData.forEach { event ->
+            assertThat(request.body.containsSubsequence(event.metadata)).isTrue()
+            assertThat(request.body.containsSubsequence(event.data)).isTrue()
+        }
+    }
+
+    @Test
+    fun `M create a proper request W create() { custom endpoint }`(
+        @Forgery batchData: List<RawBatchEvent>,
+        @Forgery executionContext: RequestExecutionContext,
+        forge: Forge
+    ) {
+        // Given
+        testedFactory = ProfilingRequestFactory(
+            customEndpointUrl = fakeEndpoint
+        )
+        val batchMetadata = forge.aNullable { forge.aString().toByteArray() }
+
+        // When
+        val request =
+            testedFactory.create(fakeOpenObserveContext, executionContext, batchData, batchMetadata)
+
+        // Then
+        requireNotNull(request)
+        assertThat(request.url).isEqualTo(fakeEndpoint)
+        assertThat(request.contentType).contains("multipart/form-data;")
+        assertThat(request.headers.minus(RequestFactory.HEADER_REQUEST_ID)).isEqualTo(
+            mapOf(
+                RequestFactory.HEADER_API_KEY to fakeOpenObserveContext.clientToken,
+                RequestFactory.HEADER_EVP_ORIGIN to fakeOpenObserveContext.source,
+                RequestFactory.HEADER_EVP_ORIGIN_VERSION to fakeOpenObserveContext.sdkVersion
+            )
+        )
+        assertThat(request.headers[RequestFactory.HEADER_REQUEST_ID]).isNotEmpty()
+        assertThat(request.id).isEqualTo(request.headers[RequestFactory.HEADER_REQUEST_ID])
+        assertThat(request.description).isEqualTo("Profiling Request")
+        assertThat(request.body).isNotEmpty()
+        batchData.forEach { event ->
+            assertThat(request.body.containsSubsequence(event.metadata)).isTrue()
+            assertThat(request.body.containsSubsequence(event.data)).isTrue()
+        }
+    }
+
+    @Suppress("ReturnCount")
+    // Simple subsequence search for ByteArray to avoid AssertJ overload issues in Kotlin
+    private fun ByteArray.containsSubsequence(needle: ByteArray): Boolean {
+        if (needle.isEmpty()) return true
+        if (this.isEmpty()) return false
+        outer@ for (i in 0..this.size - needle.size) {
+            for (j in needle.indices) {
+                if (this[i + j] != needle[j]) continue@outer
+            }
+            return true
+        }
+        return false
+    }
+}

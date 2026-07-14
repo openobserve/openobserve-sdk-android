@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
-  ~ This product includes software developed at Datadog (https://www.datadoghq.com/).
-  ~ Copyright 2016-Present Datadog, Inc.
+  ~ This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+  ~ Copyright 2016-Present OpenObserve, Inc.
   -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,7 +16,7 @@
         android:id="@+id/text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/datadog_violet"
+        android:textColor="@color/openobserve_violet"
         android:text="@string/text_view" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -46,9 +46,9 @@
         android:id="@+id/edit_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/datadog_violet"
+        android:backgroundTint="@color/openobserve_violet"
         android:text="@string/edit_text_view"
-        android:textColorHint="@color/datadog_violet"/>
+        android:textColorHint="@color/openobserve_violet"/>
 
     <AutoCompleteTextView
         app:layout_constraintTop_toBottomOf="@+id/edit_text_view"
@@ -81,8 +81,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="emailAddress"
-        android:backgroundTint="@color/datadog_violet"
-        android:textColorHint="@color/datadog_violet"
+        android:backgroundTint="@color/openobserve_violet"
+        android:textColorHint="@color/openobserve_violet"
         android:text="@string/app_compat_auto_complete_text_view"/>
 
     <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -93,8 +93,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="emailAddress"
-        android:backgroundTint="@color/datadog_violet"
-        android:textColorHint="@color/datadog_violet"
+        android:backgroundTint="@color/openobserve_violet"
+        android:textColorHint="@color/openobserve_violet"
         android:text="@string/material_auto_complete_text_view"/>
 
     <CheckedTextView

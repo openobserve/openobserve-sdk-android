@@ -28,8 +28,8 @@ ktlint -F "**/*.kt" "**/*.kts" '!**/build/generated/**' '!**/build/kspCaches/**'
 Every publishable module has `api/apiSurface` and `api/<module>.api` checked into git. **CI fails if these are stale.** After any public API change, update them:
 
 ```bash
-./gradlew :features:dd-sdk-android-rum:generateApiSurface  # updates api/apiSurface
-./gradlew :features:dd-sdk-android-rum:apiDump             # updates api/<module>.api
+./gradlew :features:oo-sdk-android-rum:generateApiSurface  # updates api/apiSurface
+./gradlew :features:oo-sdk-android-rum:apiDump             # updates api/<module>.api
 ```
 
 Or for all modules: `./gradlew checkApiSurfaceChangesAll` (verifies) vs. running the update tasks per-module.
@@ -87,11 +87,11 @@ Test method naming: `` `M <expected behavior> W <method()> {context}` ``
 
 Each module has a `Configurator` in `src/test/.../utils/forge/` extending `BaseConfigurator` (from `tools/unit`). It registers all `ForgeryFactory` implementations for that module's types. When adding a new data class used in tests, add a `ForgeryFactory` and register it in `Configurator`.
 
-Shared factories: `forge.useCoreFactories()` (from `dd-sdk-android-core` testFixtures).
+Shared factories: `forge.useCoreFactories()` (from `oo-sdk-android-core` testFixtures).
 
 # Sample App Config
 
-The sample app reads credentials from gitignored JSON files in `config/`. Missing files don't break the build (empty strings are used), but the app won't send data to Datadog. Schema (from `buildSrc/.../SampleAppConfig.kt`):
+The sample app reads credentials from gitignored JSON files in `config/`. Missing files don't break the build (empty strings are used), but the app won't send data to OpenObserve. Schema (from `buildSrc/.../SampleAppConfig.kt`):
 
 ```json
 {
@@ -106,11 +106,11 @@ The sample app reads credentials from gitignored JSON files in `config/`. Missin
 }
 ```
 
-Filename matches the flavor: `config/us1.json`, `config/staging.json`, etc. Get credentials from your Datadog org.
+Filename matches the flavor: `config/us1.json`, `config/staging.json`, etc. Get credentials from your OpenObserve org.
 
 # Generated Models
 
-Some modules generate Kotlin data classes from JSON schemas at build time (e.g. `features/dd-sdk-android-rum/src/main/json/`). The generated Kotlin files land in `build/generated/json2kotlin/` — **do not edit them directly**. Edit the JSON schemas instead and rebuild.
+Some modules generate Kotlin data classes from JSON schemas at build time (e.g. `features/oo-sdk-android-rum/src/main/json/`). The generated Kotlin files land in `build/generated/json2kotlin/` — **do not edit them directly**. Edit the JSON schemas instead and rebuild.
 
 # Commits
 

@@ -1,0 +1,36 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.rum.internal.startup
+
+import android.app.Activity
+import android.os.Handler
+import android.os.Looper
+import com.openobserve.android.core.InternalSdkCore
+import com.openobserve.android.rum.internal.utils.window.RumWindowCallbacksRegistryImpl
+
+internal interface RumFirstDrawTimeReporter {
+    interface Handle {
+        fun unsubscribe()
+    }
+
+    interface Callback {
+        fun onFirstFrameDrawn(timestampNs: Long)
+    }
+
+    fun subscribeToFirstFrameDrawn(activity: Activity, callback: Callback): Handle
+
+    companion object {
+        fun create(sdkCore: InternalSdkCore): RumFirstDrawTimeReporter {
+            return RumFirstDrawTimeReporterImpl(
+                internalLogger = sdkCore.internalLogger,
+                timeProviderNs = { sdkCore.timeProvider.getDeviceElapsedTimeNanos() },
+                windowCallbacksRegistry = RumWindowCallbacksRegistryImpl(),
+                handler = Handler(Looper.getMainLooper())
+            )
+        }
+    }
+}

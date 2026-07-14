@@ -1,0 +1,34 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.benchmark.sample.ui.rumauto.screens.locations
+
+import com.openobserve.benchmark.sample.utils.recycler.BaseRecyclerViewItem
+import com.openobserve.sample.benchmark.databinding.ItemLocationBinding
+import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
+
+internal data class RumAutoLocationItem(
+    val title: String,
+    val firstSubtitle: String,
+    val secondSubtitle: String,
+    val locationId: Int,
+    override val key: String
+) : BaseRecyclerViewItem
+
+internal fun rumAutoLocationDelegate(
+    onLocationClicked: (Int) -> Unit
+) = adapterDelegateViewBinding<RumAutoLocationItem, BaseRecyclerViewItem, ItemLocationBinding>(
+    { layoutInflater, root -> ItemLocationBinding.inflate(layoutInflater, root, false) }
+) {
+    bind {
+        binding.locationTitle.text = item.title
+        binding.locationFirstSubtitle.text = item.firstSubtitle
+        binding.locationSecondSubtitle.text = item.secondSubtitle
+        binding.root.setOnClickListener {
+            onLocationClicked(item.locationId)
+        }
+    }
+}

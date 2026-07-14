@@ -6,7 +6,7 @@
     },
     "datadog": {
       "type": "http",
-      "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp?toolsets=core,profiling,rum,experimental,software-delivery,error-tracking,widgets"
+      "url": "https://mcp.openobserve.ai/api/unstable/mcp-server/mcp?toolsets=core,profiling,rum,experimental,software-delivery,error-tracking,widgets"
     }
   }
 }

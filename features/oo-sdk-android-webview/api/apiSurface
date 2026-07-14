@@ -1,0 +1,5 @@
+object com.openobserve.android.webview.WebViewTracking
+  fun enable(android.webkit.WebView, List<String>, Float = 100f, com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
+  class _InternalWebViewProxy
+    constructor(com.openobserve.android.api.SdkCore, String? = null)
+    fun consumeWebviewEvent(String)

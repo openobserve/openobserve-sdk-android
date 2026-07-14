@@ -1,0 +1,7 @@
+class com.openobserve.android.sqldelight.OpenObserveSqliteCallback : com.squareup.sqldelight.android.AndroidSqliteDriver.Callback
+  constructor(com.squareup.sqldelight.db.SqlDriver.Schema, com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
+  override fun onCorruption(androidx.sqlite.db.SupportSQLiteDatabase)
+fun <T: com.squareup.sqldelight.Transacter> T.transactionTraced(String, Boolean = false, TransactionWithSpanAndWithoutReturn.() -> Unit)
+fun <T: com.squareup.sqldelight.Transacter, R> T.transactionTracedWithResult(String, Boolean = false, TransactionWithSpanAndWithReturn<R>.() -> R): R
+interface com.openobserve.android.sqldelight.TransactionWithSpanAndWithReturn<R> : com.squareup.sqldelight.TransactionWithReturn<R>, com.openobserve.android.trace.api.span.OpenObserveSpan
+interface com.openobserve.android.sqldelight.TransactionWithSpanAndWithoutReturn : com.squareup.sqldelight.TransactionWithoutReturn, com.openobserve.android.trace.api.span.OpenObserveSpan

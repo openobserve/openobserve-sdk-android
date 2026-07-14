@@ -1,0 +1,4 @@
+class com.openobserve.android.timber.OpenObserveTree : timber.log.Timber.Tree
+  constructor(com.openobserve.android.log.Logger)
+  constructor(Int, com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
+  override fun log(Int, String?, String, Throwable?)

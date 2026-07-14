@@ -1,0 +1,26 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.benchmark.internal.model
+
+/**
+ * This enumeration corresponds to OpenObserve submitting metrics API,
+ * The type of metric. The available types are 0 (unspecified),
+ * 1 (count), 2 (rate), and 3 (gauge). Allowed enum values: 0,1,2,3.
+ *
+ * See https://openobserve.ai/docs/api/latest/metrics/#submit-metrics
+ */
+@Suppress("MagicNumber")
+internal enum class MetricType(val value: Int) {
+
+    UNSPECIFIED(0),
+
+    COUNT(1),
+
+    RATE(2),
+
+    GAUGE(3)
+}

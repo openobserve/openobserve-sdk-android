@@ -1,0 +1,32 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.core.internal.persistence.file
+
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.security.Encryption
+
+internal interface FileReaderWriter : FileWriter<ByteArray>, FileReader<ByteArray> {
+    companion object {
+
+        /**
+         * Creates either plain [PlainFileReaderWriter] or [PlainFileReaderWriter] wrapped in
+         * [EncryptedFileReaderWriter] if encryption is provided.
+         */
+        fun create(internalLogger: InternalLogger, encryption: Encryption?): FileReaderWriter {
+            val readerWriter = PlainFileReaderWriter(internalLogger)
+            return if (encryption == null) {
+                readerWriter
+            } else {
+                EncryptedFileReaderWriter(
+                    encryption,
+                    readerWriter,
+                    internalLogger
+                )
+            }
+        }
+    }
+}

@@ -1,0 +1,2 @@
+object com.openobserve.android.ndk.NdkCrashReports
+  fun enable(com.openobserve.android.api.SdkCore = OpenObserve.getInstance())

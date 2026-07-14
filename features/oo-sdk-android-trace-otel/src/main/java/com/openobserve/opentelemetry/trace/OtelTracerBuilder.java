@@ -1,0 +1,56 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.opentelemetry.trace;
+
+
+import androidx.annotation.NonNull;
+
+import com.openobserve.android.api.InternalLogger;
+import com.openobserve.android.trace.api.tracer.OpenObserveTracer;
+import com.openobserve.opentelemetry.compat.function.Function;
+
+import io.opentelemetry.api.trace.SpanBuilder;
+import io.opentelemetry.api.trace.Tracer;
+import io.opentelemetry.api.trace.TracerBuilder;
+
+public class OtelTracerBuilder implements TracerBuilder {
+    @NonNull
+    private final String instrumentationScopeName;
+
+    @NonNull
+    private final OpenObserveTracer ooTracer;
+
+    @NonNull
+    private final InternalLogger logger;
+
+
+    public OtelTracerBuilder(
+            @NonNull String instrumentationScopeName,
+            @NonNull OpenObserveTracer ooTracer,
+            @NonNull InternalLogger logger) {
+        this.ooTracer = ooTracer;
+        this.instrumentationScopeName = instrumentationScopeName;
+        this.logger = logger;
+    }
+
+    @Override
+    public TracerBuilder setSchemaUrl(String schemaUrl) {
+        // Not supported
+        return this;
+    }
+
+    @Override
+    public TracerBuilder setInstrumentationVersion(String instrumentationScopeVersion) {
+        // Not supported
+        return this;
+    }
+
+    @Override
+    public Tracer build() {
+        return new OtelTracer(this.instrumentationScopeName, this.ooTracer, this.logger);
+    }
+}

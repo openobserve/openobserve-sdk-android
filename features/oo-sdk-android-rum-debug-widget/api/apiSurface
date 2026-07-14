@@ -1,0 +1,1 @@
+fun com.openobserve.android.rum.RumConfiguration.Builder.enableRumDebugWidget(android.app.Application, Boolean = false): com.openobserve.android.rum.RumConfiguration.Builder

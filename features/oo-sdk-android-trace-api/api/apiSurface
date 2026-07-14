@@ -1,0 +1,134 @@
+object com.openobserve.android.trace.api.OpenObserveTracingConstants
+  const val DEFAULT_ASYNC_PROPAGATING: Boolean
+  object Tags
+    const val KEY_HTTP_URL: String
+    const val KEY_SPAN_KIND: String
+    const val KEY_HTTP_METHOD: String
+    const val KEY_HTTP_STATUS: String
+    const val KEY_ERROR_MSG: String
+    const val KEY_ERROR_TYPE: String
+    const val KEY_ERROR_STACK: String
+    const val VALUE_SPAN_KIND_CLIENT: String
+    const val VALUE_SPAN_KIND_SERVER: String
+    const val VALUE_SPAN_KIND_PRODUCER: String
+    const val VALUE_SPAN_KIND_CONSUMER: String
+    const val KEY_ANALYTICS_SAMPLE_RATE: String
+    const val RESOURCE_NAME: String
+    const val ERROR_MSG: String
+    const val ERROR_TYPE: String
+  object PrioritySampling
+    const val UNSET: Int
+    const val SAMPLER_DROP: Int
+    const val SAMPLER_KEEP: Int
+    const val USER_DROP: Int
+    const val USER_KEEP: Int
+  object TracerConfig
+    const val SPAN_TAGS: String
+    const val TRACE_RATE_LIMIT: String
+    const val PARTIAL_FLUSH_MIN_SPANS: String
+    const val TRACE_SAMPLE_RATE: String
+    DEPRECATED const val PROPAGATION_STYLE_EXTRACT: String
+    DEPRECATED const val PROPAGATION_STYLE_INJECT: String
+    const val TRACE_PROPAGATION_STYLE_EXTRACT: String
+    const val TRACE_PROPAGATION_STYLE_INJECT: String
+    const val SERVICE_NAME: String
+    const val SDK_V2_COMPATIBILITY_FLAG: String
+    const val URL_AS_RESOURCE_NAME: String
+    const val TAGS: String
+  object LogAttributes
+    const val ERROR_KIND: String
+    const val ERROR_OBJECT: String
+    const val EVENT: String
+    const val MESSAGE: String
+    const val STACK: String
+    const val STATUS: String
+  object ErrorPriorities
+    const val UNSET: Byte
+    const val HTTP_SERVER_DECORATOR: Byte
+    const val DEFAULT: Byte
+interface com.openobserve.android.trace.api.propagation.OpenObserveHttpHeadersPropagation
+  fun handleSampledHeaders(com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder, com.openobserve.android.trace.api.tracer.OpenObserveTracer, com.openobserve.android.trace.api.span.OpenObserveSpan): com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder
+  fun handleNotSampledHeaders(com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder, com.openobserve.android.trace.api.tracer.OpenObserveTracer, com.openobserve.android.trace.api.span.OpenObserveSpan): com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder
+interface com.openobserve.android.trace.api.propagation.OpenObservePropagation
+  fun <C> inject(com.openobserve.android.trace.api.span.OpenObserveSpanContext, C, (C) -> Unit)
+  fun <C> extract(C, (C) -> Unit): com.openobserve.android.trace.api.span.OpenObserveSpanContext?
+class com.openobserve.android.trace.api.propagation.NoOpOpenObservePropagation : OpenObservePropagation
+  override fun <C> inject(com.openobserve.android.trace.api.span.OpenObserveSpanContext, C, (C) -> Unit)
+  override fun <C> extract(C, (C) -> Unit): com.openobserve.android.trace.api.span.OpenObserveSpanContext?
+interface com.openobserve.android.trace.api.scope.OpenObserveScope : java.io.Closeable
+  override fun close()
+interface com.openobserve.android.trace.api.span.OpenObserveSpan
+  var isError: Boolean?
+  val isRootSpan: Boolean
+  val samplingPriority: Int?
+  val traceId: com.openobserve.android.trace.api.trace.OpenObserveTraceId
+  val parentSpanId: Long?
+  var resourceName: String?
+  var serviceName: String
+  var operationName: String
+  val durationNano: Long
+  val startTimeNanos: Long
+  val localRootSpan: OpenObserveSpan?
+  fun context(): OpenObserveSpanContext
+  fun finish()
+  fun finish(Long)
+  fun drop()
+  fun setErrorMessage(String?)
+  fun addThrowable(Throwable)
+  fun setTag(String?, String?)
+  fun setTag(String?, Boolean)
+  fun setTag(String?, Number?)
+  fun setTag(String?, Any?)
+  fun getTag(String?): Any?
+  fun setMetric(String, Int)
+  fun logThrowable(Throwable)
+  fun logErrorMessage(String)
+  fun logMessage(String)
+  fun logAttributes(Map<String, Any>)
+interface com.openobserve.android.trace.api.span.OpenObserveSpanBuilder
+  fun start(): OpenObserveSpan
+  fun withOrigin(String?): OpenObserveSpanBuilder
+  fun withTag(String, Double?): OpenObserveSpanBuilder
+  fun withTag(String, Long?): OpenObserveSpanBuilder
+  fun withTag(String, Any?): OpenObserveSpanBuilder
+  fun withResourceName(String?): OpenObserveSpanBuilder
+  fun withParentContext(OpenObserveSpanContext?): OpenObserveSpanBuilder
+  fun withParentSpan(OpenObserveSpan?): OpenObserveSpanBuilder
+  fun withStartTimestamp(Long): OpenObserveSpanBuilder
+  fun ignoreActiveSpan(): OpenObserveSpanBuilder
+  fun withLink(OpenObserveSpanLink): OpenObserveSpanBuilder
+interface com.openobserve.android.trace.api.span.OpenObserveSpanContext
+  val traceId: com.openobserve.android.trace.api.trace.OpenObserveTraceId
+  val spanId: Long
+  val samplingPriority: Int
+  val tags: Map<String, Any?>
+  fun setSamplingPriority(Int): Boolean
+  fun setMetric(CharSequence?, Double)
+interface com.openobserve.android.trace.api.span.OpenObserveSpanLink
+  val spanId: Long
+  val sampled: Boolean
+  val traceId: com.openobserve.android.trace.api.trace.OpenObserveTraceId
+  val traceStrace: String
+  val attributes: Map<String, String>?
+interface com.openobserve.android.trace.api.span.OpenObserveSpanWriter
+interface com.openobserve.android.trace.api.trace.OpenObserveTraceId
+  fun toHexStringPadded(Int): String
+  fun toHexString(): String
+  fun toLong(): Long
+  companion object 
+interface com.openobserve.android.trace.api.tracer.OpenObserveTracer
+  fun activeSpan(): com.openobserve.android.trace.api.span.OpenObserveSpan?
+  fun propagate(): com.openobserve.android.trace.api.propagation.OpenObservePropagation
+  fun activateSpan(com.openobserve.android.trace.api.span.OpenObserveSpan): com.openobserve.android.trace.api.scope.OpenObserveScope?
+  fun buildSpan(CharSequence): com.openobserve.android.trace.api.span.OpenObserveSpanBuilder
+  fun buildSpan(String, CharSequence): com.openobserve.android.trace.api.span.OpenObserveSpanBuilder
+  fun addScopeListener(com.openobserve.android.trace.api.scope.OpenObserveScopeListener)
+interface com.openobserve.android.trace.api.tracer.OpenObserveTracerBuilder
+  fun build(): OpenObserveTracer
+  fun withTracingHeadersTypes(Set<com.openobserve.android.trace.TracingHeaderType>): OpenObserveTracerBuilder
+  fun withServiceName(String): OpenObserveTracerBuilder
+  fun withSampleRate(Double): OpenObserveTracerBuilder
+  fun withPartialFlushMinSpans(Int): OpenObserveTracerBuilder
+  fun withTag(String, String): OpenObserveTracerBuilder
+  fun setBundleWithRumEnabled(Boolean): OpenObserveTracerBuilder
+  fun setTraceRateLimit(Int): OpenObserveTracerBuilder

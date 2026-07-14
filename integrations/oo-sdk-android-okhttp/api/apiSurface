@@ -1,0 +1,69 @@
+class com.openobserve.android.okhttp.OpenObserveEventListener : okhttp3.EventListener
+  override fun callStart(okhttp3.Call)
+  override fun dnsStart(okhttp3.Call, String)
+  override fun dnsEnd(okhttp3.Call, String, List<java.net.InetAddress>)
+  override fun connectStart(okhttp3.Call, java.net.InetSocketAddress, java.net.Proxy)
+  override fun connectEnd(okhttp3.Call, java.net.InetSocketAddress, java.net.Proxy, okhttp3.Protocol?)
+  override fun secureConnectStart(okhttp3.Call)
+  override fun secureConnectEnd(okhttp3.Call, okhttp3.Handshake?)
+  override fun responseHeadersStart(okhttp3.Call)
+  override fun responseHeadersEnd(okhttp3.Call, okhttp3.Response)
+  override fun responseBodyStart(okhttp3.Call)
+  override fun responseBodyEnd(okhttp3.Call, Long)
+  override fun callEnd(okhttp3.Call)
+  override fun callFailed(okhttp3.Call, java.io.IOException)
+  class Factory : okhttp3.EventListener.Factory
+    constructor(String? = null)
+    override fun create(okhttp3.Call): okhttp3.EventListener
+open class com.openobserve.android.okhttp.OpenObserveInterceptor : com.openobserve.android.okhttp.trace.TracingInterceptor
+  override fun intercept(okhttp3.Interceptor.Chain): okhttp3.Response
+  override fun onRequestIntercepted(com.openobserve.android.api.feature.FeatureSdkCore, okhttp3.Request, com.openobserve.android.trace.api.span.OpenObserveSpan?, okhttp3.Response?, Throwable?)
+  override fun canSendSpan(): Boolean
+  override fun onSdkInstanceReady(com.openobserve.android.core.InternalSdkCore)
+  class Builder : BaseBuilder<OpenObserveInterceptor, Builder>
+    constructor(Map<String, Set<com.openobserve.android.trace.TracingHeaderType>>)
+    constructor(List<String>)
+    override fun build(): OpenObserveInterceptor
+    fun setRumResourceAttributesProvider(com.openobserve.android.rum.RumResourceAttributesProvider): Builder
+    fun trackResourceHeaders(com.openobserve.android.rum.resource.ResourceHeadersExtractor = ResourceHeadersExtractor.Builder().build()): Builder
+class com.openobserve.android.okhttp.OkHttpIntegrationPlugin
+  fun build(): okhttp3.OkHttpClient
+DEPRECATED data class com.openobserve.android.okhttp.TraceContext
+  constructor(String, String, Int)
+DEPRECATED enum com.openobserve.android.okhttp.TraceContextInjection
+  - ALL
+  - SAMPLED
+class com.openobserve.android.okhttp.internal.OkHttpRequestInfoBuilder : com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder
+  constructor(okhttp3.Request.Builder)
+  override fun setUrl(String)
+  override fun addHeader(String, String)
+  override fun setMethod(String, com.openobserve.android.api.instrumentation.network.HttpRequestBody?)
+  override fun removeHeader(String)
+  override fun <T> addTag(Class<T>, T?)
+  override fun build(): com.openobserve.android.api.instrumentation.network.HttpRequestInfo
+DEPRECATED open class com.openobserve.android.okhttp.trace.DeterministicTraceSampler : com.openobserve.android.core.sampling.DeterministicSampler<com.openobserve.android.trace.api.span.OpenObserveSpan>
+  constructor(() -> Float)
+  constructor(Float)
+  constructor(Double)
+fun okhttp3.Request.Builder.parentSpan(com.openobserve.android.trace.api.span.OpenObserveSpan): okhttp3.Request.Builder
+interface com.openobserve.android.okhttp.trace.TracedRequestListener
+  fun onRequestIntercepted(okhttp3.Request, com.openobserve.android.trace.api.span.OpenObserveSpan, okhttp3.Response?, Throwable?)
+open class com.openobserve.android.okhttp.trace.TracingInterceptor : okhttp3.Interceptor
+  override fun intercept(okhttp3.Interceptor.Chain): okhttp3.Response
+  protected fun doIntercept(okhttp3.Interceptor.Chain, okhttp3.Request): okhttp3.Response
+  protected open fun onRequestIntercepted(com.openobserve.android.api.feature.FeatureSdkCore, okhttp3.Request, com.openobserve.android.trace.api.span.OpenObserveSpan?, okhttp3.Response?, Throwable?)
+  class Builder : BaseBuilder<TracingInterceptor, Builder>
+    constructor(Map<String, Set<com.openobserve.android.trace.TracingHeaderType>>)
+    constructor(List<String>)
+    fun setTraceOrigin(String): Builder
+    override fun build(): TracingInterceptor
+  abstract class BaseBuilder<T: TracingInterceptor, R: BaseBuilder<T, R>>
+    constructor(Map<String, Set<com.openobserve.android.trace.TracingHeaderType>>)
+    fun setSdkInstanceName(String): R
+    fun setTracedRequestListener(TracedRequestListener): R
+    fun setTraceSampleRate(Float): R
+    fun setTraceSampler(com.openobserve.android.core.sampling.Sampler<com.openobserve.android.trace.api.span.OpenObserveSpan>): R
+    fun setTraceContextInjection(com.openobserve.android.trace.TraceContextInjection): R
+    DEPRECATED fun setTraceContextInjection(com.openobserve.android.okhttp.TraceContextInjection): R
+    fun set404ResourcesRedacted(Boolean): R
+    abstract fun build(): T

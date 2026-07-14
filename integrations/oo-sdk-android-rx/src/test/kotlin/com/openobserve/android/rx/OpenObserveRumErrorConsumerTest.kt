@@ -1,0 +1,81 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.rx
+
+import com.openobserve.android.api.SdkCore
+import com.openobserve.android.rum.GlobalRumMonitor
+import com.openobserve.android.rum.RumErrorSource
+import com.openobserve.android.rum.RumMonitor
+import com.openobserve.tools.unit.forge.BaseConfigurator
+import fr.xgouchet.elmyr.annotation.Forgery
+import fr.xgouchet.elmyr.junit5.ForgeConfiguration
+import fr.xgouchet.elmyr.junit5.ForgeExtension
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.extension.Extensions
+import org.mockito.Mock
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.junit.jupiter.MockitoSettings
+import org.mockito.kotlin.verify
+import org.mockito.quality.Strictness
+import kotlin.reflect.full.declaredFunctions
+import kotlin.reflect.jvm.isAccessible
+
+@Extensions(
+    ExtendWith(
+        MockitoExtension::class,
+        ForgeExtension::class
+    )
+)
+@ForgeConfiguration(value = BaseConfigurator::class)
+@MockitoSettings(strictness = Strictness.LENIENT)
+class OpenObserveRumErrorConsumerTest {
+
+    lateinit var testedConsumer: OpenObserveRumErrorConsumer
+
+    @Mock
+    lateinit var mockRumMonitor: RumMonitor
+
+    @Mock
+    lateinit var mockSdkCore: SdkCore
+
+    @Forgery
+    lateinit var fakeException: Throwable
+
+    @BeforeEach
+    fun `set up`() {
+        GlobalRumMonitor::class.declaredFunctions.first { it.name == "registerIfAbsent" }.apply {
+            isAccessible = true
+            call(GlobalRumMonitor::class.objectInstance, mockRumMonitor, mockSdkCore)
+        }
+        testedConsumer = OpenObserveRumErrorConsumer(mockSdkCore)
+    }
+
+    @AfterEach
+    fun `tear down`() {
+        GlobalRumMonitor::class.java.getDeclaredMethod("reset").apply {
+            isAccessible = true
+            invoke(null)
+        }
+    }
+
+    @Test
+    fun `M send an error event W intercepting an exception`() {
+        // WHEN
+        testedConsumer.accept(fakeException)
+
+        // THEN
+        verify(mockRumMonitor).addError(
+            OpenObserveRumErrorConsumer.REQUEST_ERROR_MESSAGE,
+            RumErrorSource.SOURCE,
+            fakeException,
+            emptyMap()
+        )
+    }
+}

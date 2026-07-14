@@ -1,0 +1,34 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+package com.openobserve.android.trace.internal
+
+import com.openobserve.trace.bootstrap.instrumentation.api.AgentScope
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.extension.Extensions
+import org.mockito.Mock
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.verify
+
+@Extensions(
+    ExtendWith(MockitoExtension::class)
+)
+class OpenObserveScopeAdapterTest {
+    @Mock
+    lateinit var delegate: AgentScope
+
+    @Test
+    fun `M delegate close W close is called`() {
+        // Given
+        val adapter = OpenObserveScopeAdapter(delegate)
+
+        // When
+        adapter.close()
+
+        // Then
+        verify(delegate).close()
+    }
+}

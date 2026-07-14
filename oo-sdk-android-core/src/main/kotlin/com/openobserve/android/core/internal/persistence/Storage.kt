@@ -1,0 +1,56 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.core.internal.persistence
+
+import androidx.annotation.AnyThread
+import androidx.annotation.WorkerThread
+import com.openobserve.android.api.context.OpenObserveContext
+import com.openobserve.android.api.feature.EventWriteScope
+import com.openobserve.android.core.internal.metrics.RemovalReason
+import com.openobserve.tools.annotation.NoOpImplementation
+
+/**
+ * Main core api to interact with the local storage of events.
+ */
+@NoOpImplementation
+internal interface Storage {
+
+    /**
+     * Utility to get the scope for the writing operation, synchronously.
+     * @param ooContext the context for the write operation
+     */
+    @AnyThread
+    fun getEventWriteScope(
+        ooContext: OpenObserveContext
+    ): EventWriteScope
+
+    /**
+     * Utility to read a batch, synchronously.
+     */
+    @WorkerThread
+    fun readNextBatch(): BatchData?
+
+    /**
+     * Utility to update the state of a batch, synchronously.
+     * @param batchId the id of the Batch to confirm
+     * @param removalReason the reason why the batch is being removed
+     * @param deleteBatch if `true` the batch will be deleted, otherwise it will be marked as
+     * not readable.
+     */
+    @WorkerThread
+    fun confirmBatchRead(
+        batchId: BatchId,
+        removalReason: RemovalReason,
+        deleteBatch: Boolean
+    )
+
+    /**
+     * Removes all the files backed by this storage, synchronously.
+     */
+    @AnyThread
+    fun dropAll()
+}

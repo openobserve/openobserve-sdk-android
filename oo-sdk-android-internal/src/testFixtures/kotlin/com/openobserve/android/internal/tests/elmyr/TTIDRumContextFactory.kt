@@ -1,0 +1,24 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.internal.tests.elmyr
+
+import com.openobserve.android.internal.profiling.TTIDRumContext
+import fr.xgouchet.elmyr.Forge
+import fr.xgouchet.elmyr.ForgeryFactory
+
+class TTIDRumContextFactory : ForgeryFactory<TTIDRumContext> {
+    override fun getForgery(forge: Forge): TTIDRumContext {
+        return TTIDRumContext(
+            applicationId = forge.anAlphabeticalString(),
+            sessionId = forge.anAlphabeticalString(),
+            vitalId = forge.anAlphabeticalString(),
+            vitalName = forge.aNullable { anAlphabeticalString() },
+            viewId = forge.aNullable { anAlphabeticalString() },
+            viewName = forge.aNullable { anAlphabeticalString() }
+        )
+    }
+}

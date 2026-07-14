@@ -1,0 +1,286 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.rum.internal.domain.scope
+
+import com.openobserve.android.core.feature.event.ThreadDump
+import com.openobserve.android.internal.telemetry.InternalTelemetryEvent
+import com.openobserve.android.rum.RumActionType
+import com.openobserve.android.rum.RumErrorSource
+import com.openobserve.android.rum.RumPerformanceMetric
+import com.openobserve.android.rum.RumResourceKind
+import com.openobserve.android.rum.RumResourceMethod
+import com.openobserve.android.rum.internal.RumErrorSourceType
+import com.openobserve.android.rum.internal.domain.Time
+import com.openobserve.android.rum.internal.domain.event.ResourceTiming
+import com.openobserve.android.rum.internal.startup.RumStartupScenario
+import com.openobserve.android.rum.internal.startup.RumTTIDInfo
+import com.openobserve.android.rum.model.ActionEvent
+import com.openobserve.android.rum.operations.FailureReason
+
+internal sealed class RumRawEvent {
+
+    abstract val eventTime: Time
+
+    internal data class StartView(
+        val key: RumScopeKey,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StopView(
+        val key: RumScopeKey,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StartAction(
+        val type: RumActionType,
+        val name: String,
+        val waitForStop: Boolean,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StopAction(
+        val type: RumActionType?,
+        val name: String?,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StartResource(
+        val key: Any,
+        val url: String,
+        val method: RumResourceMethod,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class WaitForResourceTiming(
+        val key: Any,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class AddResourceTiming(
+        val key: Any,
+        val timing: ResourceTiming,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StopResource(
+        val key: Any,
+        val statusCode: Long?,
+        val size: Long?,
+        val kind: RumResourceKind,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StopResourceWithError(
+        val key: Any,
+        val statusCode: Long?,
+        val message: String,
+        val source: RumErrorSource,
+        val throwable: Throwable,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StopResourceWithStackTrace(
+        val key: Any,
+        val statusCode: Long?,
+        val message: String,
+        val source: RumErrorSource,
+        val stackTrace: String,
+        val errorType: String?,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class AddError(
+        val message: String,
+        val source: RumErrorSource,
+        val throwable: Throwable?,
+        val stacktrace: String?,
+        val isFatal: Boolean,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time(),
+        val type: String? = null,
+        val sourceType: RumErrorSourceType = RumErrorSourceType.ANDROID,
+        val threads: List<ThreadDump>,
+        val timeSinceAppStartNs: Long? = null
+    ) : RumRawEvent()
+
+    internal data class ResourceSent(
+        val viewId: String,
+        val resourceId: String,
+        val resourceEndTimestampInNanos: Long,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class ActionSent(
+        val viewId: String,
+        val frustrationCount: Int,
+        val type: ActionEvent.ActionEventActionType,
+        val eventEndTimestampInNanos: Long,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class ErrorSent(
+        val viewId: String,
+        val resourceId: String? = null,
+        val resourceEndTimestampInNanos: Long? = null,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class LongTaskSent(
+        val viewId: String,
+        val isFrozenFrame: Boolean = false,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class ResourceDropped(
+        val viewId: String,
+        val resourceId: String,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class ActionDropped(
+        val viewId: String,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class ErrorDropped(
+        val viewId: String,
+        val resourceId: String? = null,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class LongTaskDropped(
+        val viewId: String,
+        val isFrozenFrame: Boolean = false,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class ResetSession(
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class ApplicationStarted(
+        override val eventTime: Time,
+        val applicationStartupNanos: Long
+    ) : RumRawEvent()
+
+    internal data class AddCustomTiming(
+        val name: String,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class AddViewLoadingTime(
+        val overwrite: Boolean,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class AddViewAttributes(
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class RemoveViewAttributes(
+        val attributes: Collection<String>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class AddLongTask(
+        val durationNs: Long,
+        val target: String,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class SendCustomActionNow(
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class AddFeatureFlagEvaluation(
+        val name: String,
+        val value: Any,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class AddFeatureFlagEvaluations(
+        val featureFlags: Map<String, Any>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StopSession(
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class UpdatePerformanceMetric(
+        val metric: RumPerformanceMetric,
+        val value: Double,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class UpdateExternalRefreshRate(
+        val frameTimeSeconds: Double,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class SetInternalViewAttribute(
+        val key: String,
+        val value: Any?,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class SetSyntheticsTestAttribute(
+        val testId: String,
+        val resultId: String,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class WebViewEvent(override val eventTime: Time = Time()) : RumRawEvent()
+
+    internal data class TelemetryEventWrapper(
+        val event: InternalTelemetryEvent,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class SdkInit(
+        val isAppInForeground: Boolean,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StartOperation(
+        val name: String,
+        val operationKey: String?,
+        val attributes: Map<String, Any?>,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal data class StopOperation(
+        val name: String,
+        val operationKey: String?,
+        val attributes: Map<String, Any?>,
+        val failureReason: FailureReason? = null,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal class AppStartEvent(
+        val scenario: RumStartupScenario,
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+
+    internal class AppStartTTIDEvent(
+        override val eventTime: Time = Time(),
+        val info: RumTTIDInfo
+    ) : RumRawEvent()
+
+    internal class AppStartTTFDEvent(
+        override val eventTime: Time = Time()
+    ) : RumRawEvent()
+}

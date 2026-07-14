@@ -1,19 +1,19 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.Dependencies
-import com.datadog.gradle.config.AndroidConfig
-import com.datadog.gradle.config.configureFlavorForSampleApp
-import com.datadog.gradle.config.dependencyUpdateConfig
-import com.datadog.gradle.config.java17
-import com.datadog.gradle.config.javadocConfig
-import com.datadog.gradle.config.junitConfig
-import com.datadog.gradle.config.kotlinConfig
-import com.datadog.gradle.config.taskConfig
-import com.datadog.gradle.plugin.InstrumentationMode
+import com.openobserve.gradle.Dependencies
+import com.openobserve.gradle.config.AndroidConfig
+import com.openobserve.gradle.config.configureFlavorForSampleApp
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.java17
+import com.openobserve.gradle.config.javadocConfig
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
+import com.openobserve.gradle.config.taskConfig
+import com.openobserve.gradle.plugin.InstrumentationMode
 
 plugins {
     id("com.android.application")
@@ -23,12 +23,12 @@ plugins {
     id("org.jetbrains.dokka-javadoc")
     id("com.squareup.sqldelight")
     id("com.google.devtools.ksp")
-    alias(libs.plugins.datadogGradlePlugin)
+    alias(libs.plugins.ooGradlePlugin)
 }
 
 sqldelight {
     database("LogsDatabase") {
-        packageName = "com.datadog.android.sample"
+        packageName = "com.openobserve.android.sample"
         dialect = "sqlite:3.24"
         sourceFolders = listOf("sqldelight")
     }
@@ -58,7 +58,7 @@ android {
         }
     }
 
-    namespace = "com.datadog.android.sample"
+    namespace = "com.openobserve.android.sample"
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
@@ -116,7 +116,7 @@ android {
             create("release") {
                 storeFile = File(project.rootDir, "sample-android.keystore")
                 storePassword = e2ePassword
-                keyAlias = "dd-sdk-android"
+                keyAlias = "oo-sdk-android"
                 keyPassword = e2ePassword
             }
         }
@@ -147,33 +147,33 @@ datadog {
 }
 
 dependencies {
-    // Datadog Libraries
-    implementation(project(":features:dd-sdk-android-logs"))
-    implementation(project(":features:dd-sdk-android-flags"))
-    implementation(project(":features:dd-sdk-android-flags-openfeature"))
-    implementation(project(":features:dd-sdk-android-rum"))
-    implementation(project(":features:dd-sdk-android-rum-debug-widget"))
-    implementation(project(":features:dd-sdk-android-trace"))
-    implementation(project(":features:dd-sdk-android-trace-otel"))
-    implementation(project(":features:dd-sdk-android-ndk"))
-    implementation(project(":features:dd-sdk-android-webview"))
-    implementation(project(":features:dd-sdk-android-session-replay"))
-    implementation(project(":features:dd-sdk-android-session-replay-material"))
-    implementation(project(":features:dd-sdk-android-session-replay-compose"))
-    implementation(project(":features:dd-sdk-android-profiling"))
-    implementation(project(":integrations:dd-sdk-android-trace-coroutines"))
-    implementation(project(":integrations:dd-sdk-android-rum-coroutines"))
-    implementation(project(":integrations:dd-sdk-android-rx"))
-    implementation(project(":integrations:dd-sdk-android-timber"))
-    implementation(project(":integrations:dd-sdk-android-coil"))
-    implementation(project(":integrations:dd-sdk-android-coil3"))
-    implementation(project(":integrations:dd-sdk-android-glide"))
-    implementation(project(":integrations:dd-sdk-android-fresco"))
-    implementation(project(":integrations:dd-sdk-android-sqldelight"))
-    implementation(project(":integrations:dd-sdk-android-compose"))
-    implementation(project(":integrations:dd-sdk-android-cronet"))
-    implementation(project(":integrations:dd-sdk-android-okhttp"))
-    implementation(project(":integrations:dd-sdk-android-okhttp-otel"))
+    // OpenObserve Libraries
+    implementation(project(":features:oo-sdk-android-logs"))
+    implementation(project(":features:oo-sdk-android-flags"))
+    implementation(project(":features:oo-sdk-android-flags-openfeature"))
+    implementation(project(":features:oo-sdk-android-rum"))
+    implementation(project(":features:oo-sdk-android-rum-debug-widget"))
+    implementation(project(":features:oo-sdk-android-trace"))
+    implementation(project(":features:oo-sdk-android-trace-otel"))
+    implementation(project(":features:oo-sdk-android-ndk"))
+    implementation(project(":features:oo-sdk-android-webview"))
+    implementation(project(":features:oo-sdk-android-session-replay"))
+    implementation(project(":features:oo-sdk-android-session-replay-material"))
+    implementation(project(":features:oo-sdk-android-session-replay-compose"))
+    implementation(project(":features:oo-sdk-android-profiling"))
+    implementation(project(":integrations:oo-sdk-android-trace-coroutines"))
+    implementation(project(":integrations:oo-sdk-android-rum-coroutines"))
+    implementation(project(":integrations:oo-sdk-android-rx"))
+    implementation(project(":integrations:oo-sdk-android-timber"))
+    implementation(project(":integrations:oo-sdk-android-coil"))
+    implementation(project(":integrations:oo-sdk-android-coil3"))
+    implementation(project(":integrations:oo-sdk-android-glide"))
+    implementation(project(":integrations:oo-sdk-android-fresco"))
+    implementation(project(":integrations:oo-sdk-android-sqldelight"))
+    implementation(project(":integrations:oo-sdk-android-compose"))
+    implementation(project(":integrations:oo-sdk-android-cronet"))
+    implementation(project(":integrations:oo-sdk-android-okhttp"))
+    implementation(project(":integrations:oo-sdk-android-okhttp-otel"))
 
     // Desugaring SDK
     coreLibraryDesugaring(libs.androidDesugaringSdk)

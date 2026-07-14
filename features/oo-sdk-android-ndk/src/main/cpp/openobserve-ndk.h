@@ -1,0 +1,37 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+#ifndef OPENOBSERVE_NATIVE_LIB_H
+#define OPENOBSERVE_NATIVE_LIB_H
+
+#include <jni.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void update_main_context(JNIEnv *env,
+                         jstring storage_path);
+
+void update_tracking_consent(jint consent);
+
+void update_app_start_time_millis(jlong time_ms);
+
+void write_crash_report(int signum,
+                        const char *signal_name,
+                        const char *error_message,
+                        const char *error_stacktrace);
+
+#ifndef NDEBUG
+void lockMutex();
+void unlockMutex();
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

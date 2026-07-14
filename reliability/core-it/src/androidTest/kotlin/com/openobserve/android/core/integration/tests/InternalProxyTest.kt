@@ -1,0 +1,76 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.core.integration.tests
+
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.openobserve.android.OpenObserve
+import com.openobserve.android.core.InternalSdkCore
+import com.openobserve.android.core.configuration.Configuration
+import com.openobserve.android.core.integration.tests.forge.factories.ConfigurationCoreForgeryFactory
+import com.openobserve.android.privacy.TrackingConsent
+import com.openobserve.tools.unit.forge.useToolsFactories
+import fr.xgouchet.elmyr.annotation.Forgery
+import fr.xgouchet.elmyr.junit4.ForgeRule
+import fr.xgouchet.elmyr.jvm.useJvmFactories
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+
+/**
+ * Provides the tests for the InternalProxy API.
+ */
+@RunWith(AndroidJUnit4::class)
+class InternalProxyTest {
+
+    private lateinit var testedInternalSdkCore: InternalSdkCore
+
+    @Forgery
+    lateinit var fakeConfiguration: Configuration
+
+    @get:Rule
+    var forge = ForgeRule()
+        .useJvmFactories()
+        .useToolsFactories()
+        .withFactory(ConfigurationCoreForgeryFactory())
+
+    @Before
+    fun setUp() {
+        testedInternalSdkCore = OpenObserve.initialize(
+            ApplicationProvider.getApplicationContext(),
+            fakeConfiguration,
+            forge.aValueFrom(TrackingConsent::class.java)
+        ) as InternalSdkCore
+    }
+
+    @After
+    fun tearDown() {
+        OpenObserve.stopInstance()
+    }
+
+    // region set version
+
+    @Test
+    fun mustSetAppVersion_when_setCustomAppVersion() {
+        // Given
+        val fakeAppVersion = forge.anAlphabeticalString()
+        val internalProxy = OpenObserve._internalProxy()
+
+        // When
+        internalProxy.setCustomAppVersion(fakeAppVersion)
+
+        // Then
+        val context = testedInternalSdkCore.getOpenObserveContext()
+        checkNotNull(context)
+        assertThat(context.version).isEqualTo(fakeAppVersion)
+    }
+
+    // endregion
+}

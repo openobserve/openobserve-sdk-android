@@ -1,0 +1,31 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.benchmark.sample
+
+import android.content.Context
+import com.bumptech.glide.Glide
+import com.bumptech.glide.Registry
+import com.bumptech.glide.annotation.GlideModule
+import com.openobserve.android.glide.OpenObserveGlideModule
+import okhttp3.OkHttpClient
+import javax.inject.Inject
+
+@GlideModule
+internal class BenchmarkGlideModule : OpenObserveGlideModule() {
+    @Inject
+    lateinit var okHttpClient: OkHttpClient
+
+    override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
+        context.benchmarkAppComponent.inject(this)
+
+        super.registerComponents(context, glide, registry)
+    }
+
+    override fun getClientBuilder(): OkHttpClient.Builder {
+        return okHttpClient.newBuilder()
+    }
+}

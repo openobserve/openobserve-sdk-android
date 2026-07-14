@@ -1,0 +1,152 @@
+interface com.openobserve.android.flags.EvaluationContextCallback
+  fun onSuccess()
+  fun onFailure(Throwable)
+object com.openobserve.android.flags.Flags
+  fun enable(FlagsConfiguration = FlagsConfiguration.default, com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
+interface com.openobserve.android.flags.FlagsClient
+  fun setEvaluationContext(com.openobserve.android.flags.model.EvaluationContext, EvaluationContextCallback? = null)
+  fun resolveBooleanValue(String, Boolean): Boolean
+  fun resolveStringValue(String, String): String
+  fun resolveDoubleValue(String, Double): Double
+  fun resolveIntValue(String, Int): Int
+  fun resolveStructureValue(String, org.json.JSONObject): org.json.JSONObject
+  fun resolveStructureValue(String, Map<String, Any?>): Map<String, Any?>
+  fun <T: Any> resolve(String, T): com.openobserve.android.flags.model.ResolutionDetails<T>
+  val state: StateObservable
+  class Builder
+    constructor(String = DEFAULT_CLIENT_NAME, com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
+    fun build(): FlagsClient
+  companion object 
+    fun get(String = DEFAULT_CLIENT_NAME, com.openobserve.android.api.SdkCore = OpenObserve.getInstance()): FlagsClient
+data class com.openobserve.android.flags.FlagsConfiguration
+  class Builder
+    fun trackExposures(Boolean): Builder
+    fun trackEvaluations(Boolean): Builder
+    fun useCustomExposureEndpoint(String): Builder
+    fun useCustomEvaluationEndpoint(String): Builder
+    fun evaluationFlushInterval(Long): Builder
+    fun useCustomFlagEndpoint(String): Builder
+    fun rumIntegrationEnabled(Boolean): Builder
+    fun gracefulModeEnabled(Boolean): Builder
+    fun build(): FlagsConfiguration
+interface com.openobserve.android.flags.FlagsStateListener
+  fun onStateChanged(com.openobserve.android.flags.model.FlagsClientState)
+interface com.openobserve.android.flags.StateObservable
+  fun getCurrentState(): com.openobserve.android.flags.model.FlagsClientState
+  fun addListener(FlagsStateListener)
+  fun removeListener(FlagsStateListener)
+class com.openobserve.android.flags._FlagsInternalProxy
+  constructor(FlagsClient)
+  fun getFlagAssignmentsSnapshot(): Map<String, com.openobserve.android.flags.model.UnparsedFlag>
+  fun trackFlagSnapshotEvaluation(String, com.openobserve.android.flags.model.UnparsedFlag, com.openobserve.android.flags.model.EvaluationContext)
+enum com.openobserve.android.flags.model.ErrorCode
+  - PROVIDER_NOT_READY
+  - FLAG_NOT_FOUND
+  - PARSE_ERROR
+  - TYPE_MISMATCH
+data class com.openobserve.android.flags.model.EvaluationContext
+  constructor(String, Map<String, String> = emptyMap())
+  companion object 
+    val EMPTY: EvaluationContext
+sealed class com.openobserve.android.flags.model.FlagsClientState
+  object NotReady : FlagsClientState
+  object Ready : FlagsClientState
+  object Reconciling : FlagsClientState
+  object Stale : FlagsClientState
+  data class Error : FlagsClientState
+    constructor(Throwable? = null)
+data class com.openobserve.android.flags.model.ResolutionDetails<T: Any>
+  constructor(T, String? = null, ResolutionReason? = null, ErrorCode? = null, String? = null, Map<String, Any> = emptyMap())
+enum com.openobserve.android.flags.model.ResolutionReason
+  - STATIC
+  - DEFAULT
+  - TARGETING_MATCH
+  - RULE_MATCH
+  - PREREQUISITE_FAILED
+  - ERROR
+interface com.openobserve.android.flags.model.UnparsedFlag
+  val variationType: String
+  val variationValue: String
+  val doLog: Boolean
+  val allocationKey: String
+  val variationKey: String
+  val extraLogging: org.json.JSONObject
+  val reason: String
+data class com.openobserve.android.flags.model.ExposureEvent
+  constructor(kotlin.Long, Identifier, Identifier, Identifier, Subject)
+  fun toJson(): com.google.gson.JsonElement
+  companion object 
+    fun fromJson(kotlin.String): ExposureEvent
+    fun fromJsonObject(com.google.gson.JsonObject): ExposureEvent
+  data class Identifier
+    constructor(kotlin.String)
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Identifier
+      fun fromJsonObject(com.google.gson.JsonObject): Identifier
+  data class Subject
+    constructor(kotlin.String, Attributes)
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Subject
+      fun fromJsonObject(com.google.gson.JsonObject): Subject
+  data class Attributes
+    constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.String> = mutableMapOf())
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Attributes
+      fun fromJsonObject(com.google.gson.JsonObject): Attributes
+data class com.openobserve.android.flags.model.FlagEvaluation
+  constructor(kotlin.Long, Identifier, kotlin.Long, kotlin.Long, kotlin.Long, kotlin.Boolean? = null, kotlin.String? = null, Context? = null, Identifier? = null, Identifier? = null, Identifier? = null, Error? = null)
+  fun toJson(): com.google.gson.JsonElement
+  companion object 
+    fun fromJson(kotlin.String): FlagEvaluation
+    fun fromJsonObject(com.google.gson.JsonObject): FlagEvaluation
+  data class Identifier
+    constructor(kotlin.String)
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Identifier
+      fun fromJsonObject(com.google.gson.JsonObject): Identifier
+  data class Context
+    constructor(Evaluation? = null, Dd? = null)
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Context
+      fun fromJsonObject(com.google.gson.JsonObject): Context
+  data class Error
+    constructor(kotlin.String)
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Error
+      fun fromJsonObject(com.google.gson.JsonObject): Error
+  data class Evaluation
+    constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Evaluation
+      fun fromJsonObject(com.google.gson.JsonObject): Evaluation
+  data class Dd
+    constructor(kotlin.String? = null, Rum? = null, kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Dd
+      fun fromJsonObject(com.google.gson.JsonObject): Dd
+  data class Rum
+    constructor(Application? = null, View? = null)
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Rum
+      fun fromJsonObject(com.google.gson.JsonObject): Rum
+  data class Application
+    constructor(kotlin.String? = null)
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): Application
+      fun fromJsonObject(com.google.gson.JsonObject): Application
+  data class View
+    constructor(kotlin.String? = null)
+    fun toJson(): com.google.gson.JsonElement
+    companion object 
+      fun fromJson(kotlin.String): View
+      fun fromJsonObject(com.google.gson.JsonObject): View

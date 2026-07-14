@@ -1,0 +1,28 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.trace.integration.otel
+
+import com.openobserve.android.api.feature.Feature
+import com.openobserve.android.api.feature.FeatureScope
+import com.openobserve.android.trace.integration.tests.utils.BlockingWriterWrapper
+import com.openobserve.tools.unit.getFieldValue
+import com.openobserve.tools.unit.setFieldValue
+import com.openobserve.trace.common.writer.Writer
+
+private const val WRITER_FIELD_NAME = "coreTracerDataWriter"
+
+internal fun FeatureScope.useBlockingWriter(): BlockingWriterWrapper {
+    val feature = this.unwrap<Feature>()
+    val writer: Writer = feature.getFieldValue(WRITER_FIELD_NAME)
+    return if (writer is BlockingWriterWrapper) {
+        writer
+    } else {
+        val blockingWriterWrapper = BlockingWriterWrapper(writer)
+        feature.setFieldValue(WRITER_FIELD_NAME, blockingWriterWrapper)
+        blockingWriterWrapper
+    }
+}

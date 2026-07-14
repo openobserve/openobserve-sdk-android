@@ -65,7 +65,7 @@ comments:
       # Fixture files for the NoOpFactory annotation processor tests, read as text data rather than compiled.
       - '**/tools/noopfactory/src/test/resources/**'
       # Vendored test files ported from the upstream dd-trace-java library.
-      - '**/features/dd-sdk-android-trace-internal/src/test/kotlin/com/datadog/trace/**'
+      - '**/features/oo-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/**'
 
 complexity:
   active: false
@@ -107,7 +107,7 @@ datadog:
     active: true
     withBreakingChanges: true
     ignoredAnnotations:
-      - "com.datadog.android.lint.InternalApi"
+      - "com.openobserve.android.lint.InternalApi"
   PreferTimeProvider:
     active: true
     allowedFiles:
@@ -117,11 +117,11 @@ datadog:
   ThreadSafety:
     active: true
     workerThreadSwitchingCalls:
-      - "com.datadog.android.core.internal.utils.submitSafe"
-      - "com.datadog.android.core.internal.utils.executeSafe"
-      - "com.datadog.android.core.internal.utils.scheduleSafe"
-      - "com.datadog.android.api.feature.FeatureScope.withWriteContext"
-      - "com.datadog.android.api.feature.EventWriteScope.invoke"
+      - "com.openobserve.android.core.internal.utils.submitSafe"
+      - "com.openobserve.android.core.internal.utils.executeSafe"
+      - "com.openobserve.android.core.internal.utils.scheduleSafe"
+      - "com.openobserve.android.api.feature.FeatureScope.withWriteContext"
+      - "com.openobserve.android.api.feature.EventWriteScope.invoke"
     mainThreadSwitchingCalls:
       - "android.widget.LinearLayout.post"
   TodoWithoutTask:
@@ -131,7 +131,7 @@ datadog:
       - "REPLAY"
   UnsafeThirdPartyFunctionCall:
     active: true
-    internalPackagePrefix: 'com.datadog'
+    internalPackagePrefix: 'com.openobserve'
     treatUnknownFunctionAsThrowing: true
     treatUnknownConstructorAsThrowing: true
 

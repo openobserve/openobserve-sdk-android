@@ -2,14 +2,36 @@
   "comment": "Ordered rebrand rules for the openobserve-sdk-android fork (base: UPSTREAM_BASE = dd-sdk-android 3.10.0, matching the version the RN bridge pins). Unlike the RN fork there is NO ours-vs-upstream ambiguity here: the ENTIRE tree IS the SDK being rebranded, so Datadog identifiers are renamed uniformly. Two mechanics are involved: (1) 'content' rules rewrite file text; (2) 'pathRenames' move directories/files (the Kotlin package namespace com/datadog/android and the dd-sdk-android-* module dirs). rebrand.mjs applies pathRenames (git mv) FIRST, then content rules. Order within each list is most-specific-first. Third-party deps (okhttp, kotlin stdlib, PLCrashReporter, gson, etc.) are not Datadog-prefixed and are left alone.",
   "pathRenames": [
     {
-      "from": "com/datadog/android",
-      "to": "com/openobserve/android",
-      "why": "Kotlin/Java package namespace directory move (88 dirs, 2436 .kt files). Applied as a git mv of each matching path segment."
+      "from": "com/datadoghq",
+      "to": "io/openobserve",
+      "why": "Gradle Module Metadata signature dirs (src/main/resources/META-INF/com/datadoghq/dd-sdk-android-*/verification.properties) encode the Maven group as a path. MUST run before com/datadog (which does not match com/datadoghq due to the hq boundary, but explicit-first keeps intent clear)."
+    },
+    {
+      "from": "com/datadog",
+      "to": "com/openobserve",
+      "why": "Kotlin/Java package namespace directory move for ALL com.datadog.* sub-namespaces, not just android: com/datadog/{android,trace,benchmark,tools,gradle,sample,opentelemetry,exec}. Applied as a git mv of each matching <prefix>/com/datadog dir (nested-under-same-rule moves are carried by the parent git mv)."
     },
     {
       "fromPrefix": "dd-sdk-android-",
       "toPrefix": "oo-sdk-android-",
       "why": "Maven module directory names (32 dirs: dd-sdk-android-core, features/dd-sdk-android-rum, integrations/dd-sdk-android-okhttp, ...) become the published artifact ids."
+    }
+  ],
+  "fileRenames": [
+    {
+      "token": "Datadog",
+      "to": "OpenObserve",
+      "why": "class-name FILES whose basename still carries the Datadog token after content rules renamed the class inside them (DatadogLogGenerator.kt -> OpenObserveLogGenerator.kt, DatadogRumMonitorTest.kt, DatadogSiteExtensions.kt, ...). 158 files. Applied as git mv on the basename only (dir segments were handled by pathRenames), after Phase 1 so paths are final."
+    },
+    {
+      "token": "datadog-ndk",
+      "to": "openobserve-ndk",
+      "why": "NDK native source file datadog-ndk.cpp -> openobserve-ndk.cpp (its CMake target + loader refs are handled by the datadog-ndk content rule)."
+    },
+    {
+      "token": "dd-sdk-android",
+      "to": "oo-sdk-android",
+      "why": "ABI-validator dump FILES named api/dd-sdk-android-<module>.api (the module DIR was moved by the dd-sdk-android- prefix pathRename, but the .api filename basename is a separate token). Aligns the .api file names with the renamed modules."
     }
   ],
   "rules": [
@@ -24,29 +46,74 @@
       "why": "Maven group id in publishing config + build.gradle dependency coordinates"
     },
     {
+      "literal": "docs.datadoghq.com",
+      "to": "openobserve.ai/docs",
+      "why": "KDoc @see links to Datadog docs (must precede the bare datadoghq.com rule)"
+    },
+    {
+      "literal": "datadoghq.com",
+      "to": "openobserve.ai",
+      "why": "residual doc/host URLs in comments + prose"
+    },
+    {
+      "literal": "com/datadoghq",
+      "to": "io/openobserve",
+      "why": "SLASH form of the Maven group (com/datadoghq/dd-java-agent, dd-trace-java in CI/benchmark URLs + KDoc). MUST precede the broad com/datadog slash rule so com/datadoghq is consumed first and never corrupted to com/openobservehq."
+    },
+    {
+      "literal": "com/datadog",
+      "to": "com/openobserve",
+      "why": "SLASH form of the package path for ALL com.datadog.* namespaces (not caught by the dotted com.datadog rule): appears in .api ABI-validator dumps, JNI class descriptors, and test view-URL string assertions (hasViewUrl(\"com/datadog/android/...\")). Must match the pathRenames dir move or those tests fail and apiCheck diverges."
+    },
+    {
       "literal": "dd-sdk-android",
       "to": "oo-sdk-android",
       "why": "artifact ids + settings.gradle include(':dd-sdk-android-*') + module refs (after the repo-URL rule so it doesn't corrupt it)"
     },
     {
-      "literal": "com.datadog.android",
-      "to": "com.openobserve.android",
-      "why": "package + import declarations across all .kt/.java (matches the pathRenames dir move)"
+      "literal": "com.datadog",
+      "to": "com.openobserve",
+      "why": "package + import declarations across all .kt/.java for ALL com.datadog.* namespaces (android, trace, benchmark, tools, gradle, sample, opentelemetry). Runs AFTER com.datadoghq so the Maven group (com.datadoghq, a superstring) is consumed first and never corrupted to com.openobservehq."
     },
     {
-      "literal": "Java_com_datadog_android",
-      "to": "Java_com_openobserve_android",
-      "why": "JNI native symbol names in the NDK module's C/C++ (3 files) — must match the package rename or native crash capture fails to link"
+      "literal": "Java_com_datadog",
+      "to": "Java_com_openobserve",
+      "why": "JNI native symbol names in the NDK module's C/C++ (underscore form of the package) — must match the package rename or native crash capture fails to link"
     },
     {
-      "regex": "\\bDatadog([A-Z][A-Za-z0-9]*)",
+      "regex": "Datadog([A-Z][A-Za-z0-9]*)",
       "to": "OpenObserve$1",
-      "why": "public API types/objects: DatadogSite, DatadogInterceptor, DatadogEventListener, etc. Word-boundary guarded."
+      "why": "public API types/objects AND mid-word compounds: DatadogSite, DatadogInterceptor, getDatadogContext, mapToDatadogTracer. No leading \\b so mid-identifier occurrences (getDatadogContext) are caught, not just word-initial ones."
     },
     {
-      "regex": "\\bDatadog\\b",
+      "literal": "Datadog",
       "to": "OpenObserve",
-      "why": "the bare public entrypoint object com.datadog.android.Datadog -> OpenObserve (after the Datadog<Suffix> rule so longer names win first)"
+      "why": "catch-all for any remaining mixed-case Datadog substring (bare entrypoint object, trailing-position Datadog like getDatadog). Runs after the Datadog<Suffix> compound rule. Safe as a plain substring: no token we keep contains 'Datadog' (upstream attribution lives in NOTICE/LICENSE, excluded from the codemod)."
+    },
+    {
+      "regex": "\\bdatadog([A-Z][A-Za-z0-9]*)",
+      "to": "oo$1",
+      "why": "lowercase camelCase identifiers (variables, params, properties) not caught by the uppercase-D Datadog<Suffix> rule: datadogContext -> ooContext, datadogTags -> ooTags, datadogCore -> ooCore, datadogSpan/Tracer. Word-boundary guarded so it never matches inside x-datadog-* wire header VALUES (those are followed by '-', not [A-Z])."
+    },
+    {
+      "literal": "DATADOG",
+      "to": "OPENOBSERVE",
+      "why": "SCREAMING_CASE constant NAMES incl. mid-word (DATADOG_INITIAL_CONTEXT, TAG_DATADOG_UPLOAD, DATADOG_EVENT_BRIDGE_NAME). Plain literal so mid-token (after '_') occurrences are caught. Matches the uppercase identifier only; the lowercase x-datadog-* string VALUES those constants hold are a separate wire concern (distributed trace excluded from v1)."
+    },
+    {
+      "literal": "datadog-ndk",
+      "to": "openobserve-ndk",
+      "why": "the NDK native LIBRARY name: CMake target -> libopenobserve-ndk.so, System.loadLibrary(\"datadog-ndk\"), and the datadog-ndk.cpp source. Ships in the AAR, so it must not carry 'datadog'. Literal so target/loader/JNI stay consistent (also covers datadog-ndk-sample / -test module names)."
+    },
+    {
+      "literal": "datadog_",
+      "to": "openobserve_",
+      "why": "snake_case identifiers/resources incl. NDK C symbols (datadog_sigaction, datadog_initial_context, datadog_shutdown) and resource names (datadog_violet, datadog_widget). Literal so C symbol definitions AND references rename together (consistency). Does not touch x-datadog-* wire headers (hyphen, not underscore)."
+    },
+    {
+      "literal": "datadoghq",
+      "to": "openobserve",
+      "why": "residual brand token in comments/handles not ending in .com (the datadoghq.com URL rule ran earlier). e.g. @datadoghq handles, doc references."
     },
     {
       "regex": "\\b_dd\\b",

@@ -1,0 +1,46 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.rum.utils.config
+
+import com.openobserve.android.core.InternalSdkCore
+import com.openobserve.android.rum.GlobalRumMonitor
+import com.openobserve.android.rum.RumMonitor
+import com.openobserve.android.rum._RumInternalProxy
+import com.openobserve.android.rum.internal.monitor.AdvancedRumMonitor
+import com.openobserve.tools.unit.extensions.config.MockTestConfiguration
+import fr.xgouchet.elmyr.Forge
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
+
+@Suppress("TestFunctionName")
+internal abstract class InternalAdvancedRumMonitor : AdvancedRumMonitor {
+    override fun _getInternal(): _RumInternalProxy? {
+        return null
+    }
+}
+
+internal class GlobalRumMonitorTestConfiguration :
+    MockTestConfiguration<RumMonitor>(InternalAdvancedRumMonitor::class.java) {
+
+    lateinit var mockSdkCore: InternalSdkCore
+
+    override fun setUp(forge: Forge) {
+        super.setUp(forge)
+        mockSdkCore = mock()
+
+        (mockInstance as? InternalAdvancedRumMonitor)?.let {
+            whenever(it._getInternal()).thenReturn(_RumInternalProxy(mockInstance as AdvancedRumMonitor))
+        }
+
+        GlobalRumMonitor.registerIfAbsent(mockInstance, mockSdkCore)
+    }
+
+    override fun tearDown(forge: Forge) {
+        GlobalRumMonitor.clear()
+        super.tearDown(forge)
+    }
+}

@@ -1,0 +1,8 @@
+public final class com/openobserve/android/timber/OpenObserveTree : timber/log/Timber$Tree {
+	public static final field TIMBER_TAG_ATTRIBUTE Ljava/lang/String;
+	public fun <init> (I)V
+	public fun <init> (ILcom/openobserve/android/api/SdkCore;)V
+	public synthetic fun <init> (ILcom/openobserve/android/api/SdkCore;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lcom/openobserve/android/log/Logger;)V
+}
+

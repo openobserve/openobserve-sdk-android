@@ -1,0 +1,34 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sample.image
+
+import android.content.Context
+import android.util.Log
+import com.bumptech.glide.Glide
+import com.bumptech.glide.GlideBuilder
+import com.bumptech.glide.Registry
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader
+import com.bumptech.glide.load.model.GlideUrl
+import com.openobserve.android.glide.OpenObserveGlideModule
+import com.openobserve.android.sample.SampleApplication
+import java.io.InputStream
+
+@GlideModule
+internal class SampleGlideModule : OpenObserveGlideModule() {
+    override fun applyOptions(context: Context, builder: GlideBuilder) {
+        super.applyOptions(context, builder)
+
+        builder.setLogLevel(Log.VERBOSE)
+    }
+
+    override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
+        val client = SampleApplication.getOkHttpClient(context)
+        val factory = OkHttpUrlLoader.Factory(client)
+        registry.replace(GlideUrl::class.java, InputStream::class.java, factory)
+    }
+}

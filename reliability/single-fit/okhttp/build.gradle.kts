@@ -1,13 +1,13 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.config.androidLibraryConfig
-import com.datadog.gradle.config.dependencyUpdateConfig
-import com.datadog.gradle.config.junitConfig
-import com.datadog.gradle.config.kotlinConfig
+import com.openobserve.gradle.config.androidLibraryConfig
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -25,14 +25,14 @@ plugins {
 }
 
 android {
-    namespace = "com.datadog.android.okhttp.integration"
+    namespace = "com.openobserve.android.okhttp.integration"
 }
 
 dependencies {
-    implementation(project(":features:dd-sdk-android-trace"))
-    implementation(project(":features:dd-sdk-android-trace-otel"))
-    implementation(project(":integrations:dd-sdk-android-okhttp"))
-    implementation(project(":integrations:dd-sdk-android-okhttp-otel"))
+    implementation(project(":features:oo-sdk-android-trace"))
+    implementation(project(":features:oo-sdk-android-trace-otel"))
+    implementation(project(":integrations:oo-sdk-android-okhttp"))
+    implementation(project(":integrations:oo-sdk-android-okhttp-otel"))
     implementation(libs.kotlin)
 
     // Testing
@@ -44,12 +44,12 @@ dependencies {
             )
         }
     }
-    testImplementation(project(":dd-sdk-android-internal"))
-    testImplementation(testFixtures(project(":dd-sdk-android-core")))
-    testImplementation(testFixtures(project(":features:dd-sdk-android-trace")))
+    testImplementation(project(":oo-sdk-android-internal"))
+    testImplementation(testFixtures(project(":oo-sdk-android-core")))
+    testImplementation(testFixtures(project(":features:oo-sdk-android-trace")))
     testImplementation(project(":reliability:stub-core"))
-    testImplementation(project(":integrations:dd-sdk-android-apollo"))
-    testImplementation(project(":features:dd-sdk-android-rum"))
+    testImplementation(project(":integrations:oo-sdk-android-apollo"))
+    testImplementation(project(":features:oo-sdk-android-rum"))
     testImplementation(libs.bundles.jUnit5)
     testImplementation(libs.bundles.testTools)
     testImplementation(libs.okHttp)
@@ -62,7 +62,7 @@ dependencies {
 apollo {
     service("testService") {
         srcDir("src/test/resources/graphql")
-        packageName.set("com.datadog.android.testgraphql")
+        packageName.set("com.openobserve.android.testgraphql")
         schemaFiles.from("src/test/resources/graphql/schema.graphqls")
 
         outputDirConnection {

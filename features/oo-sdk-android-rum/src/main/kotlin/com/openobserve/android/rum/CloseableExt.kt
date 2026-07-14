@@ -1,0 +1,40 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.rum
+
+import com.openobserve.android.OpenObserve
+import com.openobserve.android.api.SdkCore
+import com.openobserve.android.rum.internal.utils.handleClosableError
+import java.io.Closeable
+
+/**
+ * Executes the given [block] function on this [Closeable] instance
+ * and then closes it down correctly whether an exception
+ * is thrown or not.
+ * This extension works exactly as the [Closeable.use] extension and in case the [block] will throw
+ * any exception this will be intercepted and propagated as a Rum error event.
+ * @param T a [Closeable] type
+ * @param R the type returned by the block operation
+ * @param sdkCore the SDK instance to use. If not provided, default instance will be used.
+ * @param block a function to process this [Closeable] resource.
+ * @return the result of [block] function invoked on this resource.
+ */
+@Suppress("TooGenericExceptionCaught")
+fun <T : Closeable, R> T.useMonitored(sdkCore: SdkCore = OpenObserve.getInstance(), block: (T) -> R): R {
+    try {
+        return block(this)
+    } catch (e: Throwable) {
+        handleClosableError(e, sdkCore)
+        throw e
+    } finally {
+        try {
+            close()
+        } catch (closeException: Throwable) {
+            handleClosableError(closeException, sdkCore)
+        }
+    }
+}

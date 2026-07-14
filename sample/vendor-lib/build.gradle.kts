@@ -1,16 +1,16 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.config.AndroidConfig
-import com.datadog.gradle.config.dependencyUpdateConfig
-import com.datadog.gradle.config.java17
-import com.datadog.gradle.config.junitConfig
-import com.datadog.gradle.config.kotlinConfig
-import com.datadog.gradle.config.sampleAppConfig
-import com.datadog.gradle.config.taskConfig
+import com.openobserve.gradle.config.AndroidConfig
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.java17
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
+import com.openobserve.gradle.config.sampleAppConfig
+import com.openobserve.gradle.config.taskConfig
 import java.io.File
 
 plugins {
@@ -41,7 +41,7 @@ android {
         )
     }
 
-    namespace = "com.datadog.android.vendor.sample"
+    namespace = "com.openobserve.android.vendor.sample"
 
     compileOptions {
         java17()
@@ -70,10 +70,10 @@ android {
 
 dependencies {
 
-    implementation(project(":features:dd-sdk-android-logs"))
-    implementation(project(":features:dd-sdk-android-trace"))
-    implementation(project(":features:dd-sdk-android-trace-otel"))
-    implementation(project(":integrations:dd-sdk-android-okhttp"))
+    implementation(project(":features:oo-sdk-android-logs"))
+    implementation(project(":features:oo-sdk-android-trace"))
+    implementation(project(":features:oo-sdk-android-trace-otel"))
+    implementation(project(":integrations:oo-sdk-android-okhttp"))
 
     implementation(libs.kotlin)
 

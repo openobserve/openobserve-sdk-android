@@ -1,0 +1,43 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sdk.integration.rum.startup
+
+import android.content.Intent
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
+
+/**
+ * Interstitial activity that launches the main activity and finishes itself asynchronously.
+ * Unlike [InterstitialSplashActivity], the startActivity + finish calls are posted to a Handler,
+ * causing the next activity's onCreate to fire AFTER this activity's onDestroy.
+ *
+ * This simulates real-world interstitial patterns where navigation is deferred
+ * (e.g., auth checks via callbacks, deep link resolution, or framework-level async routing).
+ */
+internal class AsyncInterstitialSplashActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Capture application context before finishing so startActivity works
+        // after this activity is destroyed (required on API 29+ and avoids
+        // "activity already finishing" silent failures).
+        val appContext = applicationContext
+        finish()
+        Handler(Looper.getMainLooper()).postDelayed({
+            appContext.startActivity(
+                Intent(appContext, MainContentActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            )
+        }, NAVIGATION_DELAY_MS)
+    }
+
+    companion object {
+        private const val NAVIGATION_DELAY_MS = 100L
+    }
+}

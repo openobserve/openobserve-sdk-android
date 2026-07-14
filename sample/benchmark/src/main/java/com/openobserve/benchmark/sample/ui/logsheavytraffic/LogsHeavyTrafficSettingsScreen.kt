@@ -1,0 +1,65 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.benchmark.sample.ui.logsheavytraffic
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.openobserve.benchmark.sample.ui.ALL_LOG_LEVELS
+import com.openobserve.benchmark.sample.ui.LogPayloadSize
+import com.openobserve.benchmark.sample.ui.common.ExpandedItemView
+import com.openobserve.benchmark.sample.ui.common.ValueChooserItemView
+import com.openobserve.benchmark.sample.ui.logStringRepresentation
+
+@Composable
+internal fun LogsHeavyTrafficSettingsScreen(
+    modifier: Modifier,
+    config: LogsHeavyTrafficScreenState.LoggingConfig,
+    dispatch: (LogsHeavyTrafficScreenAction) -> Unit
+) {
+    Column(modifier = modifier) {
+        Button(onClick = { dispatch(LogsHeavyTrafficScreenAction.CloseSettings) }) {
+            Text(text = "Close")
+        }
+
+        TextField(
+            value = config.logMessage,
+            onValueChange = { dispatch(LogsHeavyTrafficScreenAction.ChangeLogMessage(it)) }
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        ExpandedItemView(
+            titleText = "Log level",
+            items = ALL_LOG_LEVELS,
+            headerText = config.logLevel.logStringRepresentation(),
+            itemTextFactory = { it.logStringRepresentation() },
+            onClick = { dispatch(LogsHeavyTrafficScreenAction.SelectLogLevel(it)) }
+        )
+
+        ExpandedItemView(
+            titleText = "Payload Size",
+            items = LogPayloadSize.values().toList(),
+            headerText = config.payloadSize.toString(),
+            itemTextFactory = { it.toString() },
+            onClick = { dispatch(LogsHeavyTrafficScreenAction.SelectPayloadSize(it)) }
+        )
+
+        ValueChooserItemView(
+            titleText = "Logs per image",
+            currentValue = config.logsPerImage.toString(),
+            increaseClick = { dispatch(LogsHeavyTrafficScreenAction.IncreaseLogsPerImage) },
+            decreaseClick = { dispatch(LogsHeavyTrafficScreenAction.DecreaseLogsPerImage) }
+        )
+    }
+}

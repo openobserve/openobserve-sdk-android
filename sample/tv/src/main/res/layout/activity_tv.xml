@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
-  ~ This product includes software developed at Datadog (https://www.datadoghq.com/).
-  ~ Copyright 2016-Present Datadog, Inc.
+  ~ This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+  ~ Copyright 2016-Present OpenObserve, Inc.
   -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/episodes"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Datadog On… Android TV" />
+        tools:text="OpenObserve On… Android TV" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/episode_description"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/episodes"
         app:layout_constraintTop_toBottomOf="@id/episode_title"
-        tools:text="Datadog On… Android TV" />
+        tools:text="OpenObserve On… Android TV" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/episode_speakers"
@@ -51,7 +51,7 @@
         app:layout_constraintBottom_toTopOf="@id/play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/episodes"
-        tools:text="Datadog On… Android TV" />
+        tools:text="OpenObserve On… Android TV" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/play"

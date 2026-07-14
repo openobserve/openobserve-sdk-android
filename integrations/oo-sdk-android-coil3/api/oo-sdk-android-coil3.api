@@ -1,0 +1,7 @@
+public final class com/openobserve/android/coil3/OpenObserveCoilRequestListener : coil3/request/ImageRequest$Listener {
+	public fun <init> ()V
+	public fun <init> (Lcom/openobserve/android/api/SdkCore;)V
+	public synthetic fun <init> (Lcom/openobserve/android/api/SdkCore;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun onError (Lcoil3/request/ImageRequest;Lcoil3/request/ErrorResult;)V
+}
+

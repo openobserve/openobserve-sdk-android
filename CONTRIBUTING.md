@@ -5,7 +5,7 @@ First of all, thanks for contributing!
 This document provides some basic guidelines for contributing to this repository.
 To propose improvements, feel free to submit a PR or open an Issue.
 
-**Note:** Datadog requires that all commits within this repository must be signed, including those within external contribution PRs. Please ensure you have followed GitHub's [Signing Commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) guide before proposing a contribution. PRs lacking signed commits will not be processed and may be rejected.
+**Note:** OpenObserve requires that all commits within this repository must be signed, including those within external contribution PRs. Please ensure you have followed GitHub's [Signing Commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) guide before proposing a contribution. PRs lacking signed commits will not be processed and may be rejected.
 
 ## Setup your developer Environment
 
@@ -23,46 +23,46 @@ In addition, to be able to run the static analysis tools locally, you should run
 
 This project hosts the following modules:
 
-  - `dd-sdk-android-core`: the main library implementing the core functionality of SDK (storage and upload of data, core APIs);
-  - `dd-sdk-android-internal`: a library providing internal APIs, classes and utilities shared by the SDK modules;
-  - `features/***`: a set of libraries implementing Datadog products: 
-    - `features/dd-sdk-android-logs`: a library to send logs to Datadog;
-    - `features/dd-sdk-android-rum`: a library to track user navigation and interaction;
-    - `features/dd-sdk-android-ndk`: a lightweight library to track crashes from NDK libraries;
-    - `features/dd-sdk-android-session-replay`: a library to capture the window content;
-    - `features/dd-sdk-android-session-replay-compose`: an extension for Session Replay to integrate with the Jetpack Compose;
-    - `features/dd-sdk-android-session-replay-material`: an extension for Session Replay to integrate with the Material Design library;
-    - `features/dd-sdk-android-trace`: a library to measure performance of operations locally;
-    - `features/dd-sdk-android-trace-api`: a library containing API definitions for the Trace library;
-    - `features/dd-sdk-android-trace-internal`: a library containing internal classes for the Trace library;
-    - `features/dd-sdk-android-trace-otel`: an extension of Trace library to integrate with [OpenTelemetry](https://opentelemetry.io/);
-    - `features/dd-sdk-android-webview`: a library to forward logs and RUM events captured in a webview to be linked with the mobile session;
-    - `features/dd-sdk-android-profiling`: a library to record application performance profiles;
-  - `integrations/***`: a set of libraries integrating Datadog products in third party libraries:
-    - `integrations/dd-sdk-android-apollo`: a lightweight library providing a bridge integration between Datadog SDK and [Apollo Kotlin](https://github.com/apollographql/apollo-kotlin)
-    - `integrations/dd-sdk-android-coil`: a lightweight library providing a bridge integration between Datadog SDK and [Coil](https://coil-kt.github.io/coil/);
-    - `integrations/dd-sdk-android-coil3`: a lightweight library providing a bridge integration between Datadog SDK and [Coil 3](https://coil-kt.github.io/coil/);
-    - `integrations/dd-sdk-android-compose`: a lightweight library providing a bridge integration between Datadog SDK and [Jetpack Compose](https://developer.android.com/jetpack/compose);
-    - `integrations/dd-sdk-android-fresco`: a lightweight library providing a bridge integration between Datadog SDK and [Fresco](https://frescolib.org/);
-    - `integrations/dd-sdk-android-glide`: a lightweight library providing a bridge integration between Datadog SDK and [Glide](https://bumptech.github.io/glide/);
-    - `integrations/dd-sdk-android-okhttp`: a lightweight library providing an instrumentation for [OkHttp](https://square.github.io/okhttp/);
-    - `integrations/dd-sdk-android-okhttp-otel`: a lightweight library providing a support of [OpenTelemetry](https://opentelemetry.io/) for the [OkHttp](https://square.github.io/okhttp/) instrumentation;
-    - `integrations/dd-sdk-android-rum-coroutines`: a set of extensions for Kotlin Coroutines to ease the work with the RUM library;
-    - `integrations/dd-sdk-android-rx`: a lightweight library providing a bridge integration between Datadog SDK and [RxJava](https://github.com/ReactiveX/RxJava);
-    - `integrations/dd-sdk-android-sqldelight`: a lightweight library providing a bridge integration between Datadog SDK and [SQLDelight](https://cashapp.github.io/sqldelight/);
-    - `integrations/dd-sdk-android-timber`: a lightweight library providing a bridge integration between Datadog SDK and [Timber](https://github.com/JakeWharton/timber);
-    - `integrations/dd-sdk-android-tv`: a lightweight library providing extensions for [Android TV](https://www.android.com/tv/)
-    - `integrations/dd-sdk-android-trace-coroutines`: a set of extensions for Kotlin Coroutines to ease the work with the Trace library;
+  - `oo-sdk-android-core`: the main library implementing the core functionality of SDK (storage and upload of data, core APIs);
+  - `oo-sdk-android-internal`: a library providing internal APIs, classes and utilities shared by the SDK modules;
+  - `features/***`: a set of libraries implementing OpenObserve products: 
+    - `features/oo-sdk-android-logs`: a library to send logs to OpenObserve;
+    - `features/oo-sdk-android-rum`: a library to track user navigation and interaction;
+    - `features/oo-sdk-android-ndk`: a lightweight library to track crashes from NDK libraries;
+    - `features/oo-sdk-android-session-replay`: a library to capture the window content;
+    - `features/oo-sdk-android-session-replay-compose`: an extension for Session Replay to integrate with the Jetpack Compose;
+    - `features/oo-sdk-android-session-replay-material`: an extension for Session Replay to integrate with the Material Design library;
+    - `features/oo-sdk-android-trace`: a library to measure performance of operations locally;
+    - `features/oo-sdk-android-trace-api`: a library containing API definitions for the Trace library;
+    - `features/oo-sdk-android-trace-internal`: a library containing internal classes for the Trace library;
+    - `features/oo-sdk-android-trace-otel`: an extension of Trace library to integrate with [OpenTelemetry](https://opentelemetry.io/);
+    - `features/oo-sdk-android-webview`: a library to forward logs and RUM events captured in a webview to be linked with the mobile session;
+    - `features/oo-sdk-android-profiling`: a library to record application performance profiles;
+  - `integrations/***`: a set of libraries integrating OpenObserve products in third party libraries:
+    - `integrations/oo-sdk-android-apollo`: a lightweight library providing a bridge integration between OpenObserve SDK and [Apollo Kotlin](https://github.com/apollographql/apollo-kotlin)
+    - `integrations/oo-sdk-android-coil`: a lightweight library providing a bridge integration between OpenObserve SDK and [Coil](https://coil-kt.github.io/coil/);
+    - `integrations/oo-sdk-android-coil3`: a lightweight library providing a bridge integration between OpenObserve SDK and [Coil 3](https://coil-kt.github.io/coil/);
+    - `integrations/oo-sdk-android-compose`: a lightweight library providing a bridge integration between OpenObserve SDK and [Jetpack Compose](https://developer.android.com/jetpack/compose);
+    - `integrations/oo-sdk-android-fresco`: a lightweight library providing a bridge integration between OpenObserve SDK and [Fresco](https://frescolib.org/);
+    - `integrations/oo-sdk-android-glide`: a lightweight library providing a bridge integration between OpenObserve SDK and [Glide](https://bumptech.github.io/glide/);
+    - `integrations/oo-sdk-android-okhttp`: a lightweight library providing an instrumentation for [OkHttp](https://square.github.io/okhttp/);
+    - `integrations/oo-sdk-android-okhttp-otel`: a lightweight library providing a support of [OpenTelemetry](https://opentelemetry.io/) for the [OkHttp](https://square.github.io/okhttp/) instrumentation;
+    - `integrations/oo-sdk-android-rum-coroutines`: a set of extensions for Kotlin Coroutines to ease the work with the RUM library;
+    - `integrations/oo-sdk-android-rx`: a lightweight library providing a bridge integration between OpenObserve SDK and [RxJava](https://github.com/ReactiveX/RxJava);
+    - `integrations/oo-sdk-android-sqldelight`: a lightweight library providing a bridge integration between OpenObserve SDK and [SQLDelight](https://cashapp.github.io/sqldelight/);
+    - `integrations/oo-sdk-android-timber`: a lightweight library providing a bridge integration between OpenObserve SDK and [Timber](https://github.com/JakeWharton/timber);
+    - `integrations/oo-sdk-android-tv`: a lightweight library providing extensions for [Android TV](https://www.android.com/tv/)
+    - `integrations/oo-sdk-android-trace-coroutines`: a set of extensions for Kotlin Coroutines to ease the work with the Trace library;
   - `instrumented/***`: a set of modules used to run instrumented tests:
     - `instrumented/integration`: a test module with integration tests using Espresso;
   - `reliability/***`: a set of modules used to run integration tests:
-    - `reliability/core-it`: a set of integration tests for the Datadog SDK core library;
+    - `reliability/core-it`: a set of integration tests for the OpenObserve SDK core library;
     - `reliability/single-fit/logs`: a set of integration tests for the Logs library;
     - `reliability/single-fit/okhttp`: a set of integration tests for [OkHttp](https://square.github.io/okhttp/) instrumentation;
     - `reliability/single-fit/rum`: a set of integration tests for the RUM library;
     - `reliability/single-fit/trace`: a set of integration tests for the Trace library;
-    - `reliability/stub-core`: a set of stubs for Datadog SDK core;
-    - `reliability/stub-feature`: a set of stubs for Datadog SDK feature APIs;
+    - `reliability/stub-core`: a set of stubs for OpenObserve SDK core;
+    - `reliability/stub-feature`: a set of stubs for OpenObserve SDK feature APIs;
   - `tools/***`: a set of modules used to extend the tools we use in our workflow:
     - `tools/benchmark`: a code to benchmark SDK performance;
     - `tools/detekt`: a few custom [Detekt](https://github.com/arturbosch/detekt) static analysis rules;
@@ -71,7 +71,7 @@ This project hosts the following modules:
     - `tools/unit`: a utility library with code to help writing unit tests;
   - `sample/***`: a few sample applications showcasing how to use the library features in production code;
     - `sample/kotlin`: a sample mobile application;
-    - `sample/vendor-lib`: a sample Android library, to showcase vendors using Datadog in a host app also using Datadog;
+    - `sample/vendor-lib`: a sample Android library, to showcase vendors using OpenObserve in a host app also using OpenObserve;
     - `sample/wear`: a sample Wear OS application;
     - `sample/automotive`: a sample Automotive OS application;
     - `sample/tv`: a sample Android TV OS application;
@@ -111,7 +111,7 @@ The whole project is covered by a set of static analysis tools, linters and test
 Many great ideas for new features come from the community, and we'd be happy to
 consider yours!
 
-To share your request, you can open an [issue](https://github.com/DataDog/dd-sdk-android/issues/new?labels=enhancement&template=FeatureRequest.yml)
+To share your request, you can open an [issue](https://github.com/openobserve/openobserve-sdk-android/issues/new?labels=enhancement&template=FeatureRequest.yml)
 with the details about what you'd like to see. At a minimum, please provide:
 
  - The goal of the new feature;
@@ -121,12 +121,12 @@ with the details about what you'd like to see. At a minimum, please provide:
 
 ## Found a bug?
 
-For any urgent matters (such as outages) or issues concerning the Datadog service
-or UI, contact our support team via https://docs.datadoghq.com/help/ for direct,
+For any urgent matters (such as outages) or issues concerning the OpenObserve service
+or UI, contact our support team via https://openobserve.ai/docs/help/ for direct,
 faster assistance.
 
-You may submit bug reports concerning the Datadog SDK for Android by 
-[opening a Github issue](https://github.com/DataDog/dd-sdk-android/issues/new?labels=bug&template=BugReport.yml).
+You may submit bug reports concerning the OpenObserve SDK for Android by 
+[opening a Github issue](https://github.com/openobserve/openobserve-sdk-android/issues/new?labels=bug&template=BugReport.yml).
 At a minimum, please provide:
 
  - A description of the problem;
@@ -136,7 +136,7 @@ At a minimum, please provide:
  - Errors (with stack traces) or warnings received;
  - Any details you can share about your configuration including:
     - Android API level;
-    - Datadog SDK version;
+    - OpenObserve SDK version;
     - Versions of any other relevant dependencies (OkHttp, …);
     - Your proguard configuration;
     - The list of Gradle plugins applied to your project.
@@ -154,18 +154,18 @@ the bug are best.
 ## Have a patch?
 
 We welcome code contributions to the library, which you can 
-[submit as a pull request](https://github.com/DataDog/dd-sdk-android/pull/new/develop).
+[submit as a pull request](https://github.com/openobserve/openobserve-sdk-android/pull/new/develop).
 Before you submit a PR, make sure that you first create an Issue to explain the
 bug or the feature your patch covers, and make sure another Issue or PR doesn't
 already exist.
 
 To create a pull request:
 
-1. **Fork the repository** from https://github.com/DataDog/dd-sdk-android ;
+1. **Fork the repository** from https://github.com/openobserve/openobserve-sdk-android ;
 2. **Make any changes** for your patch;
 3. **Write tests** that demonstrate how the feature works or how the bug is fixed;
 4. **Update any documentation**, especially for new features. It can be found either in the `docs` folder of this repository, or in [documentation repository](https://github.com/DataDog/documentation);
-5. **Submit the pull request** from your fork back to this [repository](https://github.com/DataDog/dd-sdk-android).
+5. **Submit the pull request** from your fork back to this [repository](https://github.com/openobserve/openobserve-sdk-android).
 
 
 The pull request will be run through our CI pipeline, and a project member will
@@ -253,7 +253,7 @@ ktlint -F "**/*.kt" "**/*.kts" '!**/build/generated/**' '!**/build/kspCaches/**'
 
 It is important to be sure that our library work properly in any scenario. All
 non trivial code must be tested. If you're not used to writing tests, you can
-take a look at the `test` folder to get some ideas on how we write them at Datadog.
+take a look at the `test` folder to get some ideas on how we write them at OpenObserve.
 
 We use a variety of tools to help us write tests easy to read and maintain:
 
@@ -281,10 +281,10 @@ Some classes need to be created in the `test` sourceSets to integrate with our t
 the new class purpose. 
 
 E.g.:
- - A custom assertion class for class `Foo` in module `com.datadog.module` will be 
-    `com.datadog.module.tests.assertj.FooAssert`
-- A custom forgery factory class for class `Foo` in module `com.datadog.module` will be
-    `com.datadog.module.tests.elmyr.FooForgeryFactory`
+ - A custom assertion class for class `Foo` in module `com.openobserve.module` will be 
+    `com.openobserve.module.tests.assertj.FooAssert`
+- A custom forgery factory class for class `Foo` in module `com.openobserve.module` will be
+    `com.openobserve.module.tests.elmyr.FooForgeryFactory`
 
 #### Fields & Test Method parameters
 

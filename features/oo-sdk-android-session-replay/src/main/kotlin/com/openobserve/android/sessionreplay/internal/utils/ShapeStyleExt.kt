@@ -1,0 +1,23 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sessionreplay.internal.utils
+
+import com.openobserve.android.sessionreplay.model.MobileSegment
+import java.util.Locale
+
+private const val FULL_OPACITY_STRING_HEXA = "ff"
+private const val FULL_OPACITY_ALPHA = 1f
+
+internal fun MobileSegment.ShapeStyle.hasNonTranslucentColor(): Boolean {
+    @Suppress("UnsafeThirdPartyFunctionCall") // 2 cannot be negative
+    val alphaComponent = backgroundColor?.takeLast(2)?.lowercase(Locale.US)
+    return alphaComponent == FULL_OPACITY_STRING_HEXA
+}
+
+internal fun MobileSegment.ShapeStyle.isFullyOpaque(): Boolean {
+    return (this.opacity?.toFloat() ?: 1f) >= FULL_OPACITY_ALPHA
+}

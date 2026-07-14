@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
-  ~ This product includes software developed at Datadog (https://www.datadoghq.com/).
-  ~ Copyright 2016-Present Datadog, Inc.
+  ~ This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+  ~ Copyright 2016-Present OpenObserve, Inc.
   -->
 
 <resources>
-    <string name="app_name">Datadog Integration Tests</string>
+    <string name="app_name">OpenObserve Integration Tests</string>
 
     <string name="activity_logs_end_to_end">Logs (End to End)</string>
     <string name="activity_traces_end_to_end">Traces (End to End)</string>
@@ -54,7 +54,7 @@
     <string name="default_password_label">Default password</string>
     <string name="a_password">apassword</string>
     <string name="a_number_password">1213213</string>
-    <string name="an_email">noreply@datadoghq.com</string>
+    <string name="an_email">noreply@openobserve.ai</string>
     <string name="an_address">5th Madison Avenue, New York, NY 10001</string>
     <string name="default_checkbox">Default CheckBox</string>
     <string name="app_compat_checkbox">App Compat CheckBox</string>

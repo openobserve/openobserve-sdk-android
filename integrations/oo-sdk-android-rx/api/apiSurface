@@ -1,0 +1,8 @@
+class com.openobserve.android.rx.OpenObserveRumErrorConsumer : io.reactivex.rxjava3.functions.Consumer<Throwable>
+  constructor(com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
+  override fun accept(Throwable)
+fun <T: Any> io.reactivex.rxjava3.core.Observable<T>.sendErrorToOpenObserve(com.openobserve.android.api.SdkCore = OpenObserve.getInstance()): io.reactivex.rxjava3.core.Observable<T>
+fun <T: Any> io.reactivex.rxjava3.core.Single<T>.sendErrorToOpenObserve(com.openobserve.android.api.SdkCore = OpenObserve.getInstance()): io.reactivex.rxjava3.core.Single<T>
+fun <T: Any> io.reactivex.rxjava3.core.Flowable<T>.sendErrorToOpenObserve(com.openobserve.android.api.SdkCore = OpenObserve.getInstance()): io.reactivex.rxjava3.core.Flowable<T>
+fun <T> io.reactivex.rxjava3.core.Maybe<T>.sendErrorToOpenObserve(com.openobserve.android.api.SdkCore = OpenObserve.getInstance()): io.reactivex.rxjava3.core.Maybe<T>
+fun io.reactivex.rxjava3.core.Completable.sendErrorToOpenObserve(com.openobserve.android.api.SdkCore = OpenObserve.getInstance()): io.reactivex.rxjava3.core.Completable

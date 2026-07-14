@@ -1,16 +1,16 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.config.AndroidConfig
-import com.datadog.gradle.config.androidLibraryConfig
-import com.datadog.gradle.config.dependencyUpdateConfig
-import com.datadog.gradle.config.java11
-import com.datadog.gradle.config.junitConfig
-import com.datadog.gradle.config.kotlinConfig
-import com.datadog.gradle.config.publishingConfig
+import com.openobserve.gradle.config.AndroidConfig
+import com.openobserve.gradle.config.androidLibraryConfig
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.java11
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
+import com.openobserve.gradle.config.publishingConfig
 
 plugins {
     id("com.android.library")
@@ -26,15 +26,15 @@ android {
         compileSdk = AndroidConfig.TARGET_SDK
         minSdk = AndroidConfig.MIN_SDK
     }
-    namespace = "com.datadog.tools.benchmark"
+    namespace = "com.openobserve.tools.benchmark"
     compileOptions {
         java11()
     }
 }
 
 dependencies {
-    implementation(project(":dd-sdk-android-core"))
-    implementation(project(":dd-sdk-android-internal"))
+    implementation(project(":oo-sdk-android-core"))
+    implementation(project(":oo-sdk-android-internal"))
     implementation(libs.kotlin)
     implementation(libs.okHttp)
     implementation(libs.openTelemetryApi)
@@ -60,6 +60,6 @@ junitConfig()
 dependencyUpdateConfig()
 androidLibraryConfig()
 publishingConfig(
-    projectDescription = "An internal benchmarking tool to measure the overhead of Datadog SDK",
-    customArtifactId = "dd-sdk-android-benchmark-internal"
+    projectDescription = "An internal benchmarking tool to measure the overhead of OpenObserve SDK",
+    customArtifactId = "oo-sdk-android-benchmark-internal"
 )

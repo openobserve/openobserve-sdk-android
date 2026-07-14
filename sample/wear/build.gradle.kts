@@ -1,12 +1,12 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.config.AndroidConfig
-import com.datadog.gradle.config.configureFlavorForSampleApp
-import com.datadog.gradle.config.java17
+import com.openobserve.gradle.config.AndroidConfig
+import com.openobserve.gradle.config.configureFlavorForSampleApp
+import com.openobserve.gradle.config.java17
 
 plugins {
     id("com.android.application")
@@ -18,7 +18,7 @@ android {
     buildToolsVersion = AndroidConfig.BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId = "com.datadog.android.wear.sample"
+        applicationId = "com.openobserve.android.wear.sample"
         minSdk = AndroidConfig.MIN_SDK
         targetSdk = AndroidConfig.TARGET_SDK
         versionCode = AndroidConfig.VERSION.code
@@ -29,7 +29,7 @@ android {
         }
     }
 
-    namespace = "com.datadog.android.wear.sample"
+    namespace = "com.openobserve.android.wear.sample"
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
@@ -67,11 +67,11 @@ dependencies {
     implementation(libs.timber)
     coreLibraryDesugaring(libs.androidDesugaringSdk)
 
-    implementation(project(":features:dd-sdk-android-ndk"))
-    implementation(project(":features:dd-sdk-android-rum"))
-    implementation(project(":features:dd-sdk-android-logs"))
-    implementation(project(":features:dd-sdk-android-trace"))
-    implementation(project(":features:dd-sdk-android-trace-otel"))
+    implementation(project(":features:oo-sdk-android-ndk"))
+    implementation(project(":features:oo-sdk-android-rum"))
+    implementation(project(":features:oo-sdk-android-logs"))
+    implementation(project(":features:oo-sdk-android-trace"))
+    implementation(project(":features:oo-sdk-android-trace-otel"))
 
     implementation("androidx.wear:wear:1.2.0")
     implementation("androidx.core:core-ktx:1.7.0")

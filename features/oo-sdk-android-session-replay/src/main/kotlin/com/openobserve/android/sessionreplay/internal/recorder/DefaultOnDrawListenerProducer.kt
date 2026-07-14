@@ -1,0 +1,44 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sessionreplay.internal.recorder
+
+import android.view.View
+import android.view.ViewTreeObserver
+import com.openobserve.android.api.feature.FeatureSdkCore
+import com.openobserve.android.core.metrics.MethodCallSamplingRate
+import com.openobserve.android.sessionreplay.ImagePrivacy
+import com.openobserve.android.sessionreplay.TextAndInputPrivacy
+import com.openobserve.android.sessionreplay.internal.TouchPrivacyManager
+import com.openobserve.android.sessionreplay.internal.async.RecordedDataQueueHandler
+import com.openobserve.android.sessionreplay.internal.recorder.listener.WindowsOnDrawListener
+
+internal class DefaultOnDrawListenerProducer(
+    private val snapshotProducer: SnapshotProducer,
+    private val recordedDataQueueHandler: RecordedDataQueueHandler,
+    private val sdkCore: FeatureSdkCore,
+    private val dynamicOptimizationEnabled: Boolean
+) : OnDrawListenerProducer {
+
+    override fun create(
+        decorViews: List<View>,
+        textAndInputPrivacy: TextAndInputPrivacy,
+        imagePrivacy: ImagePrivacy,
+        touchPrivacyManager: TouchPrivacyManager
+    ): ViewTreeObserver.OnDrawListener {
+        return WindowsOnDrawListener(
+            zOrderedDecorViews = decorViews,
+            recordedDataQueueHandler = recordedDataQueueHandler,
+            snapshotProducer = snapshotProducer,
+            textAndInputPrivacy = textAndInputPrivacy,
+            imagePrivacy = imagePrivacy,
+            sdkCore = sdkCore,
+            methodCallSamplingRate = MethodCallSamplingRate.LOW.rate,
+            dynamicOptimizationEnabled = dynamicOptimizationEnabled,
+            touchPrivacyManager = touchPrivacyManager
+        )
+    }
+}

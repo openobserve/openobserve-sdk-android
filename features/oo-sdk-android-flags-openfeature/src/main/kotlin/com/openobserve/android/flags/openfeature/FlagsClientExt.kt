@@ -1,0 +1,49 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.flags.openfeature
+
+import com.openobserve.android.flags.FlagsClient
+import dev.openfeature.kotlin.sdk.FeatureProvider
+
+/**
+ * Creates an OpenFeature [FeatureProvider] from this [FlagsClient].
+ *
+ * This is the recommended way to integrate OpenObserve Feature Flags with OpenFeature.
+ * Use [FlagsClient.Builder] to configure your client (custom endpoints, etc.),
+ * then call this extension to get an OpenFeature provider.
+ *
+ * ## Usage Examples
+ *
+ * ```kotlin
+ * import com.openobserve.android.flags.FlagsClient
+ * import com.openobserve.android.flags.openfeature.asOpenFeatureProvider
+ * import dev.openfeature.kotlin.sdk.OpenFeatureAPI
+ *
+ * // Default configuration
+ * val provider = FlagsClient.Builder().build().asOpenFeatureProvider()
+ *
+ * // Named client
+ * val provider = FlagsClient.Builder("analytics").build().asOpenFeatureProvider()
+ *
+ * // Custom configuration
+ * val provider = FlagsClient.Builder("analytics")
+ *     .useCustomExposureEndpoint("https://custom.endpoint.com")
+ *     .build()
+ *     .asOpenFeatureProvider()
+ *
+ * // Set it as the OpenFeature provider
+ * OpenFeatureAPI.setProviderAndWait(provider)
+ *
+ * // Use OpenFeature API
+ * val client = OpenFeatureAPI.getClient()
+ * val isEnabled = client.getBooleanValue("my-feature", false)
+ * ```
+ *
+ * @return A [FeatureProvider] that delegates to this [FlagsClient]
+ * @see FlagsClient.Builder for configuring the underlying flags client
+ */
+fun FlagsClient.asOpenFeatureProvider(): FeatureProvider = OpenObserveFlagsProvider.wrap(this)

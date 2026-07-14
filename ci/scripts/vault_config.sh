@@ -2,12 +2,12 @@
 
 #
 # Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
-# This product includes software developed at Datadog (https://www.datadoghq.com/).
-# Copyright 2016-Present Datadog, Inc.
+# This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+# Copyright 2016-Present OpenObserve, Inc.
 #
 
 DD_VAULT_ADDR=https://vault.us1.ddbuild.io
-DD_ANDROID_SECRETS_PATH_PREFIX=${DD_ANDROID_SECRETS_PATH_PREFIX:-'kv/k8s/gitlab-runner/dd-sdk-android/'}
+DD_ANDROID_SECRETS_PATH_PREFIX=${DD_ANDROID_SECRETS_PATH_PREFIX:-'kv/k8s/gitlab-runner/oo-sdk-android/'}
 
 DD_ANDROID_SECRET__TEST_SECRET="test.secret"
 DD_ANDROID_SECRET__GRADLE_PROPERTIES="gradle.properties"

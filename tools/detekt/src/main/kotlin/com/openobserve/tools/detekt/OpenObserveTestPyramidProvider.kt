@@ -1,0 +1,31 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.tools.detekt
+
+import com.openobserve.tools.detekt.rules.pyramid.ApiSurface
+import com.openobserve.tools.detekt.rules.pyramid.ApiUsage
+import io.gitlab.arturbosch.detekt.api.Config
+import io.gitlab.arturbosch.detekt.api.RuleSet
+import io.gitlab.arturbosch.detekt.api.RuleSetProvider
+
+/**
+ * The [RuleSetProvider] for OpenObserve's SDK for Android.
+ */
+class OpenObserveTestPyramidProvider : RuleSetProvider {
+
+    override val ruleSetId: String = "datadog-test-pyramid"
+
+    override fun instance(config: Config): RuleSet {
+        return RuleSet(
+            ruleSetId,
+            listOf(
+                ApiUsage(config),
+                ApiSurface(config)
+            )
+        )
+    }
+}

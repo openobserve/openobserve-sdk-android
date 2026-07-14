@@ -1,0 +1,73 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.flags.internal.net
+
+import androidx.annotation.WorkerThread
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.api.context.OpenObserveContext
+import com.openobserve.android.flags.model.EvaluationContext
+import okhttp3.Call
+import okhttp3.Request
+import okhttp3.Response
+
+/**
+ * Downloads precomputed flag assignments from OpenObserve Feature Flags service.
+ *
+ * @param callFactory Factory for creating HTTP calls
+ * @param internalLogger Logger for error and debug messages
+ * @param requestFactory Factory for creating precomputed assignments requests
+ */
+internal class PrecomputedAssignmentsDownloader(
+    private val callFactory: Call.Factory,
+    private val internalLogger: InternalLogger,
+    private val requestFactory: PrecomputedAssignmentsRequestFactory
+) : PrecomputedAssignmentsReader {
+
+    @WorkerThread
+    override fun readPrecomputedFlags(context: EvaluationContext, ooContext: OpenObserveContext): String? {
+        val request = requestFactory.create(context, ooContext) ?: return null
+
+        return executeDownloadRequest(request)
+    }
+
+    @Suppress("TooGenericExceptionCaught")
+    private fun executeDownloadRequest(request: Request): String? = try {
+        val response = callFactory.newCall(request).execute()
+        handleResponse(response)
+    } catch (e: Throwable) {
+        internalLogger.log(
+            InternalLogger.Level.ERROR,
+            InternalLogger.Target.MAINTAINER,
+            { "Unexpected error while downloading flags" },
+            e
+        )
+        null
+    }
+
+    private fun handleResponse(response: Response): String? = if (response.isSuccessful) {
+        @Suppress("UnsafeThirdPartyFunctionCall") // Safe: wrapped in outer try-catch
+        response.body?.use { it.string() }
+    } else {
+        internalLogger.log(
+            InternalLogger.Level.ERROR,
+            InternalLogger.Target.MAINTAINER,
+            { "Failed to download flags: ${response.code}" }
+        )
+
+        internalLogger.log(
+            level = InternalLogger.Level.ERROR,
+            target = InternalLogger.Target.TELEMETRY,
+            messageBuilder = { "Flag assignment server returned error (${response.code})" },
+            onlyOnce = true
+        )
+
+        @Suppress("UnsafeThirdPartyFunctionCall") // Safe: wrapped in outer try-catch
+        response.body?.close()
+
+        null
+    }
+}

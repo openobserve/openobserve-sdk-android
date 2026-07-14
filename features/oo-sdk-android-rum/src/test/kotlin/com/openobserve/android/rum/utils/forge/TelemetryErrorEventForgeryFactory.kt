@@ -1,0 +1,59 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.rum.utils.forge
+
+import com.openobserve.android.internal.utils.loggableStackTrace
+import com.openobserve.android.telemetry.model.TelemetryErrorEvent
+import com.openobserve.tools.unit.forge.aThrowable
+import fr.xgouchet.elmyr.Forge
+import fr.xgouchet.elmyr.ForgeryFactory
+import fr.xgouchet.elmyr.jvm.ext.aTimestamp
+import java.util.UUID
+
+internal class TelemetryErrorEventForgeryFactory : ForgeryFactory<TelemetryErrorEvent> {
+
+    override fun getForgery(forge: Forge): TelemetryErrorEvent {
+        val throwable = forge.aThrowable()
+
+        return TelemetryErrorEvent(
+            date = forge.aTimestamp(),
+            source = forge.aValueFrom(TelemetryErrorEvent.Source::class.java),
+            service = forge.anAlphabeticalString(),
+            version = forge.anAlphabeticalString(),
+            application = forge.aNullable {
+                TelemetryErrorEvent.Application(
+                    forge.getForgery<UUID>().toString()
+                )
+            },
+            session = forge.aNullable {
+                TelemetryErrorEvent.Session(
+                    forge.getForgery<UUID>().toString()
+                )
+            },
+            view = forge.aNullable {
+                TelemetryErrorEvent.View(
+                    forge.getForgery<UUID>().toString()
+                )
+            },
+            action = forge.aNullable {
+                TelemetryErrorEvent.Action(
+                    forge.getForgery<UUID>().toString()
+                )
+            },
+            dd = TelemetryErrorEvent.Dd(),
+            telemetry = TelemetryErrorEvent.Telemetry(
+                message = forge.anAlphabeticalString(),
+                error = TelemetryErrorEvent.Error(
+                    stack = forge.aNullable { throwable.loggableStackTrace() },
+                    kind = forge.aNullable {
+                        throwable.javaClass.canonicalName ?: throwable.javaClass.simpleName
+                    }
+                )
+            )
+        )
+    }
+}

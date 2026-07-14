@@ -1,0 +1,85 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.telemetry.internal
+
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.telemetry.model.TelemetryConfigurationEvent
+import com.openobserve.android.telemetry.model.TelemetryDebugEvent
+import com.openobserve.android.telemetry.model.TelemetryErrorEvent
+import com.openobserve.android.telemetry.model.TelemetryUsageEvent
+import java.util.Locale
+
+internal fun TelemetryDebugEvent.Source.Companion.tryFromSource(
+    source: String,
+    internalLogger: InternalLogger
+): TelemetryDebugEvent.Source? {
+    return try {
+        fromJson(source)
+    } catch (e: NoSuchElementException) {
+        internalLogger.log(
+            InternalLogger.Level.ERROR,
+            InternalLogger.Target.USER,
+            { UNKNOWN_SOURCE_WARNING_MESSAGE_FORMAT.format(Locale.US, source) },
+            e
+        )
+        null
+    }
+}
+
+internal fun TelemetryErrorEvent.Source.Companion.tryFromSource(
+    source: String,
+    internalLogger: InternalLogger
+): TelemetryErrorEvent.Source? {
+    return try {
+        fromJson(source)
+    } catch (e: NoSuchElementException) {
+        internalLogger.log(
+            InternalLogger.Level.ERROR,
+            InternalLogger.Target.USER,
+            { UNKNOWN_SOURCE_WARNING_MESSAGE_FORMAT.format(Locale.US, source) },
+            e
+        )
+        null
+    }
+}
+
+internal fun TelemetryUsageEvent.Source.Companion.tryFromSource(
+    source: String,
+    internalLogger: InternalLogger
+): TelemetryUsageEvent.Source? {
+    return try {
+        fromJson(source)
+    } catch (e: NoSuchElementException) {
+        internalLogger.log(
+            InternalLogger.Level.ERROR,
+            InternalLogger.Target.USER,
+            { UNKNOWN_SOURCE_WARNING_MESSAGE_FORMAT.format(Locale.US, source) },
+            e
+        )
+        null
+    }
+}
+
+internal fun TelemetryConfigurationEvent.Source.Companion.tryFromSource(
+    source: String,
+    internalLogger: InternalLogger
+): TelemetryConfigurationEvent.Source? {
+    return try {
+        fromJson(source)
+    } catch (e: NoSuchElementException) {
+        internalLogger.log(
+            InternalLogger.Level.ERROR,
+            InternalLogger.Target.USER,
+            { UNKNOWN_SOURCE_WARNING_MESSAGE_FORMAT.format(Locale.US, source) },
+            e
+        )
+        null
+    }
+}
+
+internal const val UNKNOWN_SOURCE_WARNING_MESSAGE_FORMAT = "You are using an unknown " +
+    "source %s for your events"

@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -63,19 +63,19 @@ gradlePlugin {
     plugins {
         register("apiSurface") {
             id = "apiSurface" // the alias
-            implementationClass = "com.datadog.gradle.plugin.apisurface.ApiSurfacePlugin"
+            implementationClass = "com.openobserve.gradle.plugin.apisurface.ApiSurfacePlugin"
         }
         register("cloneDependencies") {
             id = "cloneDependencies" // the alias
-            implementationClass = "com.datadog.gradle.plugin.gitclone.GitCloneDependenciesPlugin"
+            implementationClass = "com.openobserve.gradle.plugin.gitclone.GitCloneDependenciesPlugin"
         }
         register("transitiveDependencies") {
             id = "transitiveDependencies" // the alias
-            implementationClass = "com.datadog.gradle.plugin.transdeps.TransitiveDependenciesPlugin"
+            implementationClass = "com.openobserve.gradle.plugin.transdeps.TransitiveDependenciesPlugin"
         }
         register("verificationXml") {
             id = "verificationXml" // the alias
-            implementationClass = "com.datadog.gradle.plugin.verification.VerificationXmlPlugin"
+            implementationClass = "com.openobserve.gradle.plugin.verification.VerificationXmlPlugin"
         }
     }
 }

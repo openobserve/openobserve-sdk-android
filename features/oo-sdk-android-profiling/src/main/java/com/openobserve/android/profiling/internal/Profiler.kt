@@ -1,0 +1,32 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.profiling.internal
+
+import android.content.Context
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.tools.annotation.NoOpImplementation
+
+@NoOpImplementation
+internal interface Profiler {
+
+    var internalLogger: InternalLogger?
+
+    fun start(
+        appContext: Context,
+        startReason: ProfilingStartReason,
+        additionalAttributes: Map<String, String>,
+        sdkInstanceNames: Set<String>
+    )
+
+    fun stop(sdkInstanceName: String)
+
+    fun isRunning(sdkInstanceName: String): Boolean
+
+    fun registerProfilingCallback(sdkInstanceName: String, callback: ProfilerCallback)
+
+    fun unregisterProfilingCallback(sdkInstanceName: String)
+}

@@ -1,0 +1,30 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.internal.telemetry
+
+@Suppress("UndocumentedPublicClass")
+enum class TracingHeaderType {
+    /**
+     * OpenObserve's [`x-datadog-*` header](https://openobserve.ai/docs/real_user_monitoring/connect_rum_and_traces/?tab=browserrum#how-are-rum-resources-linked-to-traces).
+     */
+    OPENOBSERVE,
+
+    /**
+     * Open Telemetry B3 [Single header](https://github.com/openzipkin/b3-propagation#single-header).
+     */
+    B3,
+
+    /**
+     * Open Telemetry B3 [Multiple headers](https://github.com/openzipkin/b3-propagation#multiple-headers).
+     */
+    B3MULTI,
+
+    /**
+     * W3C [Trace Context header](https://www.w3.org/TR/trace-context/#tracestate-header).
+     */
+    TRACECONTEXT
+}

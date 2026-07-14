@@ -3,7 +3,7 @@ name: android-sdk-event-inspection
 description: Use when verifying SDK event payloads in the Android SDK sandbox, debugging what events are emitted, or validating request bodies via logcat with the sample Kotlin app.
 ---
 
-# Datadog Android SDK — Event Inspection
+# OpenObserve Android SDK — Event Inspection
 
 ## Overview
 
@@ -15,7 +15,7 @@ The Android SDK uses `CurlInterceptor` to log every outgoing HTTP request as a `
 
 - Verifying a change emits the correct event type or fields
 - Checking custom attributes appear on a log, trace, RUM, Session Replay or Profiling event
-- Debugging why RUM/logs/traces/Session Replay/Profiling are not showing up in Datadog
+- Debugging why RUM/logs/traces/Session Replay/Profiling are not showing up in OpenObserve
 - Validating SDK behavior with the `sample/kotlin` app
 
 ## Related Tools
@@ -26,7 +26,7 @@ The Android SDK uses `CurlInterceptor` to log every outgoing HTTP request as a `
 
 ### 1. Enable Request Body Logging
 
-In `dd-sdk-android-core/src/main/kotlin/com/datadog/android/core/internal/CoreFeature.kt`, find the `OkHttpClient` builder block inside `if (BuildConfig.DEBUG)` and enable body printing on the `CurlInterceptor`:
+In `oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt`, find the `OkHttpClient` builder block inside `if (BuildConfig.DEBUG)` and enable body printing on the `CurlInterceptor`:
 
 ```kotlin
 // Before (body suppressed):
@@ -40,7 +40,7 @@ This change is gated by `BuildConfig.DEBUG` — it only runs in debug builds.
 
 ### 2. Configure Build-Time Credentials
 
-Create `config/{flavor}.json` (e.g., `config/us1.json`) — values are injected into `BuildConfig` at compile time. **Fake/placeholder values are fine** — real Datadog credentials are not required for local event inspection:
+Create `config/{flavor}.json` (e.g., `config/us1.json`) — values are injected into `BuildConfig` at compile time. **Fake/placeholder values are fine** — real OpenObserve credentials are not required for local event inspection:
 
 ```json
 {
@@ -48,10 +48,10 @@ Create `config/{flavor}.json` (e.g., `config/us1.json`) — values are injected 
   "rumApplicationId": "<uuid>",
   "apiKey": "<40-hex-chars>",
   "applicationKey": "<40-hex-chars>",
-  "logsEndpoint": "https://browser-intake-datadoghq.com",
-  "tracesEndpoint": "https://browser-intake-datadoghq.com",
-  "rumEndpoint": "https://browser-intake-datadoghq.com",
-  "sessionReplayEndpoint": "https://browser-intake-datadoghq.com"
+  "logsEndpoint": "https://browser-intake-openobserve.ai",
+  "tracesEndpoint": "https://browser-intake-openobserve.ai",
+  "rumEndpoint": "https://browser-intake-openobserve.ai",
+  "sessionReplayEndpoint": "https://browser-intake-openobserve.ai"
 }
 ```
 
@@ -72,23 +72,23 @@ Ensure `JAVA_HOME` and `ANDROID_HOME` are set in your environment, then run:
 
 ```sh
 # Find the launcher activity (run once to confirm):
-adb shell dumpsys package com.datadog.android.sample | grep -A2 "MAIN"
-# → com.datadog.android.sample/.NavActivity
+adb shell dumpsys package com.openobserve.android.sample | grep -A2 "MAIN"
+# → com.openobserve.android.sample/.NavActivity
 
-adb shell am start -n com.datadog.android.sample/.NavActivity
+adb shell am start -n com.openobserve.android.sample/.NavActivity
 ```
 
 ### 5. Stream Logcat
 
 ```sh
-adb logcat -s "Datadog" "DD_LOG" "Curl" "*:S"
+adb logcat -s "OpenObserve" "DD_LOG" "Curl" "*:S"
 ```
 
 ## Log Tags Quick Reference
 
 | Tag | What it shows |
 |---|---|
-| `Datadog` | User-facing SDK warnings and info (init, feature flags) |
+| `OpenObserve` | User-facing SDK warnings and info (init, feature flags) |
 | `DD_LOG` | Internal debug: queue state, upload decisions, errors |
 | `Curl` | Full outgoing HTTP requests including JSON body |
 
@@ -102,7 +102,7 @@ Each `Curl` log line is a single `curl` command. The `-d` argument contains the 
   {
     "message": "onStart",
     "status": "debug",
-    "service": "com.datadog.android.sample",
+    "service": "com.openobserve.android.sample",
     "date": "...",
     "application_id": "...",
     "session_id": "...",

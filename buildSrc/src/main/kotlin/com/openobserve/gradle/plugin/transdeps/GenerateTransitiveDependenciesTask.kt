@@ -1,0 +1,105 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.gradle.plugin.transdeps
+
+import org.gradle.api.DefaultTask
+import org.gradle.api.file.ConfigurableFileCollection
+import org.gradle.api.file.FileCollection
+import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.tasks.CacheableTask
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputFiles
+import org.gradle.api.tasks.OutputFile
+import org.gradle.api.tasks.PathSensitive
+import org.gradle.api.tasks.PathSensitivity
+import org.gradle.api.tasks.TaskAction
+import java.io.File
+
+@CacheableTask
+abstract class GenerateTransitiveDependenciesTask : DefaultTask() {
+
+    @get:Input
+    var humanReadableSize: Boolean = true
+
+    @get:Input
+    var sortByName: Boolean = true
+
+    @get:InputFiles
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val resolvedArtifacts: ConfigurableFileCollection
+
+    @get:OutputFile
+    abstract val dependenciesFile: RegularFileProperty
+
+    init {
+        group = "datadog"
+        description = "Generate the list of transitive dependencies of the library"
+    }
+
+    // region Task
+
+    @TaskAction
+    fun applyTask() {
+        val outputFile = dependenciesFile.get().asFile
+        outputFile.writeText("Dependencies List\n\n")
+        listConfigurationDependencies(outputFile, resolvedArtifacts)
+    }
+
+    // endregion
+
+    // region Internal
+
+    private fun listConfigurationDependencies(outputFile: File, artifacts: FileCollection) {
+        val sortedArtifacts = if (sortByName) {
+            artifacts.sortedBy { it.absolutePath }
+        } else {
+            artifacts.sortedBy { -it.length() }
+        }
+
+        var sum = 0L
+        sortedArtifacts.forEach {
+            sum += it.length()
+            outputFile.appendText(getDependencyFileDescription(it))
+        }
+
+        outputFile.appendText("\n${TOTAL.padEnd(PADDING)}:${size(sum)}\n\n")
+    }
+
+    private fun getDependencyFileDescription(it: File): String {
+        val hash = it.parentFile
+        val version = hash.parentFile
+        val artifact = version.parentFile
+        val group = artifact.parentFile
+
+        val title = "${group.name}:${artifact.name}:${version.name}"
+
+        return "${title.padEnd(PADDING)}:${size(it.length())}\n"
+    }
+
+    private fun size(size: Long): String {
+        if (humanReadableSize) {
+            val rawSize = when {
+                size >= 2 * MB -> "${size / MB} Mb"
+                size >= 2 * KB -> "${size / KB} Kb"
+                else -> "$size b "
+            }
+            return rawSize.padStart(8)
+        } else {
+            return "$size b ".padStart(16)
+        }
+    }
+
+    // endregion
+
+    companion object {
+        private const val PADDING = 64
+        private const val KB = 1024
+        private const val MB = 1024 * 1024
+
+        private const val TOTAL = "Total transitive dependencies size"
+    }
+}

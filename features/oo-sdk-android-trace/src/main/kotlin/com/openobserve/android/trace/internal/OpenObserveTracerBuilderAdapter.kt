@@ -1,0 +1,136 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+package com.openobserve.android.trace.internal
+
+import androidx.annotation.IntRange
+import androidx.annotation.VisibleForTesting
+import com.openobserve.android.api.feature.FeatureSdkCore
+import com.openobserve.android.trace.TracingHeaderType
+import com.openobserve.android.trace.api.OpenObserveTracingConstants.TracerConfig
+import com.openobserve.android.trace.api.tracer.OpenObserveTracer
+import com.openobserve.android.trace.api.tracer.OpenObserveTracerBuilder
+import com.openobserve.trace.api.IdGenerationStrategy
+import com.openobserve.trace.core.CoreTracer
+import java.util.Properties
+
+@Suppress("TooManyFunctions")
+internal class OpenObserveTracerBuilderAdapter(
+    private val sdkCore: FeatureSdkCore,
+    private var serviceName: String,
+    private val delegate: CoreTracer.CoreTracerBuilder
+) : OpenObserveTracerBuilder {
+
+    private var sampleRate: Double? = null
+    private var bundleWithRumEnabled: Boolean = true
+    private var sdkV2OTelCompatible: Boolean = false
+    private var traceRateLimit = Int.MAX_VALUE
+    private var partialFlushMinSpans = DEFAULT_PARTIAL_MIN_FLUSH
+    private val globalTags: MutableMap<String, String> = mutableMapOf()
+    private var tracingHeadersTypes: Set<TracingHeaderType> = setOf(
+        TracingHeaderType.OPENOBSERVE,
+        TracingHeaderType.TRACECONTEXT
+    )
+
+    override fun build(): OpenObserveTracer {
+        val coreTracer = delegate.withProperties(properties()).build()
+        val spanLogger = OpenObserveSpanLogger(sdkCore)
+        val ooTracer = OpenObserveTracerAdapter(sdkCore, coreTracer, bundleWithRumEnabled, spanLogger)
+        ooTracer.addScopeListener(TracePropagationScopeListener(sdkCore, ooTracer))
+
+        return ooTracer
+    }
+
+    override fun withServiceName(serviceName: String) = apply {
+        this.serviceName = serviceName
+    }
+
+    override fun withTracingHeadersTypes(tracingHeadersTypes: Set<TracingHeaderType>) = apply {
+        this.tracingHeadersTypes = tracingHeadersTypes
+    }
+
+    override fun withSampleRate(sampleRate: Double) = apply {
+        // In case the sample rate is not set we should not specify it. The agent code under the hood
+        // will provide different sampler based on this property and also different sampling priorities used
+        // in the metrics
+        // -1 MANUAL_DROP User indicated to drop the trace via configuration (sampling rate).
+        // 0 AUTO_DROP Sampler indicated to drop the trace using a sampling rate provided by the Agent through
+        // a remote configuration. The Agent API is not used in Android so this `sampling_priority:0` will never
+        // be used.
+        // 1 AUTO_KEEP Sampler indicated to keep the trace using a sampling rate from the default configuration
+        // which right now is 100.0
+        // (Default sampling priority value. or in our case no specified sample rate will be considered as 100)
+        // 2 MANUAL_KEEP User indicated to keep the trace, either manually or via configuration (sampling rate)
+
+        this.sampleRate = sampleRate
+    }
+
+    override fun withPartialFlushMinSpans(partialFlushMinSpans: Int) = apply {
+        this.partialFlushMinSpans = partialFlushMinSpans
+    }
+
+    override fun withTag(key: String, value: String) = apply {
+        globalTags[key] = value
+    }
+
+    override fun setBundleWithRumEnabled(enabled: Boolean) = apply {
+        bundleWithRumEnabled = enabled
+    }
+
+    override fun setTraceRateLimit(@IntRange(from = 1, to = Int.MAX_VALUE.toLong()) traceRateLimit: Int) = apply {
+        this.traceRateLimit = traceRateLimit
+    }
+
+    internal fun setTraceId128BitGenerationEnabled(traceId128BitGenerationEnabled: Boolean) =
+        setCustomIdGenerationStrategy(IdGenerationStrategy.fromName("SECURE_RANDOM", traceId128BitGenerationEnabled))
+
+    internal fun setSdkV2Compatible() {
+        sdkV2OTelCompatible = true
+    }
+
+    internal fun setCustomIdGenerationStrategy(strategy: IdGenerationStrategy) = apply {
+        delegate.idGenerationStrategy(strategy)
+    }
+
+    @VisibleForTesting
+    internal fun properties(): Properties {
+        val properties = Properties()
+
+        val propagationStyles = tracingHeadersTypes.joinToString(",") { it.toPropagationStyle() }
+        properties.setProperty(TracerConfig.TRACE_PROPAGATION_STYLE_EXTRACT, propagationStyles)
+        properties.setProperty(TracerConfig.TRACE_PROPAGATION_STYLE_INJECT, propagationStyles)
+        properties.setProperty(TracerConfig.SERVICE_NAME, serviceName)
+        properties.setProperty(TracerConfig.TRACE_RATE_LIMIT, traceRateLimit.toString())
+        properties.setProperty(TracerConfig.PARTIAL_FLUSH_MIN_SPANS, partialFlushMinSpans.toString())
+        properties.setProperty(TracerConfig.URL_AS_RESOURCE_NAME, DEFAULT_URL_AS_RESOURCE_NAME.toString())
+        properties.setProperty(TracerConfig.SDK_V2_COMPATIBILITY_FLAG, sdkV2OTelCompatible.toString())
+        sampleRate?.let {
+            properties.setProperty(
+                TracerConfig.TRACE_SAMPLE_RATE,
+                (it / DEFAULT_SAMPLE_RATE).toString()
+            )
+        }
+        properties.setProperty(
+            TracerConfig.TAGS,
+            globalTags.map { "${it.key}:${it.value}" }.joinToString(",")
+        )
+
+        return properties
+    }
+
+    companion object {
+        internal const val DEFAULT_SAMPLE_RATE = 100.0
+        internal const val DEFAULT_PARTIAL_MIN_FLUSH = 5
+        internal const val DEFAULT_URL_AS_RESOURCE_NAME = false
+
+        internal fun TracingHeaderType.toPropagationStyle(): String = when (this) {
+            // dd-trace-java code (TracePropagationStyle.valueOfDisplayName)
+            // treats "B3" as an alias for B3MULTI, not B3 single header.
+            // We must pass this explicitly to get the correct single-header injector.
+            TracingHeaderType.B3 -> "B3SINGLE"
+            else -> name
+        }
+    }
+}

@@ -1,0 +1,4 @@
+fun org.chromium.net.CronetEngine.Builder.configureOpenObserveInstrumentation(com.openobserve.android.rum.configuration.RumNetworkInstrumentationConfiguration?, com.openobserve.android.trace.ApmNetworkInstrumentationConfiguration?)
+class com.openobserve.android.cronet.CronetIntegrationPlugin
+  fun setListenerExecutor(java.util.concurrent.Executor)
+  fun build(): org.chromium.net.CronetEngine

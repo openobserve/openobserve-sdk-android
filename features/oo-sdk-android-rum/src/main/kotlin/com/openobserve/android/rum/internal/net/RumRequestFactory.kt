@@ -1,0 +1,144 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.rum.internal.net
+
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.api.context.OpenObserveContext
+import com.openobserve.android.api.net.Request
+import com.openobserve.android.api.net.RequestExecutionContext
+import com.openobserve.android.api.net.RequestFactory
+import com.openobserve.android.api.storage.RawBatchEvent
+import com.openobserve.android.core.internal.utils.join
+import com.openobserve.android.internal.utils.toHexString
+import com.openobserve.android.rum.internal.domain.event.RumViewEventFilter
+import java.security.DigestException
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+import java.util.UUID
+
+internal class RumRequestFactory(
+    internal val customEndpointUrl: String?,
+    private val viewEventFilter: RumViewEventFilter,
+    private val internalLogger: InternalLogger
+) : RequestFactory {
+
+    override fun create(
+        context: OpenObserveContext,
+        executionContext: RequestExecutionContext,
+        batchData: List<RawBatchEvent>,
+        batchMetadata: ByteArray?
+    ): Request {
+        val requestId = UUID.randomUUID().toString()
+        val body = viewEventFilter.filterOutRedundantViewEvents(batchData)
+            .map { it.data }
+            .join(
+                separator = PAYLOAD_SEPARATOR,
+                internalLogger = internalLogger
+            )
+        val idempotencyKey = idempotencyKey(body)
+        return Request(
+            id = requestId,
+            description = "RUM Request",
+            url = buildUrl(context, executionContext),
+            headers = buildHeaders(
+                requestId,
+                idempotencyKey,
+                context
+            ),
+            body = body,
+            contentType = RequestFactory.CONTENT_TYPE_TEXT_UTF8
+        )
+    }
+
+    private fun buildUrl(context: OpenObserveContext, executionContext: RequestExecutionContext): String {
+        val queryParams = buildMap {
+            put(RequestFactory.QUERY_PARAM_SOURCE, context.source)
+
+            val tags = buildTags(executionContext)
+            if (tags.isNotEmpty()) {
+                put(RequestFactory.QUERY_PARAM_TAGS, tags)
+            }
+        }
+
+        val intakeUrl = customEndpointUrl ?: (context.site.intakeEndpoint + "/api/v2/rum")
+        val queryParameters = queryParams.map { "${it.key}=${it.value}" }.joinToString("&", prefix = "?")
+        return intakeUrl + queryParameters
+    }
+
+    private fun buildHeaders(
+        requestId: String,
+        idempotencyKey: String?,
+        context: OpenObserveContext
+    ): Map<String, String> {
+        val headers = mutableMapOf(
+            RequestFactory.HEADER_API_KEY to context.clientToken,
+            RequestFactory.HEADER_EVP_ORIGIN to context.source,
+            RequestFactory.HEADER_EVP_ORIGIN_VERSION to context.sdkVersion,
+            RequestFactory.HEADER_REQUEST_ID to requestId
+        )
+        if (idempotencyKey != null) {
+            headers[RequestFactory.DD_IDEMPOTENCY_KEY] = idempotencyKey
+        }
+        return headers
+    }
+
+    private fun buildTags(
+        executionContext: RequestExecutionContext
+    ) = buildString {
+        if (executionContext.previousResponseCode != null) {
+            // we had a previous failure
+            append("${RETRY_COUNT_KEY}:${executionContext.attemptNumber}")
+            append(",").append("${LAST_FAILURE_STATUS_KEY}:${executionContext.previousResponseCode}")
+        }
+    }
+
+    @Suppress("TooGenericExceptionCaught")
+    private fun idempotencyKey(byteArray: ByteArray): String? {
+        try {
+            val digest = MessageDigest.getInstance("SHA-1")
+            val hashBytes = digest.digest(byteArray)
+            return hashBytes.toHexString()
+        } catch (e: DigestException) {
+            internalLogger.log(
+                InternalLogger.Level.ERROR,
+                InternalLogger.Target.MAINTAINER,
+                { SHA1_GENERATION_ERROR_MESSAGE },
+                e
+            )
+        } catch (e: IllegalArgumentException) {
+            internalLogger.log(
+                InternalLogger.Level.ERROR,
+                InternalLogger.Target.MAINTAINER,
+                { SHA1_GENERATION_ERROR_MESSAGE },
+                e
+            )
+        } catch (e: NoSuchAlgorithmException) {
+            internalLogger.log(
+                InternalLogger.Level.ERROR,
+                InternalLogger.Target.MAINTAINER,
+                { SHA1_NO_SUCH_ALGORITHM_EXCEPTION },
+                e
+            )
+        } catch (e: NullPointerException) {
+            internalLogger.log(
+                InternalLogger.Level.ERROR,
+                InternalLogger.Target.MAINTAINER,
+                { SHA1_GENERATION_ERROR_MESSAGE },
+                e
+            )
+        }
+        return null
+    }
+
+    companion object {
+        private val PAYLOAD_SEPARATOR = "\n".toByteArray(Charsets.UTF_8)
+        internal const val RETRY_COUNT_KEY = "retry_count"
+        internal const val LAST_FAILURE_STATUS_KEY = "last_failure_status"
+        private const val SHA1_GENERATION_ERROR_MESSAGE = "Cannot generate SHA-1 hash for rum request idempotency key."
+        private const val SHA1_NO_SUCH_ALGORITHM_EXCEPTION = "SHA-1 algorithm could not be found in MessageDigest."
+    }
+}

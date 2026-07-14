@@ -1,0 +1,50 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.core.integration.tests.utils
+
+import com.openobserve.android.OpenObserveSite
+import com.openobserve.android.core.configuration.Configuration
+import com.openobserve.android.trace.TracingHeaderType
+import com.openobserve.tools.unit.getFieldValue
+
+fun Configuration.site(): OpenObserveSite {
+    return this.getFieldValue<Any, Configuration>("coreConfig").getFieldValue("site")
+}
+
+fun Configuration.clientToken(): String {
+    return this.getFieldValue<String, Configuration>("clientToken")
+}
+
+fun Configuration.env(): String {
+    return this.getFieldValue<String, Configuration>("env")
+}
+
+fun Configuration.variant(): String {
+    return this.getFieldValue<String, Configuration>("variant")
+}
+
+fun Configuration.service(): String? {
+    return this.getFieldValue<String?, Configuration>("service")
+}
+
+fun Configuration.isCrashReportsEnabled(): Boolean {
+    return this.getFieldValue<Boolean, Configuration>("crashReportsEnabled")
+}
+
+fun Configuration.getFirstPartyHostsWithHeaderTypes(): Map<String, Set<TracingHeaderType>> {
+    return this.getFieldValue<Any, Configuration>("coreConfig")
+        .getFieldValue("firstPartyHostsWithHeaderTypes")
+}
+
+fun Configuration.isDeveloperModeEnabled(): Boolean {
+    return this.getFieldValue<Any, Configuration>("coreConfig")
+        .getFieldValue("enableDeveloperModeWhenDebuggable")
+}
+
+fun Configuration.additionalConfig(): Map<String, Any> {
+    return this.getFieldValue<Map<String, Any>, Configuration>("additionalConfig")
+}

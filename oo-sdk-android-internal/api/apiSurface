@@ -1,0 +1,289 @@
+interface com.openobserve.android.internal.attributes.LocalAttribute
+  enum Key
+    constructor(String)
+    - CREATION_SAMPLING_RATE
+    - REPORTING_SAMPLING_RATE
+    - VIEW_SCOPE_INSTRUMENTATION_TYPE
+    override fun toString(): String
+  interface Constant
+    val key: Key
+fun MutableMap<String, Any?>.enrichWithConstantAttribute(LocalAttribute.Constant)
+fun MutableMap<String, Any?>.enrichWithNonNullAttribute(LocalAttribute.Key, Any?)
+fun MutableMap<String, Any?>.enrichWithLocalAttribute(LocalAttribute.Key, Any?)
+sealed interface com.openobserve.android.internal.attributes.ViewScopeInstrumentationType : LocalAttribute.Constant
+  val value: String
+  enum Native : ViewScopeInstrumentationType
+    constructor(String)
+    - MANUAL
+    - COMPOSE
+    - ACTIVITY
+    - FRAGMENT
+    override val key: LocalAttribute.Key
+  class Custom : ViewScopeInstrumentationType
+    override val value: String
+    override val key: LocalAttribute.Key
+    companion object 
+      fun create(String): Custom
+class com.openobserve.android.internal.collections.EvictingQueue<T> : java.util.Queue<T>
+  constructor(Int, java.util.Deque<T>)
+  constructor(Int = Int.MAX_VALUE)
+  override fun add(T): Boolean
+  override fun offer(T): Boolean
+  override fun addAll(Collection<T>): Boolean
+  fun lastOrNull(): T?
+interface com.openobserve.android.internal.data.PreferencesStorage
+  fun putFloat(String, Float)
+  fun getFloat(String, Float = 0f): Float
+  fun putInt(String, Int)
+  fun getInt(String, Int = 0): Int
+  fun getString(String, String? = null): String?
+  fun putString(String, String)
+  fun getStringSet(String, Set<String> = emptySet()): Set<String>
+  fun putStringSet(String, Set<String>)
+  fun putBoolean(String, Boolean)
+  fun getBoolean(String, Boolean = false): Boolean
+  fun remove(String)
+  fun clear()
+class com.openobserve.android.internal.data.SharedPreferencesStorage : PreferencesStorage
+  constructor(android.content.Context)
+  override fun putFloat(String, Float)
+  override fun getFloat(String, Float): Float
+  override fun putInt(String, Int)
+  override fun getInt(String, Int): Int
+  override fun getString(String, String?): String?
+  override fun putString(String, String)
+  override fun getStringSet(String, Set<String>): Set<String>
+  override fun putStringSet(String, Set<String>)
+  override fun putBoolean(String, Boolean)
+  override fun getBoolean(String, Boolean): Boolean
+  override fun remove(String)
+  override fun clear()
+data class com.openobserve.android.internal.flags.RumFlagEvaluationMessage
+  constructor(String, Any)
+class com.openobserve.android.internal.lifecycle.ProcessLifecycleMonitor : android.app.Application.ActivityLifecycleCallbacks
+  constructor(Callback)
+  val activitiesResumedCounter: java.util.concurrent.atomic.AtomicInteger
+  val activitiesStartedCounter: java.util.concurrent.atomic.AtomicInteger
+  val wasPaused: java.util.concurrent.atomic.AtomicBoolean
+  val wasStopped: java.util.concurrent.atomic.AtomicBoolean
+  override fun onActivityPaused(android.app.Activity)
+  override fun onActivityStarted(android.app.Activity)
+  override fun onActivityDestroyed(android.app.Activity)
+  override fun onActivitySaveInstanceState(android.app.Activity, android.os.Bundle)
+  override fun onActivityStopped(android.app.Activity)
+  override fun onActivityCreated(android.app.Activity, android.os.Bundle?)
+  override fun onActivityResumed(android.app.Activity)
+  interface Callback
+    fun onStarted()
+    fun onResumed()
+    fun onStopped()
+    fun onPaused()
+enum com.openobserve.android.internal.network.GraphQLHeaders
+  constructor(String)
+  - DD_GRAPHQL_NAME_HEADER
+  - DD_GRAPHQL_VARIABLES_HEADER
+  - DD_GRAPHQL_TYPE_HEADER
+  - DD_GRAPHQL_PAYLOAD_HEADER
+object com.openobserve.android.internal.network.HttpSpec
+  object Method
+    const val GET: String
+    const val POST: String
+    const val PATCH: String
+    const val PUT: String
+    const val HEAD: String
+    const val DELETE: String
+    const val TRACE: String
+    const val OPTIONS: String
+    const val CONNECT: String
+    fun values()
+    fun isMethodWithBody(String)
+  object Header
+    const val CONTENT_TYPE: String
+    const val CONTENT_LENGTH: String
+    const val LOCATION: String
+    const val RETRY_AFTER: String
+    const val WEBSOCKET_ACCEPT_HEADER: String
+    fun values()
+  object StatusCode
+    const val OK: Int
+    const val MOVED_PERMANENTLY: Int
+    const val FOUND: Int
+    const val SEE_OTHER: Int
+    const val TEMPORARY_REDIRECT: Int
+    const val PERMANENT_REDIRECT: Int
+    const val BAD_REQUEST: Int
+    const val UNAUTHORIZED: Int
+    const val FORBIDDEN: Int
+    const val NOT_FOUND: Int
+    const val METHOD_NOT_ALLOWED: Int
+    const val REQUEST_TIMEOUT: Int
+    const val TOO_MANY_REQUESTS: Int
+    const val INTERNAL_ERROR: Int
+    const val BAD_GATEWAY: Int
+    const val SERVICE_UNAVAILABLE: Int
+    const val GATEWAY_TIMEOUT: Int
+    const val NETWORK_AUTHENTICATION_REQUIRED: Int
+    fun values()
+    fun clientErrors(Int): List<Int>
+    fun serverErrors()
+  object ContentType
+    const val APPLICATION_JSON: String
+    const val TEXT_PLAIN: String
+    const val TEXT_EVENT_STREAM: String
+    const val APPLICATION_GRPC: String
+    const val APPLICATION_GRPC_PROTO: String
+    const val APPLICATION_GRPC_JSON: String
+    fun values()
+    fun isStream(String?): Boolean
+interface com.openobserve.android.internal.profiler.BenchmarkCounter
+  fun add(Long, Map<String, String>)
+interface com.openobserve.android.internal.profiler.BenchmarkMeter
+  fun getCounter(String): BenchmarkCounter
+  fun createObservableGauge(String, Map<String, String>, () -> Double)
+interface com.openobserve.android.internal.profiler.BenchmarkProfiler
+  fun getTracer(String): BenchmarkTracer
+interface com.openobserve.android.internal.profiler.BenchmarkSdkUploads
+  fun getMeter(String): BenchmarkMeter
+interface com.openobserve.android.internal.profiler.BenchmarkSpan
+  fun stop()
+interface com.openobserve.android.internal.profiler.BenchmarkSpanBuilder
+  fun startSpan(): BenchmarkSpan
+fun <T> withinBenchmarkSpan(String, Map<String, String> = emptyMap(), BenchmarkSpan.() -> T): T
+interface com.openobserve.android.internal.profiler.BenchmarkTracer
+  fun spanBuilder(String, Map<String, String> = emptyMap()): BenchmarkSpanBuilder
+interface com.openobserve.android.internal.profiler.ExecutionTimer
+  fun <T> measure(() -> T): T
+object com.openobserve.android.internal.profiler.GlobalBenchmark
+  fun register(BenchmarkProfiler)
+  fun register(BenchmarkSdkUploads)
+  fun getProfiler(): BenchmarkProfiler
+  fun getBenchmarkSdkUploads(): BenchmarkSdkUploads
+  fun createExecutionTimer(String, com.openobserve.android.internal.time.TimeProvider): ExecutionTimer
+sealed class com.openobserve.android.internal.profiling.ProfilerStopEvent
+  data class TTID : ProfilerStopEvent
+    constructor(TTIDRumContext? = null)
+data class com.openobserve.android.internal.profiling.TTIDRumContext
+  constructor(String, String, String, String?, String?, String?)
+object com.openobserve.android.internal.sampling.DeterministicSampling
+  fun combinedSampleRate(Float, Float): Float
+object com.openobserve.android.internal.sampling.SessionSamplingIdProvider
+  fun provideId(String): ULong
+interface com.openobserve.android.internal.system.BuildSdkVersionProvider
+  val version: Int
+  val isAtLeastN: Boolean
+  val isAtLeastO: Boolean
+  val isAtLeastP: Boolean
+  val isAtLeastQ: Boolean
+  val isAtLeastR: Boolean
+  val isAtLeastS: Boolean
+  val isAtLeastTiramisu: Boolean
+  val isAtLeastVanillaIceCream: Boolean
+  companion object 
+    val DEFAULT: BuildSdkVersionProvider
+sealed class com.openobserve.android.internal.telemetry.InternalTelemetryEvent
+  sealed class Log : InternalTelemetryEvent
+    constructor(String, Map<String, Any?>?)
+    class Debug : Log
+      constructor(String, Map<String, Any?>?)
+    class Error : Log
+      constructor(String, Map<String, Any?>? = null, Throwable? = null, String? = null, String? = null)
+      fun resolveKind(): String?
+      fun resolveStacktrace(): String?
+  data class Configuration : InternalTelemetryEvent
+    constructor(Boolean, Long, Long, Boolean, Boolean, Int)
+  data class Metric : InternalTelemetryEvent
+    constructor(String, Map<String, Any?>?)
+  sealed class ApiUsage : InternalTelemetryEvent
+    constructor(MutableMap<String, Any?> = mutableMapOf())
+    class AddViewLoadingTime : ApiUsage
+      constructor(Boolean, Boolean, Boolean, MutableMap<String, Any?> = mutableMapOf())
+    class AddOperationStepVital : ApiUsage
+      constructor(ActionType, MutableMap<String, Any?> = mutableMapOf())
+      enum ActionType
+        - START
+        - SUCCEED
+        - FAIL
+    class TrackWebView : ApiUsage
+      constructor(MutableMap<String, Any?> = mutableMapOf())
+    class NetworkInstrumentation : ApiUsage
+      constructor(LibraryType, MutableMap<String, Any?> = mutableMapOf())
+      enum LibraryType
+        - CRONET
+        - OKHTTP
+        - LEGACY_OKHTTP
+  object InterceptorInstantiated : InternalTelemetryEvent
+  class ResourceHeadersTrackingConfigured : InternalTelemetryEvent
+    constructor(Mode)
+    enum Mode
+      - DEFAULT_HEADERS
+      - CUSTOM
+enum com.openobserve.android.internal.telemetry.TracingHeaderType
+  - OPENOBSERVE
+  - B3
+  - B3MULTI
+  - TRACECONTEXT
+data class com.openobserve.android.internal.telemetry.TracingHeaderTypesSet
+  constructor(Set<TracingHeaderType>)
+interface com.openobserve.android.internal.thread.NamedExecutionUnit
+  val name: String
+class com.openobserve.android.internal.thread.NamedRunnable : NamedExecutionUnit, Runnable
+  constructor(String, Runnable)
+class com.openobserve.android.internal.thread.NamedCallable<V> : NamedExecutionUnit, java.util.concurrent.Callable<V>
+  constructor(String, java.util.concurrent.Callable<V>)
+fun isMainThread(): Boolean
+class com.openobserve.android.internal.time.DefaultTimeProvider : BaseTimeProvider
+  override fun getServerTimestampMillis(): Long
+  override fun getServerOffsetNanos(): Long
+  override fun getServerOffsetMillis(): Long
+interface com.openobserve.android.internal.time.TimeProvider
+  fun getDeviceTimestampMillis(): Long
+  fun getServerTimestampMillis(): Long
+  fun getDeviceElapsedTimeNanos(): Long
+  fun getServerOffsetNanos(): Long
+  fun getServerOffsetMillis(): Long
+  fun getDeviceElapsedRealtimeMillis(): Long
+abstract class com.openobserve.android.internal.time.BaseTimeProvider : TimeProvider
+  override fun getDeviceTimestampMillis(): Long
+  override fun getDeviceElapsedTimeNanos(): Long
+  override fun getDeviceElapsedRealtimeMillis(): Long
+fun ByteArray.toHexString(): String
+interface com.openobserve.android.internal.utils.DDCoreSubscription<T: Any>
+  fun addListener(T)
+  fun removeListener(T)
+  fun notifyListeners(T.() -> Unit)
+  val listenersCount: Int
+  companion object 
+    fun <T: Any> create(): DDCoreSubscription<T>
+object com.openobserve.android.internal.utils.ImageViewUtils
+  fun resolveParentRectAbsPosition(android.view.View, Boolean = true): android.graphics.Rect
+  fun calculateClipping(android.graphics.Rect, android.graphics.Rect, Float): android.graphics.Rect
+  fun resolveContentRectWithScaling(android.widget.ImageView, android.graphics.drawable.Drawable, android.widget.ImageView.ScaleType? = null): android.graphics.Rect
+fun Int.densityNormalized(Float): Int
+fun Long.densityNormalized(Float): Long
+val NULL_MAP_VALUE: Object
+fun Int.toHexString(): String
+fun Long.toHexString(): String
+fun java.math.BigInteger.toHexString(): String
+fun <T> allowThreadDiskReads(() -> T): T
+fun <T> allowThreadDiskWrites(() -> T): T
+fun StringBuilder.appendIfNotEmpty(String)
+fun StringBuilder.appendIfNotEmpty(Char)
+fun String.toBase64(): String
+fun String.fromBase64(): String?
+fun Thread.safeGetThreadId(): Long
+fun Thread.State.asString(): String
+fun Array<StackTraceElement>.loggableStackTrace(): String
+fun Throwable.loggableStackTrace(): String
+fun formatIsoUtc(Long): String
+class com.openobserve.android.rum.DdRumContentProvider : android.content.ContentProvider
+  override fun onCreate(): Boolean
+  override fun query(android.net.Uri, Array<String>?, String?, Array<String>?, String?): android.database.Cursor?
+  override fun getType(android.net.Uri): String?
+  override fun insert(android.net.Uri, android.content.ContentValues?): android.net.Uri?
+  override fun delete(android.net.Uri, String?, Array<String>?): Int
+  override fun update(android.net.Uri, android.content.ContentValues?, String?, Array<String>?): Int
+  companion object 
+    var processImportance: Int
+    var createTimeNs: Long
+annotation com.openobserve.tools.annotation.NoOpImplementation
+  constructor(Boolean = false)

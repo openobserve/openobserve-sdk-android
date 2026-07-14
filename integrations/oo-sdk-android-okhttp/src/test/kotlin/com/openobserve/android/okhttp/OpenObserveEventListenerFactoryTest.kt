@@ -1,0 +1,104 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.okhttp
+
+import com.openobserve.android.okhttp.internal.buildResourceId
+import com.openobserve.android.tests.config.OpenObserveSingletonTestConfiguration
+import com.openobserve.tools.unit.annotations.TestConfigurationsProvider
+import com.openobserve.tools.unit.extensions.TestConfigurationExtension
+import com.openobserve.tools.unit.extensions.config.TestConfiguration
+import com.openobserve.tools.unit.forge.BaseConfigurator
+import fr.xgouchet.elmyr.annotation.StringForgery
+import fr.xgouchet.elmyr.junit5.ForgeConfiguration
+import fr.xgouchet.elmyr.junit5.ForgeExtension
+import okhttp3.Call
+import okhttp3.Request
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.extension.Extensions
+import org.mockito.Mock
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.junit.jupiter.MockitoSettings
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.whenever
+import org.mockito.quality.Strictness
+
+@Extensions(
+    ExtendWith(MockitoExtension::class),
+    ExtendWith(ForgeExtension::class),
+    ExtendWith(TestConfigurationExtension::class)
+)
+@MockitoSettings(strictness = Strictness.LENIENT)
+@ForgeConfiguration(BaseConfigurator::class)
+internal class OpenObserveEventListenerFactoryTest {
+
+    lateinit var testedFactory: OpenObserveEventListener.Factory
+
+    @Mock
+    lateinit var mockCall: Call
+
+    @StringForgery(regex = "[a-z]+\\.[a-z]{3}")
+    lateinit var fakeDomain: String
+
+    private lateinit var fakeRequest: Request
+
+    @BeforeEach
+    fun `set up`() {
+        fakeRequest = Request.Builder()
+            .get().url("https://$fakeDomain/")
+            .build()
+
+        whenever(mockCall.request()) doReturn fakeRequest
+
+        testedFactory = OpenObserveEventListener.Factory()
+    }
+
+    @Test
+    fun `M create event listener W create()`() {
+        // When
+        val result = testedFactory.create(mockCall)
+
+        // Then
+        check(result is OpenObserveEventListener)
+        @Suppress("DEPRECATION")
+        assertThat(result.key).isEqualTo(fakeRequest.buildResourceId(false))
+    }
+
+    @Test
+    fun `M create no-op event listener W create() { SDK instance is not ready }`(
+        @StringForgery fakeSdkInstanceName: String
+    ) {
+        // When
+        val factory = OpenObserveEventListener.Factory(fakeSdkInstanceName)
+        val result = factory.create(mockCall)
+
+        // Then
+        assertThat(result).isSameAs(OpenObserveEventListener.Factory.NO_OP_EVENT_LISTENER)
+    }
+
+    @Test
+    fun `M not generate UUID in the resource key W create()`() {
+        // When
+        val result = testedFactory.create(mockCall)
+
+        // Then
+        check(result is OpenObserveEventListener)
+        assertThat(result.key.uuid).isEqualTo(null)
+    }
+
+    companion object {
+        val ooCore = OpenObserveSingletonTestConfiguration()
+
+        @TestConfigurationsProvider
+        @JvmStatic
+        fun getTestConfigurations(): List<TestConfiguration> {
+            return listOf(ooCore)
+        }
+    }
+}

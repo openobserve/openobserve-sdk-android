@@ -1,0 +1,96 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.opentelemetry.trace;
+
+import androidx.annotation.VisibleForTesting;
+
+import com.openobserve.android.trace.api.span.OpenObserveSpan;
+import com.openobserve.android.trace.api.span.OpenObserveSpanContext;
+import com.openobserve.android.trace.internal._TraceInternalProxy;
+
+import io.opentelemetry.api.trace.SpanContext;
+import io.opentelemetry.api.trace.TraceFlags;
+import io.opentelemetry.api.trace.TraceState;
+
+public class OtelSpanContext implements SpanContext {
+  final OpenObserveSpanContext delegate;
+  private final boolean sampled;
+  private final boolean remote;
+  private final TraceState traceState;
+  private String traceId;
+  private String spanId;
+
+  public OtelSpanContext(
+          OpenObserveSpanContext delegate, boolean sampled, boolean remote, TraceState traceState) {
+    this.delegate = delegate;
+    this.sampled = sampled;
+    this.remote = remote;
+    this.traceState = traceState;
+  }
+
+  public static SpanContext fromLocalSpan(OpenObserveSpan span) {
+    OpenObserveSpanContext delegate = span.context();
+    OpenObserveSpan localRootSpan = span.getLocalRootSpan();
+    Integer samplingPriority = localRootSpan != null ? localRootSpan.getSamplingPriority() : null;
+    boolean sampled = samplingPriority != null && samplingPriority > 0;
+    return new OtelSpanContext(delegate, sampled, false, TraceState.getDefault());
+  }
+
+  public static SpanContext fromRemote(OpenObserveSpanContext extracted, TraceState traceState) {
+    return new OtelSpanContext(extracted, extracted.getSamplingPriority() > 0, true, traceState);
+  }
+
+  @Override
+  public String getTraceId() {
+    if (this.traceId == null) {
+      traceId = delegate.getTraceId().toHexString();
+    }
+    return this.traceId;
+  }
+
+  @Override
+  public String getSpanId() {
+    if (this.spanId == null) {
+      this.spanId = _TraceInternalProxy.spanIdConverter.toHexStringPadded(this.delegate.getSpanId());
+    }
+    return this.spanId;
+  }
+
+  @VisibleForTesting
+  public OpenObserveSpanContext getDelegate() {
+    return delegate;
+  }
+
+  @Override
+  public TraceFlags getTraceFlags() {
+    return this.sampled ? TraceFlags.getSampled() : TraceFlags.getDefault();
+  }
+
+  @Override
+  public TraceState getTraceState() {
+    return this.traceState;
+  }
+
+  @Override
+  public boolean isRemote() {
+    return this.remote;
+  }
+
+  @Override
+  public String toString() {
+    return "OtelSpanContext{"
+        + "traceId='"
+        + getTraceId()
+        + "', spanId='"
+        + getSpanId()
+        + "', sampled="
+        + this.sampled
+        + ", remote="
+        + this.remote
+        + '}';
+  }
+}

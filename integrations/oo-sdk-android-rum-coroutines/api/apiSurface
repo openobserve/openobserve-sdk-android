@@ -1,0 +1,1 @@
+fun <T> kotlinx.coroutines.flow.Flow<T>.sendErrorToOpenObserve(com.openobserve.android.api.SdkCore = OpenObserve.getInstance()): kotlinx.coroutines.flow.Flow<T>

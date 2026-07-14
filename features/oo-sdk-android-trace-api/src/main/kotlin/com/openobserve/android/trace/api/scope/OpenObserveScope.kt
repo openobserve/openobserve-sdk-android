@@ -1,0 +1,22 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+package com.openobserve.android.trace.api.scope
+
+import com.openobserve.android.trace.api.span.OpenObserveSpan
+import com.openobserve.tools.annotation.NoOpImplementation
+import java.io.Closeable
+
+/**
+ * A OpenObserveScope formalizes the activation and deactivation of a [OpenObserveSpan].
+ */
+@NoOpImplementation
+interface OpenObserveScope : Closeable {
+
+    /**
+     * Mark the end of the active period for the current context.
+     */
+    override fun close()
+}

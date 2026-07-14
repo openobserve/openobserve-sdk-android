@@ -1,0 +1,123 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+package com.openobserve.android.trace.internal
+
+import com.openobserve.android.lint.InternalApi
+import com.openobserve.android.trace.ApmNetworkInstrumentationConfiguration
+import com.openobserve.android.trace.ApmNetworkInstrumentationConfiguration.Companion.createInstrumentation
+import com.openobserve.android.trace.api.scope.OpenObserveScope
+import com.openobserve.android.trace.api.span.OpenObserveSpan
+import com.openobserve.android.trace.api.span.OpenObserveSpanContext
+import com.openobserve.android.trace.api.tracer.OpenObserveTracer
+import com.openobserve.android.trace.api.tracer.OpenObserveTracerBuilder
+import com.openobserve.trace.core.propagation.Baggage
+
+/**
+ * For library usage only.
+ * Provides implementation for specific interfaces to dependent modules
+ */
+@InternalApi
+@Suppress("ClassName")
+object _TraceInternalProxy {
+    /**
+     * Provides a mechanism for converting OpenObserve span IDs between decimal and hexadecimal representations.
+     *
+     * This converter is utilized to ensure span ID consistency and proper formatting for distributed tracing
+     * when working with the OpenObserve SDK.
+     */
+    @JvmField
+    val spanIdConverter: OpenObserveSpanIdConverter = OpenObserveSpanIdConverter()
+
+    /**
+     * Providing helper function to extract [OpenObserveSpanContext] from tracing context added by addParentSpan method.
+
+     * This property is intended for internal usage only and should not
+     * be altered externally.
+     */
+    var propagationHelper: OpenObservePropagationHelper = OpenObservePropagationHelper()
+        internal set
+
+    internal var testBuilderProvider: OpenObserveTracerBuilder? = null
+
+    /**
+     * Sets the tracing sampling priority if it is necessary.
+     */
+    fun setTracingSamplingPriorityIfNecessary(context: OpenObserveSpanContext) {
+        (context as? OpenObserveSpanContextAdapter)?.setTracingSamplingPriorityIfNecessary()
+    }
+
+    /**
+     * Enables 128-bit trace ID generation for the provided OpenObserve tracer builder.
+     */
+    fun setTraceId128BitGenerationEnabled(builder: OpenObserveTracerBuilder): OpenObserveTracerBuilder {
+        (builder as? OpenObserveTracerBuilderAdapter)?.setTraceId128BitGenerationEnabled(true)
+        return builder
+    }
+
+    /**
+     * Enables compatibility mode with SDK v2 for sampling factory strategy.
+     */
+    fun setSdkV2Compatible(builder: OpenObserveTracerBuilder): OpenObserveTracerBuilder {
+        (builder as? OpenObserveTracerBuilderAdapter)?.setSdkV2Compatible()
+        return builder
+    }
+
+    /**
+     * Associates a throwable with the current span, marking it as an error.
+     * Note that error flag will be set only if priority is higher than the current one.
+     *
+     * @param span The span to associate the throwable with.
+     * @param throwable The throwable to associate with the current span.
+     * @param errorPriority The priority level of the error, represented as a byte.
+     */
+    @JvmStatic // this method is called from OTel code, written in java
+    fun addThrowable(span: OpenObserveSpan, throwable: Throwable, errorPriority: Byte) {
+        (span as? OpenObserveSpanAdapter)?.addThrowable(throwable, errorPriority)
+    }
+
+    /**
+     * Activates the provided span within the current context of the tracer.
+     * If `asyncPropagating` is set to true, the span is propagated asynchronously.
+     * Once activated, the span becomes the currently active span until it is explicitly deactivated.
+     *
+     * @param tracer The tracer instance to be used for activation.
+     * @param span The span to be activated. Represents the logical unit of work being traced.
+     * @param asyncPropagating If true, this context will propagate across async boundaries.
+     * @return An instance of [OpenObserveScope] representing the activated scope.
+     */
+    @JvmStatic // this method is called from OTel code, written in java
+    fun activateSpan(tracer: OpenObserveTracer, span: OpenObserveSpan, asyncPropagating: Boolean): OpenObserveScope? {
+        return (tracer as? OpenObserveTracerAdapter)?.activateSpan(span, asyncPropagating)
+    }
+
+    /**
+     * Merges two baggage headers into a single string representation. The [oldHeader] represents the
+     * previously existing baggage header, and the [newHeader] represents the new baggage information
+     * to be merged with the old one.
+     *
+     * @param oldHeader The existing baggage header, which may be null.
+     * @param newHeader The new baggage header to be merged, must not be null.
+     * @return A string representation of the merged baggage.
+     */
+    fun mergeBaggage(oldHeader: String?, newHeader: String): String {
+        return Baggage.from(oldHeader)
+            .mergeWith(Baggage.from(newHeader))
+            .toString()
+    }
+
+    /**
+     * Creates an [ApmNetworkInstrumentation] instance from the provided configuration.
+     *
+     * @param name the name identifying the network instrumentation (e.g., "OkHttp", "Cronet").
+     * @param configuration the configuration containing tracing settings such as traced hosts,
+     *        sample rate, trace context injection behavior, and tracing scope.
+     * @return a new [ApmNetworkInstrumentation] instance configured with the provided settings.
+     */
+    fun createApmNetworkInstrumentation(
+        name: String,
+        configuration: ApmNetworkInstrumentationConfiguration
+    ) = configuration.createInstrumentation(name)
+}

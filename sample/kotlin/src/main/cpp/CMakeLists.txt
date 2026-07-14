@@ -1,12 +1,12 @@
-project("datadog-ndk-sample")
+project("openobserve-ndk-sample")
 cmake_minimum_required(VERSION 3.22.1)
 
 add_library( # Sets the name of the library.
-        datadog-ndk-sample
+        openobserve-ndk-sample
         # Sets the library as a shared library.
         SHARED
         # Provides a relative path to your source file(s).
-        datadog-ndk-sample.cpp
+        openobserve-ndk-sample.cpp
         )
 find_library(
         # Sets the name of the path variable.
@@ -15,7 +15,7 @@ find_library(
         # you want CMake to locate.
         log)
 target_link_libraries( # Specifies the target library.
-        datadog-ndk-sample
+        openobserve-ndk-sample
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})

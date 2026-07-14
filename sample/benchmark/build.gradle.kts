@@ -1,16 +1,16 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.config.AndroidConfig
-import com.datadog.gradle.config.configureFlavorForBenchmark
-import com.datadog.gradle.config.dependencyUpdateConfig
-import com.datadog.gradle.config.java17
-import com.datadog.gradle.config.junitConfig
-import com.datadog.gradle.config.kotlinConfig
-import com.datadog.gradle.plugin.InstrumentationMode
+import com.openobserve.gradle.config.AndroidConfig
+import com.openobserve.gradle.config.configureFlavorForBenchmark
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.java17
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
+import com.openobserve.gradle.plugin.InstrumentationMode
 
 plugins {
     id("com.android.application")
@@ -19,13 +19,13 @@ plugins {
     alias(libs.plugins.kotlinSPGradlePlugin)
     kotlin("plugin.serialization")
     id("kotlin-parcelize")
-    alias(libs.plugins.datadogGradlePlugin)
+    alias(libs.plugins.ooGradlePlugin)
     id("transitiveDependencies")
 }
 
 @Suppress("StringLiteralDuplication")
 android {
-    namespace = "com.datadog.sample.benchmark"
+    namespace = "com.openobserve.sample.benchmark"
     compileSdk = AndroidConfig.TARGET_SDK
     buildToolsVersion = AndroidConfig.BUILD_TOOLS_VERSION
 
@@ -56,7 +56,7 @@ android {
             create("release") {
                 storeFile = File(project.rootDir, "sample-benchmark.keystore")
                 storePassword = bmPassword
-                keyAlias = "dd-sdk-android"
+                keyAlias = "oo-sdk-android"
                 keyPassword = bmPassword
             }
         }
@@ -110,18 +110,18 @@ dependencies {
     implementation(libs.coroutinesCore)
     implementation(libs.bundles.ktorClient)
     implementation(libs.kotlinxSerializationJson)
-    implementation(project(":features:dd-sdk-android-logs"))
-    implementation(project(":features:dd-sdk-android-rum"))
-    implementation(project(":features:dd-sdk-android-trace"))
-    implementation(project(":features:dd-sdk-android-trace-otel"))
-    implementation(project(":features:dd-sdk-android-ndk"))
-    implementation(project(":features:dd-sdk-android-webview"))
-    implementation(project(":features:dd-sdk-android-session-replay"))
-    implementation(project(":features:dd-sdk-android-session-replay-material"))
-    implementation(project(":features:dd-sdk-android-session-replay-compose"))
-    implementation(project(":integrations:dd-sdk-android-compose"))
-    implementation(project(":integrations:dd-sdk-android-glide"))
-    implementation(project(":integrations:dd-sdk-android-okhttp"))
+    implementation(project(":features:oo-sdk-android-logs"))
+    implementation(project(":features:oo-sdk-android-rum"))
+    implementation(project(":features:oo-sdk-android-trace"))
+    implementation(project(":features:oo-sdk-android-trace-otel"))
+    implementation(project(":features:oo-sdk-android-ndk"))
+    implementation(project(":features:oo-sdk-android-webview"))
+    implementation(project(":features:oo-sdk-android-session-replay"))
+    implementation(project(":features:oo-sdk-android-session-replay-material"))
+    implementation(project(":features:oo-sdk-android-session-replay-compose"))
+    implementation(project(":integrations:oo-sdk-android-compose"))
+    implementation(project(":integrations:oo-sdk-android-glide"))
+    implementation(project(":integrations:oo-sdk-android-okhttp"))
     implementation(project(":tools:benchmark"))
 
     testImplementation(libs.bundles.jUnit5)

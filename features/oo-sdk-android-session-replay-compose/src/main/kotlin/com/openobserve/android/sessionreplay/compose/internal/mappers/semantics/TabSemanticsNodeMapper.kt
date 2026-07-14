@@ -1,0 +1,43 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sessionreplay.compose.internal.mappers.semantics
+
+import androidx.compose.ui.semantics.SemanticsNode
+import com.openobserve.android.sessionreplay.compose.internal.data.SemanticsWireframe
+import com.openobserve.android.sessionreplay.compose.internal.data.UiContext
+import com.openobserve.android.sessionreplay.compose.internal.utils.SemanticsUtils
+import com.openobserve.android.sessionreplay.model.MobileSegment
+import com.openobserve.android.sessionreplay.utils.AsyncJobStatusCallback
+import com.openobserve.android.sessionreplay.utils.ColorStringFormatter
+
+internal class TabSemanticsNodeMapper(
+    colorStringFormatter: ColorStringFormatter,
+    semanticsUtils: SemanticsUtils = SemanticsUtils()
+) : AbstractSemanticsNodeMapper(colorStringFormatter, semanticsUtils) {
+
+    override fun map(
+        semanticsNode: SemanticsNode,
+        parentContext: UiContext,
+        asyncJobStatusCallback: AsyncJobStatusCallback
+    ): SemanticsWireframe {
+        val globalBounds = resolveBounds(semanticsNode)
+        val shapeStyle =
+            MobileSegment.ShapeStyle(backgroundColor = parentContext.parentContentColor)
+        val wireframe = MobileSegment.Wireframe.ShapeWireframe(
+            id = semanticsNode.id.toLong(),
+            x = globalBounds.x,
+            y = globalBounds.y,
+            width = globalBounds.width,
+            height = globalBounds.height,
+            shapeStyle = shapeStyle
+        )
+        return SemanticsWireframe(
+            wireframes = listOf(wireframe),
+            uiContext = parentContext
+        )
+    }
+}

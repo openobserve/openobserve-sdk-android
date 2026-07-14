@@ -1,0 +1,22 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.tests.elmyr
+
+import com.openobserve.android.api.context.TimeInfo
+import fr.xgouchet.elmyr.Forge
+import fr.xgouchet.elmyr.ForgeryFactory
+
+class TimeInfoForgeryFactory : ForgeryFactory<TimeInfo> {
+    override fun getForgery(forge: Forge): TimeInfo {
+        return TimeInfo(
+            deviceTimeNs = forge.aLong(min = 0),
+            serverTimeNs = forge.aLong(min = 0),
+            serverTimeOffsetNs = forge.aLong(),
+            serverTimeOffsetMs = forge.aLong()
+        )
+    }
+}

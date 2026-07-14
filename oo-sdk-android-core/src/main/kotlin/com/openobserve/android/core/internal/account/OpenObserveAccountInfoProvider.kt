@@ -1,0 +1,61 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.core.internal.account
+
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.api.context.AccountInfo
+
+internal class OpenObserveAccountInfoProvider(
+    private val internalLogger: InternalLogger
+) : MutableAccountInfoProvider {
+
+    @Volatile
+    private var internalAccountInfo: AccountInfo? = null
+
+    override fun setAccountInfo(
+        id: String,
+        name: String?,
+        extraInfo: Map<String, Any?>
+    ) {
+        internalAccountInfo = internalAccountInfo?.copy(
+            id = id,
+            name = name,
+            extraInfo = extraInfo.toMap()
+        ) ?: AccountInfo(
+            id = id,
+            name = name,
+            extraInfo = extraInfo.toMap()
+        )
+    }
+
+    override fun addExtraInfo(extraInfo: Map<String, Any?>) {
+        internalAccountInfo?.let {
+            internalAccountInfo = it.copy(
+                extraInfo = it.extraInfo + extraInfo
+            )
+        } ?: run {
+            internalLogger.log(
+                level = InternalLogger.Level.WARN,
+                target = InternalLogger.Target.USER,
+                messageBuilder = { MSG_ACCOUNT_NULL }
+            )
+        }
+    }
+
+    override fun clearAccountInfo() {
+        internalAccountInfo = null
+    }
+
+    override fun getAccountInfo(): AccountInfo? {
+        return internalAccountInfo
+    }
+
+    companion object {
+        internal const val MSG_ACCOUNT_NULL =
+            "Failed to add Account ExtraInfo because no Account Info exist yet. Please call `setAccountInfo` first."
+    }
+}

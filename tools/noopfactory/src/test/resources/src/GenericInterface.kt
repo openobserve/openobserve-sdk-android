@@ -1,6 +1,6 @@
 package com.example
 
-import com.datadog.tools.annotation.NoOpImplementation
+import com.openobserve.tools.annotation.NoOpImplementation
 
 @NoOpImplementation
 interface GenericInterface<T : CharSequence> {

@@ -1,0 +1,43 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sessionreplay.internal.storage
+
+import com.openobserve.android.api.context.OpenObserveContext
+import com.openobserve.android.api.feature.Feature
+import com.openobserve.android.api.feature.FeatureSdkCore
+import com.openobserve.android.api.storage.EventType
+import com.openobserve.android.api.storage.RawBatchEvent
+import com.openobserve.android.sessionreplay.internal.processor.EnrichedResource
+import com.openobserve.android.sessionreplay.internal.processor.asBinaryMetadata
+
+internal class SessionReplayResourcesWriter(
+    private val sdkCore: FeatureSdkCore
+) : ResourcesWriter {
+    override fun write(enrichedResource: EnrichedResource) {
+        sdkCore.getFeature(Feature.SESSION_REPLAY_RESOURCES_FEATURE_NAME)
+            ?.withWriteContext(
+                withFeatureContexts = setOf(Feature.RUM_FEATURE_NAME)
+            ) { ooContext, writeScope ->
+                writeScope {
+                    synchronized(this@SessionReplayResourcesWriter) {
+                        val serializedMetadata = enrichedResource.asBinaryMetadata(ooContext.rumApplicationId)
+                        it.write(
+                            event = RawBatchEvent(
+                                data = enrichedResource.resource,
+                                metadata = serializedMetadata
+                            ),
+                            batchMetadata = null,
+                            eventType = EventType.DEFAULT
+                        )
+                    }
+                }
+            }
+    }
+
+    private val OpenObserveContext.rumApplicationId: String
+        get() = (featuresContext[Feature.RUM_FEATURE_NAME]?.get("application_id") as? String).orEmpty()
+}

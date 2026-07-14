@@ -1,0 +1,96 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.rum.assertj
+
+import com.openobserve.android.rum.internal.RumFeature
+import com.openobserve.android.rum.internal.instrumentation.UserActionTrackingStrategyApi29
+import com.openobserve.android.rum.internal.instrumentation.UserActionTrackingStrategyLegacy
+import com.openobserve.android.rum.internal.instrumentation.gestures.OpenObserveGesturesTracker
+import com.openobserve.android.rum.internal.tracking.NoOpUserActionTrackingStrategy
+import com.openobserve.android.rum.internal.tracking.UserActionTrackingStrategy
+import com.openobserve.android.rum.tracking.InteractionPredicate
+import com.openobserve.android.rum.tracking.ViewAttributesProvider
+import org.assertj.core.api.AbstractAssert
+import org.assertj.core.api.Assertions.assertThat
+
+internal class RumFeatureAssert(actual: RumFeature) :
+    AbstractAssert<RumFeatureAssert, RumFeature>(actual, RumFeatureAssert::class.java) {
+
+    // region Assertions
+
+    fun hasUserActionTrackingStrategy(
+        userActionTrackingStrategy: UserActionTrackingStrategy
+    ): RumFeatureAssert {
+        assertThat(actual.actionTrackingStrategy)
+            .isEqualTo(userActionTrackingStrategy)
+        return this
+    }
+
+    fun hasNoOpUserActionTrackingStrategy(): RumFeatureAssert {
+        assertThat(actual.actionTrackingStrategy)
+            .isInstanceOf(NoOpUserActionTrackingStrategy::class.java)
+        return this
+    }
+
+    fun hasUserActionTrackingStrategyApi29(): RumFeatureAssert {
+        assertThat(actual.actionTrackingStrategy)
+            .isInstanceOf(UserActionTrackingStrategyApi29::class.java)
+        return this
+    }
+
+    fun hasUserActionTrackingStrategyLegacy(): RumFeatureAssert {
+        assertThat(actual.actionTrackingStrategy)
+            .isInstanceOf(UserActionTrackingStrategyLegacy::class.java)
+        return this
+    }
+    fun hasActionTargetAttributeProviders(
+        providers: Array<ViewAttributesProvider> = emptyArray()
+    ): RumFeatureAssert {
+        val gesturesTracker = actual.actionTrackingStrategy.getGesturesTracker()
+        assertThat(gesturesTracker).isInstanceOf(OpenObserveGesturesTracker::class.java)
+        RumGestureTrackerAssert.assertThat(gesturesTracker as OpenObserveGesturesTracker)
+            .hasCustomTargetAttributesProviders(providers)
+            .hasDefaultTargetAttributesProviders()
+        return this
+    }
+
+    fun hasDefaultActionTargetAttributeProviders(): RumFeatureAssert {
+        val gesturesTracker = actual.actionTrackingStrategy.getGesturesTracker()
+        assertThat(gesturesTracker).isInstanceOf(OpenObserveGesturesTracker::class.java)
+        RumGestureTrackerAssert.assertThat(gesturesTracker as OpenObserveGesturesTracker)
+            .hasDefaultTargetAttributesProviders()
+        return this
+    }
+
+    fun hasInteractionPredicate(
+        interactionPredicate: InteractionPredicate
+    ): RumFeatureAssert {
+        val gesturesTracker = actual.actionTrackingStrategy.getGesturesTracker()
+        assertThat(gesturesTracker).isInstanceOf(OpenObserveGesturesTracker::class.java)
+        RumGestureTrackerAssert.assertThat(gesturesTracker as OpenObserveGesturesTracker)
+            .hasInteractionPredicate(interactionPredicate)
+        return this
+    }
+
+    fun hasInteractionPredicateOfType(
+        type: Class<*>
+    ): RumFeatureAssert {
+        val gesturesTracker = actual.actionTrackingStrategy.getGesturesTracker()
+        assertThat(gesturesTracker).isInstanceOf(OpenObserveGesturesTracker::class.java)
+        RumGestureTrackerAssert.assertThat(gesturesTracker as OpenObserveGesturesTracker)
+            .hasInteractionPredicateOfType(type)
+        return this
+    }
+
+    // endregion
+
+    companion object {
+
+        internal fun assertThat(actual: RumFeature): RumFeatureAssert =
+            RumFeatureAssert(actual)
+    }
+}

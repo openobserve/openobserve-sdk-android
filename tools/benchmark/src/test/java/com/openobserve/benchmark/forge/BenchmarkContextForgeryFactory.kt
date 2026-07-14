@@ -1,0 +1,25 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.benchmark.forge
+
+import com.openobserve.benchmark.internal.model.BenchmarkContext
+import fr.xgouchet.elmyr.Forge
+import fr.xgouchet.elmyr.ForgeryFactory
+
+internal class BenchmarkContextForgeryFactory : ForgeryFactory<BenchmarkContext> {
+    override fun getForgery(forge: Forge): BenchmarkContext {
+        return BenchmarkContext(
+            deviceModel = forge.anAsciiString(),
+            osVersion = forge.anAsciiString(),
+            run = forge.anAsciiString(),
+            applicationId = forge.anAsciiString(),
+            intervalInSeconds = forge.aLong(),
+            scenario = forge.anAsciiString(),
+            env = forge.anAsciiString()
+        )
+    }
+}

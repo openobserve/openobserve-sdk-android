@@ -1,0 +1,24 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.core.internal.persistence
+
+import com.openobserve.android.api.storage.EventBatchWriter
+import com.openobserve.android.api.storage.EventType
+import com.openobserve.android.api.storage.RawBatchEvent
+
+internal class NoOpEventBatchWriter : EventBatchWriter {
+
+    override fun currentMetadata(): ByteArray? {
+        return null
+    }
+
+    override fun write(
+        event: RawBatchEvent,
+        batchMetadata: ByteArray?,
+        eventType: EventType
+    ): Boolean = true
+}

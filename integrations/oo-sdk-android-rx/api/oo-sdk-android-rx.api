@@ -1,0 +1,21 @@
+public final class com/openobserve/android/rx/OpenObserveRumErrorConsumer : io/reactivex/rxjava3/functions/Consumer {
+	public fun <init> ()V
+	public fun <init> (Lcom/openobserve/android/api/SdkCore;)V
+	public synthetic fun <init> (Lcom/openobserve/android/api/SdkCore;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun accept (Ljava/lang/Object;)V
+	public fun accept (Ljava/lang/Throwable;)V
+}
+
+public final class com/openobserve/android/rx/OpenObserveRxExtKt {
+	public static final fun sendErrorToOpenObserve (Lio/reactivex/rxjava3/core/Completable;Lcom/openobserve/android/api/SdkCore;)Lio/reactivex/rxjava3/core/Completable;
+	public static final fun sendErrorToOpenObserve (Lio/reactivex/rxjava3/core/Flowable;Lcom/openobserve/android/api/SdkCore;)Lio/reactivex/rxjava3/core/Flowable;
+	public static final fun sendErrorToOpenObserve (Lio/reactivex/rxjava3/core/Maybe;Lcom/openobserve/android/api/SdkCore;)Lio/reactivex/rxjava3/core/Maybe;
+	public static final fun sendErrorToOpenObserve (Lio/reactivex/rxjava3/core/Observable;Lcom/openobserve/android/api/SdkCore;)Lio/reactivex/rxjava3/core/Observable;
+	public static final fun sendErrorToOpenObserve (Lio/reactivex/rxjava3/core/Single;Lcom/openobserve/android/api/SdkCore;)Lio/reactivex/rxjava3/core/Single;
+	public static synthetic fun sendErrorToOpenObserve$default (Lio/reactivex/rxjava3/core/Completable;Lcom/openobserve/android/api/SdkCore;ILjava/lang/Object;)Lio/reactivex/rxjava3/core/Completable;
+	public static synthetic fun sendErrorToOpenObserve$default (Lio/reactivex/rxjava3/core/Flowable;Lcom/openobserve/android/api/SdkCore;ILjava/lang/Object;)Lio/reactivex/rxjava3/core/Flowable;
+	public static synthetic fun sendErrorToOpenObserve$default (Lio/reactivex/rxjava3/core/Maybe;Lcom/openobserve/android/api/SdkCore;ILjava/lang/Object;)Lio/reactivex/rxjava3/core/Maybe;
+	public static synthetic fun sendErrorToOpenObserve$default (Lio/reactivex/rxjava3/core/Observable;Lcom/openobserve/android/api/SdkCore;ILjava/lang/Object;)Lio/reactivex/rxjava3/core/Observable;
+	public static synthetic fun sendErrorToOpenObserve$default (Lio/reactivex/rxjava3/core/Single;Lcom/openobserve/android/api/SdkCore;ILjava/lang/Object;)Lio/reactivex/rxjava3/core/Single;
+}
+

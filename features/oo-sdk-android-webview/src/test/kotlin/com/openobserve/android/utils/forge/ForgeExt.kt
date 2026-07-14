@@ -1,0 +1,25 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.utils.forge
+
+import com.openobserve.android.rum.model.ActionEvent
+import com.openobserve.android.rum.model.ErrorEvent
+import com.openobserve.android.rum.model.LongTaskEvent
+import com.openobserve.android.rum.model.ResourceEvent
+import com.openobserve.android.rum.model.ViewEvent
+import com.google.gson.JsonObject
+import fr.xgouchet.elmyr.Forge
+
+internal fun Forge.aRumEventAsJson(): JsonObject {
+    return anElementFrom(
+        this.getForgery<ViewEvent>().toJson().asJsonObject,
+        this.getForgery<LongTaskEvent>().toJson().asJsonObject,
+        this.getForgery<ActionEvent>().toJson().asJsonObject,
+        this.getForgery<ResourceEvent>().toJson().asJsonObject,
+        this.getForgery<ErrorEvent>().toJson().asJsonObject
+    )
+}

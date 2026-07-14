@@ -1,0 +1,27 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sessionreplay.compose.test.elmyr
+
+import com.openobserve.android.sessionreplay.ImagePrivacy
+import com.openobserve.android.sessionreplay.TextAndInputPrivacy
+import com.openobserve.android.sessionreplay.compose.internal.data.UiContext
+import fr.xgouchet.elmyr.Forge
+import fr.xgouchet.elmyr.ForgeryFactory
+import org.mockito.kotlin.mock
+
+internal class UIContextForgeryFactory : ForgeryFactory<UiContext> {
+    override fun getForgery(forge: Forge): UiContext {
+        return UiContext(
+            parentContentColor = forge.anAlphabeticalString(),
+            density = forge.aFloat(0.01f, 100f),
+            imagePrivacy = forge.aValueFrom(ImagePrivacy::class.java),
+            textAndInputPrivacy = forge.aValueFrom(TextAndInputPrivacy::class.java),
+            isInUserInputLayout = forge.aBool(),
+            imageWireframeHelper = mock()
+        )
+    }
+}

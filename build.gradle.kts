@@ -1,13 +1,13 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 @file:Suppress("StringLiteralDuplication")
 
 import com.android.build.gradle.LibraryExtension
-import com.datadog.gradle.config.AndroidConfig
-import com.datadog.gradle.config.registerSubModuleAggregationTask
+import com.openobserve.gradle.config.AndroidConfig
+import com.openobserve.gradle.config.registerSubModuleAggregationTask
 import org.gradle.api.internal.file.UnionFileTree
 import org.gradle.api.internal.tasks.DefaultTaskDependencyFactory
 import java.util.Properties
@@ -39,7 +39,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { setUrl(com.datadog.gradle.Dependencies.Repositories.Gradle) }
+        maven { setUrl(com.openobserve.gradle.Dependencies.Repositories.Gradle) }
     }
 
     dependencies {
@@ -51,7 +51,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { setUrl(com.datadog.gradle.Dependencies.Repositories.Jitpack) }
+        maven { setUrl(com.openobserve.gradle.Dependencies.Repositories.Jitpack) }
     }
 }
 
@@ -187,7 +187,7 @@ tasks.register("buildIntegrationTestsArtifacts") {
 }
 
 tasks.register("buildNdkIntegrationTestsArtifacts") {
-    dependsOn(":features:dd-sdk-android-ndk:assembleDebugAndroidTest")
+    dependsOn(":features:oo-sdk-android-ndk:assembleDebugAndroidTest")
     // we need this artifact to trick Bitrise
     dependsOn(":instrumented:integration:assembleDebug")
 }

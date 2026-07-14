@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
-  ~ This product includes software developed at Datadog (https://www.datadoghq.com/).
-  ~ Copyright 2016-Present Datadog, Inc.
+  ~ This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+  ~ Copyright 2016-Present OpenObserve, Inc.
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -41,7 +41,7 @@
             android:value="XR_ACTIVITY_START_MODE_HOME_SPACE" />
 
         <receiver
-            android:name=".widget.DatadogWidgetsProvider"
+            android:name=".widget.OpenObserveWidgetsProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -49,7 +49,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/datadog_widget_info" />
+                android:resource="@xml/openobserve_widget_info" />
         </receiver>
 
         <activity
@@ -66,10 +66,10 @@
             android:name=".compose.JetpackComposeActivity"
             android:theme="@style/Sample.Theme.Compose" />
         <activity
-            android:name="com.datadog.android.sample.compose.LegacyComposeActivity"
+            android:name="com.openobserve.android.sample.compose.LegacyComposeActivity"
             android:theme="@style/Sample.Theme.Compose" />
         <activity
-            android:name="com.datadog.android.sample.compose.Navigation3Activity"
+            android:name="com.openobserve.android.sample.compose.Navigation3Activity"
             android:theme="@style/Sample.Theme.Compose" />
 
         <service
@@ -82,8 +82,8 @@
         <service android:name=".widget.WidgetIntentService"/>
 
         <provider
-            android:authorities="com.datadog.android.provider"
-            android:name=".data.db.sqlite.DatadogContentProvider"
+            android:authorities="com.openobserve.android.provider"
+            android:name=".data.db.sqlite.OpenObserveContentProvider"
             android:exported="false"/>
 
         <service android:name=".auto.AutoMediaBrowserService"

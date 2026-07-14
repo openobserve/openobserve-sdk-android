@@ -1,0 +1,426 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+package com.openobserve.android.trace.internal
+
+import com.openobserve.android.api.instrumentation.network.HttpRequestInfo
+import com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder
+import com.openobserve.android.api.instrumentation.network.tag
+import com.openobserve.android.lint.InternalApi
+import com.openobserve.android.trace.TraceContextInjection
+import com.openobserve.android.trace.TracingHeaderType
+import com.openobserve.android.trace.api.OpenObserveTracingConstants.PrioritySampling
+import com.openobserve.android.trace.api.span.OpenObserveSpan
+import com.openobserve.android.trace.api.span.OpenObserveSpanContext
+import com.openobserve.android.trace.api.tracer.OpenObserveTracer
+import com.openobserve.android.trace.internal.net.TraceContext
+import com.openobserve.trace.api.DDSpanId
+import com.openobserve.trace.api.DDTraceId
+import com.openobserve.trace.core.propagation.B3HttpCodec
+import com.openobserve.trace.core.propagation.OpenObserveHttpCodec
+import com.openobserve.trace.core.propagation.ExtractedContext
+import com.openobserve.trace.core.propagation.W3CHttpCodec
+
+/**
+ * For internal usage only.
+ * Helper class for handling OpenObserve context propagation.
+ */
+@InternalApi
+class OpenObservePropagationHelper internal constructor() {
+    /**
+     * Determines if the provided [OpenObserveSpanContext] represents an extracted context.
+     *
+     * @param context The [OpenObserveSpanContext] to be evaluated.
+     * @return True if the context is identified as an extracted context, otherwise false.
+     */
+    // TODO RUM-13441: This method should be private after refactor of TracingInterceptor.
+    fun isExtractedContext(context: OpenObserveSpanContext): Boolean {
+        if (context !is OpenObserveSpanContextAdapter) return false
+        return context.delegate is ExtractedContext
+    }
+
+    /**
+     * Sets the trace context information as a tag on the request.
+     *
+     * @param requestInfoBuilder the request builder to add the trace context to.
+     * @param traceId the trace ID to set.
+     * @param spanId the span ID to set.
+     * @param samplingPriority the sampling priority for the trace.
+     */
+    fun setTraceContext(
+        requestInfoBuilder: HttpRequestInfoBuilder,
+        traceId: String,
+        spanId: String,
+        samplingPriority: Int
+    ) {
+        requestInfoBuilder.addTag(
+            TraceContext::class.java,
+            TraceContext(
+                traceId,
+                spanId,
+                samplingPriority
+            )
+        )
+    }
+
+    /**
+     * Extracts the parent span context from the request.
+     * Checks both the request tags and headers for trace context information.
+     *
+     * @param tracer the tracer to use for context extraction.
+     * @param request the HTTP request info to extract context from.
+     * @return the extracted parent context, or null if none found.
+     */
+    fun extractParentContext(tracer: OpenObserveTracer, request: HttpRequestInfo): OpenObserveSpanContext? {
+        val tagContext = extractTraceContext(request)
+
+        val headerContext: OpenObserveSpanContext? = tracer.propagate().extract(request) { carrier, classifier ->
+            val headers = carrier.headers
+                .map { it.key to it.value.joinToString(";") }
+                .toMap()
+
+            // there is no actual classification here, values just got cached
+            for ((key, value) in headers) classifier(key, value)
+        }
+
+        return if (headerContext != null && isExtractedContext(headerContext)) {
+            headerContext
+        } else {
+            tagContext
+        }
+    }
+
+    private fun extractTraceContext(request: HttpRequestInfo): OpenObserveSpanContext? =
+        request.tag(OpenObserveSpan::class.java)?.context()
+            ?: request.tag(TraceContext::class.java)?.let {
+                createExtractedContext(
+                    it.traceId,
+                    it.spanId,
+                    it.samplingPriority
+                )
+            }
+
+    /**
+     * Creates a [OpenObserveSpanContext] object that represents an extracted context from the given parameters.
+     *
+     * @param traceId The unique identifier for the trace.
+     * @param spanId The unique identifier for the span.
+     * @param samplingPriority The sampling priority value for determining the trace's sampling behavior.
+     * @return A [OpenObserveSpanContext] instance containing the extracted context.
+     */
+    // TODO RUM-13441: this class should be internal after refactor of TracingInterceptor.
+    fun createExtractedContext(
+        traceId: String,
+        spanId: String,
+        samplingPriority: Int
+    ): OpenObserveSpanContext = OpenObserveSpanContextAdapter(
+        ExtractedContext(
+            DDTraceId.fromHexOrDefault(traceId, DDTraceId.ZERO),
+            DDSpanId.fromHexOrDefault(spanId, DDSpanId.ZERO),
+            samplingPriority,
+            null,
+            null,
+            null
+        )
+    )
+
+    /**
+     * Injects trace context headers for a sampled request.
+     *
+     * @param builder the request builder to add headers to.
+     * @param tracer the tracer to use for context injection.
+     * @param span the span containing the trace context.
+     * @param tracingHeaderTypes the set of header types to inject.
+     * @return the modified request info builder.
+     */
+    fun propagateSampledHeaders(
+        builder: HttpRequestInfoBuilder,
+        tracer: OpenObserveTracer,
+        span: OpenObserveSpan,
+        tracingHeaderTypes: Set<TracingHeaderType>
+    ) = builder.apply {
+        tracer.propagate().inject(
+            span.context(),
+            builder
+        ) { carrier: HttpRequestInfoBuilder, key: String, value: String ->
+            when (key) {
+                OpenObserveHttpCodec.ORIGIN_KEY,
+                OpenObserveHttpCodec.SPAN_ID_KEY,
+                OpenObserveHttpCodec.TRACE_ID_KEY,
+                OpenObserveHttpCodec.OPENOBSERVE_TAGS_KEY,
+                OpenObserveHttpCodec.SAMPLING_PRIORITY_KEY -> if (tracingHeaderTypes.contains(TracingHeaderType.OPENOBSERVE)) {
+                    carrier.replaceHeader(key, value)
+                } else {
+                    carrier.removeHeader(key)
+                }
+
+                B3HttpCodec.B3_KEY -> if (tracingHeaderTypes.contains(TracingHeaderType.B3)) {
+                    carrier.replaceHeader(key, value)
+                } else {
+                    carrier.removeHeader(key)
+                }
+
+                B3HttpCodec.SPAN_ID_KEY,
+                B3HttpCodec.TRACE_ID_KEY,
+                B3HttpCodec.SAMPLING_PRIORITY_KEY -> if (tracingHeaderTypes.contains(TracingHeaderType.B3MULTI)) {
+                    carrier.replaceHeader(key, value)
+                } else {
+                    carrier.removeHeader(key)
+                }
+
+                W3CHttpCodec.BAGGAGE_KEY -> carrier.replaceHeader(
+                    key,
+                    _TraceInternalProxy.mergeBaggage(
+                        carrier.resolveExistingBaggageHeaderValue(),
+                        value
+                    )
+                )
+
+                W3CHttpCodec.TRACE_PARENT_KEY,
+                W3CHttpCodec.TRACE_STATE_KEY -> if (tracingHeaderTypes.contains(TracingHeaderType.TRACECONTEXT)) {
+                    carrier.replaceHeader(key, value)
+                } else {
+                    carrier.removeHeader(key)
+                }
+
+                else -> carrier.replaceHeader(key, value)
+            }
+        }
+    }
+
+    /**
+     * Handles trace context headers for a non-sampled request.
+     * Depending on the injection type, may remove or inject headers with drop sampling priority.
+     *
+     * @param builder the request builder to modify headers on.
+     * @param tracer the tracer to use for context injection.
+     * @param span the span containing the trace context.
+     * @param tracingHeaderTypes the set of header types to handle.
+     * @param injectionType whether to inject headers for non-sampled requests.
+     * @param traceOrigin optional trace origin to include in headers.
+     * @return the modified request info builder.
+     */
+    @Suppress("NestedBlockDepth")
+    fun propagateNotSampledHeaders(
+        builder: HttpRequestInfoBuilder,
+        tracer: OpenObserveTracer,
+        span: OpenObserveSpan,
+        tracingHeaderTypes: Set<TracingHeaderType>,
+        injectionType: TraceContextInjection,
+        traceOrigin: String?
+    ) = builder.apply {
+        for (headerType in tracingHeaderTypes) {
+            when (headerType) {
+                TracingHeaderType.OPENOBSERVE -> {
+                    OPENOBSERVE_CODEC_HEADERS.forEach { removeHeader(it) }
+                    if (TraceContextInjection.ALL == injectionType) resetOpenObserveHeaders(span, tracer)
+                }
+
+                TracingHeaderType.B3 -> {
+                    removeHeader(B3HttpCodec.B3_KEY)
+                    if (TraceContextInjection.ALL == injectionType) resetB3Headers()
+                }
+
+                TracingHeaderType.B3MULTI -> {
+                    B3M_CODEC_HEADERS.forEach { removeHeader(it) }
+                    if (TraceContextInjection.ALL == injectionType) resetB3MultiHeaders()
+                }
+
+                TracingHeaderType.TRACECONTEXT -> {
+                    W3C_CODEC_HEADERS.forEach { removeHeader(it) }
+                    if (TraceContextInjection.ALL == injectionType) {
+                        resetW3CHeaders(
+                            span,
+                            traceOrigin
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Removes all tracing headers from the request.
+     * This is useful when starting a new independent trace for redirect requests.
+     *
+     * @param builder the request builder to remove headers from.
+     * @return the modified request info builder.
+     */
+    fun removeAllTracingHeaders(builder: HttpRequestInfoBuilder) = builder.apply {
+        ALL_TRACING_HEADERS.forEach { removeHeader(it) }
+    }
+
+    /**
+     * Extracts the sampling decision from the request.
+     * Checks headers and tags for existing sampling decisions.
+     *
+     * @param request the HTTP request info to extract sampling decision from.
+     * @return true if sampled, false if not sampled, null if no decision found.
+     */
+    fun extractSamplingDecision(request: HttpRequestInfo): Boolean? {
+        val ooSpan = request.tag(OpenObserveSpan::class.java)
+        val headerSamplingPriority = extractSamplingDecisionFromHeader(request)
+        val openTelemetrySpanSamplingPriority = request.tag(TraceContext::class.java)?.samplingPriority
+
+        return when {
+            headerSamplingPriority != null -> headerSamplingPriority
+
+            ooSpan != null -> {
+                _TraceInternalProxy.setTracingSamplingPriorityIfNecessary(ooSpan.context())
+                ooSpan.context().samplingPriority > 0
+            }
+
+            openTelemetrySpanSamplingPriority == PrioritySampling.UNSET -> null
+
+            else -> openTelemetrySpanSamplingPriority?.let { samplingPriority -> samplingPriority > 0 }
+        }
+    }
+
+    @Suppress("ReturnCount")
+    private fun extractSamplingDecisionFromHeader(request: HttpRequestInfo): Boolean? {
+        val ooSamplingPriority =
+            request.headers[OpenObserveHttpCodec.SAMPLING_PRIORITY_KEY]?.firstOrNull()?.toIntOrNull()
+        if (ooSamplingPriority != null) {
+            if (ooSamplingPriority == PrioritySampling.UNSET) return null
+            return ooSamplingPriority == PrioritySampling.USER_KEEP ||
+                ooSamplingPriority == PrioritySampling.SAMPLER_KEEP
+        }
+        val b3MSamplingPriority = request.headers[B3HttpCodec.SAMPLING_PRIORITY_KEY]?.firstOrNull()
+        if (b3MSamplingPriority != null) {
+            return when (b3MSamplingPriority) {
+                "1" -> true
+                "0" -> false
+                else -> null
+            }
+        }
+
+        val b3HeaderValue = request.headers[B3HttpCodec.B3_KEY]?.firstOrNull()
+        if (b3HeaderValue != null) {
+            if (b3HeaderValue == "0") {
+                return false
+            }
+            val b3HeaderParts = b3HeaderValue.split("-")
+            if (b3HeaderParts.size >= B3_SAMPLING_DECISION_INDEX + 1) {
+                return when (b3HeaderParts[B3_SAMPLING_DECISION_INDEX]) {
+                    "1", "d" -> true
+                    "0" -> false
+                    else -> null
+                }
+            }
+        }
+
+        val w3cHeaderValue = request.headers[W3CHttpCodec.TRACE_PARENT_KEY]?.firstOrNull()
+        if (w3cHeaderValue != null) {
+            val w3CHeaderParts = w3cHeaderValue.split("-")
+            if (w3CHeaderParts.size >= W3C_SAMPLING_DECISION_INDEX + 1) {
+                return when (w3CHeaderParts[W3C_SAMPLING_DECISION_INDEX].toIntOrNull()) {
+                    1 -> true
+                    0 -> false
+                    else -> null
+                }
+            }
+        }
+
+        return null
+    }
+
+    companion object {
+        internal const val B3_DROP_SAMPLING_DECISION = "0"
+        internal const val B3M_DROP_SAMPLING_DECISION = "0"
+        internal const val OPENOBSERVE_DROP_SAMPLING_DECISION = "0"
+        internal const val W3C_TRACE_PARENT_DROP_SAMPLING_DECISION = "00-%s-%s-00"
+        internal const val W3C_TRACE_STATE_DROP_SAMPLING_DECISION = "dd=p:%s;s:0"
+        internal const val W3C_TRACE_ID_LENGTH = 32
+        internal const val W3C_PARENT_ID_LENGTH = 16
+        internal const val B3_SAMPLING_DECISION_INDEX = 2
+        internal const val W3C_SAMPLING_DECISION_INDEX = 3
+
+        internal val OPENOBSERVE_CODEC_HEADERS = setOf(
+            OpenObserveHttpCodec.ORIGIN_KEY,
+            OpenObserveHttpCodec.SPAN_ID_KEY,
+            OpenObserveHttpCodec.TRACE_ID_KEY,
+            OpenObserveHttpCodec.OPENOBSERVE_TAGS_KEY,
+            OpenObserveHttpCodec.SAMPLING_PRIORITY_KEY
+        )
+
+        internal val B3M_CODEC_HEADERS = setOf(
+            B3HttpCodec.TRACE_ID_KEY,
+            B3HttpCodec.SPAN_ID_KEY,
+            B3HttpCodec.SAMPLING_PRIORITY_KEY
+        )
+
+        internal val W3C_CODEC_HEADERS = setOf(
+            W3CHttpCodec.TRACE_PARENT_KEY,
+            W3CHttpCodec.TRACE_STATE_KEY
+        )
+
+        internal val ALL_TRACING_HEADERS: Set<String> =
+            OPENOBSERVE_CODEC_HEADERS + B3M_CODEC_HEADERS + W3C_CODEC_HEADERS + B3HttpCodec.B3_KEY
+
+        private fun HttpRequestInfoBuilder.resetOpenObserveHeaders(
+            span: OpenObserveSpan,
+            tracer: OpenObserveTracer
+        ) {
+            tracer.propagate().inject(
+                span.context(),
+                this
+            ) { carrier, key, value ->
+                carrier.removeHeader(key)
+                if (key in OPENOBSERVE_CODEC_HEADERS) carrier.addHeader(key, value)
+            }
+
+            replaceHeader(OpenObserveHttpCodec.SAMPLING_PRIORITY_KEY, OPENOBSERVE_DROP_SAMPLING_DECISION)
+        }
+
+        private fun HttpRequestInfoBuilder.resetB3Headers() {
+            addHeader(B3HttpCodec.B3_KEY, B3_DROP_SAMPLING_DECISION)
+        }
+
+        private fun HttpRequestInfoBuilder.resetB3MultiHeaders() {
+            addHeader(B3HttpCodec.SAMPLING_PRIORITY_KEY, B3M_DROP_SAMPLING_DECISION)
+        }
+
+        private fun HttpRequestInfoBuilder.resetW3CHeaders(
+            span: OpenObserveSpan,
+            traceOrigin: String?
+        ) {
+            val traceId = span.context().traceId.toHexString()
+            val spanId = span.context().spanId.toString()
+            addHeader(
+                W3CHttpCodec.TRACE_PARENT_KEY,
+                @Suppress("UnsafeThirdPartyFunctionCall") // Format string is static
+                W3C_TRACE_PARENT_DROP_SAMPLING_DECISION.format(
+                    traceId.padStart(length = W3C_TRACE_ID_LENGTH, padChar = '0'),
+                    spanId.padStart(length = W3C_PARENT_ID_LENGTH, padChar = '0')
+                )
+            )
+            // TODO RUM-2121 3rd party vendor information will be erased
+            @Suppress("UnsafeThirdPartyFunctionCall") // Format string is static
+            var traceStateHeader = W3C_TRACE_STATE_DROP_SAMPLING_DECISION
+                .format(spanId.padStart(length = W3C_PARENT_ID_LENGTH, padChar = '0'))
+            if (traceOrigin != null) {
+                traceStateHeader += ";o:$traceOrigin"
+            }
+            addHeader(W3CHttpCodec.TRACE_STATE_KEY, traceStateHeader)
+        }
+
+        @Suppress("UnsafeThirdPartyFunctionCall") // exceptions are caught
+        private fun HttpRequestInfoBuilder.resolveExistingBaggageHeaderValue(): String? = try {
+            // w3 HTTP specification allows multiple baggage headers and in such case they should be combined
+            // https://www.w3.org/TR/baggage/
+            build()
+                .headers[W3CHttpCodec.BAGGAGE_KEY].orEmpty()
+                .reduce { acc, header ->
+                    _TraceInternalProxy.mergeBaggage(acc, header)
+                }
+        } catch (_: UnsupportedOperationException) {
+            // Header values collection is empty
+            null
+        } catch (_: IllegalStateException) {
+            // Failed to compose baggage header
+            null
+        }
+    }
+}

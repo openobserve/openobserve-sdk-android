@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
-  ~ This product includes software developed at Datadog (https://www.datadoghq.com/).
-  ~ Copyright 2016-Present Datadog, Inc.
+  ~ This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+  ~ Copyright 2016-Present OpenObserve, Inc.
   -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,7 +22,7 @@
         android:id="@+id/text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/datadog_violet"
+        android:textColor="@color/openobserve_violet"
         android:text="@string/text_view" />
 
     <TextView
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:textColor="@color/datadog_violet"
+        android:textColor="@color/openobserve_violet"
         android:text="@string/ellipsize_text_view" />
 
     <TextView
@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:textColor="@color/datadog_violet"
+        android:textColor="@color/openobserve_violet"
         android:text="@string/ellipsize_text_view" />
 
     <TextView
@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:textColor="@color/datadog_violet"
+        android:textColor="@color/openobserve_violet"
         android:text="@string/ellipsize_text_view" />
 
     <TextView
@@ -113,7 +113,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:marqueeRepeatLimit="marquee_forever"
-        android:textColor="@color/datadog_violet"
+        android:textColor="@color/openobserve_violet"
         android:text="@string/ellipsize_text_view" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -143,9 +143,9 @@
         android:id="@+id/edit_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/datadog_violet"
+        android:backgroundTint="@color/openobserve_violet"
         android:hint="@string/edit_text_view"
-        android:textColorHint="@color/datadog_violet"/>
+        android:textColorHint="@color/openobserve_violet"/>
 
     <EditText
         app:layout_constraintTop_toBottomOf="@+id/edit_text_view"
@@ -154,9 +154,9 @@
         android:id="@+id/edit_text_view_multiline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/datadog_violet"
+        android:backgroundTint="@color/openobserve_violet"
         android:hint="@string/edit_text_view_multiline"
-        android:textColorHint="@color/datadog_violet"
+        android:textColorHint="@color/openobserve_violet"
         android:maxLines="2"/>
 
     <AutoCompleteTextView
@@ -190,8 +190,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="emailAddress"
-        android:backgroundTint="@color/datadog_violet"
-        android:textColorHint="@color/datadog_violet"
+        android:backgroundTint="@color/openobserve_violet"
+        android:textColorHint="@color/openobserve_violet"
         android:hint="@string/app_compat_auto_complete_text_view"/>
 
     <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -202,8 +202,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="emailAddress"
-        android:backgroundTint="@color/datadog_violet"
-        android:textColorHint="@color/datadog_violet"
+        android:backgroundTint="@color/openobserve_violet"
+        android:textColorHint="@color/openobserve_violet"
         android:hint="@string/material_auto_complete_text_view"/>
 
     <CheckedTextView
@@ -235,7 +235,7 @@
         android:layout_height="wrap_content"
         android:text="@string/text_chip"
         android:textColor="@color/white"
-        app:chipBackgroundColor="@color/datadog_violet"
+        app:chipBackgroundColor="@color/openobserve_violet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_compat_checked_text_view" />
 
@@ -247,7 +247,7 @@
         android:layout_marginStart="@dimen/default_padding"
         android:text="@string/text_chip"
         android:textColor="@color/white"
-        app:chipBackgroundColor="@color/datadog_violet_dark"
+        app:chipBackgroundColor="@color/openobserve_violet_dark"
         app:chipStrokeColor="@color/black"
         app:chipStrokeWidth="2dp"
         app:layout_constraintStart_toEndOf="@+id/chip_1"

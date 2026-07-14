@@ -1,14 +1,14 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.config.AndroidConfig
-import com.datadog.gradle.config.dependencyUpdateConfig
-import com.datadog.gradle.config.java17
-import com.datadog.gradle.config.junitConfig
-import com.datadog.gradle.config.kotlinConfig
+import com.openobserve.gradle.config.AndroidConfig
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.java17
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -24,7 +24,7 @@ android {
 
     compileSdk = AndroidConfig.TARGET_SDK
     buildToolsVersion = AndroidConfig.BUILD_TOOLS_VERSION
-    namespace = "com.datadog.android.core.integration"
+    namespace = "com.openobserve.android.core.integration"
 
     defaultConfig {
         minSdk = AndroidConfig.MIN_SDK
@@ -34,7 +34,7 @@ android {
     }
 
     compileOptions {
-        if (project.hasProperty(com.datadog.gradle.Properties.USE_DESUGARING)) {
+        if (project.hasProperty(com.openobserve.gradle.Properties.USE_DESUGARING)) {
             isCoreLibraryDesugaringEnabled = true
         }
         java17()
@@ -63,10 +63,10 @@ android {
 }
 
 dependencies {
-    if (project.hasProperty(com.datadog.gradle.Properties.USE_DESUGARING)) {
+    if (project.hasProperty(com.openobserve.gradle.Properties.USE_DESUGARING)) {
         coreLibraryDesugaring(libs.androidDesugaringSdk)
     }
-    implementation(project(":dd-sdk-android-core"))
+    implementation(project(":oo-sdk-android-core"))
     implementation(libs.kotlin)
 
     // Testing
@@ -86,7 +86,7 @@ dependencies {
     androidTestImplementation(libs.okHttp)
     androidTestImplementation(libs.okHttpMock)
     androidTestImplementation(libs.gson)
-    if (project.hasProperty(com.datadog.gradle.Properties.USE_API21_JAVA_BACKPORT)) {
+    if (project.hasProperty(com.openobserve.gradle.Properties.USE_API21_JAVA_BACKPORT)) {
         // this is needed to make AssertJ working on APIs <24
         androidTestImplementation(project(":tools:javabackport"))
     }

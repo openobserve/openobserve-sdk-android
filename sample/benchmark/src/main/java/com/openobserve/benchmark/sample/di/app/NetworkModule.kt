@@ -1,0 +1,75 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.benchmark.sample.di.app
+
+import android.content.Context
+import com.openobserve.android.api.SdkCore
+import com.openobserve.android.okhttp.OpenObserveInterceptor
+import com.openobserve.benchmark.sample.config.BenchmarkConfig
+import com.openobserve.benchmark.sample.config.SyntheticsRun
+import com.openobserve.benchmark.sample.config.SyntheticsScenario
+import com.openobserve.benchmark.sample.network.rickandmorty.RickAndMortyNetworkService
+import com.openobserve.benchmark.sample.network.rickandmorty.RickAndMortyNetworkServiceImpl
+import dagger.Binds
+import dagger.Module
+import dagger.Provides
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
+import okhttp3.Cache
+import okhttp3.OkHttpClient
+import java.io.File
+import javax.inject.Singleton
+
+@Module
+internal interface NetworkModule {
+
+    @Binds
+    @Singleton
+    fun bindRickAndMortyNetworkService(impl: RickAndMortyNetworkServiceImpl): RickAndMortyNetworkService
+
+    companion object {
+        @Provides
+        @Singleton
+        fun provideOkHttpClient(
+            context: Context,
+            config: BenchmarkConfig,
+            sdkCore: dagger.Lazy<SdkCore>
+        ): OkHttpClient {
+            return OkHttpClient.Builder().apply {
+                cache(Cache(File(context.cacheDir, "okhttp-cache"), OKHTTP_CACHE_SIZE_BYTES))
+
+                if (config.scenario == SyntheticsScenario.RumAuto && config.run == SyntheticsRun.Instrumented) {
+                    val interceptor = OpenObserveInterceptor.Builder(emptyMap()).apply {
+                        setSdkInstanceName(sdkCore.get().name)
+                    }.build()
+
+                    addInterceptor(interceptor)
+                }
+            }.build()
+        }
+
+        @Provides
+        @Singleton
+        fun provideKtorHttpClient(
+            okHttpClient: OkHttpClient
+        ): HttpClient {
+            return HttpClient(OkHttp) {
+                engine {
+                    preconfigured = okHttpClient
+                }
+                install(ContentNegotiation) {
+                    json(Json { ignoreUnknownKeys = true })
+                }
+            }
+        }
+    }
+}
+
+private const val OKHTTP_CACHE_SIZE_BYTES: Long = 10 * 1024 * 1024 // 10mb

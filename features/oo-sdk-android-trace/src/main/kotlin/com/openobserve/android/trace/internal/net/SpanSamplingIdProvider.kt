@@ -1,0 +1,29 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.trace.internal.net
+
+import com.openobserve.android.log.LogAttributes
+import com.openobserve.android.trace.api.span.OpenObserveSpan
+
+private const val HEX_RADIX = 16
+
+internal object SpanSamplingIdProvider {
+
+    fun provideId(span: OpenObserveSpan): ULong {
+        val context = span.context()
+        val sessionId = context.tags[LogAttributes.RUM_SESSION_ID] as? String
+
+        // for a UUID with value aaaaaaaa-bbbb-Mccc-Nddd-1234567890ab
+        // we use as the input id the last part : 0x1234567890ab
+        val sessionIdToken = sessionId?.split('-')
+            ?.lastOrNull()
+            ?.toLongOrNull(HEX_RADIX)
+            ?.toULong()
+
+        return sessionIdToken ?: context.traceId.toLong().toULong()
+    }
+}

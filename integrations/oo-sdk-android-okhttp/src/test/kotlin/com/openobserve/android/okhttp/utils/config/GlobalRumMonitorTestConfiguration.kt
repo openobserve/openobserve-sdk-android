@@ -1,0 +1,45 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.okhttp.utils.config
+
+import com.openobserve.android.core.InternalSdkCore
+import com.openobserve.android.rum.GlobalRumMonitor
+import com.openobserve.android.rum.RumMonitor
+import com.openobserve.android.rum.internal.monitor.AdvancedNetworkRumMonitor
+import com.openobserve.android.tests.config.OpenObserveSingletonTestConfiguration
+import com.openobserve.tools.unit.extensions.config.MockTestConfiguration
+import fr.xgouchet.elmyr.Forge
+import org.mockito.kotlin.mock
+import kotlin.reflect.full.declaredFunctions
+import kotlin.reflect.jvm.isAccessible
+
+// TODO RUMM-2949 Share forgeries/test configurations between modules
+internal class GlobalRumMonitorTestConfiguration(
+    private val ooSingletonTestConfiguration: OpenObserveSingletonTestConfiguration? = null
+) : MockTestConfiguration<FakeRumMonitor>(FakeRumMonitor::class.java) {
+
+    lateinit var mockSdkCore: InternalSdkCore
+
+    override fun setUp(forge: Forge) {
+        super.setUp(forge)
+        mockSdkCore = ooSingletonTestConfiguration?.mockInstance ?: mock()
+        GlobalRumMonitor::class.declaredFunctions.first { it.name == "registerIfAbsent" }.apply {
+            isAccessible = true
+            call(GlobalRumMonitor::class.objectInstance, mockInstance, mockSdkCore)
+        }
+    }
+
+    override fun tearDown(forge: Forge) {
+        GlobalRumMonitor::class.java.getDeclaredMethod("reset").apply {
+            isAccessible = true
+            invoke(null)
+        }
+        super.tearDown(forge)
+    }
+}
+
+internal interface FakeRumMonitor : RumMonitor, AdvancedNetworkRumMonitor

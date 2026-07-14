@@ -1,13 +1,13 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.config.androidLibraryConfig
-import com.datadog.gradle.config.dependencyUpdateConfig
-import com.datadog.gradle.config.junitConfig
-import com.datadog.gradle.config.kotlinConfig
+import com.openobserve.gradle.config.androidLibraryConfig
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -24,13 +24,13 @@ plugins {
 }
 
 android {
-    namespace = "com.datadog.android.rum.integration"
+    namespace = "com.openobserve.android.rum.integration"
 }
 
 dependencies {
-    implementation(project(":dd-sdk-android-core"))
-    implementation(project(":dd-sdk-android-internal"))
-    implementation(project(":features:dd-sdk-android-rum"))
+    implementation(project(":oo-sdk-android-core"))
+    implementation(project(":oo-sdk-android-internal"))
+    implementation(project(":features:oo-sdk-android-rum"))
     implementation(libs.kotlin)
     implementation(libs.bundles.androidXNavigation)
 
@@ -43,8 +43,8 @@ dependencies {
             )
         }
     }
-    testImplementation(testFixtures(project(":dd-sdk-android-core")))
-    testImplementation(testFixtures(project(":features:dd-sdk-android-rum")))
+    testImplementation(testFixtures(project(":oo-sdk-android-core")))
+    testImplementation(testFixtures(project(":features:oo-sdk-android-rum")))
     testImplementation(project(":reliability:stub-core"))
     testImplementation(libs.bundles.androidXNavigation)
     testImplementation(libs.bundles.jUnit5)

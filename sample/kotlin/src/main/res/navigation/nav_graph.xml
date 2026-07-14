@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
-  ~ This product includes software developed at Datadog (https://www.datadoghq.com/).
-  ~ Copyright 2016-Present Datadog, Inc.
+  ~ This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+  ~ Copyright 2016-Present OpenObserve, Inc.
   -->
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,141 +12,141 @@
 
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.datadog.android.sample.home.HomeFragment"
+        android:name="com.openobserve.android.sample.home.HomeFragment"
         android:label="@string/title_home">
     </fragment>
 
     <fragment
         android:id="@+id/fragment_logs"
-        android:name="com.datadog.android.sample.logs.LogsFragment"
+        android:name="com.openobserve.android.sample.logs.LogsFragment"
         android:label="@string/title_logs"/>
 
     <fragment
         android:id="@+id/fragment_openfeature"
-        android:name="com.datadog.android.sample.flags.OpenFeatureFragment"
+        android:name="com.openobserve.android.sample.flags.OpenFeatureFragment"
         android:label="@string/title_openfeature"/>
 
     <fragment
         android:id="@+id/fragment_crash"
-        android:name="com.datadog.android.sample.crash.CrashFragment"
+        android:name="com.openobserve.android.sample.crash.CrashFragment"
         android:label="@string/title_crash"/>
 
     <fragment
         android:id="@+id/fragment_trace"
-        android:name="com.datadog.android.sample.traces.TracesFragment"
+        android:name="com.openobserve.android.sample.traces.TracesFragment"
         android:label="@string/title_traces"/>
 
     <fragment
             android:id="@+id/fragment_vitals"
-            android:name="com.datadog.android.sample.vitals.VitalsFragment"
+            android:name="com.openobserve.android.sample.vitals.VitalsFragment"
             android:label="@string/title_vitals"/>
 
     <fragment
         android:id="@+id/fragment_webview"
-        android:name="com.datadog.android.sample.webview.WebFragment"
+        android:name="com.openobserve.android.sample.webview.WebFragment"
         android:label="@string/title_webview"/>
 
     <fragment
         android:id="@+id/fragment_data_list"
-        android:name="com.datadog.android.sample.datalist.DataListFragment"
+        android:name="com.openobserve.android.sample.datalist.DataListFragment"
         android:label="@string/title_data_list"/>
 
     <fragment
         android:id="@+id/fragment_image"
-        android:name="com.datadog.android.sample.image.ImageFragment"
+        android:name="com.openobserve.android.sample.image.ImageFragment"
         android:label="@string/title_image"/>
 
     <fragment
         android:id="@+id/fragment_cronet_image"
-        android:name="com.datadog.android.sample.cronet.CronetImageFragment"
+        android:name="com.openobserve.android.sample.cronet.CronetImageFragment"
         android:label="@string/title_cronet_image"/>
 
     <fragment
         android:id="@+id/fragment_user"
-        android:name="com.datadog.android.sample.user.UserFragment"
+        android:name="com.openobserve.android.sample.user.UserFragment"
         android:label="@string/title_user_info"/>
 
     <fragment
         android:id="@+id/fragment_account"
-        android:name="com.datadog.android.sample.account.AccountFragment"
+        android:name="com.openobserve.android.sample.account.AccountFragment"
         android:label="@string/title_account_info" />
 
     <activity android:id="@+id/activity_jetpack_compose"
-        android:name="com.datadog.android.sample.compose.JetpackComposeActivity"
+        android:name="com.openobserve.android.sample.compose.JetpackComposeActivity"
         android:label="@string/title_compose"/>
 
     <fragment android:id="@+id/fragment_about"
-              android:name="com.datadog.android.sample.about.AboutFragment"
+              android:name="com.openobserve.android.sample.about.AboutFragment"
               android:label="@string/title_about"/>
 
     <fragment android:id="@+id/fragment_text_view_components"
-        android:name="com.datadog.android.sample.sessionreplay.TextViewComponentsFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.TextViewComponentsFragment"
         android:label="@string/text_view_components"/>
 
     <fragment
         android:id="@+id/fragment_view_group_components"
-        android:name="com.datadog.android.sample.sessionreplay.ViewGroupComponentsFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.ViewGroupComponentsFragment"
         android:label="@string/text_view_components" />
 
     <fragment android:id="@+id/fragment_picker_components"
-        android:name="com.datadog.android.sample.sessionreplay.PickerComponentsFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.PickerComponentsFragment"
         android:label="@string/picker_components"/>
 
     <fragment android:id="@+id/fragment_radio_checkbox_components"
-        android:name="com.datadog.android.sample.sessionreplay.RadioCheckBoxesFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.RadioCheckBoxesFragment"
         android:label="@string/radio_and_check_box_components"/>
 
     <fragment
         android:id="@+id/fragment_tabs"
-        android:name="com.datadog.android.sample.sessionreplay.TabsFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.TabsFragment"
         android:label="@string/tab_component" />
 
     <fragment android:id="@+id/fragment_dropdowns_switchers_components"
-        android:name="com.datadog.android.sample.sessionreplay.DropDownSwitchersFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.DropDownSwitchersFragment"
         android:label="@string/dropdowns_and_switchers_components"/>
 
     <fragment android:id="@+id/fragment_sliders_steppers_components"
-        android:name="com.datadog.android.sample.sessionreplay.SlidersSteppersFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.SlidersSteppersFragment"
         android:label="@string/sliders_and_steppers_components"/>
 
     <fragment android:id="@+id/fragment_different_fonts"
-        android:name="com.datadog.android.sample.sessionreplay.DifferentFontsFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.DifferentFontsFragment"
         android:label="@string/different_fonts"/>
 
     <fragment android:id="@+id/fragment_password_edit_text_components"
-        android:name="com.datadog.android.sample.sessionreplay.PrivacySensitiveTextComponentsFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.PrivacySensitiveTextComponentsFragment"
         android:label="@string/password_input_components"/>
 
     <fragment android:id="@+id/fragment_session_replay"
-        android:name="com.datadog.android.sample.sessionreplay.SessionReplayFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.SessionReplayFragment"
         android:label="@string/session_replay"/>
 
 
     <dialog android:id="@+id/fragment_gdpr"
-              android:name="com.datadog.android.sample.gdpr.GdprDialogFragment"
+              android:name="com.openobserve.android.sample.gdpr.GdprDialogFragment"
               android:label="@string/title_gdpr"/>
 
     <fragment android:id="@+id/fragment_view_pager"
-              android:name="com.datadog.android.sample.ViewPagerFragment"
+              android:name="com.openobserve.android.sample.ViewPagerFragment"
               android:label="@string/title_view_pager"/>
 
     <fragment android:id="@+id/fragment_unsupported_views"
-        android:name="com.datadog.android.sample.sessionreplay.UnsupportedViewsFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.UnsupportedViewsFragment"
         android:label="@string/title_unsupported_views"/>
 
     <fragment android:id="@+id/fragment_image_components"
-        android:name="com.datadog.android.sample.sessionreplay.ImageComponentsFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.ImageComponentsFragment"
         android:label="@string/title_image_components"/>
 
     <fragment android:id="@+id/fragment_image_scaling"
-        android:name="com.datadog.android.sample.sessionreplay.ImageScalingFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.ImageScalingFragment"
         android:label="@string/title_image_scaling"/>
     <fragment android:id="@+id/fragment_webview_record"
-        android:name="com.datadog.android.sample.sessionreplay.WebViewRecordFragment"
+        android:name="com.openobserve.android.sample.sessionreplay.WebViewRecordFragment"
         android:label="@string/webview_recording"/>
 
     <fragment android:id="@+id/fragment_otel_traces"
-        android:name="com.datadog.android.sample.traces.OtelTracesFragment"
+        android:name="com.openobserve.android.sample.traces.OtelTracesFragment"
         android:label="@string/title_otel_traces"/>
 
 </navigation>

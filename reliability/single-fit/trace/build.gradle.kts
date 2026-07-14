@@ -1,13 +1,13 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at Datadog (https://www.datadoghq.com/).
- * Copyright 2016-Present Datadog, Inc.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
  */
 
-import com.datadog.gradle.config.androidLibraryConfig
-import com.datadog.gradle.config.dependencyUpdateConfig
-import com.datadog.gradle.config.junitConfig
-import com.datadog.gradle.config.kotlinConfig
+import com.openobserve.gradle.config.androidLibraryConfig
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -24,7 +24,7 @@ plugins {
 }
 
 android {
-    namespace = "com.datadog.android.trace.integration"
+    namespace = "com.openobserve.android.trace.integration"
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
@@ -32,9 +32,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":dd-sdk-android-core"))
-    implementation(project(":features:dd-sdk-android-trace"))
-    implementation(project(":features:dd-sdk-android-trace-otel"))
+    implementation(project(":oo-sdk-android-core"))
+    implementation(project(":features:oo-sdk-android-trace"))
+    implementation(project(":features:oo-sdk-android-trace-otel"))
     implementation(libs.kotlin)
 
     // Desugaring SDK
@@ -50,10 +50,10 @@ dependencies {
         }
     }
     testImplementation(project(":reliability:stub-core"))
-    testImplementation(project(":dd-sdk-android-internal"))
-    testImplementation(project(":features:dd-sdk-android-trace-internal"))
-    testImplementation(testFixtures(project(":dd-sdk-android-core")))
-    testImplementation(testFixtures(project(":features:dd-sdk-android-trace")))
+    testImplementation(project(":oo-sdk-android-internal"))
+    testImplementation(project(":features:oo-sdk-android-trace-internal"))
+    testImplementation(testFixtures(project(":oo-sdk-android-core")))
+    testImplementation(testFixtures(project(":features:oo-sdk-android-trace")))
     testImplementation(libs.bundles.jUnit5)
     testImplementation(libs.bundles.testTools)
     testImplementation(libs.okHttp)

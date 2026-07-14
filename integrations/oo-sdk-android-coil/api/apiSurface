@@ -1,0 +1,3 @@
+class com.openobserve.android.coil.OpenObserveCoilRequestListener : coil.request.ImageRequest.Listener
+  constructor(com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
+  override fun onError(coil.request.ImageRequest, Throwable)

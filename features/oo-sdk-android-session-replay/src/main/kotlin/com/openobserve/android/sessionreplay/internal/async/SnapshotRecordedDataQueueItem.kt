@@ -1,0 +1,39 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sessionreplay.internal.async
+
+import com.openobserve.android.sessionreplay.internal.processor.RecordedQueuedItemContext
+import com.openobserve.android.sessionreplay.internal.recorder.Node
+import com.openobserve.android.sessionreplay.recorder.SystemInformation
+import java.util.concurrent.atomic.AtomicInteger
+
+internal class SnapshotRecordedDataQueueItem(
+    recordedQueuedItemContext: RecordedQueuedItemContext,
+    internal val systemInformation: SystemInformation,
+    creationTimestampInNs: Long
+) : RecordedDataQueueItem(recordedQueuedItemContext, creationTimestampInNs) {
+    @Volatile internal var nodes = emptyList<Node>()
+
+    @Volatile internal var isFinishedTraversal = false
+    internal val pendingJobs = AtomicInteger(0)
+
+    override fun isValid(): Boolean {
+        if (!isFinishedTraversal) {
+            // item is always valid unless traversal has finished
+            return true
+        }
+
+        return nodes.isNotEmpty()
+    }
+
+    override fun isReady(): Boolean {
+        return isFinishedTraversal && pendingJobs.get() == 0
+    }
+
+    internal fun incrementPendingJobs() = pendingJobs.incrementAndGet()
+    internal fun decrementPendingJobs() = pendingJobs.decrementAndGet()
+}

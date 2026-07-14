@@ -1,0 +1,61 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.sessionreplay.internal.recorder.mapper
+
+import android.view.View
+import androidx.annotation.UiThread
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.sessionreplay.model.MobileSegment
+import com.openobserve.android.sessionreplay.recorder.MappingContext
+import com.openobserve.android.sessionreplay.recorder.mapper.BaseWireframeMapper
+import com.openobserve.android.sessionreplay.utils.AsyncJobStatusCallback
+import com.openobserve.android.sessionreplay.utils.ColorStringFormatter
+import com.openobserve.android.sessionreplay.utils.DrawableToColorMapper
+import com.openobserve.android.sessionreplay.utils.ViewBoundsResolver
+import com.openobserve.android.sessionreplay.utils.ViewIdentifierResolver
+
+internal class ViewWireframeMapper(
+    viewIdentifierResolver: ViewIdentifierResolver,
+    colorStringFormatter: ColorStringFormatter,
+    viewBoundsResolver: ViewBoundsResolver,
+    drawableToColorMapper: DrawableToColorMapper
+) : BaseWireframeMapper<View>(
+    viewIdentifierResolver,
+    colorStringFormatter,
+    viewBoundsResolver,
+    drawableToColorMapper
+) {
+    @UiThread
+    override fun map(
+        view: View,
+        mappingContext: MappingContext,
+        asyncJobStatusCallback: AsyncJobStatusCallback,
+        internalLogger: InternalLogger
+    ): List<MobileSegment.Wireframe> {
+        val viewGlobalBounds = viewBoundsResolver.resolveViewGlobalBounds(
+            view,
+            mappingContext.systemInformation.screenDensity
+        )
+        val shapeStyle = view.background?.let { resolveShapeStyle(it, view.alpha, internalLogger) }
+
+        if (shapeStyle != null) {
+            return listOf(
+                MobileSegment.Wireframe.ShapeWireframe(
+                    resolveViewId(view),
+                    viewGlobalBounds.x,
+                    viewGlobalBounds.y,
+                    viewGlobalBounds.width,
+                    viewGlobalBounds.height,
+                    shapeStyle = shapeStyle,
+                    border = null
+                )
+            )
+        } else {
+            return emptyList()
+        }
+    }
+}

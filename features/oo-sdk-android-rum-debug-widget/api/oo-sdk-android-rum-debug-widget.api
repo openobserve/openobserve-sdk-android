@@ -1,0 +1,5 @@
+public final class com/openobserve/android/insights/RumDebugWidgetKt {
+	public static final fun enableRumDebugWidget (Lcom/openobserve/android/rum/RumConfiguration$Builder;Landroid/app/Application;Z)Lcom/openobserve/android/rum/RumConfiguration$Builder;
+	public static synthetic fun enableRumDebugWidget$default (Lcom/openobserve/android/rum/RumConfiguration$Builder;Landroid/app/Application;ZILjava/lang/Object;)Lcom/openobserve/android/rum/RumConfiguration$Builder;
+}
+

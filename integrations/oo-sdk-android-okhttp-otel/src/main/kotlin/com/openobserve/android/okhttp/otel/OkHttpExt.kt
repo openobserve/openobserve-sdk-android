@@ -1,0 +1,45 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.okhttp.otel
+
+import com.openobserve.android.okhttp.internal.OkHttpRequestInfoBuilder
+import com.openobserve.android.trace.api.OpenObserveTracingConstants
+import com.openobserve.android.trace.internal._TraceInternalProxy
+import com.openobserve.opentelemetry.trace.OtelSpan
+import io.opentelemetry.api.trace.Span
+import okhttp3.Request
+
+/**
+ * Add the current span context as the parent span for the distributed trace created around the Request.
+ * @param span the parent span to add to the request.
+ * @return the modified Request.Builder instance
+ */
+fun Request.Builder.addParentSpan(span: Span): Request.Builder = apply {
+    // very fragile and assumes that OpenObserve Tracer is used
+    // we need to trigger sampling decision at this point, because we are doing context propagation out of OpenTelemetry
+    val builder = OkHttpRequestInfoBuilder(this)
+    if (span is OtelSpan) {
+        _TraceInternalProxy.setTracingSamplingPriorityIfNecessary(span.ooSpanContext)
+        _TraceInternalProxy.propagationHelper.setTraceContext(
+            builder,
+            span.spanContext.traceId,
+            span.spanContext.spanId,
+            span.ooSpanContext.samplingPriority
+        )
+    } else {
+        _TraceInternalProxy.propagationHelper.setTraceContext(
+            builder,
+            span.spanContext.traceId,
+            span.spanContext.spanId,
+            if (span.spanContext.isSampled) {
+                OpenObserveTracingConstants.PrioritySampling.USER_KEEP
+            } else {
+                OpenObserveTracingConstants.PrioritySampling.UNSET
+            }
+        )
+    }
+}

@@ -1,0 +1,39 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.android.insights
+
+import android.app.Application
+import android.content.pm.ApplicationInfo
+import com.openobserve.android.insights.internal.DefaultInsightsCollector
+import com.openobserve.android.insights.internal.overlay.OverlayManager
+import com.openobserve.android.rum.RumConfiguration
+import com.openobserve.android.rum._RumInternalProxy
+
+/**
+ * Enables the RUM Debug Widget for the given [application].
+ *
+ * By default, the widget only shows in debug builds (when the application is debuggable).
+ * In release builds, this call is a no-op unless [allowInRelease] is set to `true`.
+ *
+ * **Important:** Remember to remove this module before shipping to production.
+ *
+ * @param application The application where to enable the RUM Debug Widget.
+ * @param allowInRelease Set to `true` to enable the widget in release builds (e.g., for local
+ * testing). Defaults to `false` to prevent accidental exposure in production.
+ * @return The same [RumConfiguration.Builder] instance.
+ */
+fun RumConfiguration.Builder.enableRumDebugWidget(
+    application: Application,
+    allowInRelease: Boolean = false
+): RumConfiguration.Builder = apply {
+    val isApplicationDebuggable = (application.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
+    if (!isApplicationDebuggable && !allowInRelease) return@apply
+
+    val insightsCollector = DefaultInsightsCollector()
+    _RumInternalProxy.setInsightsCollector(this, insightsCollector)
+    application.registerActivityLifecycleCallbacks(OverlayManager(insightsCollector))
+}

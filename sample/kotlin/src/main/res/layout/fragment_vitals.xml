@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
-  ~ This product includes software developed at Datadog (https://www.datadoghq.com/).
-  ~ Copyright 2016-Present Datadog, Inc.
+  ~ This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+  ~ Copyright 2016-Present OpenObserve, Inc.
   -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -52,7 +52,7 @@
         app:layout_constraintStart_toEndOf="@id/title"
         app:layout_constraintTop_toTopOf="@id/title" />
 
-    <com.datadog.android.sample.widget.DividerView
+    <com.openobserve.android.sample.widget.DividerView
         android:id="@+id/divider_performance_degradation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
         app:layout_constraintTop_toTopOf="@id/vital_stress_test" />
 
 
-    <com.datadog.android.sample.vitals.BadView
+    <com.openobserve.android.sample.vitals.BadView
         android:id="@+id/vital_slow_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@id/vital_slow_frame_rate" />
 
 
-    <com.datadog.android.sample.widget.DividerView
+    <com.openobserve.android.sample.widget.DividerView
         android:id="@+id/divider"
         style="@style/DividerView"
         android:layout_width="0dp"

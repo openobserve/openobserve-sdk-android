@@ -1,0 +1,113 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.opentelemetry.trace
+
+import com.openobserve.android.api.InternalLogger
+import com.openobserve.android.trace.api.OpenObserveTracingConstants
+import com.openobserve.android.trace.api.span.OpenObserveSpan
+import com.openobserve.android.trace.api.span.OpenObserveSpanBuilder
+import com.openobserve.android.trace.api.tracer.OpenObserveTracer
+import com.openobserve.android.trace.opentelemetry.utils.forge.Configurator
+import fr.xgouchet.elmyr.junit5.ForgeConfiguration
+import fr.xgouchet.elmyr.junit5.ForgeExtension
+import io.opentelemetry.api.common.AttributeKey
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.api.extension.Extensions
+import org.mockito.Mock
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.junit.jupiter.MockitoSettings
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoInteractions
+import org.mockito.kotlin.whenever
+import org.mockito.quality.Strictness
+
+@Extensions(
+    ExtendWith(MockitoExtension::class),
+    ExtendWith(ForgeExtension::class)
+)
+@MockitoSettings(strictness = Strictness.LENIENT)
+@ForgeConfiguration(Configurator::class)
+internal class OtelSpanBuilderTest {
+
+    private lateinit var testedBuilder: OtelSpanBuilder
+
+    @Mock
+    lateinit var mockDelegateBuilder: OpenObserveSpanBuilder
+
+    @Mock
+    lateinit var mockAgentTracer: OpenObserveTracer
+
+    @Mock
+    lateinit var mockLogger: InternalLogger
+
+    @Mock
+    lateinit var mockAgentSpan: OpenObserveSpan
+
+    // region Init
+    @BeforeEach
+    fun `set up`() {
+        whenever(mockDelegateBuilder.start()).thenReturn(mockAgentSpan)
+        testedBuilder = OtelSpanBuilder(mockDelegateBuilder, mockAgentTracer, mockLogger)
+    }
+
+    // endregion
+
+    // region setAttribute
+
+    @Test
+    fun `M add attribute W setAttribute`() {
+        // When
+        testedBuilder.setAttribute("string", "b")
+        testedBuilder.setAttribute("empty_string", "")
+        testedBuilder.setAttribute("number", 2L)
+        testedBuilder.setAttribute("boolean", false)
+
+        // Then
+        verify(mockDelegateBuilder).withTag("string", "b")
+        verify(mockDelegateBuilder).withTag("empty_string", "")
+        verify(mockDelegateBuilder).withTag("number", 2L)
+        verify(mockDelegateBuilder).withTag("boolean", false)
+    }
+
+    @Test
+    fun `M add attribute W setAttribute with reserved string key`() {
+        // When
+        testedBuilder.setAttribute(OtelConventions.OPERATION_NAME_SPECIFIC_ATTRIBUTE, "op_name")
+        testedBuilder.setAttribute(OtelConventions.ANALYTICS_EVENT_SPECIFIC_ATTRIBUTES, "true")
+
+        // Then
+        verifyNoInteractions(mockDelegateBuilder)
+        testedBuilder.startSpan()
+
+        verify(mockAgentSpan).operationName = "op_name"
+        verify(mockAgentSpan).setMetric(OpenObserveTracingConstants.Tags.KEY_ANALYTICS_SAMPLE_RATE, 1)
+    }
+
+    @Test
+    fun `M add attribute W setAttribute with reserved attribute key`() {
+        // When
+        testedBuilder.setAttribute(
+            AttributeKey.stringKey(OtelConventions.OPERATION_NAME_SPECIFIC_ATTRIBUTE),
+            "op_name"
+        )
+        testedBuilder.setAttribute(
+            AttributeKey.stringKey(OtelConventions.ANALYTICS_EVENT_SPECIFIC_ATTRIBUTES),
+            "false"
+        )
+
+        // Then
+        verifyNoInteractions(mockDelegateBuilder)
+        testedBuilder.startSpan()
+
+        verify(mockAgentSpan).operationName = "op_name"
+        verify(mockAgentSpan).setMetric(OpenObserveTracingConstants.Tags.KEY_ANALYTICS_SAMPLE_RATE, 0)
+    }
+
+    // endregion
+}

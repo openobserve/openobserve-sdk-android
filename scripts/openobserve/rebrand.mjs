@@ -29,7 +29,7 @@ const CHECK = process.argv.includes('--check')
 const CONTENT_ONLY = process.argv.includes('--content-only')
 
 const map = JSON.parse(fs.readFileSync(path.join(HERE, 'rename-map.json'), 'utf8'))
-const { rules, pathRenames } = map
+const { rules, pathRenames, fileRenames = [] } = map
 
 const keepOursPaths = fs
   .readFileSync(path.join(HERE, 'keep-ours.txt'), 'utf8')
@@ -137,6 +137,25 @@ for (const rule of pathRenames) {
 }
 console.log(`pathRenames total: ${totalMoves} directory moves`)
 
+// ---- Phase 1.5: file renames (basename token) -------------------------------
+// Rename class-name FILES whose basename still carries a Datadog token even though
+// the class INSIDE was already rebranded by the content rules (e.g.
+// DatadogLogGenerator.kt holding `class OpenObserveLogGenerator`). Literal token
+// replacement on the basename only; directory segments were handled by pathRenames.
+let fileMoves = 0
+for (const rule of fileRenames) {
+  for (const f of tracked().filter(
+    (x) => !SKIP.some((re) => re.test(x)) && !keepOursPaths.some((p) => x === p || x.startsWith(`${p}/`))
+  )) {
+    const base = path.basename(f)
+    if (!base.includes(rule.token)) continue
+    const to = path.join(path.dirname(f), base.split(rule.token).join(rule.to))
+    fileMoves++
+    if (!CHECK && !CONTENT_ONLY) git(['mv', f, to])
+  }
+}
+console.log(`fileRenames: ${fileMoves} files ${CHECK ? 'would be' : ''} moved`)
+
 let changed = 0
 for (const file of tracked().filter((f) => !SKIP.some((re) => re.test(f)) && !keepOursPaths.some((p) => f === p || f.startsWith(`${p}/`)))) {
   const abs = path.join(ROOT, file)
@@ -157,4 +176,4 @@ for (const file of tracked().filter((f) => !SKIP.some((re) => re.test(f)) && !ke
   }
 }
 console.log(`content: ${changed} files ${CHECK ? 'would be' : ''} rebranded`)
-if (CHECK && (changed > 0 || totalMoves > 0)) process.exit(1)
+if (CHECK && (changed > 0 || totalMoves > 0 || fileMoves > 0)) process.exit(1)

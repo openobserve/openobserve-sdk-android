@@ -1,0 +1,125 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
+ * Copyright 2016-Present OpenObserve, Inc.
+ */
+
+package com.openobserve.opentelemetry.trace;
+
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.openobserve.android.trace.api.span.OpenObserveSpanLink;
+import com.openobserve.android.trace.api.trace.OpenObserveTraceId;
+import com.openobserve.android.trace.internal.OpenObserveTraceExtKt;
+import com.openobserve.android.trace.internal._TraceInternalProxy;
+import com.openobserve.opentelemetry.context.propagation.TraceStateHelper;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.trace.SpanContext;
+
+public class OtelSpanLink implements OpenObserveSpanLink {
+  private final long spanId;
+  private final boolean sampled;
+  private final String traceState;
+  private final OpenObserveTraceId traceId;
+  private final Map<String, String> attributes;
+
+  public OtelSpanLink(SpanContext spanContext) {
+    this(spanContext, Attributes.empty());
+  }
+
+  public OtelSpanLink(SpanContext spanContext, Attributes attributes) {
+    traceId = OpenObserveTraceExtKt.fromHex(OpenObserveTraceId.Companion, spanContext.getTraceId());
+    spanId = _TraceInternalProxy.spanIdConverter.fromHex(spanContext.getSpanId());
+    sampled = spanContext.isSampled();
+    traceState = TraceStateHelper.encodeHeader(spanContext.getTraceState());
+    this.attributes = convertAttributes(attributes);
+  }
+
+  private static Map<String, String> convertAttributes(Attributes attributes) {
+    if (attributes.isEmpty()) return Collections.emptyMap();
+
+
+    Map<String, String> bundle = new HashMap<>();
+    attributes.forEach((attributeKey, value) -> {
+      switch (attributeKey.getType()) {
+        case STRING:
+          bundle.put(attributeKey.getKey(), (String) value);
+          break;
+        case BOOLEAN:
+          bundle.put(attributeKey.getKey(), value.toString());
+          break;
+        case LONG:
+          bundle.put(attributeKey.getKey(), Long.toString((long) value));
+          break;
+        case DOUBLE:
+          bundle.put(attributeKey.getKey(), Double.toString((double) value));
+          break;
+        case STRING_ARRAY:
+          // noinspection unchecked
+          putArray(bundle, attributeKey.getKey(), (List<String>) value);
+          break;
+        case BOOLEAN_ARRAY:
+          //noinspection unchecked,DuplicateBranchesInSwitch
+          putArray(bundle, attributeKey.getKey(), (List<Boolean>) value);
+          break;
+        case LONG_ARRAY:
+          //noinspection unchecked,DuplicateBranchesInSwitch
+          putArray(bundle, attributeKey.getKey(), (List<Long>) value);
+          break;
+        case DOUBLE_ARRAY:
+          //noinspection unchecked,DuplicateBranchesInSwitch
+          putArray(bundle, attributeKey.getKey(), (List<Double>) value);
+          break;
+      }
+    });
+
+    return bundle;
+  }
+
+  @NonNull
+  @Override
+  public OpenObserveTraceId getTraceId() {
+    return traceId;
+  }
+
+  @Override
+  public long getSpanId() {
+    return spanId;
+  }
+
+  @Nullable
+  @Override
+  public Map<String, String> getAttributes() {
+    return attributes;
+  }
+
+  @Override
+  public boolean getSampled() {
+    return sampled;
+  }
+
+  @NonNull
+  @Override
+  public String getTraceStrace() {
+    return traceState;
+  }
+
+  private static <T> void putArray(Map<String, String> attributes, String key, List<T> array) {
+    if (key != null && array != null) {
+      for (int index = 0; index < array.size(); index++) {
+        Object value = array.get(index);
+        if (value != null) {
+          attributes.put(key + "." + index, value.toString());
+        }
+      }
+    }
+  }
+}
