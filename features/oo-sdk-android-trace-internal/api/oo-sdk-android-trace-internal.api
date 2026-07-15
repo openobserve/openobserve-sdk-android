@@ -78,8 +78,6 @@ public class com/openobserve/trace/api/Config {
 	public fun isCiVisibilityEnabled ()Z
 	public fun isClientIpEnabled ()Z
 	public fun isDataStreamsEnabled ()Z
-	public static fun isOpenObserveProfilerEnablementOverridden ()Z
-	public static fun isOpenObserveProfilerSafeInCurrentEnvironment ()Z
 	public fun isDebugEnabled ()Z
 	public fun isEnabled (ZLjava/lang/String;Ljava/lang/String;)Z
 	public fun isEndToEndDurationEnabled (Z[Ljava/lang/String;)Z
@@ -90,6 +88,8 @@ public class com/openobserve/trace/api/Config {
 	public fun isLogExtractHeaderNames ()Z
 	public fun isLogsInjectionEnabled ()Z
 	public fun isLongRunningTraceEnabled ()Z
+	public static fun isOpenObserveProfilerEnablementOverridden ()Z
+	public static fun isOpenObserveProfilerSafeInCurrentEnvironment ()Z
 	public fun isPeerServiceDefaultsEnabled ()Z
 	public fun isPrioritySamplingEnabled ()Z
 	public fun isProfilingEnabled ()Z
@@ -125,12 +125,12 @@ public final class com/openobserve/trace/api/ConfigDefaults {
 	public static final field DEFAULT_AGENT_TIMEOUT I
 	public static final field DEFAULT_AGENT_WRITER_TYPE Ljava/lang/String;
 	public static final field DEFAULT_ASYNC_PROPAGATING Z
-	public static final field DEFAULT_OOSTATSD_PORT I
 	public static final field DEFAULT_IAST_DEDUPLICATION_ENABLED Z
 	public static final field DEFAULT_IAST_MAX_CONCURRENT_REQUESTS I
 	public static final field DEFAULT_IAST_MAX_RANGE_COUNT I
 	public static final field DEFAULT_IAST_REQUEST_SAMPLING I
 	public static final field DEFAULT_IAST_VULNERABILITIES_PER_REQUEST I
+	public static final field DEFAULT_OOSTATSD_PORT I
 	public static final field DEFAULT_SERVICE_NAME Ljava/lang/String;
 	public static final field DEFAULT_SERVLET_ROOT_CONTEXT_SERVICE_NAME Ljava/lang/String;
 	public static final field DEFAULT_STARTUP_LOGS_ENABLED Z
@@ -519,9 +519,9 @@ public abstract interface class com/openobserve/trace/api/TraceConfig {
 public final class com/openobserve/trace/api/TracePropagationStyle : java/lang/Enum {
 	public static final field B3MULTI Lcom/openobserve/trace/api/TracePropagationStyle;
 	public static final field B3SINGLE Lcom/openobserve/trace/api/TracePropagationStyle;
-	public static final field OPENOBSERVE Lcom/openobserve/trace/api/TracePropagationStyle;
 	public static final field HAYSTACK Lcom/openobserve/trace/api/TracePropagationStyle;
 	public static final field NONE Lcom/openobserve/trace/api/TracePropagationStyle;
+	public static final field OPENOBSERVE Lcom/openobserve/trace/api/TracePropagationStyle;
 	public static final field TRACECONTEXT Lcom/openobserve/trace/api/TracePropagationStyle;
 	public static final field XRAY Lcom/openobserve/trace/api/TracePropagationStyle;
 	public fun toString ()Ljava/lang/String;
@@ -598,18 +598,18 @@ public final class com/openobserve/trace/api/config/GeneralConfig {
 	public static final field CONFIGURATION_FILE Ljava/lang/String;
 	public static final field DATA_STREAMS_BUCKET_DURATION_SECONDS Ljava/lang/String;
 	public static final field DATA_STREAMS_ENABLED Ljava/lang/String;
-	public static final field OOSTATSD_ARGS Ljava/lang/String;
-	public static final field OOSTATSD_HOST Ljava/lang/String;
-	public static final field OOSTATSD_NAMED_PIPE Ljava/lang/String;
-	public static final field OOSTATSD_PATH Ljava/lang/String;
-	public static final field OOSTATSD_PORT Ljava/lang/String;
-	public static final field OOSTATSD_START_DELAY Ljava/lang/String;
 	public static final field ENV Ljava/lang/String;
 	public static final field GLOBAL_TAGS Ljava/lang/String;
 	public static final field HEALTH_METRICS_ENABLED Ljava/lang/String;
 	public static final field HEALTH_METRICS_STATSD_HOST Ljava/lang/String;
 	public static final field HEALTH_METRICS_STATSD_PORT Ljava/lang/String;
 	public static final field INTERNAL_EXIT_ON_FAILURE Ljava/lang/String;
+	public static final field OOSTATSD_ARGS Ljava/lang/String;
+	public static final field OOSTATSD_HOST Ljava/lang/String;
+	public static final field OOSTATSD_NAMED_PIPE Ljava/lang/String;
+	public static final field OOSTATSD_PATH Ljava/lang/String;
+	public static final field OOSTATSD_PORT Ljava/lang/String;
+	public static final field OOSTATSD_START_DELAY Ljava/lang/String;
 	public static final field PERF_METRICS_ENABLED Ljava/lang/String;
 	public static final field PRIMARY_TAG Ljava/lang/String;
 	public static final field RUNTIME_ID_ENABLED Ljava/lang/String;
@@ -652,6 +652,36 @@ public final class com/openobserve/trace/api/config/ProfilingConfig {
 	public static final field PROFILING_CONTEXT_ATTRIBUTES Ljava/lang/String;
 	public static final field PROFILING_CONTEXT_ATTRIBUTES_RESOURCE_NAME_ENABLED Ljava/lang/String;
 	public static final field PROFILING_CONTEXT_ATTRIBUTES_SPAN_NAME_ENABLED Ljava/lang/String;
+	public static final field PROFILING_DEBUG_DUMP_PATH Ljava/lang/String;
+	public static final field PROFILING_DEBUG_JFR_DISABLED Ljava/lang/String;
+	public static final field PROFILING_DIRECT_ALLOCATION_ENABLED Ljava/lang/String;
+	public static final field PROFILING_DIRECT_ALLOCATION_ENABLED_DEFAULT Z
+	public static final field PROFILING_DIRECT_ALLOCATION_SAMPLE_LIMIT Ljava/lang/String;
+	public static final field PROFILING_DIRECT_ALLOCATION_SAMPLE_LIMIT_DEFAULT I
+	public static final field PROFILING_DISABLED_EVENTS Ljava/lang/String;
+	public static final field PROFILING_ENABLED Ljava/lang/String;
+	public static final field PROFILING_ENABLED_DEFAULT Z
+	public static final field PROFILING_ENABLED_EVENTS Ljava/lang/String;
+	public static final field PROFILING_ENDPOINT_COLLECTION_ENABLED Ljava/lang/String;
+	public static final field PROFILING_ENDPOINT_COLLECTION_ENABLED_DEFAULT Z
+	public static final field PROFILING_EXCEPTION_HISTOGRAM_MAX_COLLECTION_SIZE Ljava/lang/String;
+	public static final field PROFILING_EXCEPTION_HISTOGRAM_MAX_COLLECTION_SIZE_DEFAULT I
+	public static final field PROFILING_EXCEPTION_HISTOGRAM_TOP_ITEMS Ljava/lang/String;
+	public static final field PROFILING_EXCEPTION_HISTOGRAM_TOP_ITEMS_DEFAULT I
+	public static final field PROFILING_EXCEPTION_RECORD_MESSAGE Ljava/lang/String;
+	public static final field PROFILING_EXCEPTION_RECORD_MESSAGE_DEFAULT Z
+	public static final field PROFILING_EXCEPTION_SAMPLE_LIMIT Ljava/lang/String;
+	public static final field PROFILING_EXCEPTION_SAMPLE_LIMIT_DEFAULT I
+	public static final field PROFILING_EXCLUDE_AGENT_THREADS Ljava/lang/String;
+	public static final field PROFILING_HEAP_ENABLED Ljava/lang/String;
+	public static final field PROFILING_HEAP_ENABLED_DEFAULT Z
+	public static final field PROFILING_HEAP_HISTOGRAM_ENABLED Ljava/lang/String;
+	public static final field PROFILING_HEAP_HISTOGRAM_ENABLED_DEFAULT Z
+	public static final field PROFILING_HEAP_HISTOGRAM_MODE Ljava/lang/String;
+	public static final field PROFILING_HEAP_HISTOGRAM_MODE_DEFAULT Ljava/lang/String;
+	public static final field PROFILING_HOTSPOTS_ENABLED Ljava/lang/String;
+	public static final field PROFILING_JFR_REPOSITORY_MAXSIZE Ljava/lang/String;
+	public static final field PROFILING_JFR_REPOSITORY_MAXSIZE_DEFAULT I
 	public static final field PROFILING_OPENOBSERVE_PROFILER_ALLOC_ENABLED Ljava/lang/String;
 	public static final field PROFILING_OPENOBSERVE_PROFILER_ALLOC_ENABLED_DEFAULT Z
 	public static final field PROFILING_OPENOBSERVE_PROFILER_ALLOC_INTERVAL Ljava/lang/String;
@@ -693,36 +723,6 @@ public final class com/openobserve/trace/api/config/ProfilingConfig {
 	public static final field PROFILING_OPENOBSERVE_PROFILER_WALL_ENABLED_DEFAULT Z
 	public static final field PROFILING_OPENOBSERVE_PROFILER_WALL_INTERVAL Ljava/lang/String;
 	public static final field PROFILING_OPENOBSERVE_PROFILER_WALL_INTERVAL_DEFAULT I
-	public static final field PROFILING_DEBUG_DUMP_PATH Ljava/lang/String;
-	public static final field PROFILING_DEBUG_JFR_DISABLED Ljava/lang/String;
-	public static final field PROFILING_DIRECT_ALLOCATION_ENABLED Ljava/lang/String;
-	public static final field PROFILING_DIRECT_ALLOCATION_ENABLED_DEFAULT Z
-	public static final field PROFILING_DIRECT_ALLOCATION_SAMPLE_LIMIT Ljava/lang/String;
-	public static final field PROFILING_DIRECT_ALLOCATION_SAMPLE_LIMIT_DEFAULT I
-	public static final field PROFILING_DISABLED_EVENTS Ljava/lang/String;
-	public static final field PROFILING_ENABLED Ljava/lang/String;
-	public static final field PROFILING_ENABLED_DEFAULT Z
-	public static final field PROFILING_ENABLED_EVENTS Ljava/lang/String;
-	public static final field PROFILING_ENDPOINT_COLLECTION_ENABLED Ljava/lang/String;
-	public static final field PROFILING_ENDPOINT_COLLECTION_ENABLED_DEFAULT Z
-	public static final field PROFILING_EXCEPTION_HISTOGRAM_MAX_COLLECTION_SIZE Ljava/lang/String;
-	public static final field PROFILING_EXCEPTION_HISTOGRAM_MAX_COLLECTION_SIZE_DEFAULT I
-	public static final field PROFILING_EXCEPTION_HISTOGRAM_TOP_ITEMS Ljava/lang/String;
-	public static final field PROFILING_EXCEPTION_HISTOGRAM_TOP_ITEMS_DEFAULT I
-	public static final field PROFILING_EXCEPTION_RECORD_MESSAGE Ljava/lang/String;
-	public static final field PROFILING_EXCEPTION_RECORD_MESSAGE_DEFAULT Z
-	public static final field PROFILING_EXCEPTION_SAMPLE_LIMIT Ljava/lang/String;
-	public static final field PROFILING_EXCEPTION_SAMPLE_LIMIT_DEFAULT I
-	public static final field PROFILING_EXCLUDE_AGENT_THREADS Ljava/lang/String;
-	public static final field PROFILING_HEAP_ENABLED Ljava/lang/String;
-	public static final field PROFILING_HEAP_ENABLED_DEFAULT Z
-	public static final field PROFILING_HEAP_HISTOGRAM_ENABLED Ljava/lang/String;
-	public static final field PROFILING_HEAP_HISTOGRAM_ENABLED_DEFAULT Z
-	public static final field PROFILING_HEAP_HISTOGRAM_MODE Ljava/lang/String;
-	public static final field PROFILING_HEAP_HISTOGRAM_MODE_DEFAULT Ljava/lang/String;
-	public static final field PROFILING_HOTSPOTS_ENABLED Ljava/lang/String;
-	public static final field PROFILING_JFR_REPOSITORY_MAXSIZE Ljava/lang/String;
-	public static final field PROFILING_JFR_REPOSITORY_MAXSIZE_DEFAULT I
 	public static final field PROFILING_PROXY_HOST Ljava/lang/String;
 	public static final field PROFILING_PROXY_PASSWORD Ljava/lang/String;
 	public static final field PROFILING_PROXY_PORT Ljava/lang/String;
@@ -3136,16 +3136,6 @@ public class com/openobserve/trace/core/propagation/CorePropagation : com/openob
 	public fun inject (Lcom/openobserve/trace/bootstrap/instrumentation/api/AgentSpan;Ljava/lang/Object;Lcom/openobserve/trace/bootstrap/instrumentation/api/AgentPropagation$Setter;Lcom/openobserve/trace/api/TracePropagationStyle;)V
 }
 
-public class com/openobserve/trace/core/propagation/OpenObserveHttpCodec {
-	public static final field OPENOBSERVE_TAGS_KEY Ljava/lang/String;
-	public static final field ORIGIN_KEY Ljava/lang/String;
-	public static final field SAMPLING_PRIORITY_KEY Ljava/lang/String;
-	public static final field SPAN_ID_KEY Ljava/lang/String;
-	public static final field TRACE_ID_KEY Ljava/lang/String;
-	public static fun newExtractor (Lcom/openobserve/trace/api/Config;Lcom/openobserve/android/trace/internal/compat/function/Supplier;)Lcom/openobserve/trace/core/propagation/HttpCodec$Extractor;
-	public static fun newInjector (Ljava/util/Map;)Lcom/openobserve/trace/core/propagation/HttpCodec$Injector;
-}
-
 public class com/openobserve/trace/core/propagation/ExtractedContext : com/openobserve/trace/bootstrap/instrumentation/api/TagContext {
 	public fun <init> (Lcom/openobserve/trace/api/DDTraceId;JILjava/lang/CharSequence;JLjava/util/Map;Ljava/util/Map;Lcom/openobserve/trace/bootstrap/instrumentation/api/TagContext$HttpHeaders;Lcom/openobserve/trace/core/propagation/PropagationTags;Lcom/openobserve/trace/api/TraceConfig;Lcom/openobserve/trace/api/TracePropagationStyle;)V
 	public fun <init> (Lcom/openobserve/trace/api/DDTraceId;JILjava/lang/CharSequence;Lcom/openobserve/trace/core/propagation/PropagationTags;Lcom/openobserve/trace/api/TracePropagationStyle;)V
@@ -3196,6 +3186,16 @@ public class com/openobserve/trace/core/propagation/NoneCodec {
 	public static final field EXTRACTOR Lcom/openobserve/trace/core/propagation/HttpCodec$Extractor;
 	public static final field INJECTOR Lcom/openobserve/trace/core/propagation/HttpCodec$Injector;
 	public fun <init> ()V
+}
+
+public class com/openobserve/trace/core/propagation/OpenObserveHttpCodec {
+	public static final field OPENOBSERVE_TAGS_KEY Ljava/lang/String;
+	public static final field ORIGIN_KEY Ljava/lang/String;
+	public static final field SAMPLING_PRIORITY_KEY Ljava/lang/String;
+	public static final field SPAN_ID_KEY Ljava/lang/String;
+	public static final field TRACE_ID_KEY Ljava/lang/String;
+	public static fun newExtractor (Lcom/openobserve/trace/api/Config;Lcom/openobserve/android/trace/internal/compat/function/Supplier;)Lcom/openobserve/trace/core/propagation/HttpCodec$Extractor;
+	public static fun newInjector (Ljava/util/Map;)Lcom/openobserve/trace/core/propagation/HttpCodec$Injector;
 }
 
 public abstract class com/openobserve/trace/core/propagation/PropagationTags {
@@ -3383,33 +3383,6 @@ public class com/openobserve/trace/core/util/TagsMatcher {
 	public fun matches (Lcom/openobserve/trace/core/CoreSpan;)Z
 }
 
-public class com/openobserve/trace/logger/OpenObserveCoreTracerLogger : com/openobserve/trace/logger/Logger {
-	public fun <init> (Ljava/lang/String;Lcom/openobserve/android/api/InternalLogger;)V
-	public fun debug (Ljava/lang/String;)V
-	public fun debug (Ljava/lang/String;Ljava/lang/Object;)V
-	public fun debug (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-	public fun debug (Ljava/lang/String;Ljava/lang/Throwable;)V
-	public fun debug (Ljava/lang/String;[Ljava/lang/Object;)V
-	public fun error (Ljava/lang/String;)V
-	public fun error (Ljava/lang/String;Ljava/lang/Object;)V
-	public fun error (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-	public fun error (Ljava/lang/String;Ljava/lang/Throwable;)V
-	public fun error (Ljava/lang/String;[Ljava/lang/Object;)V
-	public fun info (Ljava/lang/String;)V
-	public fun info (Ljava/lang/String;Ljava/lang/Object;)V
-	public fun info (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-	public fun info (Ljava/lang/String;Ljava/lang/Throwable;)V
-	public fun info (Ljava/lang/String;[Ljava/lang/Object;)V
-	public fun isDebugEnabled ()Z
-	public fun isInfoEnabled ()Z
-	public fun isWarnEnabled ()Z
-	public fun warn (Ljava/lang/String;)V
-	public fun warn (Ljava/lang/String;Ljava/lang/Object;)V
-	public fun warn (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
-	public fun warn (Ljava/lang/String;Ljava/lang/Throwable;)V
-	public fun warn (Ljava/lang/String;[Ljava/lang/Object;)V
-}
-
 public abstract interface class com/openobserve/trace/logger/ILoggerFactory {
 	public abstract fun getLogger (Ljava/lang/String;)Lcom/openobserve/trace/logger/Logger;
 	public abstract fun getLogger (Ljava/lang/String;Lcom/openobserve/android/api/InternalLogger;)Lcom/openobserve/trace/logger/Logger;
@@ -3452,6 +3425,33 @@ public final class com/openobserve/trace/logger/LoggerFactory {
 
 public class com/openobserve/trace/logger/NoOpLogger : com/openobserve/trace/logger/Logger {
 	public fun <init> ()V
+	public fun debug (Ljava/lang/String;)V
+	public fun debug (Ljava/lang/String;Ljava/lang/Object;)V
+	public fun debug (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+	public fun debug (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun debug (Ljava/lang/String;[Ljava/lang/Object;)V
+	public fun error (Ljava/lang/String;)V
+	public fun error (Ljava/lang/String;Ljava/lang/Object;)V
+	public fun error (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+	public fun error (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun error (Ljava/lang/String;[Ljava/lang/Object;)V
+	public fun info (Ljava/lang/String;)V
+	public fun info (Ljava/lang/String;Ljava/lang/Object;)V
+	public fun info (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+	public fun info (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun info (Ljava/lang/String;[Ljava/lang/Object;)V
+	public fun isDebugEnabled ()Z
+	public fun isInfoEnabled ()Z
+	public fun isWarnEnabled ()Z
+	public fun warn (Ljava/lang/String;)V
+	public fun warn (Ljava/lang/String;Ljava/lang/Object;)V
+	public fun warn (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+	public fun warn (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun warn (Ljava/lang/String;[Ljava/lang/Object;)V
+}
+
+public class com/openobserve/trace/logger/OpenObserveCoreTracerLogger : com/openobserve/trace/logger/Logger {
+	public fun <init> (Ljava/lang/String;Lcom/openobserve/android/api/InternalLogger;)V
 	public fun debug (Ljava/lang/String;)V
 	public fun debug (Ljava/lang/String;Ljava/lang/Object;)V
 	public fun debug (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V

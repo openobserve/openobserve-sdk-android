@@ -1,3 +1,7 @@
+public final class com/openobserve/android/flags/openfeature/FlagsClientExtKt {
+	public static final fun asOpenFeatureProvider (Lcom/openobserve/android/flags/FlagsClient;)Ldev/openfeature/kotlin/sdk/FeatureProvider;
+}
+
 public final class com/openobserve/android/flags/openfeature/OpenObserveFlagsProvider : dev/openfeature/kotlin/sdk/FeatureProvider {
 	public static final field Companion Lcom/openobserve/android/flags/openfeature/OpenObserveFlagsProvider$Companion;
 	public synthetic fun <init> (Lcom/openobserve/android/flags/FlagsClient;Lcom/openobserve/android/api/feature/FeatureSdkCore;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -16,9 +20,5 @@ public final class com/openobserve/android/flags/openfeature/OpenObserveFlagsPro
 }
 
 public final class com/openobserve/android/flags/openfeature/OpenObserveFlagsProvider$Companion {
-}
-
-public final class com/openobserve/android/flags/openfeature/FlagsClientExtKt {
-	public static final fun asOpenFeatureProvider (Lcom/openobserve/android/flags/FlagsClient;)Ldev/openfeature/kotlin/sdk/FeatureProvider;
 }
 

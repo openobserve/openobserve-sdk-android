@@ -103,7 +103,7 @@ internal class CoreTracerSpanToSpanEventMapper(
         resolveSpanLinks(event)?.let { meta[SPAN_LINKS_KEY] = it }
         return SpanEvent.Meta(
             version = ooContext.version,
-            oo = dd,
+            oo = oo,
             span = SpanEvent.Span(),
             tracer = SpanEvent.Tracer(
                 version = ooContext.sdkVersion

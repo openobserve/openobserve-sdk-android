@@ -64,6 +64,12 @@ public final class com/openobserve/android/trace/api/OpenObserveTracingConstants
 	public static final field URL_AS_RESOURCE_NAME Ljava/lang/String;
 }
 
+public final class com/openobserve/android/trace/api/propagation/NoOpOpenObservePropagation : com/openobserve/android/trace/api/propagation/OpenObservePropagation {
+	public fun <init> ()V
+	public fun extract (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Lcom/openobserve/android/trace/api/span/OpenObserveSpanContext;
+	public fun inject (Lcom/openobserve/android/trace/api/span/OpenObserveSpanContext;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)V
+}
+
 public abstract interface class com/openobserve/android/trace/api/propagation/OpenObserveHttpHeadersPropagation {
 	public abstract fun handleNotSampledHeaders (Lcom/openobserve/android/api/instrumentation/network/HttpRequestInfoBuilder;Lcom/openobserve/android/trace/api/tracer/OpenObserveTracer;Lcom/openobserve/android/trace/api/span/OpenObserveSpan;)Lcom/openobserve/android/api/instrumentation/network/HttpRequestInfoBuilder;
 	public abstract fun handleSampledHeaders (Lcom/openobserve/android/api/instrumentation/network/HttpRequestInfoBuilder;Lcom/openobserve/android/trace/api/tracer/OpenObserveTracer;Lcom/openobserve/android/trace/api/span/OpenObserveSpan;)Lcom/openobserve/android/api/instrumentation/network/HttpRequestInfoBuilder;
@@ -72,12 +78,6 @@ public abstract interface class com/openobserve/android/trace/api/propagation/Op
 public abstract interface class com/openobserve/android/trace/api/propagation/OpenObservePropagation {
 	public abstract fun extract (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Lcom/openobserve/android/trace/api/span/OpenObserveSpanContext;
 	public abstract fun inject (Lcom/openobserve/android/trace/api/span/OpenObserveSpanContext;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)V
-}
-
-public final class com/openobserve/android/trace/api/propagation/NoOpOpenObservePropagation : com/openobserve/android/trace/api/propagation/OpenObservePropagation {
-	public fun <init> ()V
-	public fun extract (Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Lcom/openobserve/android/trace/api/span/OpenObserveSpanContext;
-	public fun inject (Lcom/openobserve/android/trace/api/span/OpenObserveSpanContext;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)V
 }
 
 public abstract interface class com/openobserve/android/trace/api/scope/OpenObserveScope : java/io/Closeable {
@@ -167,6 +167,28 @@ public abstract interface class com/openobserve/android/trace/api/trace/OpenObse
 public final class com/openobserve/android/trace/api/trace/OpenObserveTraceId$Companion {
 }
 
+public final class com/openobserve/android/trace/api/tracer/NoOpOpenObserveTracer : com/openobserve/android/trace/api/tracer/OpenObserveTracer {
+	public fun <init> ()V
+	public fun activateSpan (Lcom/openobserve/android/trace/api/span/OpenObserveSpan;)Lcom/openobserve/android/trace/api/scope/OpenObserveScope;
+	public fun activeSpan ()Lcom/openobserve/android/trace/api/span/OpenObserveSpan;
+	public fun addScopeListener (Lcom/openobserve/android/trace/api/scope/OpenObserveScopeListener;)V
+	public fun buildSpan (Ljava/lang/CharSequence;)Lcom/openobserve/android/trace/api/span/OpenObserveSpanBuilder;
+	public fun buildSpan (Ljava/lang/String;Ljava/lang/CharSequence;)Lcom/openobserve/android/trace/api/span/OpenObserveSpanBuilder;
+	public fun propagate ()Lcom/openobserve/android/trace/api/propagation/OpenObservePropagation;
+}
+
+public final class com/openobserve/android/trace/api/tracer/NoOpOpenObserveTracerBuilder : com/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder {
+	public fun <init> ()V
+	public fun build ()Lcom/openobserve/android/trace/api/tracer/OpenObserveTracer;
+	public fun setBundleWithRumEnabled (Z)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
+	public fun setTraceRateLimit (I)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
+	public fun withPartialFlushMinSpans (I)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
+	public fun withSampleRate (D)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
+	public fun withServiceName (Ljava/lang/String;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
+	public fun withTag (Ljava/lang/String;Ljava/lang/String;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
+	public fun withTracingHeadersTypes (Ljava/util/Set;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
+}
+
 public abstract interface class com/openobserve/android/trace/api/tracer/OpenObserveTracer {
 	public abstract fun activateSpan (Lcom/openobserve/android/trace/api/span/OpenObserveSpan;)Lcom/openobserve/android/trace/api/scope/OpenObserveScope;
 	public abstract fun activeSpan ()Lcom/openobserve/android/trace/api/span/OpenObserveSpan;
@@ -189,27 +211,5 @@ public abstract interface class com/openobserve/android/trace/api/tracer/OpenObs
 	public abstract fun withServiceName (Ljava/lang/String;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
 	public abstract fun withTag (Ljava/lang/String;Ljava/lang/String;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
 	public abstract fun withTracingHeadersTypes (Ljava/util/Set;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
-}
-
-public final class com/openobserve/android/trace/api/tracer/NoOpOpenObserveTracer : com/openobserve/android/trace/api/tracer/OpenObserveTracer {
-	public fun <init> ()V
-	public fun activateSpan (Lcom/openobserve/android/trace/api/span/OpenObserveSpan;)Lcom/openobserve/android/trace/api/scope/OpenObserveScope;
-	public fun activeSpan ()Lcom/openobserve/android/trace/api/span/OpenObserveSpan;
-	public fun addScopeListener (Lcom/openobserve/android/trace/api/scope/OpenObserveScopeListener;)V
-	public fun buildSpan (Ljava/lang/CharSequence;)Lcom/openobserve/android/trace/api/span/OpenObserveSpanBuilder;
-	public fun buildSpan (Ljava/lang/String;Ljava/lang/CharSequence;)Lcom/openobserve/android/trace/api/span/OpenObserveSpanBuilder;
-	public fun propagate ()Lcom/openobserve/android/trace/api/propagation/OpenObservePropagation;
-}
-
-public final class com/openobserve/android/trace/api/tracer/NoOpOpenObserveTracerBuilder : com/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder {
-	public fun <init> ()V
-	public fun build ()Lcom/openobserve/android/trace/api/tracer/OpenObserveTracer;
-	public fun setBundleWithRumEnabled (Z)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
-	public fun setTraceRateLimit (I)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
-	public fun withPartialFlushMinSpans (I)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
-	public fun withSampleRate (D)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
-	public fun withServiceName (Ljava/lang/String;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
-	public fun withTag (Ljava/lang/String;Ljava/lang/String;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
-	public fun withTracingHeadersTypes (Ljava/util/Set;)Lcom/openobserve/android/trace/api/tracer/OpenObserveTracerBuilder;
 }
 

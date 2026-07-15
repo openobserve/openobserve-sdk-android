@@ -46,15 +46,15 @@ object com.openobserve.android.trace.api.OpenObserveTracingConstants
     const val UNSET: Byte
     const val HTTP_SERVER_DECORATOR: Byte
     const val DEFAULT: Byte
+class com.openobserve.android.trace.api.propagation.NoOpOpenObservePropagation : OpenObservePropagation
+  override fun <C> inject(com.openobserve.android.trace.api.span.OpenObserveSpanContext, C, (C) -> Unit)
+  override fun <C> extract(C, (C) -> Unit): com.openobserve.android.trace.api.span.OpenObserveSpanContext?
 interface com.openobserve.android.trace.api.propagation.OpenObserveHttpHeadersPropagation
   fun handleSampledHeaders(com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder, com.openobserve.android.trace.api.tracer.OpenObserveTracer, com.openobserve.android.trace.api.span.OpenObserveSpan): com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder
   fun handleNotSampledHeaders(com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder, com.openobserve.android.trace.api.tracer.OpenObserveTracer, com.openobserve.android.trace.api.span.OpenObserveSpan): com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder
 interface com.openobserve.android.trace.api.propagation.OpenObservePropagation
   fun <C> inject(com.openobserve.android.trace.api.span.OpenObserveSpanContext, C, (C) -> Unit)
   fun <C> extract(C, (C) -> Unit): com.openobserve.android.trace.api.span.OpenObserveSpanContext?
-class com.openobserve.android.trace.api.propagation.NoOpOpenObservePropagation : OpenObservePropagation
-  override fun <C> inject(com.openobserve.android.trace.api.span.OpenObserveSpanContext, C, (C) -> Unit)
-  override fun <C> extract(C, (C) -> Unit): com.openobserve.android.trace.api.span.OpenObserveSpanContext?
 interface com.openobserve.android.trace.api.scope.OpenObserveScope : java.io.Closeable
   override fun close()
 interface com.openobserve.android.trace.api.span.OpenObserveSpan

@@ -1,3 +1,7 @@
+public final class com/openobserve/android/okhttp/OkHttpIntegrationPlugin {
+	public final fun build ()Lokhttp3/OkHttpClient;
+}
+
 public final class com/openobserve/android/okhttp/OpenObserveEventListener : okhttp3/EventListener {
 	public fun callEnd (Lokhttp3/Call;)V
 	public fun callFailed (Lokhttp3/Call;Ljava/io/IOException;)V
@@ -31,14 +35,10 @@ public final class com/openobserve/android/okhttp/OpenObserveInterceptor$Builder
 	public fun <init> (Ljava/util/Map;)V
 	public fun build ()Lcom/openobserve/android/okhttp/OpenObserveInterceptor;
 	public synthetic fun build ()Lcom/openobserve/android/okhttp/trace/TracingInterceptor;
-	public synthetic fun getThis$dd_sdk_android_okhttp_release ()Lcom/openobserve/android/okhttp/trace/TracingInterceptor$BaseBuilder;
+	public synthetic fun getThis$oo_sdk_android_okhttp_release ()Lcom/openobserve/android/okhttp/trace/TracingInterceptor$BaseBuilder;
 	public final fun setRumResourceAttributesProvider (Lcom/openobserve/android/rum/RumResourceAttributesProvider;)Lcom/openobserve/android/okhttp/OpenObserveInterceptor$Builder;
 	public final fun trackResourceHeaders (Lcom/openobserve/android/rum/resource/ResourceHeadersExtractor;)Lcom/openobserve/android/okhttp/OpenObserveInterceptor$Builder;
 	public static synthetic fun trackResourceHeaders$default (Lcom/openobserve/android/okhttp/OpenObserveInterceptor$Builder;Lcom/openobserve/android/rum/resource/ResourceHeadersExtractor;ILjava/lang/Object;)Lcom/openobserve/android/okhttp/OpenObserveInterceptor$Builder;
-}
-
-public final class com/openobserve/android/okhttp/OkHttpIntegrationPlugin {
-	public final fun build ()Lokhttp3/OkHttpClient;
 }
 
 public final class com/openobserve/android/okhttp/TraceContext {
@@ -115,7 +115,7 @@ public final class com/openobserve/android/okhttp/trace/TracingInterceptor$Build
 	public fun <init> (Ljava/util/List;)V
 	public fun <init> (Ljava/util/Map;)V
 	public fun build ()Lcom/openobserve/android/okhttp/trace/TracingInterceptor;
-	public synthetic fun getThis$dd_sdk_android_okhttp_release ()Lcom/openobserve/android/okhttp/trace/TracingInterceptor$BaseBuilder;
+	public synthetic fun getThis$oo_sdk_android_okhttp_release ()Lcom/openobserve/android/okhttp/trace/TracingInterceptor$BaseBuilder;
 	public final fun setTraceOrigin (Ljava/lang/String;)Lcom/openobserve/android/okhttp/trace/TracingInterceptor$Builder;
 }
 
