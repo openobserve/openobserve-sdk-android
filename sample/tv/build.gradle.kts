@@ -16,7 +16,9 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("com.github.ben-manes.versions")
-    alias(libs.plugins.ooGradlePlugin)
+    // openobserve: dd-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
+
+    // alias(libs.plugins.ooGradlePlugin)
 }
 
 android {

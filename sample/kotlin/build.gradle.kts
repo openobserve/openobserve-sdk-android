@@ -23,7 +23,9 @@ plugins {
     id("org.jetbrains.dokka-javadoc")
     id("com.squareup.sqldelight")
     id("com.google.devtools.ksp")
-    alias(libs.plugins.ooGradlePlugin)
+    // openobserve: dd-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
+
+    // alias(libs.plugins.ooGradlePlugin)
 }
 
 sqldelight {

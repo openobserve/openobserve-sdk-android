@@ -15,7 +15,11 @@ import java.util.Properties
 plugins {
     `maven-publish`
     alias(libs.plugins.nexusPublishGradlePlugin)
-    alias(libs.plugins.dependencyLicenseGradlePlugin)
+    // openobserve: Datadog's external `com.datadoghq.dependency-license` license-audit
+    // plugin was rebranded to a non-existent `io.openobserve.dependency-license` id. It is
+    // release-time tooling not required to build/ship the SDK — disabled until OpenObserve
+    // adopts its own license plugin. See scripts/openobserve (external-coordinate exclusion).
+    // alias(libs.plugins.dependencyLicenseGradlePlugin)
 
     // just load into the classpath, so that we can use version-less id(string) in submodules
     // ideally we need to use aliases in submodules
@@ -73,9 +77,10 @@ nexusPublishing {
     }
 }
 
-dependencyLicenses {
-    transitiveDependencies = true
-}
+// openobserve: disabled with the dependency-license plugin above.
+// dependencyLicenses {
+//     transitiveDependencies = true
+// }
 
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
