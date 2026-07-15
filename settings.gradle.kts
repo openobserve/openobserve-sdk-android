@@ -46,7 +46,11 @@ include(":integrations:oo-sdk-android-sqldelight")
 include(":integrations:oo-sdk-android-timber")
 include(":integrations:oo-sdk-android-tv")
 include(":integrations:oo-sdk-android-okhttp")
-include(":integrations:oo-sdk-android-okhttp-otel")
+// openobserve: excluded from the alpha build — the OpenTelemetry bridge references an
+// external OTel-Datadog extension symbol (span.datadogSpanContext) the rebrand cannot
+// resolve; RN pins no okhttp module so it is not needed for the mobile alpha. Re-enable
+// after resolving the external OTel symbol. See scripts/openobserve.
+// include(":integrations:oo-sdk-android-okhttp-otel")
 include(":integrations:oo-sdk-android-rum-coroutines")
 include(":integrations:oo-sdk-android-trace-coroutines")
 

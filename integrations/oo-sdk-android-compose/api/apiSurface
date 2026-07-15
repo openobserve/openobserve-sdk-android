@@ -8,7 +8,6 @@ interface com.openobserve.android.compose.AttributesResolver<T: Any>
 interface com.openobserve.android.compose.BackStackKeyResolver<T: Any>
   fun getStableKey(T): String
 annotation com.openobserve.android.compose.ComposeInstrumentation
-fun androidx.compose.ui.Modifier.datadog(String, Boolean = false): androidx.compose.ui.Modifier
 annotation com.openobserve.android.compose.ExperimentalTrackingApi
 class com.openobserve.android.compose.HashcodeBackStackKeyResolver<T: Any> : BackStackKeyResolver<T>
   override fun getStableKey(T): String
@@ -21,4 +20,5 @@ sealed class com.openobserve.android.compose.InteractionType
     constructor(androidx.compose.foundation.gestures.ScrollableState, androidx.compose.foundation.gestures.Orientation, Boolean = false)
 fun NavigationViewTrackingEffect(androidx.navigation.NavController, Boolean = true, com.openobserve.android.rum.tracking.ComponentPredicate<androidx.navigation.NavDestination> = AcceptAllNavDestinations(), com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
 fun <T: Any> Navigation3TrackingEffect(List<T>, com.openobserve.android.rum.tracking.ComponentPredicate<T> = AcceptAllNavKeyPredicate(), BackStackKeyResolver<T> = HashcodeBackStackKeyResolver(), AttributesResolver<T>? = null, com.openobserve.android.api.SdkCore = OpenObserve.getInstance())
+fun androidx.compose.ui.Modifier.datadog(String, Boolean = false): androidx.compose.ui.Modifier
 fun com.openobserve.android.rum.RumConfiguration.Builder.enableComposeActionTracking(): com.openobserve.android.rum.RumConfiguration.Builder

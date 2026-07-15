@@ -23,12 +23,12 @@ fun Request.Builder.addParentSpan(span: Span): Request.Builder = apply {
     // we need to trigger sampling decision at this point, because we are doing context propagation out of OpenTelemetry
     val builder = OkHttpRequestInfoBuilder(this)
     if (span is OtelSpan) {
-        _TraceInternalProxy.setTracingSamplingPriorityIfNecessary(span.ooSpanContext)
+        _TraceInternalProxy.setTracingSamplingPriorityIfNecessary(span.datadogSpanContext)
         _TraceInternalProxy.propagationHelper.setTraceContext(
             builder,
             span.spanContext.traceId,
             span.spanContext.spanId,
-            span.ooSpanContext.samplingPriority
+            span.datadogSpanContext.samplingPriority
         )
     } else {
         _TraceInternalProxy.propagationHelper.setTraceContext(
