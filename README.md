@@ -1,3 +1,6 @@
+> **OpenObserve fork.** This project is a fork of the corresponding Datadog SDK,
+> distributed under the Apache License 2.0 and modified by OpenObserve, Inc.
+> See [`NOTICE`](./NOTICE) for attribution and [`LICENSE`](./LICENSE) for terms.
 # Datadog SDK for Android and Android TV
 
 > A client-side Android and Android TV library to interact with Datadog.

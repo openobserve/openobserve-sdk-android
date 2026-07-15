@@ -62,6 +62,9 @@ if compgen -G "scripts/openobserve/patches/*.patch" > /dev/null; then
 fi
 
 echo "$TARGET" > scripts/openobserve/UPSTREAM_BASE
+# Apache-2.0 §4 attribution gate: fail the sync if Datadog attribution was erased.
+node scripts/openobserve/check-attribution.mjs
+
 git add -A
 git commit --quiet -m "chore(sync): rebrand upstream dd-sdk-android @$SHORT as OpenObserve"
 echo "Sync branch $SYNC_BRANCH ready. Review, run a full Gradle+NDK build, push, open a PR against $BASE_BRANCH."
