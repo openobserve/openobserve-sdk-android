@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.trace.integration.api
@@ -92,9 +92,9 @@ class TraceConfigurationTest {
         // Then
         checkNotNull(request)
         assertThat(request.url).isEqualTo("${expectedSite.intakeEndpoint}/api/v2/spans")
-        assertThat(request.headers).containsEntry("DD-API-KEY", expectedClientToken)
-        assertThat(request.headers).containsEntry("DD-EVP-ORIGIN", expectedSource)
-        assertThat(request.headers).containsEntry("DD-EVP-ORIGIN-VERSION", expectedSdkVersion)
+        assertThat(request.headers).containsEntry("OO-API-KEY", expectedClientToken)
+        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
+        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
     }
 
@@ -126,9 +126,9 @@ class TraceConfigurationTest {
         // Then
         checkNotNull(request)
         assertThat(request.url).isEqualTo(fakeEndpoint)
-        assertThat(request.headers).containsEntry("DD-API-KEY", expectedClientToken)
-        assertThat(request.headers).containsEntry("DD-EVP-ORIGIN", expectedSource)
-        assertThat(request.headers).containsEntry("DD-EVP-ORIGIN-VERSION", expectedSdkVersion)
+        assertThat(request.headers).containsEntry("OO-API-KEY", expectedClientToken)
+        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
+        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
     }
 

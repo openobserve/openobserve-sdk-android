@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.flags.internal.net
@@ -84,8 +84,8 @@ internal class PrecomputedAssignmentsRequestFactoryTest {
         checkNotNull(request)
         assertThat(request.url.toString()).isEqualTo("https://preview.ff-cdn.openobserve.ai/precompute-assignments")
         assertThat(request.method).isEqualTo("POST")
-        assertThat(request.header("dd-client-token")).isEqualTo(fakeOpenObserveContext.clientToken)
-        assertThat(request.header("dd-application-id")).isEqualTo(fakeRumApplicationId.toString())
+        assertThat(request.header("oo-client-token")).isEqualTo(fakeOpenObserveContext.clientToken)
+        assertThat(request.header("oo-application-id")).isEqualTo(fakeRumApplicationId.toString())
         assertThat(request.header("Content-Type")).isEqualTo("application/vnd.api+json")
     }
 
@@ -109,8 +109,8 @@ internal class PrecomputedAssignmentsRequestFactoryTest {
 
         // Then
         checkNotNull(request)
-        assertThat(request.header("dd-client-token")).isEqualTo(fakeOpenObserveContext.clientToken)
-        assertThat(request.header("dd-application-id")).isNull()
+        assertThat(request.header("oo-client-token")).isEqualTo(fakeOpenObserveContext.clientToken)
+        assertThat(request.header("oo-application-id")).isNull()
         assertThat(request.header("Content-Type")).isEqualTo("application/vnd.api+json")
     }
 

@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.flags
@@ -106,7 +106,7 @@ data class FlagsConfiguration internal constructor(
          * Sets a custom endpoint URL for fetching precomputed flag assignments.
          * If not called, flag assignments will be fetched from OpenObserve's default endpoint.
          *
-         * @param endpoint The full endpoint URL, e.g., https://dd-flags-proxy.example.com/flags.
+         * @param endpoint The full endpoint URL, e.g., https://oo-flags-proxy.example.com/flags.
          *                 If null, the default endpoint will be used.
          * @return this [Builder] instance for method chaining.
          */

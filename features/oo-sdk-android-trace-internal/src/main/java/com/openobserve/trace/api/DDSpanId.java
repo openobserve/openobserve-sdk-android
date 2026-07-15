@@ -74,7 +74,7 @@ public final class DDSpanId {
    * @return decimal string
    */
   public static String toString(long id) {
-    // TODO Cache here? https://github.com/DataDog/dd-trace-java/issues/4236
+    // TODO Cache here? https://github.com/DataDog/oo-trace-java/issues/4236
     return Long.toUnsignedString(id);
   }
 
@@ -85,7 +85,7 @@ public final class DDSpanId {
    * @return non zero padded hex String
    */
   public static String toHexString(long id) {
-    // TODO Cache here? https://github.com/DataDog/dd-trace-java/issues/4236
+    // TODO Cache here? https://github.com/DataDog/oo-trace-java/issues/4236
     return Long.toHexString(id);
   }
 
@@ -96,7 +96,7 @@ public final class DDSpanId {
    * @return zero padded hex String
    */
   public static String toHexStringPadded(long id) {
-    // TODO Cache here? https://github.com/DataDog/dd-trace-java/issues/4236
+    // TODO Cache here? https://github.com/DataDog/oo-trace-java/issues/4236
     return LongStringUtils.toHexStringPadded(id, 16);
   }
 }

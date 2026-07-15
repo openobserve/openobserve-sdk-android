@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.exec;
@@ -123,7 +123,7 @@ public final class CommonTaskExecutor extends AbstractExecutorService {
     private final ScheduledExecutorService executorService;
 
     private ShutdownCallback(final ScheduledExecutorService executorService) {
-      super("dd-exec-shutdown-hook");
+      super("oo-exec-shutdown-hook");
       this.executorService = executorService;
     }
 

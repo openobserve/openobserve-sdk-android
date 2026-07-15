@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.flags.internal
@@ -28,7 +28,7 @@ private fun OpenObserveSite.flagsHost(customerDomain: String): String? = when (t
     OpenObserveSite.US1_FED,
     OpenObserveSite.US2_FED -> null
 
-    OpenObserveSite.STAGING -> "$customerDomain.ff-cdn.datad0g.com"
+    OpenObserveSite.STAGING -> "$customerDomain.ff-cdn.openobserve.com"
     OpenObserveSite.EU1 -> buildFlagsHostString(customerDomain, tld = "eu") // No site in the host, .eu TLD
     OpenObserveSite.US1 -> buildFlagsHostString(customerDomain) // No site in the host, default .com TLD
 

@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.benchmark.internal
@@ -162,22 +162,22 @@ internal class OpenObserveHttpClient(
         /**
          * OpenObserve API key header.
          */
-        private const val HEADER_API_KEY: String = "DD-API-KEY"
+        private const val HEADER_API_KEY: String = "OO-API-KEY"
 
         /**
          * OpenObserve Event Platform Origin header, e.g. android, flutter, etc.
          */
-        private const val HEADER_EVP_ORIGIN: String = "DD-EVP-ORIGIN"
+        private const val HEADER_EVP_ORIGIN: String = "OO-EVP-ORIGIN"
 
         /**
          * OpenObserve Event Platform Origin version header, e.g. SDK version.
          */
-        private const val HEADER_EVP_ORIGIN_VERSION: String = "DD-EVP-ORIGIN-VERSION"
+        private const val HEADER_EVP_ORIGIN_VERSION: String = "OO-EVP-ORIGIN-VERSION"
 
         /**
          * OpenObserve Request ID header, used for debugging purposes.
          */
-        private const val HEADER_REQUEST_ID: String = "DD-REQUEST-ID"
+        private const val HEADER_REQUEST_ID: String = "OO-REQUEST-ID"
 
         /**
          * text/plain;charset=UTF-8 content type.

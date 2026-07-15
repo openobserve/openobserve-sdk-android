@@ -1,13 +1,13 @@
 package com.openobserve.trace.api.config;
 
 /**
- * A list of keys to be used in a Properties instance with dd-trace-ot's DDTracer as follows:
+ * A list of keys to be used in a Properties instance with oo-trace-ot's DDTracer as follows:
  *
  * <pre>
  *   DDTracer.builder().withProperties(new Properties()).build()
  * </pre>
  *
- * If using dd-java-agent, these keys represent settings that should be configured via system
+ * If using oo-java-agent, these keys represent settings that should be configured via system
  * properties, environment variables, or config properties file. See online documentation for
  * details.
  */

@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.log.internal.net
@@ -66,7 +66,7 @@ internal class LogsRequestFactoryTest {
         requireNotNull(request)
         assertThat(request.url).isEqualTo(
             "${fakeOpenObserveContext.site.intakeEndpoint}/api/v2/logs?" +
-                "ddsource=${fakeOpenObserveContext.source}"
+                "oosource=${fakeOpenObserveContext.source}"
         )
         assertThat(request.contentType).isEqualTo(RequestFactory.CONTENT_TYPE_JSON)
         assertThat(request.headers.minus(RequestFactory.HEADER_REQUEST_ID)).isEqualTo(
@@ -111,7 +111,7 @@ internal class LogsRequestFactoryTest {
 
         // Then
         requireNotNull(request)
-        assertThat(request.url).isEqualTo("$fakeEndpoint?ddsource=${fakeOpenObserveContext.source}")
+        assertThat(request.url).isEqualTo("$fakeEndpoint?oosource=${fakeOpenObserveContext.source}")
         assertThat(request.contentType).isEqualTo(RequestFactory.CONTENT_TYPE_JSON)
         assertThat(request.headers.minus(RequestFactory.HEADER_REQUEST_ID)).isEqualTo(
             mapOf(

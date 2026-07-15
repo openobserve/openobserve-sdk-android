@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 @file:Suppress("StringLiteralDuplication")
 
@@ -15,7 +15,7 @@ import java.util.Properties
 plugins {
     `maven-publish`
     alias(libs.plugins.nexusPublishGradlePlugin)
-    // openobserve: Datadog's external `com.datadoghq.dependency-license` license-audit
+    // openobserve: OpenObserve's external `io.openobserve.dependency-license` license-audit
     // plugin was rebranded to a non-existent `io.openobserve.dependency-license` id. It is
     // release-time tooling not required to build/ship the SDK — disabled until OpenObserve
     // adopts its own license plugin. See scripts/openobserve (external-coordinate exclusion).

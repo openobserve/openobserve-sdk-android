@@ -16,7 +16,7 @@ public class DDTraceCoreInfo {
     try (final BufferedReader br =
         new BufferedReader(
             new InputStreamReader(
-                DDTraceCoreInfo.class.getResourceAsStream("/dd-trace-core.version"), "UTF-8"))) {
+                DDTraceCoreInfo.class.getResourceAsStream("/oo-trace-core.version"), "UTF-8"))) {
       final StringBuilder sb = new StringBuilder();
 
       for (int c = br.read(); c != -1; c = br.read()) {

@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android
@@ -42,12 +42,12 @@ internal class OpenObserveSiteTest {
 
     @Test
     fun `M return intake endpoint W intakeEndpoint {US1-FED}`() {
-        assertThat(OpenObserveSite.US1_FED.intakeEndpoint).isEqualTo("https://browser-intake-ddog-gov.com")
+        assertThat(OpenObserveSite.US1_FED.intakeEndpoint).isEqualTo("https://browser-intake-openobserve-gov.com")
     }
 
     @Test
     fun `M return intake endpoint W intakeEndpoint {US2-FED}`() {
-        assertThat(OpenObserveSite.US2_FED.intakeEndpoint).isEqualTo("https://browser-intake-us2-ddog-gov.com")
+        assertThat(OpenObserveSite.US2_FED.intakeEndpoint).isEqualTo("https://browser-intake-us2-openobserve-gov.com")
     }
 
     @Test
@@ -67,6 +67,6 @@ internal class OpenObserveSiteTest {
 
     @Test
     fun `M return intake endpoint W intakeEndpoint {STAGING}`() {
-        assertThat(OpenObserveSite.STAGING.intakeEndpoint).isEqualTo("https://browser-intake-datad0g.com")
+        assertThat(OpenObserveSite.STAGING.intakeEndpoint).isEqualTo("https://browser-intake-openobserve.com")
     }
 }

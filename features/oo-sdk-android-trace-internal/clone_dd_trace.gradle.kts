@@ -1,22 +1,22 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 import com.openobserve.gradle.plugin.gitclone.GitCloneDependenciesTask
 
-val ddTraceRepository = "https://github.com/DataDog/dd-trace-java.git"
+val ddTraceRepository = "https://github.com/DataDog/oo-trace-java.git"
 val ddTraceVersion = "v0.50.0"
 
 tasks.register<GitCloneDependenciesTask>("cloneDdTrace") {
     extension.apply {
         clone(
             ddTraceRepository,
-            "dd-trace-ot",
+            "oo-trace-ot",
             ddTraceVersion,
             listOf(
-                "dd-trace-ot.gradle",
+                "oo-trace-ot.gradle",
                 "README.md",
                 "jfr-openjdk/",
                 "src/jmh/", // JVM based benchmark, not relevant for ART/Dalvik
@@ -37,10 +37,10 @@ tasks.register<GitCloneDependenciesTask>("cloneDdTrace") {
         )
         clone(
             ddTraceRepository,
-            "dd-trace-api",
+            "oo-trace-api",
             ddTraceVersion,
             listOf(
-                "dd-trace-api.gradle",
+                "oo-trace-api.gradle",
                 "src/main/java/datadog/trace/api/GlobalTracer.java",
                 "src/main/java/datadog/trace/api/CorrelationIdentifier.java",
                 "src/test"

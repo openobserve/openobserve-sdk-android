@@ -1,19 +1,19 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.trace.api.config;
 
 /**
- * A list of keys to be used in a Properties instance with dd-trace-ot's DDTracer as follows:
+ * A list of keys to be used in a Properties instance with oo-trace-ot's DDTracer as follows:
  *
  * <pre>
  *   DDTracer.builder().withProperties(new Properties()).build()
  * </pre>
  *
- * <p>If using dd-java-agent, these keys represent settings that should be configured via system
+ * <p>If using oo-java-agent, these keys represent settings that should be configured via system
  * properties, environment variables, or config properties file. See online documentation for
  * details.
  *

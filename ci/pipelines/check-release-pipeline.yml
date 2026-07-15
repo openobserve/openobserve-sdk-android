@@ -11,9 +11,9 @@ check-release:is-published:
   stage: check-release
   id_tokens:
     DDOCTOSTS_ID_TOKEN:
-      aud: dd-octo-sts
+      aud: oo-octo-sts
   script:
-    - export GITHUB_TOKEN=$(dd-octo-sts token --scope openobserve/openobserve-sdk-android --policy self.gitlab.read)
+    - export GITHUB_TOKEN=$(oo-octo-sts token --scope openobserve/openobserve-sdk-android --policy self.gitlab.read)
     - bash ./ci/scripts/check_latest_release_is_published.sh
 
 notify:report-failure-to-slack:

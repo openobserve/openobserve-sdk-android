@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.trace.api;
@@ -1605,9 +1605,9 @@ public class Config {
     private Map<String, String> getAzureAppServicesTags() {
         // These variable names and derivations are copied from the dotnet tracer
         // See
-        // https://github.com/DataDog/dd-trace-dotnet/blob/master/tracer/src/com.openobserve.trace/PlatformHelpers/AzureAppServices.cs
+        // https://github.com/DataDog/oo-trace-dotnet/blob/master/tracer/src/com.openobserve.trace/PlatformHelpers/AzureAppServices.cs
         // and
-        // https://github.com/DataDog/dd-trace-dotnet/blob/master/tracer/src/com.openobserve.trace/TraceContext.cs#L207
+        // https://github.com/DataDog/oo-trace-dotnet/blob/master/tracer/src/com.openobserve.trace/TraceContext.cs#L207
         Map<String, String> aasTags = new HashMap<>();
 
         /// The site name of the site instance in Azure where the traced application is running.

@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.gradle.config
@@ -93,7 +93,7 @@ fun Project.publishingConfig(
         signingExtension.apply {
             val privateKey = System.getenv("GPG_PRIVATE_KEY")
             val password = System.getenv("GPG_PASSWORD")
-            isRequired = !hasProperty("dd-skip-signing")
+            isRequired = !hasProperty("oo-skip-signing")
             useInMemoryPgpKeys(privateKey, password)
             sign(publishingExtension.publications.getByName(MavenConfig.PUBLICATION))
         }

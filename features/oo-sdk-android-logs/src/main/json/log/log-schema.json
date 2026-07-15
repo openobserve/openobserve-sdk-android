@@ -262,7 +262,7 @@
       "description": "The build version for this application",
       "readOnly": true
     },
-    "ddtags": {
+    "ootags": {
       "type": "string",
       "description": "The list of tags joined into a String and divided by ',' ",
       "readOnly": false
@@ -275,7 +275,7 @@
     "service",
     "logger",
     "_oo",
-    "ddtags",
+    "ootags",
     "device",
     "os"
   ],

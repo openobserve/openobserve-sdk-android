@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.log.internal.domain.event
@@ -25,7 +25,7 @@ internal class LogEventSerializer(
 
     private fun sanitizeTagsAndAttributes(log: LogEvent): LogEvent {
         val sanitizedTags = dataConstraints
-            .validateTags(log.ddtags.split(","))
+            .validateTags(log.ootags.split(","))
             .joinToString(",")
         val sanitizedAttributes = dataConstraints
             .validateAttributes(log.additionalProperties)
@@ -55,7 +55,7 @@ internal class LogEventSerializer(
             )
         }
         return log.copy(
-            ddtags = sanitizedTags,
+            ootags = sanitizedTags,
             additionalProperties = sanitizedAttributes
                 .safeMapValuesToJson(internalLogger)
                 .toMutableMap(),

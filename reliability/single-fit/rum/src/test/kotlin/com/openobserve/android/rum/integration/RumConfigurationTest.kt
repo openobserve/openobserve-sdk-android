@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.rum.integration
@@ -354,16 +354,16 @@ class RumConfigurationTest {
         checkNotNull(request)
 
         val expectedUrl = buildString {
-            append("${expectedSite.intakeEndpoint}/api/v2/rum?ddsource=$expectedSource")
+            append("${expectedSite.intakeEndpoint}/api/v2/rum?oosource=$expectedSource")
             if (expectedTags.isNotEmpty()) {
-                append("&ddtags=$expectedTags")
+                append("&ootags=$expectedTags")
             }
         }
         assertThat(request.url).isEqualTo(expectedUrl)
 
-        assertThat(request.headers).containsEntry("DD-API-KEY", expectedClientToken)
-        assertThat(request.headers).containsEntry("DD-EVP-ORIGIN", expectedSource)
-        assertThat(request.headers).containsEntry("DD-EVP-ORIGIN-VERSION", expectedSdkVersion)
+        assertThat(request.headers).containsEntry("OO-API-KEY", expectedClientToken)
+        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
+        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
     }
 
@@ -405,15 +405,15 @@ class RumConfigurationTest {
         checkNotNull(request)
 
         val expectedUrl = buildString {
-            append("$fakeEndpoint?ddsource=$expectedSource")
+            append("$fakeEndpoint?oosource=$expectedSource")
             if (expectedTags.isNotEmpty()) {
-                append("&ddtags=$expectedTags")
+                append("&ootags=$expectedTags")
             }
         }
         assertThat(request.url).isEqualTo(expectedUrl)
-        assertThat(request.headers).containsEntry("DD-API-KEY", expectedClientToken)
-        assertThat(request.headers).containsEntry("DD-EVP-ORIGIN", expectedSource)
-        assertThat(request.headers).containsEntry("DD-EVP-ORIGIN-VERSION", expectedSdkVersion)
+        assertThat(request.headers).containsEntry("OO-API-KEY", expectedClientToken)
+        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
+        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
     }
 

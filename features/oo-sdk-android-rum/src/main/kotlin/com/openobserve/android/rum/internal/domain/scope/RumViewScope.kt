@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.rum.internal.domain.scope
@@ -411,7 +411,7 @@ internal open class RumViewScope(
             buildVersion = ooContext.versionCode.toString(),
             buildId = ooContext.appBuildId,
             service = ooContext.service,
-            ddtags = buildDDTagsString(ooContext),
+            ootags = buildDDTagsString(ooContext),
             vital = VitalOperationStepEvent.Vital(
                 id = UUID.randomUUID().toString(),
                 name = name,
@@ -814,7 +814,7 @@ internal open class RumViewScope(
                 service = ooContext.service,
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
-                ddtags = buildDDTagsString(ooContext)
+                ootags = buildDDTagsString(ooContext)
             )
         }
             .apply {
@@ -1354,7 +1354,7 @@ internal open class RumViewScope(
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
                 buildId = ooContext.appBuildId,
-                ddtags = buildDDTagsString(ooContext)
+                ootags = buildDDTagsString(ooContext)
             ).apply {
                 sessionEndedMetricDispatcher.onViewTracked(sessionId, this)
             }
@@ -1529,7 +1529,7 @@ internal open class RumViewScope(
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
                 buildId = ooContext.appBuildId,
-                ddtags = buildDDTagsString(ooContext)
+                ootags = buildDDTagsString(ooContext)
             )
         }
             .apply {

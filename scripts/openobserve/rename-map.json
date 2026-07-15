@@ -116,6 +116,46 @@
       "why": "residual brand token in comments/handles not ending in .com (the datadoghq.com URL rule ran earlier). e.g. @datadoghq handles, doc references."
     },
     {
+      "literal": "datad0g",
+      "to": "openobserve",
+      "why": "REQ#1 fail-closed: the STAGING intake host browser-intake-datad0g.com (Datadog staging) -> non-Datadog. Not caught by the datadoghq rule (datad0g uses a zero)."
+    },
+    {
+      "literal": "ddog-gov",
+      "to": "openobserve-gov",
+      "why": "REQ#1 fail-closed: US1_FED/US2_FED intake hosts browser-intake-ddog-gov.com (Datadog FedRAMP) -> non-Datadog. So no OpenObserveSite value can construct a Datadog host; combined with the RN customEndpoint, not a single request can reach Datadog."
+    },
+    {
+      "literal": "ddsource",
+      "to": "oosource",
+      "why": "REQ#2 wire prefix: RequestFactory QUERY_PARAM_SOURCE (?ddsource=) + log source field. So captured data is OpenObserve-prefixed on the wire."
+    },
+    {
+      "literal": "DDSOURCE",
+      "to": "OOSOURCE",
+      "why": "REQ#2: uppercase constant form of the source token"
+    },
+    {
+      "literal": "ddtags",
+      "to": "ootags",
+      "why": "REQ#2 wire prefix: RequestFactory QUERY_PARAM_TAGS (?ddtags=), the log/rum JSON schema `ddtags` field, and LogEventSerializer. Backend reads ootags/o2tags (doc 02)."
+    },
+    {
+      "literal": "DDTAGS",
+      "to": "OOTAGS",
+      "why": "REQ#2: uppercase constant form (DDTAGS_KEY_NAME)"
+    },
+    {
+      "regex": "\\bDD-",
+      "to": "OO-",
+      "why": "REQ#2 wire prefix: intake HTTP header NAMES (DD-API-KEY, DD-EVP-ORIGIN, DD-EVP-ORIGIN-VERSION, DD-REQUEST-ID, DD-IDEMPOTENCY-KEY). HTTP headers are case-insensitive, so OO-API-KEY still matches the backend's oo-api-key (doc 02). \\b guards ADD-/ODD-."
+    },
+    {
+      "regex": "\\bdd-",
+      "to": "oo-",
+      "why": "REQ#2 wire prefix: lowercase intake header names dd-client-token, dd-application-id -> oo-*. \\b guards add-/odd-; dd-sdk-android was already renamed earlier. Does not touch x-datadog-* (that's datadog-, not dd-)."
+    },
+    {
       "regex": "\\b_dd\\b",
       "to": "_oo",
       "why": "internal telemetry namespace field (matches the schema fork)"

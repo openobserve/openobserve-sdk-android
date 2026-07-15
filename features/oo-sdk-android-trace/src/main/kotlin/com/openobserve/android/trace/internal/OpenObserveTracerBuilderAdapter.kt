@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 package com.openobserve.android.trace.internal
 
@@ -126,7 +126,7 @@ internal class OpenObserveTracerBuilderAdapter(
         internal const val DEFAULT_URL_AS_RESOURCE_NAME = false
 
         internal fun TracingHeaderType.toPropagationStyle(): String = when (this) {
-            // dd-trace-java code (TracePropagationStyle.valueOfDisplayName)
+            // oo-trace-java code (TracePropagationStyle.valueOfDisplayName)
             // treats "B3" as an alias for B3MULTI, not B3 single header.
             // We must pass this explicitly to get the correct single-header injector.
             TracingHeaderType.B3 -> "B3SINGLE"

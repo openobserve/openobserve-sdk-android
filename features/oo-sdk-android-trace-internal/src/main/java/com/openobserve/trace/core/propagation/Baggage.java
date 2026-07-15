@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.trace.core.propagation;
@@ -16,7 +16,7 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
-// Source: https://github.com/DataDog/dd-trace-java/blob/master/dd-trace-core/src/main/java/datadog/trace/core/baggage/BaggagePropagator.java
+// Source: https://github.com/DataDog/oo-trace-java/blob/master/oo-trace-core/src/main/java/datadog/trace/core/baggage/BaggagePropagator.java
 public final class Baggage {
     private static final char PAIR_SEPARATOR = ',';
     private static final char KEY_VALUE_SEPARATOR = '=';

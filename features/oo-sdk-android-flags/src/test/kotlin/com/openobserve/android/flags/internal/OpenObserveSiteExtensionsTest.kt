@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.flags.internal
@@ -99,7 +99,7 @@ internal class OpenObserveSiteExtensionsTest {
             Arguments.of(OpenObserveSite.AP1, "ff-cdn.ap1.openobserve.ai"),
             Arguments.of(OpenObserveSite.AP2, "ff-cdn.ap2.openobserve.ai"),
             Arguments.of(OpenObserveSite.EU1, "ff-cdn.openobserve.eu"),
-            Arguments.of(OpenObserveSite.STAGING, "ff-cdn.datad0g.com")
+            Arguments.of(OpenObserveSite.STAGING, "ff-cdn.openobserve.com")
         )
 
         @Suppress("unused")
@@ -107,7 +107,7 @@ internal class OpenObserveSiteExtensionsTest {
         fun supportedSitesWithDefaultDomain(): List<Arguments> = listOf(
             Arguments.of(OpenObserveSite.US1, "preview.ff-cdn.openobserve.ai"),
             Arguments.of(OpenObserveSite.EU1, "preview.ff-cdn.openobserve.eu"),
-            Arguments.of(OpenObserveSite.STAGING, "preview.ff-cdn.datad0g.com")
+            Arguments.of(OpenObserveSite.STAGING, "preview.ff-cdn.openobserve.com")
         )
 
         @Suppress("unused")

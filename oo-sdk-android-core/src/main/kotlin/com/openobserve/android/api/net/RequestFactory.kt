@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.api.net
@@ -45,36 +45,36 @@ fun interface RequestFactory {
         /**
          * OpenObserve API key header.
          */
-        const val HEADER_API_KEY: String = "DD-API-KEY"
+        const val HEADER_API_KEY: String = "OO-API-KEY"
 
         /**
          * OpenObserve Event Platform Origin header, e.g. android, flutter, etc.
          */
-        const val HEADER_EVP_ORIGIN: String = "DD-EVP-ORIGIN"
+        const val HEADER_EVP_ORIGIN: String = "OO-EVP-ORIGIN"
 
         /**
          * OpenObserve Event Platform Origin version header, e.g. SDK version.
          */
-        const val HEADER_EVP_ORIGIN_VERSION: String = "DD-EVP-ORIGIN-VERSION"
+        const val HEADER_EVP_ORIGIN_VERSION: String = "OO-EVP-ORIGIN-VERSION"
 
         /**
          * OpenObserve Request ID header, used for debugging purposes.
          */
-        const val HEADER_REQUEST_ID: String = "DD-REQUEST-ID"
+        const val HEADER_REQUEST_ID: String = "OO-REQUEST-ID"
 
         /**
          * OpenObserve source query parameter name.
          */
-        const val QUERY_PARAM_SOURCE: String = "ddsource"
+        const val QUERY_PARAM_SOURCE: String = "oosource"
 
         /**
          * OpenObserve tags query parameter name.
          */
-        const val QUERY_PARAM_TAGS: String = "ddtags"
+        const val QUERY_PARAM_TAGS: String = "ootags"
 
         /**
          * OpenObserve Idempotency key header, used to offer more insight into the request retry statistics.
          */
-        const val DD_IDEMPOTENCY_KEY: String = "DD-IDEMPOTENCY-KEY"
+        const val DD_IDEMPOTENCY_KEY: String = "OO-IDEMPOTENCY-KEY"
     }
 }

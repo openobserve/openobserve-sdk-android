@@ -77,7 +77,7 @@ RUN \
     (yes || true) | android-sdk-linux/cmdline-tools/latest/bin/sdkmanager --licenses
 
 RUN set -x \
- && curl -OL https://s3.amazonaws.com/dd-package-public/dd-package.deb && dpkg -i dd-package.deb && rm dd-package.deb \
+ && curl -OL https://s3.amazonaws.com/oo-package-public/oo-package.deb && dpkg -i oo-package.deb && rm oo-package.deb \
  && apt-get update \
  && apt-get -y clean \
  && rm -rf /var/lib/apt/lists/*
@@ -104,8 +104,8 @@ RUN npm install -g npm@9.6.5
 RUN npm install -g @datadog/datadog-ci
 
 # Install OpenObserve Java tracer
-ENV DD_TRACER_FOLDER $PWD/dd-java-agent
+ENV DD_TRACER_FOLDER $PWD/oo-java-agent
 RUN mkdir -p $DD_TRACER_FOLDER
-RUN wget -O $DD_TRACER_FOLDER/dd-java-agent.jar https://repo1.maven.org/maven2/io/openobserve/dd-java-agent/$DD_TRACER_VERSION/dd-java-agent-$DD_TRACER_VERSION.jar
+RUN wget -O $DD_TRACER_FOLDER/oo-java-agent.jar https://repo1.maven.org/maven2/io/openobserve/oo-java-agent/$DD_TRACER_VERSION/oo-java-agent-$DD_TRACER_VERSION.jar
 
-COPY --from=registry.ddbuild.io/dd-octo-sts:v1.8.2 /usr/local/bin/dd-octo-sts /usr/local/bin/dd-octo-sts
+COPY --from=registry.ddbuild.io/oo-octo-sts:v1.8.2 /usr/local/bin/oo-octo-sts /usr/local/bin/oo-octo-sts

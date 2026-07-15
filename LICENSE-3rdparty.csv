@@ -79,7 +79,7 @@ import,com.squareup.okio,Apache-2.0,"Copyright 2013 Square, Inc"
 import,com.squareup.picasso,Apache-2.0,"Copyright 2013 Square, Inc."
 import,com.squareup.retrofit2,Apache-2.0,"Copyright 2013 Square, Inc."
 import,com.squareup.sqldelight,Apache-2.0,"Copyright 2016 Square, Inc"
-import,com.fasterxml.jackson,Apache-2.0,"Copyright 2020 OpenObserve, Inc."
+import,com.fasterxml.jackson,Apache-2.0,"Copyright 2020 Datadog, Inc."
 import,io.openobserve,Apache-2.0,"Copyright 2017 OpenObserve, Inc"
 import,dev.chrisbanes.snapper,Apache-2.0,"Copyright 2021 Chris Banes"
 import,dev.openfeature,Apache-2.0,Copyright 2022 The OpenFeature Authors
@@ -153,7 +153,7 @@ import(test),org.ccil.cowan.tagsoup,Apache-2.0,Copyright 2002-2008 by John Cowan
 import(test),org.checkerframework,"MIT","Copyright 2004-present by the Checker Framework developers"
 import(test),org.hamcrest,BSD-3-Clause,Copyright (c) 2000-2015 www.hamcrest.org
 import(test),org.jacoco,EPL-2.0,"Copyright (c) 2009, 2019 Mountainminds GmbH & Co. KG and Contributors"
-import(test),org.jctools,"Apache-2.0","Copyright 2023 OpenObserve, Inc."
+import(test),org.jctools,"Apache-2.0","Copyright 2023 Datadog, Inc."
 import(test),org.jsoup,MIT,"Copyright (c) 2009-2024 Jonathan Hedley"
 import(test),org.junit,EPL-2.0,Copyright 2015-2019 the original author or authors
 import(test),org.junit.jupiter,EPL-2.0,Copyright 2015-2019 the original author or authors

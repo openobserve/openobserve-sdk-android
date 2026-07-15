@@ -223,7 +223,7 @@
 * [FEATURE] `FlagsClient` changes to accommodate Flags React Native SDK sync flag evaluations. See [#3049](https://github.com/openobserve/openobserve-sdk-android/pull/3049)
 * [FEATURE] Enable UI slow frames by default. See [#3102](https://github.com/openobserve/openobserve-sdk-android/pull/3102)
 * [BUGFIX] Do not send TTID and TTFD vitals if they are too large. See [#3031](https://github.com/openobserve/openobserve-sdk-android/pull/3031)
-* [BUGFIX] Fix service handling in `ddtags` of `LogEvent`. See [#3052](https://github.com/openobserve/openobserve-sdk-android/pull/3052)
+* [BUGFIX] Fix service handling in `ootags` of `LogEvent`. See [#3052](https://github.com/openobserve/openobserve-sdk-android/pull/3052)
 * [BUGFIX] Fall back to `DdRumContentProvider` creation time. See [#3055](https://github.com/openobserve/openobserve-sdk-android/pull/3055)
 * [BUGFIX] Fix Compose checkbox not sending RUM action. See [#3077](https://github.com/openobserve/openobserve-sdk-android/pull/3077)
 * [BUGFIX] Handle ANR trace open exception. See [#3082](https://github.com/openobserve/openobserve-sdk-android/pull/3082)
@@ -267,7 +267,7 @@
 * [IMPROVEMENT] Support svgs with `navigation3`. See [#3027](https://github.com/openobserve/openobserve-sdk-android/pull/3027)
 * [IMPROVEMENT] Support content scaling in Jetpack Compose. See [#3035](https://github.com/openobserve/openobserve-sdk-android/pull/3035)
 * [IMPROVEMENT] Support non-ASCII GraphQL headers. See [#3041](https://github.com/openobserve/openobserve-sdk-android/pull/3041)
-* [IMPROVEMENT] Add service name to `ddtags` of `LogEvent`. See [#3006](https://github.com/openobserve/openobserve-sdk-android/pull/3006)
+* [IMPROVEMENT] Add service name to `ootags` of `LogEvent`. See [#3006](https://github.com/openobserve/openobserve-sdk-android/pull/3006)
 * [IMPROVEMENT] Add `versionCode` and `buildId` in more places. See [#3007](https://github.com/openobserve/openobserve-sdk-android/pull/3007)
 * [IMPROVEMENT] Add `anonymousId` to the empty `UserInfo` object check. See [#3012](https://github.com/openobserve/openobserve-sdk-android/pull/3012)
 * [IMPROVEMENT] Override Metrics telemetry sample rate. See [#3022](https://github.com/openobserve/openobserve-sdk-android/pull/3022)
@@ -328,7 +328,7 @@
 * [FEATURE] TTID (Time To Initial Display) reporting support. See [#2921](https://github.com/openobserve/openobserve-sdk-android/pull/2921)
 * [BUGFIX] Fix tags which were missing in Vital event reported for Feature Operations. See [#2928](https://github.com/openobserve/openobserve-sdk-android/pull/2928)
 * [BUGFIX] Fix RUM `sessionId` which was missing for automatic HTTP tracing via `baggage` header. See [#2904](https://github.com/openobserve/openobserve-sdk-android/pull/2904)
-* [IMPROVEMENT] Move session properties to `ddtags` over query parameters. See [#2866](https://github.com/openobserve/openobserve-sdk-android/pull/2866)
+* [IMPROVEMENT] Move session properties to `ootags` over query parameters. See [#2866](https://github.com/openobserve/openobserve-sdk-android/pull/2866)
 * [IMPROVEMENT] Trace: Support `baggage` header updates. See [#2881](https://github.com/openobserve/openobserve-sdk-android/pull/2881)
 * [IMPROVEMENT] Mute some Compose Reflection telemetry errors in Session Replay. See [#2901](https://github.com/openobserve/openobserve-sdk-android/pull/2901)
 * [IMPROVEMENT] RUM: Set initialized flag to false when stop `RumFeature`. See [#2903](https://github.com/openobserve/openobserve-sdk-android/pull/2903)
@@ -337,7 +337,7 @@
 * [IMPROVEMENT] Session Replay: Extend resource handling to support multiple MIME types. See [#2914](https://github.com/openobserve/openobserve-sdk-android/pull/2914)
 * [MAINTENANCE] Add `libs.versions.toml` in `GenerateTransitiveDependenciesTask` as input. See [#2905](https://github.com/openobserve/openobserve-sdk-android/pull/2905)
 * [MAINTENANCE] Move `TimeProvider` into `oo-sdk-android-internal`. See [#2906](https://github.com/openobserve/openobserve-sdk-android/pull/2906)
-* [MAINTENANCE] Bump `dd-trace-java` version to `1.54.0`. See [#2916](https://github.com/openobserve/openobserve-sdk-android/pull/2916)
+* [MAINTENANCE] Bump `oo-trace-java` version to `1.54.0`. See [#2916](https://github.com/openobserve/openobserve-sdk-android/pull/2916)
 * [MAINTENANCE] Enhancing check last release script. See [#2927](https://github.com/openobserve/openobserve-sdk-android/pull/2927)
 
 # 3.1.0 / 2025-09-18
@@ -363,7 +363,7 @@
 * [IMPROVEMENT] RUM: Check for result of `activity.intent`. See [#2877](https://github.com/openobserve/openobserve-sdk-android/pull/2877)
 * [IMPROVEMENT] Add documentation to the public API members where missing. See [#2880](https://github.com/openobserve/openobserve-sdk-android/pull/2880)
 * [MAINTENANCE] Change the order of executors shutdown in `drainAndShutdownExecutors` to fix flaky integration tests. See [#2884](https://github.com/openobserve/openobserve-sdk-android/pull/2884)
-* [MAINTENANCE] Bump `dd-trace-java` version to `1.53.0`. See [#2860](https://github.com/openobserve/openobserve-sdk-android/pull/2860)
+* [MAINTENANCE] Bump `oo-trace-java` version to `1.53.0`. See [#2860](https://github.com/openobserve/openobserve-sdk-android/pull/2860)
 * [MAINTENANCE] Split detekt custom rules to handle code point limit. See [#2863](https://github.com/openobserve/openobserve-sdk-android/pull/2863)
 * [MAINTENANCE] Update Node version. See [#2864](https://github.com/openobserve/openobserve-sdk-android/pull/2864)
 * [MAINTENANCE] Fix link to `CONTRIBUTING` doc from PR template. See [#2869](https://github.com/openobserve/openobserve-sdk-android/pull/2869)
@@ -407,7 +407,7 @@ This is the first official production version of SDK v3 containing the new archi
 * [IMPROVEMENT] Trace: Isolate implementation layer from integration modules. See [#2773](https://github.com/openobserve/openobserve-sdk-android/pull/2773)
 * [IMPROVEMENT] Properties referencing support. See [#2793](https://github.com/openobserve/openobserve-sdk-android/pull/2793)
 * [IMPROVEMENT] Use common-schema for common object generation. See [#2794](https://github.com/openobserve/openobserve-sdk-android/pull/2794)
-* [IMPROVEMENT] Move session properties to `ddtags` over query parameters. See [#2812](https://github.com/openobserve/openobserve-sdk-android/pull/2812)
+* [IMPROVEMENT] Move session properties to `ootags` over query parameters. See [#2812](https://github.com/openobserve/openobserve-sdk-android/pull/2812)
 * [IMPROVEMENT] Trace: `TracingInterceptor` migration from OpenTracing to internal implementation. See [#2708](https://github.com/openobserve/openobserve-sdk-android/pull/2708)
 * [IMPROVEMENT] Update Session Replay batch max age to 5h. See [#2842](https://github.com/openobserve/openobserve-sdk-android/pull/2842)
 * [IMPROVEMENT] Core: Fix `clearUserInfo` API by adapting it to the context queue. See [#2847](https://github.com/openobserve/openobserve-sdk-android/pull/2847)
@@ -423,7 +423,7 @@ This is the first official production version of SDK v3 containing the new archi
 
 # 2.26.1 / 2025-09-11
 
-* [BUGFIX] RUM: Move session properties to `ddtags` over query parameters. See [#2812](https://github.com/openobserve/openobserve-sdk-android/pull/2812)
+* [BUGFIX] RUM: Move session properties to `ootags` over query parameters. See [#2812](https://github.com/openobserve/openobserve-sdk-android/pull/2812)
 
 # 2.26.0 / 2025-08-27
 
@@ -515,12 +515,12 @@ This is the first official production version of SDK v3 containing the new archi
 * [MAINTENANCE] Fix `RumSessionScope` flaky test. See [#2730](https://github.com/openobserve/openobserve-sdk-android/pull/2730)
 * [MAINTENANCE] Introduce check release pipeline. See [#2731](https://github.com/openobserve/openobserve-sdk-android/pull/2731)
 * [MAINTENANCE] Remove unnecessary comment. See [#2735](https://github.com/openobserve/openobserve-sdk-android/pull/2735)
-* [MAINTENANCE] Add `dd-octo-sts` to Dockerfile. See [#2739](https://github.com/openobserve/openobserve-sdk-android/pull/2739)
-* [MAINTENANCE] Add `dd-octo-sts` policy for read access. See [#2741](https://github.com/openobserve/openobserve-sdk-android/pull/2741)
-* [MAINTENANCE] Fix `dd-octo-sts` pattern. See [#2743](https://github.com/openobserve/openobserve-sdk-android/pull/2743)
-* [MAINTENANCE] Use `dd-octo-sts` to check release. See [#2742](https://github.com/openobserve/openobserve-sdk-android/pull/2742)
-* [MAINTENANCE] Use `dd-octo-sts` to create PRs in `oo-sdk-android-gradle-plugin`. See [#2746](https://github.com/openobserve/openobserve-sdk-android/pull/2746)
-* [MAINTENANCE] Use `dd-octo-sts` to create PRs in Shopist and Mobile app. See [#2750](https://github.com/openobserve/openobserve-sdk-android/pull/2750)
+* [MAINTENANCE] Add `oo-octo-sts` to Dockerfile. See [#2739](https://github.com/openobserve/openobserve-sdk-android/pull/2739)
+* [MAINTENANCE] Add `oo-octo-sts` policy for read access. See [#2741](https://github.com/openobserve/openobserve-sdk-android/pull/2741)
+* [MAINTENANCE] Fix `oo-octo-sts` pattern. See [#2743](https://github.com/openobserve/openobserve-sdk-android/pull/2743)
+* [MAINTENANCE] Use `oo-octo-sts` to check release. See [#2742](https://github.com/openobserve/openobserve-sdk-android/pull/2742)
+* [MAINTENANCE] Use `oo-octo-sts` to create PRs in `oo-sdk-android-gradle-plugin`. See [#2746](https://github.com/openobserve/openobserve-sdk-android/pull/2746)
+* [MAINTENANCE] Use `oo-octo-sts` to create PRs in Shopist and Mobile app. See [#2750](https://github.com/openobserve/openobserve-sdk-android/pull/2750)
 * [DOCS] Update Publish Changelog to Confluence: Fix issue with already present page. See [#2683](https://github.com/openobserve/openobserve-sdk-android/pull/2683)
 * [DOCS] Update `changelog-to-confluence`: Update secret names. See [#2727](https://github.com/openobserve/openobserve-sdk-android/pull/2727)
 
@@ -919,7 +919,7 @@ This is the first official production version of SDK v3 containing the new archi
 
 # 2.11.0 / 2024-06-20
 
-* [FEATURE] Trace: Bundle `dd-trace-core` code into the `oo-sdk-android-trace` module. See [#1907](https://github.com/openobserve/openobserve-sdk-android/pull/1907)
+* [FEATURE] Trace: Bundle `oo-trace-core` code into the `oo-sdk-android-trace` module. See [#1907](https://github.com/openobserve/openobserve-sdk-android/pull/1907)
 * [FEATURE] Trace: Provide the correct sampling priority for our Span events based on APM new rules. See [#1913](https://github.com/openobserve/openobserve-sdk-android/pull/1913)
 * [FEATURE] Trace: Add the `CoreTracer` tests. See [#1924](https://github.com/openobserve/openobserve-sdk-android/pull/1924)
 * [FEATURE] Trace: Provide core tracer logger implementation. See [#1953](https://github.com/openobserve/openobserve-sdk-android/pull/1953)
@@ -947,7 +947,7 @@ This is the first official production version of SDK v3 containing the new archi
 * [IMPROVEMENT] Trace: Make `CoreTracer` code Java 7 compatible. See [#2051](https://github.com/openobserve/openobserve-sdk-android/pull/2051)
 * [IMPROVEMENT] Session Replay: Improve telemetry from `RecordedDataQueueHandler`. See [#2053](https://github.com/openobserve/openobserve-sdk-android/pull/2053)
 * [IMPROVEMENT] Global: Fix thread safety warnings. See [#2056](https://github.com/openobserve/openobserve-sdk-android/pull/2056)
-* [IMPROVEMENT] Trace: Remove the `dd-sketches` dependency and related logic. See [#2062](https://github.com/openobserve/openobserve-sdk-android/pull/2062)
+* [IMPROVEMENT] Trace: Remove the `oo-sketches` dependency and related logic. See [#2062](https://github.com/openobserve/openobserve-sdk-android/pull/2062)
 * [IMPROVEMENT] Trace: Fix the `jctools` Proguard rules. See [#2063](https://github.com/openobserve/openobserve-sdk-android/pull/2063)
 * [IMPROVEMENT] Add ProGuard rules to sample app. See [#2067](https://github.com/openobserve/openobserve-sdk-android/pull/2067)
 * [IMPROVEMENT] Session Replay: Improve `ButtonMapper`. See [#2070](https://github.com/openobserve/openobserve-sdk-android/pull/2070)

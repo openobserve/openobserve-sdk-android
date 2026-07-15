@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 import com.openobserve.gradle.config.AndroidConfig
@@ -19,7 +19,7 @@ plugins {
     alias(libs.plugins.kotlinSPGradlePlugin)
     kotlin("plugin.serialization")
     id("kotlin-parcelize")
-    // openobserve: dd-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
+    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 
     // alias(libs.plugins.ooGradlePlugin)
     id("transitiveDependencies")

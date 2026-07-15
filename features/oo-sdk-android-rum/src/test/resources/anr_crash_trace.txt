@@ -840,7 +840,7 @@ DALVIK THREADS (46):
   at android.os.Looper.loop(Looper.java:294)
   at android.os.HandlerThread.run(HandlerThread.java:67)
 
-"dd-task-scheduler" daemon prio=5 tid=29 TimedWaiting
+"oo-task-scheduler" daemon prio=5 tid=29 TimedWaiting
   | group="main" sCount=1 ucsCount=0 flags=1 obj=0x14441890 self=0xb40000735e6e9a80
   | sysTid=10385 nice=0 cgrp=top-app sched=0/0 handle=0x720c97fcb0
   | state=S schedstat=( 11528039 1260626 33 ) utm=0 stm=0 core=3 HZ=100

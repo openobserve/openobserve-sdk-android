@@ -108,7 +108,7 @@ Each `Curl` log line is a single `curl` command. The `-d` argument contains the 
     "session_id": "...",
     "view.id": "...",
     "usr": { "id": "...", "anonymous_id": "..." },
-    "ddtags": "build_type:debug,flavor:us1,env:debug,..."
+    "ootags": "build_type:debug,flavor:us1,env:debug,..."
   }
 ]
 ```
@@ -131,8 +131,8 @@ Each `Curl` log line is a single `curl` command. The `-d` argument contains the 
 | Session | `session_id` |
 | View | `view.id` |
 | User | `usr.id`, `usr.anonymous_id` |
-| Tags | `ddtags` |
-| Build variant | `ddtags` contains `flavor:us1,build_type:debug` |
+| Tags | `ootags` |
+| Build variant | `ootags` contains `flavor:us1,build_type:debug` |
 
 ## Common Mistakes
 

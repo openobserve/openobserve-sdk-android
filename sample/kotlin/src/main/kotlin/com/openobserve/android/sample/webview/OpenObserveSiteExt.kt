@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.sample.webview
@@ -31,7 +31,7 @@ private fun OpenObserveSite?.browserSite(): String {
         OpenObserveSite.EU1 -> "openobserve.eu"
         OpenObserveSite.AP1 -> "ap1.openobserve.ai"
         OpenObserveSite.AP2 -> "ap2.openobserve.ai"
-        OpenObserveSite.US1_FED -> "ddog-gov.com"
-        OpenObserveSite.US2_FED -> "us2.ddog-gov.com"
+        OpenObserveSite.US1_FED -> "openobserve-gov.com"
+        OpenObserveSite.US2_FED -> "us2.openobserve-gov.com"
     }
 }

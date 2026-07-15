@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.rum.internal.net
@@ -166,9 +166,9 @@ internal class RumRequestFactoryTest {
         }
 
         return buildString {
-            append("$endpointUrl?ddsource=${fakeOpenObserveContext.source}")
+            append("$endpointUrl?oosource=${fakeOpenObserveContext.source}")
             if (queryTags.isNotEmpty()) {
-                append("&ddtags=${queryTags.joinToString(",")}")
+                append("&ootags=${queryTags.joinToString(",")}")
             }
         }
     }

@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android
@@ -46,19 +46,19 @@ enum class OpenObserveSite private constructor(internal val siteName: String, pr
     AP2("ap2"),
 
     /**
-     *  The US1_FED site (FedRAMP compatible): [app.ddog-gov.com](https://app.ddog-gov.com).
+     *  The US1_FED site (FedRAMP compatible): [app.openobserve-gov.com](https://app.openobserve-gov.com).
      */
-    US1_FED("us1_fed", "browser-intake-ddog-gov.com"),
+    US1_FED("us1_fed", "browser-intake-openobserve-gov.com"),
 
     /**
-     *  The US2_FED site (FedRAMP compatible): [us2.ddog-gov.com](https://us2.ddog-gov.com).
+     *  The US2_FED site (FedRAMP compatible): [us2.openobserve-gov.com](https://us2.openobserve-gov.com).
      */
-    US2_FED("us2_fed", "browser-intake-us2-ddog-gov.com"),
+    US2_FED("us2_fed", "browser-intake-us2-openobserve-gov.com"),
 
     /**
-     *  The STAGING site (internal usage only): [app.datad0g.com](https://app.datad0g.com).
+     *  The STAGING site (internal usage only): [app.openobserve.com](https://app.openobserve.com).
      */
-    STAGING("staging", "browser-intake-datad0g.com");
+    STAGING("staging", "browser-intake-openobserve.com");
 
     /**
      * Constructor using the generic way to build the intake endpoint host from the site name.

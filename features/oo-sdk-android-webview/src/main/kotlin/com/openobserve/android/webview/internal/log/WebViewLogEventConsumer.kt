@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.webview.internal.log
@@ -115,8 +115,8 @@ internal class WebViewLogEventConsumer(
             LogAttributes.SERVICE to ooContext.service
         )
         val eventDdTags = try {
-            event.get(DDTAGS_KEY_NAME)?.asString?.let {
-                it.split(DDTAGS_SEPARATOR)
+            event.get(OOTAGS_KEY_NAME)?.asString?.let {
+                it.split(OOTAGS_SEPARATOR)
                     .mapNotNull { tag ->
                         @Suppress("UnsafeThirdPartyFunctionCall") // safe indexOf invocation
                         val splitIndex = tag.indexOf(":")
@@ -155,16 +155,16 @@ internal class WebViewLogEventConsumer(
             emptyMap<String, String>()
         }
         event.addProperty(
-            DDTAGS_KEY_NAME,
+            OOTAGS_KEY_NAME,
             (eventDdTags + sdkDdTags)
                 .map { "${it.key}:${it.value}" }
-                .joinToString(DDTAGS_SEPARATOR)
+                .joinToString(OOTAGS_SEPARATOR)
         )
     }
 
     companion object {
-        const val DDTAGS_SEPARATOR = ","
-        const val DDTAGS_KEY_NAME = "ddtags"
+        const val OOTAGS_SEPARATOR = ","
+        const val OOTAGS_KEY_NAME = "ootags"
         const val DATE_KEY_NAME = "date"
         const val USER_LOG_EVENT_TYPE = "log"
         const val INTERNAL_LOG_EVENT_TYPE = "internal_log"

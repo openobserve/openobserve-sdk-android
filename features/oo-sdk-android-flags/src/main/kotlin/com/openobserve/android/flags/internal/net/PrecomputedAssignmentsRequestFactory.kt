@@ -1,7 +1,7 @@
 /*
  * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
- * This product includes software developed at OpenObserve (https://www.openobserve.ai/).
- * Copyright 2016-Present OpenObserve, Inc.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
  */
 
 package com.openobserve.android.flags.internal.net
@@ -139,8 +139,8 @@ internal class PrecomputedAssignmentsRequestFactory(
             ?.get("application_id") as? String
 
     companion object {
-        private const val HEADER_APPLICATION_ID = "dd-application-id"
-        private const val HEADER_CLIENT_TOKEN = "dd-client-token"
+        private const val HEADER_APPLICATION_ID = "oo-application-id"
+        private const val HEADER_CLIENT_TOKEN = "oo-client-token"
         private const val HEADER_CONTENT_TYPE = "Content-Type"
         private const val CONTENT_TYPE_VND_JSON = "application/vnd.api+json"
         private const val PREVIEW_CUSTOMER_DOMAIN = "preview"

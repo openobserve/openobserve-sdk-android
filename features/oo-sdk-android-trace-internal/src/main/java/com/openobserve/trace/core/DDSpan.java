@@ -663,7 +663,7 @@ public class DDSpan
     context.setOperationName(spanName);
   }
 
-  @Override // TODO remove for 1.0: No usages within dd-trace-java
+  @Override // TODO remove for 1.0: No usages within oo-trace-java
   public boolean hasResourceName() {
     return context.hasResourceName();
   }
