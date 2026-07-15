@@ -1,3 +1,6 @@
+public abstract interface annotation class com/openobserve/android/profiling/ExperimentalProfilingApi : java/lang/annotation/Annotation {
+}
+
 public final class com/openobserve/android/profiling/OoProfilingContentProvider : android/content/ContentProvider {
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/internal/system/BuildSdkVersionProvider;)V
@@ -8,9 +11,6 @@ public final class com/openobserve/android/profiling/OoProfilingContentProvider 
 	public fun onCreate ()Z
 	public fun query (Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 	public fun update (Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-}
-
-public abstract interface annotation class com/openobserve/android/profiling/ExperimentalProfilingApi : java/lang/annotation/Annotation {
 }
 
 public final class com/openobserve/android/profiling/Profiling {

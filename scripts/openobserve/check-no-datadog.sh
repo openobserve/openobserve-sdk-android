@@ -8,7 +8,7 @@
 #
 # Used by publish.sh and by CI. Exit 0 = clean.
 set -euo pipefail
-cd "$(dirname "$0")/../.."
+cd "$(git rev-parse --show-toplevel)"
 
 # Search shipped library source only (not samples/tests/tooling/build).
 PATHS=$(git ls-files 'features/*/src/main/*' 'oo-sdk-android-*/src/main/*' 'integrations/*/src/main/*' 2>/dev/null || true)

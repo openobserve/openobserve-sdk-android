@@ -23,7 +23,7 @@
 #
 # REQUIRED TOOLCHAIN: JDK 17+, Android SDK (ANDROID_HOME), a valid NDK for the -ndk module.
 set -euo pipefail
-cd "$(dirname "$0")/../.."   # repo root
+cd "$(git rev-parse --show-toplevel)"   # repo root
 
 VERSION="" ; TYPE="alpha" ; NUMBER="1" ; PUBLISH=0 ; SKIP_TESTS=0
 while [ $# -gt 0 ]; do case "$1" in
