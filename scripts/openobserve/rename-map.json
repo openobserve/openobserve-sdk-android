@@ -116,6 +116,16 @@
       "why": "residual brand token in comments/handles not ending in .com (the datadoghq.com URL rule ran earlier). e.g. @datadoghq handles, doc references."
     },
     {
+      "literal": "dogstatsd",
+      "to": "oostatsd",
+      "why": "DogStatsD (Datadog's StatsD) config-key names in the vendored trace-internal lib (dogstatsd.host/port/...). Not a network call, but carries the Datadog brand; renamed for strict zero-Datadog. Config keys rename consistently (definition + readers use the same constant)."
+    },
+    {
+      "literal": "DOGSTATSD",
+      "to": "OOSTATSD",
+      "why": "uppercase constant-name form (DOGSTATSD_HOST, DOGSTATSD_PORT, ...)"
+    },
+    {
       "literal": "datad0g",
       "to": "openobserve",
       "why": "REQ#1 fail-closed: the STAGING intake host browser-intake-datad0g.com (Datadog staging) -> non-Datadog. Not caught by the datadoghq rule (datad0g uses a zero)."

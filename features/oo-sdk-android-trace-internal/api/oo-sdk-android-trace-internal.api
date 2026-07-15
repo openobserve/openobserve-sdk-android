@@ -125,7 +125,7 @@ public final class com/openobserve/trace/api/ConfigDefaults {
 	public static final field DEFAULT_AGENT_TIMEOUT I
 	public static final field DEFAULT_AGENT_WRITER_TYPE Ljava/lang/String;
 	public static final field DEFAULT_ASYNC_PROPAGATING Z
-	public static final field DEFAULT_DOGSTATSD_PORT I
+	public static final field DEFAULT_OOSTATSD_PORT I
 	public static final field DEFAULT_IAST_DEDUPLICATION_ENABLED Z
 	public static final field DEFAULT_IAST_MAX_CONCURRENT_REQUESTS I
 	public static final field DEFAULT_IAST_MAX_RANGE_COUNT I
@@ -598,12 +598,12 @@ public final class com/openobserve/trace/api/config/GeneralConfig {
 	public static final field CONFIGURATION_FILE Ljava/lang/String;
 	public static final field DATA_STREAMS_BUCKET_DURATION_SECONDS Ljava/lang/String;
 	public static final field DATA_STREAMS_ENABLED Ljava/lang/String;
-	public static final field DOGSTATSD_ARGS Ljava/lang/String;
-	public static final field DOGSTATSD_HOST Ljava/lang/String;
-	public static final field DOGSTATSD_NAMED_PIPE Ljava/lang/String;
-	public static final field DOGSTATSD_PATH Ljava/lang/String;
-	public static final field DOGSTATSD_PORT Ljava/lang/String;
-	public static final field DOGSTATSD_START_DELAY Ljava/lang/String;
+	public static final field OOSTATSD_ARGS Ljava/lang/String;
+	public static final field OOSTATSD_HOST Ljava/lang/String;
+	public static final field OOSTATSD_NAMED_PIPE Ljava/lang/String;
+	public static final field OOSTATSD_PATH Ljava/lang/String;
+	public static final field OOSTATSD_PORT Ljava/lang/String;
+	public static final field OOSTATSD_START_DELAY Ljava/lang/String;
 	public static final field ENV Ljava/lang/String;
 	public static final field GLOBAL_TAGS Ljava/lang/String;
 	public static final field HEALTH_METRICS_ENABLED Ljava/lang/String;

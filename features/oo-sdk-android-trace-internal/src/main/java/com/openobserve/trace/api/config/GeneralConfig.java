@@ -33,12 +33,12 @@ public final class GeneralConfig {
 
   public static final String STARTUP_LOGS_ENABLED = "trace.startup.logs";
 
-  public static final String DOGSTATSD_START_DELAY = "dogstatsd.start-delay";
-  public static final String DOGSTATSD_HOST = "dogstatsd.host";
-  public static final String DOGSTATSD_PORT = "dogstatsd.port";
-  public static final String DOGSTATSD_PATH = "dogstatsd.path";
-  public static final String DOGSTATSD_ARGS = "dogstatsd.args";
-  public static final String DOGSTATSD_NAMED_PIPE = "dogstatsd.pipe.name";
+  public static final String OOSTATSD_START_DELAY = "oostatsd.start-delay";
+  public static final String OOSTATSD_HOST = "oostatsd.host";
+  public static final String OOSTATSD_PORT = "oostatsd.port";
+  public static final String OOSTATSD_PATH = "oostatsd.path";
+  public static final String OOSTATSD_ARGS = "oostatsd.args";
+  public static final String OOSTATSD_NAMED_PIPE = "oostatsd.pipe.name";
 
   public static final String STATSD_CLIENT_QUEUE_SIZE = "statsd.client.queue.size";
   public static final String STATSD_CLIENT_SOCKET_BUFFER = "statsd.client.socket.buffer";

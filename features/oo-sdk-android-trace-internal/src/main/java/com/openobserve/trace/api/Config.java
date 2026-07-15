@@ -17,7 +17,7 @@ import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_DB_CLIENT_HOST_SP
 import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_DB_CLIENT_HOST_SPLIT_BY_INSTANCE;
 import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_DB_CLIENT_HOST_SPLIT_BY_INSTANCE_TYPE_SUFFIX;
 import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_DB_DBM_PROPAGATION_MODE_MODE;
-import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_DOGSTATSD_START_DELAY;
+import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_OOSTATSD_START_DELAY;
 import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_ELASTICSEARCH_BODY_AND_PARAMS_ENABLED;
 import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_ELASTICSEARCH_BODY_ENABLED;
 import static com.openobserve.trace.api.ConfigDefaults.DEFAULT_ELASTICSEARCH_PARAMS_ENABLED;
@@ -86,10 +86,10 @@ import static com.openobserve.trace.api.config.CrashTrackingConfig.CRASH_TRACKIN
 import static com.openobserve.trace.api.config.GeneralConfig.AZURE_APP_SERVICES;
 import static com.openobserve.trace.api.config.GeneralConfig.DATA_STREAMS_BUCKET_DURATION_SECONDS;
 import static com.openobserve.trace.api.config.GeneralConfig.DATA_STREAMS_ENABLED;
-import static com.openobserve.trace.api.config.GeneralConfig.DOGSTATSD_ARGS;
-import static com.openobserve.trace.api.config.GeneralConfig.DOGSTATSD_NAMED_PIPE;
-import static com.openobserve.trace.api.config.GeneralConfig.DOGSTATSD_PATH;
-import static com.openobserve.trace.api.config.GeneralConfig.DOGSTATSD_START_DELAY;
+import static com.openobserve.trace.api.config.GeneralConfig.OOSTATSD_ARGS;
+import static com.openobserve.trace.api.config.GeneralConfig.OOSTATSD_NAMED_PIPE;
+import static com.openobserve.trace.api.config.GeneralConfig.OOSTATSD_PATH;
+import static com.openobserve.trace.api.config.GeneralConfig.OOSTATSD_START_DELAY;
 import static com.openobserve.trace.api.config.GeneralConfig.ENV;
 import static com.openobserve.trace.api.config.GeneralConfig.GLOBAL_TAGS;
 import static com.openobserve.trace.api.config.GeneralConfig.HEALTH_METRICS_ENABLED;
@@ -896,11 +896,11 @@ public class Config {
         logsInjectionEnabled =
                 configProvider.getBoolean(LOGS_INJECTION_ENABLED, DEFAULT_LOGS_INJECTION_ENABLED);
 
-        dogStatsDNamedPipe = configProvider.getString(DOGSTATSD_NAMED_PIPE);
+        dogStatsDNamedPipe = configProvider.getString(OOSTATSD_NAMED_PIPE);
 
         dogStatsDStartDelay =
                 configProvider.getInteger(
-                        DOGSTATSD_START_DELAY, DEFAULT_DOGSTATSD_START_DELAY);
+                        OOSTATSD_START_DELAY, DEFAULT_OOSTATSD_START_DELAY);
 
         statsDClientQueueSize = configProvider.getInteger(STATSD_CLIENT_QUEUE_SIZE);
         statsDClientSocketBuffer = configProvider.getInteger(STATSD_CLIENT_SOCKET_BUFFER);
@@ -1170,8 +1170,8 @@ public class Config {
                             new ArrayList<>(parseStringIntoSetOfNonEmptyStrings(traceAgentArgsString)));
         }
 
-        dogStatsDPath = configProvider.getString(DOGSTATSD_PATH);
-        String dogStatsDArgsString = configProvider.getString(DOGSTATSD_ARGS);
+        dogStatsDPath = configProvider.getString(OOSTATSD_PATH);
+        String dogStatsDArgsString = configProvider.getString(OOSTATSD_ARGS);
         if (dogStatsDArgsString == null) {
             dogStatsDArgs = Collections.emptyList();
         } else {

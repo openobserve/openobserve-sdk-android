@@ -34,7 +34,7 @@ public final class ConfigDefaults {
   /* These fields are made public because they're referenced elsewhere internally.  They're not intended as public API. */
   public static final String DEFAULT_AGENT_HOST = "localhost";
   public static final int DEFAULT_TRACE_AGENT_PORT = 8126;
-  public static final int DEFAULT_DOGSTATSD_PORT = 8125;
+  public static final int DEFAULT_OOSTATSD_PORT = 8125;
   public static final int DEFAULT_AGENT_TIMEOUT = 10; // timeout in seconds
   public static final String DEFAULT_SERVICE_NAME = "unnamed-java-app";
   public static final String DEFAULT_SERVLET_ROOT_CONTEXT_SERVICE_NAME = "root-servlet";
@@ -79,7 +79,7 @@ public final class ConfigDefaults {
   static final boolean DEFAULT_JMX_FETCH_MULTIPLE_RUNTIME_SERVICES_ENABLED = false;
   static final int DEFAULT_JMX_FETCH_MULTIPLE_RUNTIME_SERVICES_LIMIT = 10;
 
-  static final int DEFAULT_DOGSTATSD_START_DELAY = 15; // seconds
+  static final int DEFAULT_OOSTATSD_START_DELAY = 15; // seconds
 
   static final boolean DEFAULT_HEALTH_METRICS_ENABLED = true;
   static final boolean DEFAULT_PERF_METRICS_ENABLED = false;
