@@ -7,15 +7,15 @@
 package com.openobserve.android.sdk.integration.sessionreplay
 
 import android.app.ActivityManager
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 
 /**
  * In instrumentation tests, the process is treated as [IMPORTANCE_FOREGROUND_SERVICE],
  * which differs from the behavior in a typical user environment. To prevent this difference
  * from affecting test results, this function can be called to override the relevant variable
- * inside [DdRumContentProvider], allowing the SDK to correctly identify that the application
+ * inside [OoRumContentProvider], allowing the SDK to correctly identify that the application
  * is in the foreground.
  */
 fun overrideProcessImportance() {
-    DdRumContentProvider.processImportance = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+    OoRumContentProvider.processImportance = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
 }

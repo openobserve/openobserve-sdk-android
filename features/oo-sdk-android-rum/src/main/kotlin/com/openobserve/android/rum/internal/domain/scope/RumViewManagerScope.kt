@@ -16,7 +16,7 @@ import com.openobserve.android.core.InternalSdkCore
 import com.openobserve.android.core.internal.net.FirstPartyHostHeaderTypeResolver
 import com.openobserve.android.core.metrics.MethodCallSamplingRate
 import com.openobserve.android.internal.telemetry.InternalTelemetryEvent
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 import com.openobserve.android.rum.RumSessionType
 import com.openobserve.android.rum.internal.anr.ANRException
 import com.openobserve.android.rum.internal.domain.InfoProvider
@@ -236,7 +236,7 @@ internal class RumViewManagerScope(
         writeScope: EventWriteScope,
         writer: DataWriter<Any>
     ) {
-        val processFlag = DdRumContentProvider.processImportance
+        val processFlag = OoRumContentProvider.processImportance
         val importanceForeground = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
         val isForegroundProcess = processFlag == importanceForeground
 

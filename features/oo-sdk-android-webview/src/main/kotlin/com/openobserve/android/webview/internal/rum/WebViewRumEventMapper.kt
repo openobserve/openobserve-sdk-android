@@ -41,7 +41,7 @@ internal class WebViewRumEventMapper(
             event.addProperty(DATE_KEY_NAME, eventDate + timeOffset)
         }
         event.add(CONTAINER_KEY_NAME, containerObject)
-        val dd = event.get(DD_KEY_NAME)?.asJsonObject
+        val oo = event.get(DD_KEY_NAME)?.asJsonObject
         if (dd != null) {
             val ddSession = dd.get(DD_SESSION_KEY_NAME)?.asJsonObject ?: JsonObject()
             dd.add(DD_SESSION_KEY_NAME, ddSession)

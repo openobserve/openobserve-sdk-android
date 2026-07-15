@@ -113,7 +113,7 @@ datadog:
     allowedFiles:
       - '.*TimeProvider.*'
       - '.*Time\.kt'
-      - '.*DdRumContentProvider.*'
+      - '.*OoRumContentProvider.*'
   ThreadSafety:
     active: true
     workerThreadSwitchingCalls:

@@ -30,7 +30,7 @@ import com.openobserve.android.core.sampling.Sampler
 import com.openobserve.android.internal.telemetry.InternalTelemetryEvent
 import com.openobserve.android.internal.telemetry.InternalTelemetryEvent.ApiUsage.AddOperationStepVital.ActionType
 import com.openobserve.android.internal.thread.NamedCallable
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 import com.openobserve.android.rum.ExperimentalRumApi
 import com.openobserve.android.rum.RumActionType
 import com.openobserve.android.rum.RumAttributes
@@ -497,7 +497,7 @@ internal class OpenObserveRumMonitor(
     }
 
     override fun start() {
-        val processImportance = DdRumContentProvider.processImportance
+        val processImportance = OoRumContentProvider.processImportance
         val isAppInForeground = processImportance ==
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
         handleEvent(

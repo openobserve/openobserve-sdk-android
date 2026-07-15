@@ -11,9 +11,9 @@ import android.app.ApplicationStartInfo
 import android.content.Context
 import com.openobserve.android.internal.data.SharedPreferencesStorage
 import com.openobserve.android.internal.system.BuildSdkVersionProvider
-import com.openobserve.android.profiling.DdProfilingContentProvider.Companion.TELEMETRY_APP_START_INFO_ACTIVITY
-import com.openobserve.android.profiling.DdProfilingContentProvider.Companion.TELEMETRY_APP_START_INFO_LAUNCHER
-import com.openobserve.android.profiling.DdProfilingContentProvider.Companion.TELEMETRY_APP_START_INFO_RECENTS
+import com.openobserve.android.profiling.OoProfilingContentProvider.Companion.TELEMETRY_APP_START_INFO_ACTIVITY
+import com.openobserve.android.profiling.OoProfilingContentProvider.Companion.TELEMETRY_APP_START_INFO_LAUNCHER
+import com.openobserve.android.profiling.OoProfilingContentProvider.Companion.TELEMETRY_APP_START_INFO_RECENTS
 import com.openobserve.android.profiling.forge.Configurator
 import com.openobserve.android.profiling.internal.NoOpProfiler
 import com.openobserve.android.profiling.internal.Profiler
@@ -50,9 +50,9 @@ import org.mockito.quality.Strictness
 )
 @MockitoSettings(strictness = Strictness.LENIENT)
 @ForgeConfiguration(Configurator::class)
-class DdProfilingContentProviderTest {
+class OoProfilingContentProviderTest {
 
-    private lateinit var testedProvider: DdProfilingContentProvider
+    private lateinit var testedProvider: OoProfilingContentProvider
 
     @Mock
     private lateinit var mockBuildSdkVersionProvider: BuildSdkVersionProvider
@@ -93,7 +93,7 @@ class DdProfilingContentProviderTest {
         Profiling.profiler = mockProfiler
         Profiling.isProfilerInitialized.set(true)
 
-        testedProvider = DdProfilingContentProvider(mockBuildSdkVersionProvider)
+        testedProvider = OoProfilingContentProvider(mockBuildSdkVersionProvider)
     }
 
     @AfterEach

@@ -232,7 +232,7 @@ internal class OpenObserveLateCrashReporterTest {
                 )
 
             ViewEventAssert.assertThat(secondValue as ViewEvent)
-                .hasVersion(fakeViewEvent.dd.documentVersion + 1)
+                .hasVersion(fakeViewEvent.oo.documentVersion + 1)
                 .hasCrashCount((fakeViewEvent.view.crash?.count ?: 0) + 1)
                 .isActive(false)
         }
@@ -397,7 +397,7 @@ internal class OpenObserveLateCrashReporterTest {
                 )
 
             ViewEventAssert.assertThat(secondValue as ViewEvent)
-                .hasVersion(fakeViewEvent.dd.documentVersion + 1)
+                .hasVersion(fakeViewEvent.oo.documentVersion + 1)
                 .hasCrashCount((fakeViewEvent.view.crash?.count ?: 0) + 1)
                 .isActive(false)
         }
@@ -547,7 +547,7 @@ internal class OpenObserveLateCrashReporterTest {
                 )
 
             ViewEventAssert.assertThat(secondValue as ViewEvent)
-                .hasVersion(fakeViewEvent.dd.documentVersion + 1)
+                .hasVersion(fakeViewEvent.oo.documentVersion + 1)
                 .hasCrashCount((fakeViewEvent.view.crash?.count ?: 0) + 1)
                 .isActive(false)
         }
@@ -862,7 +862,7 @@ internal class OpenObserveLateCrashReporterTest {
                 .hasThreads(fakeThreadsDump)
 
             ViewEventAssert.assertThat(secondValue as ViewEvent)
-                .hasVersion(fakeViewEvent.dd.documentVersion + 1)
+                .hasVersion(fakeViewEvent.oo.documentVersion + 1)
                 .hasCrashCount((fakeViewEvent.view.crash?.count ?: 0) + 1)
                 .isActive(false)
         }
@@ -1002,7 +1002,7 @@ internal class OpenObserveLateCrashReporterTest {
                 .hasThreads(fakeThreadsDump)
 
             ViewEventAssert.assertThat(secondValue as ViewEvent)
-                .hasVersion(fakeViewEvent.dd.documentVersion + 1)
+                .hasVersion(fakeViewEvent.oo.documentVersion + 1)
                 .hasCrashCount((fakeViewEvent.view.crash?.count ?: 0) + 1)
                 .isActive(false)
         }

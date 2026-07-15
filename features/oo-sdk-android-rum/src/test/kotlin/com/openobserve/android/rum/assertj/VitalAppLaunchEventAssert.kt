@@ -49,19 +49,19 @@ internal class VitalAppLaunchEventAssert(
     }
 
     fun hasStartReason(reason: RumSessionScope.StartReason) = apply {
-        assertThat(actual.dd.session?.sessionPrecondition)
+        assertThat(actual.oo.session?.sessionPrecondition)
             .overridingErrorMessage(
                 "Expected event to have a session sessionPrecondition of ${reason.name} " +
-                    "but was ${actual.dd.session?.sessionPrecondition}"
+                    "but was ${actual.oo.session?.sessionPrecondition}"
             )
             .isEqualTo(reason.toVitalAppLaunchSessionPrecondition())
     }
 
     fun hasSampleRate(sampleRate: Float?) = apply {
-        assertThat(actual.dd.configuration?.sessionSampleRate ?: 0)
+        assertThat(actual.oo.configuration?.sessionSampleRate ?: 0)
             .overridingErrorMessage(
                 "Expected event to have sample rate: $sampleRate" +
-                    " but instead was: ${actual.dd.configuration?.sessionSampleRate}"
+                    " but instead was: ${actual.oo.configuration?.sessionSampleRate}"
             )
             .isEqualTo(sampleRate)
     }
@@ -363,28 +363,28 @@ internal class VitalAppLaunchEventAssert(
     }
 
     fun hasProfilingStatus(profilingStatus: VitalAppLaunchEvent.ProfilingStatus?) = apply {
-        assertThat(actual.dd.profiling?.status)
+        assertThat(actual.oo.profiling?.status)
             .overridingErrorMessage(
                 "Expected RUM event to have profiling status: $profilingStatus" +
-                    " but instead was: ${actual.dd.profiling?.status}"
+                    " but instead was: ${actual.oo.profiling?.status}"
             )
             .isEqualTo(profilingStatus)
     }
 
     fun hasNoProfilingStatus() = apply {
-        assertThat(actual.dd.profiling?.status)
+        assertThat(actual.oo.profiling?.status)
             .overridingErrorMessage(
                 "Expected RUM event to have no profiling status" +
-                    " but instead was: ${actual.dd.profiling?.status}"
+                    " but instead was: ${actual.oo.profiling?.status}"
             )
             .isNull()
     }
 
     fun hasNoProfilingErrorReason() = apply {
-        assertThat(actual.dd.profiling?.errorReason)
+        assertThat(actual.oo.profiling?.errorReason)
             .overridingErrorMessage(
                 "Expected RUM event to have no profiling error reason" +
-                    " but instead was: ${actual.dd.profiling?.errorReason}"
+                    " but instead was: ${actual.oo.profiling?.errorReason}"
             )
             .isNull()
     }

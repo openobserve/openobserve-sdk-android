@@ -218,7 +218,7 @@ internal class TelemetryEventHandler(
             .addDiagnosticsAttributes()
 
         return TelemetryDebugEvent(
-            dd = TelemetryDebugEvent.Dd(),
+            oo = TelemetryDebugEvent.Oo(),
             date = timestamp,
             source = TelemetryDebugEvent.Source.tryFromSource(
                 ooContext.source,
@@ -268,7 +268,7 @@ internal class TelemetryEventHandler(
             .addDiagnosticsAttributes()
 
         return TelemetryErrorEvent(
-            dd = TelemetryErrorEvent.Dd(),
+            oo = TelemetryErrorEvent.Oo(),
             date = timestamp,
             source = TelemetryErrorEvent.Source.tryFromSource(
                 ooContext.source,
@@ -352,7 +352,7 @@ internal class TelemetryEventHandler(
             ?.timeThresholdInMilliseconds
 
         return TelemetryConfigurationEvent(
-            dd = TelemetryConfigurationEvent.Dd(),
+            oo = TelemetryConfigurationEvent.Oo(),
             date = timestamp,
             service = TELEMETRY_SERVICE_NAME,
             source = TelemetryConfigurationEvent.Source.tryFromSource(
@@ -463,7 +463,7 @@ internal class TelemetryEventHandler(
         }
 
         return TelemetryUsageEvent(
-            dd = TelemetryUsageEvent.Dd(),
+            oo = TelemetryUsageEvent.Oo(),
             date = timestamp,
             source = TelemetryUsageEvent.Source.tryFromSource(
                 ooContext.source,

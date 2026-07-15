@@ -195,14 +195,14 @@ public final class com/openobserve/android/log/model/LogEvent$Companion {
 
 public final class com/openobserve/android/log/model/LogEvent$Dd {
 	public static final field Companion Lcom/openobserve/android/log/model/LogEvent$Dd$Companion;
-	public fun <init> (Lcom/openobserve/android/log/model/LogEvent$DdDevice;)V
-	public final fun component1 ()Lcom/openobserve/android/log/model/LogEvent$DdDevice;
-	public final fun copy (Lcom/openobserve/android/log/model/LogEvent$DdDevice;)Lcom/openobserve/android/log/model/LogEvent$Dd;
-	public static synthetic fun copy$default (Lcom/openobserve/android/log/model/LogEvent$Dd;Lcom/openobserve/android/log/model/LogEvent$DdDevice;ILjava/lang/Object;)Lcom/openobserve/android/log/model/LogEvent$Dd;
+	public fun <init> (Lcom/openobserve/android/log/model/LogEvent$OoDevice;)V
+	public final fun component1 ()Lcom/openobserve/android/log/model/LogEvent$OoDevice;
+	public final fun copy (Lcom/openobserve/android/log/model/LogEvent$OoDevice;)Lcom/openobserve/android/log/model/LogEvent$Dd;
+	public static synthetic fun copy$default (Lcom/openobserve/android/log/model/LogEvent$Dd;Lcom/openobserve/android/log/model/LogEvent$OoDevice;ILjava/lang/Object;)Lcom/openobserve/android/log/model/LogEvent$Dd;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/log/model/LogEvent$Dd;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/log/model/LogEvent$Dd;
-	public final fun getDevice ()Lcom/openobserve/android/log/model/LogEvent$DdDevice;
+	public final fun getDevice ()Lcom/openobserve/android/log/model/LogEvent$OoDevice;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
@@ -213,24 +213,24 @@ public final class com/openobserve/android/log/model/LogEvent$Dd$Companion {
 	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/log/model/LogEvent$Dd;
 }
 
-public final class com/openobserve/android/log/model/LogEvent$DdDevice {
-	public static final field Companion Lcom/openobserve/android/log/model/LogEvent$DdDevice$Companion;
+public final class com/openobserve/android/log/model/LogEvent$OoDevice {
+	public static final field Companion Lcom/openobserve/android/log/model/LogEvent$OoDevice$Companion;
 	public fun <init> (Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Lcom/openobserve/android/log/model/LogEvent$DdDevice;
-	public static synthetic fun copy$default (Lcom/openobserve/android/log/model/LogEvent$DdDevice;Ljava/lang/String;ILjava/lang/Object;)Lcom/openobserve/android/log/model/LogEvent$DdDevice;
+	public final fun copy (Ljava/lang/String;)Lcom/openobserve/android/log/model/LogEvent$OoDevice;
+	public static synthetic fun copy$default (Lcom/openobserve/android/log/model/LogEvent$OoDevice;Ljava/lang/String;ILjava/lang/Object;)Lcom/openobserve/android/log/model/LogEvent$OoDevice;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/log/model/LogEvent$DdDevice;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/log/model/LogEvent$DdDevice;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/log/model/LogEvent$OoDevice;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/log/model/LogEvent$OoDevice;
 	public final fun getArchitecture ()Ljava/lang/String;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/log/model/LogEvent$DdDevice$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/log/model/LogEvent$DdDevice;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/log/model/LogEvent$DdDevice;
+public final class com/openobserve/android/log/model/LogEvent$OoDevice$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/log/model/LogEvent$OoDevice;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/log/model/LogEvent$OoDevice;
 }
 
 public final class com/openobserve/android/log/model/LogEvent$Error {

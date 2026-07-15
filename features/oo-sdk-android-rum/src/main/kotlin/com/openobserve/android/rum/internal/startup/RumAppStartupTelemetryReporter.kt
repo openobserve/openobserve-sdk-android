@@ -7,7 +7,7 @@
 package com.openobserve.android.rum.internal.startup
 
 import com.openobserve.android.core.InternalSdkCore
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 
 internal interface RumAppStartupTelemetryReporter {
     fun reportTTID(info: RumTTIDInfo, indexInSession: Int)
@@ -17,8 +17,8 @@ internal interface RumAppStartupTelemetryReporter {
             return RumAppStartupTelemetryReporterImpl(
                 internalLogger = sdkCore.internalLogger,
                 appStartupTimeNs = sdkCore.appStartTimeNs,
-                contentProviderCreationTimeNs = DdRumContentProvider.createTimeNs,
-                processStartImportance = DdRumContentProvider.processImportance
+                contentProviderCreationTimeNs = OoRumContentProvider.createTimeNs,
+                processStartImportance = OoRumContentProvider.processImportance
             )
         }
     }

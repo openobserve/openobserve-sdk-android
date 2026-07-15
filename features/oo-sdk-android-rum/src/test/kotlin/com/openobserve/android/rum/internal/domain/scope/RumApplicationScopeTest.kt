@@ -17,7 +17,7 @@ import com.openobserve.android.api.storage.DataWriter
 import com.openobserve.android.core.InternalSdkCore
 import com.openobserve.android.core.internal.net.FirstPartyHostHeaderTypeResolver
 import com.openobserve.android.core.sampling.Sampler
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 import com.openobserve.android.rum.RumActionType
 import com.openobserve.android.rum.RumSessionListener
 import com.openobserve.android.rum.RumSessionType
@@ -442,7 +442,7 @@ internal class RumApplicationScopeTest {
         val firstEvent = fakeEvents.first()
         val appStartTimeNs = forge.aLong(min = 0, max = fakeEvents.first().eventTime.nanoTime)
         whenever(mockSdkCore.appStartTimeNs) doReturn appStartTimeNs
-        DdRumContentProvider.processImportance =
+        OoRumContentProvider.processImportance =
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
         val mockSessionScope = mock<RumSessionScope>()
         testedScope.childScopes.clear()
@@ -495,7 +495,7 @@ internal class RumApplicationScopeTest {
         }
         val appStartTimeNs = forge.aLong(min = 0, max = fakeEvents.first().eventTime.nanoTime)
         whenever(mockSdkCore.appStartTimeNs) doReturn appStartTimeNs
-        DdRumContentProvider.processImportance = forge.anElementFrom(
+        OoRumContentProvider.processImportance = forge.anElementFrom(
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE,
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_TOP_SLEEPING,
             @Suppress("DEPRECATION")
@@ -537,7 +537,7 @@ internal class RumApplicationScopeTest {
         val fakeSdkInitEvent = forge.sdkInitEvent()
         val appStartTimeNs = forge.aLong(min = 0, max = fakeSdkInitEvent.eventTime.nanoTime)
         whenever(mockSdkCore.appStartTimeNs) doReturn appStartTimeNs
-        DdRumContentProvider.processImportance = forge.anElementFrom(
+        OoRumContentProvider.processImportance = forge.anElementFrom(
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND,
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE,
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_TOP_SLEEPING,

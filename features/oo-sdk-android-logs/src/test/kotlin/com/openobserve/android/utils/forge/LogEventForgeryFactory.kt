@@ -111,8 +111,8 @@ internal class LogEventForgeryFactory : ForgeryFactory<LogEvent> {
                 timeZone = forge.aNullable { anAlphabeticalString() },
                 powerSavingMode = forge.aNullable { aBool() }
             ),
-            dd = LogEvent.Dd(
-                device = LogEvent.DdDevice(
+            oo = LogEvent.Oo(
+                device = LogEvent.OoDevice(
                     architecture = deviceInfo.architecture
                 )
             ),

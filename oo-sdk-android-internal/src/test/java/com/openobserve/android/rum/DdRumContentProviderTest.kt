@@ -43,7 +43,7 @@ import java.net.URI
 )
 @MockitoSettings(strictness = Strictness.LENIENT)
 @ForgeConfiguration(Configurator::class)
-class DdRumContentProviderTest {
+class OoRumContentProviderTest {
 
     lateinit var testedProvider: ContentProvider
 
@@ -76,13 +76,13 @@ class DdRumContentProviderTest {
             listOf(fakeCurrentProcessInfo, fakeOtherProcessInfo)
         )
 
-        testedProvider = DdRumContentProvider()
+        testedProvider = OoRumContentProvider()
         testedProvider.setFieldValue("mContext", mockContext)
     }
 
     @AfterEach
     fun `tear down`() {
-        DdRumContentProvider.processImportance = 0
+        OoRumContentProvider.processImportance = 0
     }
 
     // region onCreate
@@ -98,7 +98,7 @@ class DdRumContentProviderTest {
         testedProvider.onCreate()
 
         // Then
-        assertThat(DdRumContentProvider.processImportance).isEqualTo(processImportance)
+        assertThat(OoRumContentProvider.processImportance).isEqualTo(processImportance)
     }
 
     @Test
@@ -116,7 +116,7 @@ class DdRumContentProviderTest {
         testedProvider.onCreate()
 
         // Then
-        assertThat(DdRumContentProvider.processImportance).isEqualTo(processImportance1)
+        assertThat(OoRumContentProvider.processImportance).isEqualTo(processImportance1)
     }
 
     @Test
@@ -128,8 +128,8 @@ class DdRumContentProviderTest {
         testedProvider.onCreate()
 
         // Then
-        assertThat(DdRumContentProvider.processImportance)
-            .isEqualTo(DdRumContentProvider.DEFAULT_IMPORTANCE)
+        assertThat(OoRumContentProvider.processImportance)
+            .isEqualTo(OoRumContentProvider.DEFAULT_IMPORTANCE)
     }
 
     @Test
@@ -141,8 +141,8 @@ class DdRumContentProviderTest {
         testedProvider.onCreate()
 
         // Then
-        assertThat(DdRumContentProvider.processImportance)
-            .isEqualTo(DdRumContentProvider.DEFAULT_IMPORTANCE)
+        assertThat(OoRumContentProvider.processImportance)
+            .isEqualTo(OoRumContentProvider.DEFAULT_IMPORTANCE)
     }
 
     // endregion

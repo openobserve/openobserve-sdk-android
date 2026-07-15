@@ -343,8 +343,8 @@ internal open class RumViewScope(
                     it.putAll(eventAttributes)
                 }
             ),
-            dd = VitalOperationStepEvent.Dd(
-                session = VitalOperationStepEvent.DdSession(
+            oo = VitalOperationStepEvent.Oo(
+                session = VitalOperationStepEvent.OoSession(
                     sessionPrecondition = rumContext.sessionStartReason.toVitalOperationStepSessionPrecondition()
                 ),
                 configuration = VitalOperationStepEvent.Configuration(sessionSampleRate = sampleRate)
@@ -805,8 +805,8 @@ internal open class RumViewScope(
                     isLowRam = ooContext.deviceInfo.isLowRam
                 ),
                 context = ErrorEvent.Context(additionalProperties = errorCustomAttributes),
-                dd = ErrorEvent.Dd(
-                    session = ErrorEvent.DdSession(
+                oo = ErrorEvent.Oo(
+                    session = ErrorEvent.OoSession(
                         sessionPrecondition = rumContext.sessionStartReason.toErrorSessionPrecondition()
                     ),
                     configuration = ErrorEvent.Configuration(sessionSampleRate = sampleRate)
@@ -1337,9 +1337,9 @@ internal open class RumViewScope(
                     isLowRam = ooContext.deviceInfo.isLowRam
                 ),
                 context = ViewEvent.Context(additionalProperties = viewCustomAttributes),
-                dd = ViewEvent.Dd(
+                oo = ViewEvent.Oo(
                     documentVersion = eventVersion,
-                    session = ViewEvent.DdSession(
+                    session = ViewEvent.OoSession(
                         sessionPrecondition = rumContext.sessionStartReason.toViewSessionPrecondition()
                     ),
                     replayStats = replayStats,
@@ -1519,8 +1519,8 @@ internal open class RumViewScope(
                     isLowRam = ooContext.deviceInfo.isLowRam
                 ),
                 context = LongTaskEvent.Context(additionalProperties = longTaskCustomAttributes),
-                dd = LongTaskEvent.Dd(
-                    session = LongTaskEvent.DdSession(
+                oo = LongTaskEvent.Oo(
+                    session = LongTaskEvent.OoSession(
                         sessionPrecondition = rumContext.sessionStartReason.toLongTaskSessionPrecondition()
                     ),
                     configuration = LongTaskEvent.Configuration(sessionSampleRate = sampleRate)

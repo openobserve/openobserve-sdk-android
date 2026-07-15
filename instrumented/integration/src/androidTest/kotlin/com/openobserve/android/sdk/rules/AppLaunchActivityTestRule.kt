@@ -10,7 +10,7 @@ import android.app.ActivityManager
 import androidx.test.platform.app.InstrumentationRegistry
 import com.openobserve.android.OpenObserve
 import com.openobserve.android.privacy.TrackingConsent
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 import com.openobserve.android.rum.Rum
 import com.openobserve.android.rum.tracking.ActivityViewTrackingStrategy
 import com.openobserve.android.sdk.integration.RuntimeConfig
@@ -39,6 +39,6 @@ internal class AppLaunchActivityTestRule : RumMockServerActivityTestRule<AppLaun
             .useViewTrackingStrategy(ActivityViewTrackingStrategy(false))
             .build()
         Rum.enable(rumConfig, sdkCore)
-        DdRumContentProvider.processImportance = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+        OoRumContentProvider.processImportance = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
     }
 }

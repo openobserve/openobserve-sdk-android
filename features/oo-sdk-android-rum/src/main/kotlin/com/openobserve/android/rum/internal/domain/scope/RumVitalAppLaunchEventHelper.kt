@@ -76,8 +76,8 @@ internal class RumVitalAppLaunchEventHelper(
                     it.putAll(eventAttributes)
                 }
             ),
-            dd = VitalAppLaunchEvent.Dd(
-                session = VitalAppLaunchEvent.DdSession(
+            oo = VitalAppLaunchEvent.Oo(
+                session = VitalAppLaunchEvent.OoSession(
                     sessionPrecondition = rumContext.sessionStartReason.toVitalAppLaunchSessionPrecondition()
                 ),
                 configuration = VitalAppLaunchEvent.Configuration(sessionSampleRate = sampleRate),

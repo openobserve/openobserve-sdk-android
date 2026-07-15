@@ -15,7 +15,7 @@ import com.openobserve.android.api.storage.DataWriter
 import com.openobserve.android.core.InternalSdkCore
 import com.openobserve.android.core.internal.net.FirstPartyHostHeaderTypeResolver
 import com.openobserve.android.core.sampling.Sampler
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 import com.openobserve.android.rum.GlobalRumMonitor
 import com.openobserve.android.rum.RumSessionListener
 import com.openobserve.android.rum.RumSessionType
@@ -237,7 +237,7 @@ internal class RumApplicationScope(
         writeScope: EventWriteScope,
         writer: DataWriter<Any>
     ) {
-        val processImportance = DdRumContentProvider.processImportance
+        val processImportance = OoRumContentProvider.processImportance
         val isForegroundProcess = processImportance ==
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
         if (isForegroundProcess) {

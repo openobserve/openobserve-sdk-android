@@ -224,7 +224,7 @@
 * [FEATURE] Enable UI slow frames by default. See [#3102](https://github.com/openobserve/openobserve-sdk-android/pull/3102)
 * [BUGFIX] Do not send TTID and TTFD vitals if they are too large. See [#3031](https://github.com/openobserve/openobserve-sdk-android/pull/3031)
 * [BUGFIX] Fix service handling in `ootags` of `LogEvent`. See [#3052](https://github.com/openobserve/openobserve-sdk-android/pull/3052)
-* [BUGFIX] Fall back to `DdRumContentProvider` creation time. See [#3055](https://github.com/openobserve/openobserve-sdk-android/pull/3055)
+* [BUGFIX] Fall back to `OoRumContentProvider` creation time. See [#3055](https://github.com/openobserve/openobserve-sdk-android/pull/3055)
 * [BUGFIX] Fix Compose checkbox not sending RUM action. See [#3077](https://github.com/openobserve/openobserve-sdk-android/pull/3077)
 * [BUGFIX] Handle ANR trace open exception. See [#3082](https://github.com/openobserve/openobserve-sdk-android/pull/3082)
 * [BUGFIX] Fix issue with `OnWindowFocusChanged`. See [#3083](https://github.com/openobserve/openobserve-sdk-android/pull/3083)

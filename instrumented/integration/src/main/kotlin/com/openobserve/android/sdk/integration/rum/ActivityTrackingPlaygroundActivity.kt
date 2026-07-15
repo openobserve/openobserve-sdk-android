@@ -11,7 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.openobserve.android.OpenObserve
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 import com.openobserve.android.rum.Rum
 import com.openobserve.android.rum.tracking.ActivityViewTrackingStrategy
 import com.openobserve.android.sdk.integration.R
@@ -33,7 +33,7 @@ internal class ActivityTrackingPlaygroundActivity : AppCompatActivity() {
         val sdkCore = OpenObserve.initialize(this, config, trackingConsent)
         checkNotNull(sdkCore)
 
-        DdRumContentProvider.processImportance = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+        OoRumContentProvider.processImportance = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
 
         val rumConfig = RuntimeConfig.rumConfigBuilder()
             .trackUserInteractions()

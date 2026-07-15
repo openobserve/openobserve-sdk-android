@@ -14,7 +14,7 @@ import fr.xgouchet.elmyr.ForgeryFactory
 internal class TelemetryUsageEventForgeryFactory : ForgeryFactory<TelemetryUsageEvent> {
     override fun getForgery(forge: Forge): TelemetryUsageEvent {
         return TelemetryUsageEvent(
-            dd = TelemetryUsageEvent.Dd(),
+            oo = TelemetryUsageEvent.Oo(),
             date = forge.aPositiveLong(),
             service = forge.anAlphabeticalString(),
             source = forge.aValueFrom(TelemetryUsageEvent.Source::class.java),

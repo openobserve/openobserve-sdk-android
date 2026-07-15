@@ -18,7 +18,7 @@ import android.util.Log
 /**
  * A Content provider used to monitor the Application startup time efficiently.
  */
-class DdRumContentProvider : ContentProvider() {
+class OoRumContentProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         if (processImportance == 0) {
@@ -28,7 +28,7 @@ class DdRumContentProvider : ContentProvider() {
                 it.pid == currentProcessId
             }
             processImportance = currentProcess?.importance ?: DEFAULT_IMPORTANCE
-            Log.w("DdRumContentProvider", "processImportance:$processImportance")
+            Log.w("OoRumContentProvider", "processImportance:$processImportance")
         }
         return true
     }
@@ -69,7 +69,7 @@ class DdRumContentProvider : ContentProvider() {
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
 
         /**
-         * Process importance at the moment of creating [DdRumContentProvider]
+         * Process importance at the moment of creating [OoRumContentProvider]
          * Should be set from the outside only in tests.
          */
         var processImportance: Int = 0

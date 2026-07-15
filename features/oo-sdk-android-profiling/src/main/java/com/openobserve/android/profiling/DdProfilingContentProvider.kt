@@ -27,7 +27,7 @@ import com.openobserve.android.profiling.internal.perfetto.PerfettoProfiler
  * lifecycle.
  */
 @OptIn(ExperimentalProfilingApi::class)
-class DdProfilingContentProvider(
+class OoProfilingContentProvider(
     private val buildSdkVersionProvider: BuildSdkVersionProvider = DEFAULT
 ) : ContentProvider() {
 

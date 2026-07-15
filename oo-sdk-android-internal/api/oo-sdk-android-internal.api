@@ -622,8 +622,8 @@ public final class com/openobserve/android/internal/utils/TimeExtKt {
 	public static final fun formatIsoUtc (J)Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/DdRumContentProvider : android/content/ContentProvider {
-	public static final field Companion Lcom/openobserve/android/rum/DdRumContentProvider$Companion;
+public final class com/openobserve/android/rum/OoRumContentProvider : android/content/ContentProvider {
+	public static final field Companion Lcom/openobserve/android/rum/OoRumContentProvider$Companion;
 	public fun <init> ()V
 	public fun delete (Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
 	public fun getType (Landroid/net/Uri;)Ljava/lang/String;
@@ -633,7 +633,7 @@ public final class com/openobserve/android/rum/DdRumContentProvider : android/co
 	public fun update (Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 }
 
-public final class com/openobserve/android/rum/DdRumContentProvider$Companion {
+public final class com/openobserve/android/rum/OoRumContentProvider$Companion {
 	public final fun getCreateTimeNs ()J
 	public final fun getProcessImportance ()I
 	public final fun setCreateTimeNs (J)V

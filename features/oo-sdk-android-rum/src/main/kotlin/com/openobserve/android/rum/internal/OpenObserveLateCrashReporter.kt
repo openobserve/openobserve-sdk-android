@@ -257,8 +257,8 @@ internal class OpenObserveLateCrashReporter(
                 totalRam = deviceInfo.totalRam,
                 isLowRam = deviceInfo.isLowRam
             ),
-            dd = ErrorEvent.Dd(
-                session = ErrorEvent.DdSession(),
+            oo = ErrorEvent.Oo(
+                session = ErrorEvent.OoSession(),
                 configuration = ErrorEvent.Configuration(sessionSampleRate = viewEvent.sampleRate)
             ),
             context = ErrorEvent.Context(additionalProperties = additionalProperties),
@@ -323,8 +323,8 @@ internal class OpenObserveLateCrashReporter(
                 crash = newCrash,
                 isActive = false
             ),
-            dd = lastViewEvent.dd.copy(
-                documentVersion = lastViewEvent.dd.documentVersion + 1
+            oo = lastViewEvent.oo.copy(
+                documentVersion = lastViewEvent.oo.documentVersion + 1
             )
         )
     }

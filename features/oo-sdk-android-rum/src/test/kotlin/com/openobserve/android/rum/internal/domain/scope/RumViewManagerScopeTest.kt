@@ -16,7 +16,7 @@ import com.openobserve.android.api.storage.EventBatchWriter
 import com.openobserve.android.core.InternalSdkCore
 import com.openobserve.android.core.internal.net.FirstPartyHostHeaderTypeResolver
 import com.openobserve.android.internal.telemetry.InternalTelemetryEvent
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 import com.openobserve.android.rum.RumErrorSource
 import com.openobserve.android.rum.RumSessionType
 import com.openobserve.android.rum.internal.anr.ANRDetectorRunnable
@@ -487,7 +487,7 @@ internal class RumViewManagerScopeTest {
         forge: Forge
     ) {
         // Given
-        DdRumContentProvider.processImportance = forge.anElementFrom(
+        OoRumContentProvider.processImportance = forge.anElementFrom(
             RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE,
             RunningAppProcessInfo.IMPORTANCE_TOP_SLEEPING,
             @Suppress("DEPRECATION")
@@ -687,7 +687,7 @@ internal class RumViewManagerScopeTest {
         forge: Forge
     ) {
         // Given
-        DdRumContentProvider.processImportance = RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+        OoRumContentProvider.processImportance = RunningAppProcessInfo.IMPORTANCE_FOREGROUND
         testedScope.applicationDisplayed = false
         val fakeAppStartEvent = forge.applicationStartedEvent()
 

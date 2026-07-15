@@ -93,7 +93,7 @@ class PreferTimeProvider(
 
     internal companion object {
         internal val DEFAULT_ALLOWED_FILES = listOf(
-            ".*DdRumContentProvider.*",
+            ".*OoRumContentProvider.*",
             ".*Time\\.kt",
             ".*TimeProvider.*"
         )

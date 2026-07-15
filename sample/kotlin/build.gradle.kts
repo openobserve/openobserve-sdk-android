@@ -13,7 +13,8 @@ import com.openobserve.gradle.config.javadocConfig
 import com.openobserve.gradle.config.junitConfig
 import com.openobserve.gradle.config.kotlinConfig
 import com.openobserve.gradle.config.taskConfig
-import com.openobserve.gradle.plugin.InstrumentationMode
+// openobserve: openobserve-sdk-android-gradle-plugin (#7) not yet published
+// import com.openobserve.gradle.plugin.InstrumentationMode
 
 plugins {
     id("com.android.application")
@@ -144,9 +145,10 @@ android {
     }
 }
 
-datadog {
-    composeInstrumentation = InstrumentationMode.AUTO
-}
+// openobserve: gradle plugin (#7) disabled until published
+// datadog {
+//     composeInstrumentation = InstrumentationMode.AUTO
+// }
 
 dependencies {
     // OpenObserve Libraries

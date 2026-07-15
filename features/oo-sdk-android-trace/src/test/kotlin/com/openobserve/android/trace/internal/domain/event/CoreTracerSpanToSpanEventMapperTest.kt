@@ -53,7 +53,7 @@ internal class CoreTracerSpanToSpanEventMapperTest {
     }
 
     @Test
-    fun `M map a DdSpan to a SpanEvent W map()`(
+    fun `M map a OoSpan to a SpanEvent W map()`(
         @Forgery fakeSpan: DDSpan
     ) {
         // Given
@@ -101,7 +101,7 @@ internal class CoreTracerSpanToSpanEventMapperTest {
     }
 
     @Test
-    fun `M map a DdSpan to a SpanEvent with RUM info W map() {RUM info present}`(
+    fun `M map a OoSpan to a SpanEvent with RUM info W map() {RUM info present}`(
         @Forgery fakeSpan: DDSpan,
         @StringForgery fakeApplicationId: String,
         @StringForgery fakeSessionId: String,

@@ -9,7 +9,7 @@ package com.openobserve.android.sdk.rules
 import android.app.Activity
 import android.app.ActivityManager
 import com.openobserve.android.privacy.TrackingConsent
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 
 internal class KioskTrackingActivityTestRule<T : Activity>(
     activityClass: Class<T>,
@@ -19,6 +19,6 @@ internal class KioskTrackingActivityTestRule<T : Activity>(
 
     override fun beforeActivityLaunched() {
         super.beforeActivityLaunched()
-        DdRumContentProvider.processImportance = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+        OoRumContentProvider.processImportance = ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
     }
 }

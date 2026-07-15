@@ -1,4 +1,4 @@
-public final class com/openobserve/android/profiling/DdProfilingContentProvider : android/content/ContentProvider {
+public final class com/openobserve/android/profiling/OoProfilingContentProvider : android/content/ContentProvider {
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/internal/system/BuildSdkVersionProvider;)V
 	public synthetic fun <init> (Lcom/openobserve/android/internal/system/BuildSdkVersionProvider;ILkotlin/jvm/internal/DefaultConstructorMarker;)V

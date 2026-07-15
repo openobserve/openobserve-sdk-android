@@ -9,7 +9,7 @@ package com.openobserve.android.trace.internal.domain.event
 import com.openobserve.android.lint.InternalApi
 import java.math.BigInteger
 
-// TODO RUM-9902 Make internal internal after opentracing code removal. Required for DdSpanToSpanEventMapperTest
+// TODO RUM-9902 Make internal internal after opentracing code removal. Required for OoSpanToSpanEventMapperTest
 @InternalApi
 @SuppressWarnings("UndocumentedPublicClass")
 object BigIntegerUtils {

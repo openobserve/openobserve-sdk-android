@@ -197,8 +197,8 @@ internal class OpenObserveLogGenerator(
             buildId = ooContext.appBuildId,
             error = error,
             logger = loggerInfo,
-            dd = LogEvent.Dd(
-                device = LogEvent.DdDevice(
+            oo = LogEvent.Oo(
+                device = LogEvent.OoDevice(
                     architecture = deviceInfo.architecture
                 )
             ),

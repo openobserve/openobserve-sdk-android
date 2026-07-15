@@ -9,7 +9,7 @@
     <application>
 
         <provider
-            android:name="com.openobserve.android.profiling.DdProfilingContentProvider"
+            android:name="com.openobserve.android.profiling.OoProfilingContentProvider"
             android:authorities="${applicationId}.provider.datadog.profiling"
             android:exported="false"
             android:initOrder="1000" />

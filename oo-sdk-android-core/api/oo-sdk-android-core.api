@@ -170,51 +170,6 @@ public final class com/openobserve/android/api/context/AccountInfo {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/api/context/OpenObserveContext {
-	public fun <init> (Lcom/openobserve/android/OpenObserveSite;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/api/context/TimeInfo;Lcom/openobserve/android/api/context/ProcessInfo;Lcom/openobserve/android/api/context/NetworkInfo;Lcom/openobserve/android/api/context/DeviceInfo;Lcom/openobserve/android/api/context/UserInfo;Lcom/openobserve/android/api/context/AccountInfo;Lcom/openobserve/android/privacy/TrackingConsent;Ljava/lang/String;Ljava/util/Map;)V
-	public final fun component1 ()Lcom/openobserve/android/OpenObserveSite;
-	public final fun component10 ()Lcom/openobserve/android/api/context/TimeInfo;
-	public final fun component11 ()Lcom/openobserve/android/api/context/ProcessInfo;
-	public final fun component12 ()Lcom/openobserve/android/api/context/NetworkInfo;
-	public final fun component13 ()Lcom/openobserve/android/api/context/DeviceInfo;
-	public final fun component14 ()Lcom/openobserve/android/api/context/UserInfo;
-	public final fun component15 ()Lcom/openobserve/android/api/context/AccountInfo;
-	public final fun component16 ()Lcom/openobserve/android/privacy/TrackingConsent;
-	public final fun component17 ()Ljava/lang/String;
-	public final fun component18 ()Ljava/util/Map;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Ljava/lang/String;
-	public final fun component6 ()I
-	public final fun component7 ()Ljava/lang/String;
-	public final fun component8 ()Ljava/lang/String;
-	public final fun component9 ()Ljava/lang/String;
-	public final fun copy (Lcom/openobserve/android/OpenObserveSite;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/api/context/TimeInfo;Lcom/openobserve/android/api/context/ProcessInfo;Lcom/openobserve/android/api/context/NetworkInfo;Lcom/openobserve/android/api/context/DeviceInfo;Lcom/openobserve/android/api/context/UserInfo;Lcom/openobserve/android/api/context/AccountInfo;Lcom/openobserve/android/privacy/TrackingConsent;Ljava/lang/String;Ljava/util/Map;)Lcom/openobserve/android/api/context/OpenObserveContext;
-	public static synthetic fun copy$default (Lcom/openobserve/android/api/context/OpenObserveContext;Lcom/openobserve/android/OpenObserveSite;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/api/context/TimeInfo;Lcom/openobserve/android/api/context/ProcessInfo;Lcom/openobserve/android/api/context/NetworkInfo;Lcom/openobserve/android/api/context/DeviceInfo;Lcom/openobserve/android/api/context/UserInfo;Lcom/openobserve/android/api/context/AccountInfo;Lcom/openobserve/android/privacy/TrackingConsent;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lcom/openobserve/android/api/context/OpenObserveContext;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAccountInfo ()Lcom/openobserve/android/api/context/AccountInfo;
-	public final fun getAppBuildId ()Ljava/lang/String;
-	public final fun getClientToken ()Ljava/lang/String;
-	public final fun getDeviceInfo ()Lcom/openobserve/android/api/context/DeviceInfo;
-	public final fun getEnv ()Ljava/lang/String;
-	public final fun getFeaturesContext ()Ljava/util/Map;
-	public final fun getNetworkInfo ()Lcom/openobserve/android/api/context/NetworkInfo;
-	public final fun getProcessInfo ()Lcom/openobserve/android/api/context/ProcessInfo;
-	public final fun getSdkVersion ()Ljava/lang/String;
-	public final fun getService ()Ljava/lang/String;
-	public final fun getSite ()Lcom/openobserve/android/OpenObserveSite;
-	public final fun getSource ()Ljava/lang/String;
-	public final fun getTime ()Lcom/openobserve/android/api/context/TimeInfo;
-	public final fun getTrackingConsent ()Lcom/openobserve/android/privacy/TrackingConsent;
-	public final fun getUserInfo ()Lcom/openobserve/android/api/context/UserInfo;
-	public final fun getVariant ()Ljava/lang/String;
-	public final fun getVersion ()Ljava/lang/String;
-	public final fun getVersionCode ()I
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
 public final class com/openobserve/android/api/context/DeviceInfo {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/api/context/DeviceType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lcom/openobserve/android/api/context/LocaleInfo;ILjava/lang/Integer;Ljava/lang/Boolean;)V
 	public final fun component1 ()Ljava/lang/String;
@@ -322,6 +277,51 @@ public final class com/openobserve/android/api/context/NetworkInfo$Connectivity 
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/api/context/NetworkInfo$Connectivity;
 	public static fun valueOf (Ljava/lang/String;)Lcom/openobserve/android/api/context/NetworkInfo$Connectivity;
 	public static fun values ()[Lcom/openobserve/android/api/context/NetworkInfo$Connectivity;
+}
+
+public final class com/openobserve/android/api/context/OpenObserveContext {
+	public fun <init> (Lcom/openobserve/android/OpenObserveSite;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/api/context/TimeInfo;Lcom/openobserve/android/api/context/ProcessInfo;Lcom/openobserve/android/api/context/NetworkInfo;Lcom/openobserve/android/api/context/DeviceInfo;Lcom/openobserve/android/api/context/UserInfo;Lcom/openobserve/android/api/context/AccountInfo;Lcom/openobserve/android/privacy/TrackingConsent;Ljava/lang/String;Ljava/util/Map;)V
+	public final fun component1 ()Lcom/openobserve/android/OpenObserveSite;
+	public final fun component10 ()Lcom/openobserve/android/api/context/TimeInfo;
+	public final fun component11 ()Lcom/openobserve/android/api/context/ProcessInfo;
+	public final fun component12 ()Lcom/openobserve/android/api/context/NetworkInfo;
+	public final fun component13 ()Lcom/openobserve/android/api/context/DeviceInfo;
+	public final fun component14 ()Lcom/openobserve/android/api/context/UserInfo;
+	public final fun component15 ()Lcom/openobserve/android/api/context/AccountInfo;
+	public final fun component16 ()Lcom/openobserve/android/privacy/TrackingConsent;
+	public final fun component17 ()Ljava/lang/String;
+	public final fun component18 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()I
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Lcom/openobserve/android/OpenObserveSite;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/api/context/TimeInfo;Lcom/openobserve/android/api/context/ProcessInfo;Lcom/openobserve/android/api/context/NetworkInfo;Lcom/openobserve/android/api/context/DeviceInfo;Lcom/openobserve/android/api/context/UserInfo;Lcom/openobserve/android/api/context/AccountInfo;Lcom/openobserve/android/privacy/TrackingConsent;Ljava/lang/String;Ljava/util/Map;)Lcom/openobserve/android/api/context/OpenObserveContext;
+	public static synthetic fun copy$default (Lcom/openobserve/android/api/context/OpenObserveContext;Lcom/openobserve/android/OpenObserveSite;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/api/context/TimeInfo;Lcom/openobserve/android/api/context/ProcessInfo;Lcom/openobserve/android/api/context/NetworkInfo;Lcom/openobserve/android/api/context/DeviceInfo;Lcom/openobserve/android/api/context/UserInfo;Lcom/openobserve/android/api/context/AccountInfo;Lcom/openobserve/android/privacy/TrackingConsent;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lcom/openobserve/android/api/context/OpenObserveContext;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccountInfo ()Lcom/openobserve/android/api/context/AccountInfo;
+	public final fun getAppBuildId ()Ljava/lang/String;
+	public final fun getClientToken ()Ljava/lang/String;
+	public final fun getDeviceInfo ()Lcom/openobserve/android/api/context/DeviceInfo;
+	public final fun getEnv ()Ljava/lang/String;
+	public final fun getFeaturesContext ()Ljava/util/Map;
+	public final fun getNetworkInfo ()Lcom/openobserve/android/api/context/NetworkInfo;
+	public final fun getProcessInfo ()Lcom/openobserve/android/api/context/ProcessInfo;
+	public final fun getSdkVersion ()Ljava/lang/String;
+	public final fun getService ()Ljava/lang/String;
+	public final fun getSite ()Lcom/openobserve/android/OpenObserveSite;
+	public final fun getSource ()Ljava/lang/String;
+	public final fun getTime ()Lcom/openobserve/android/api/context/TimeInfo;
+	public final fun getTrackingConsent ()Lcom/openobserve/android/privacy/TrackingConsent;
+	public final fun getUserInfo ()Lcom/openobserve/android/api/context/UserInfo;
+	public final fun getVariant ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/String;
+	public final fun getVersionCode ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class com/openobserve/android/api/context/ProcessInfo {
@@ -663,11 +663,11 @@ public abstract interface class com/openobserve/android/core/InternalSdkCore : c
 	public abstract fun getAllFeatures ()Ljava/util/List;
 	public abstract fun getAppStartTimeNs ()J
 	public abstract fun getAppUptimeNs ()J
-	public abstract fun getOpenObserveContext (Ljava/util/Set;)Lcom/openobserve/android/api/context/OpenObserveContext;
 	public abstract fun getFirstPartyHostResolver ()Lcom/openobserve/android/core/internal/net/FirstPartyHostHeaderTypeResolver;
 	public abstract fun getLastFatalAnrSent ()Ljava/lang/Long;
 	public abstract fun getLastViewEvent ()Lcom/google/gson/JsonObject;
 	public abstract fun getNetworkInfo ()Lcom/openobserve/android/api/context/NetworkInfo;
+	public abstract fun getOpenObserveContext (Ljava/util/Set;)Lcom/openobserve/android/api/context/OpenObserveContext;
 	public abstract fun getPersistenceExecutorService ()Ljava/util/concurrent/ExecutorService;
 	public abstract fun getRootStorageDir ()Ljava/io/File;
 	public abstract fun getTrackingConsent ()Lcom/openobserve/android/privacy/TrackingConsent;

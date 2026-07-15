@@ -453,10 +453,10 @@ internal class ErrorEventAssert(actual: ErrorEvent) :
     }
 
     fun hasStartReason(reason: RumSessionScope.StartReason): ErrorEventAssert {
-        assertThat(actual.dd.session?.sessionPrecondition)
+        assertThat(actual.oo.session?.sessionPrecondition)
             .overridingErrorMessage(
                 "Expected event to have a session sessionPrecondition of ${reason.name} " +
-                    "but was ${actual.dd.session?.sessionPrecondition}"
+                    "but was ${actual.oo.session?.sessionPrecondition}"
             )
             .isEqualTo(reason.toErrorSessionPrecondition())
         return this
@@ -613,10 +613,10 @@ internal class ErrorEventAssert(actual: ErrorEvent) :
     }
 
     fun hasSampleRate(sampleRate: Float?): ErrorEventAssert {
-        assertThat(actual.dd.configuration?.sessionSampleRate ?: 0)
+        assertThat(actual.oo.configuration?.sessionSampleRate ?: 0)
             .overridingErrorMessage(
                 "Expected RUM event to have sample rate: $sampleRate" +
-                    " but instead was: ${actual.dd.configuration?.sessionSampleRate}"
+                    " but instead was: ${actual.oo.configuration?.sessionSampleRate}"
             )
             .isEqualTo(sampleRate)
         return this

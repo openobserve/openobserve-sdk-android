@@ -71,8 +71,6 @@ interface com.openobserve.android.api.SdkCore
   fun clearAccountInfo()
 data class com.openobserve.android.api.context.AccountInfo
   constructor(String, String? = null, Map<String, Any?> = emptyMap())
-data class com.openobserve.android.api.context.OpenObserveContext
-  constructor(com.openobserve.android.OpenObserveSite, String, String, String, String, Int, String, String, String, TimeInfo, ProcessInfo, NetworkInfo, DeviceInfo, UserInfo, AccountInfo?, com.openobserve.android.privacy.TrackingConsent, String?, Map<String, Map<String, Any?>>)
 data class com.openobserve.android.api.context.DeviceInfo
   constructor(String, String, String, DeviceType, String, String, String, String, String, Int?, LocaleInfo, Int, Int?, Boolean?)
 enum com.openobserve.android.api.context.DeviceType
@@ -101,6 +99,8 @@ data class com.openobserve.android.api.context.NetworkInfo
     - NETWORK_MOBILE_OTHER
     - NETWORK_CELLULAR
     - NETWORK_OTHER
+data class com.openobserve.android.api.context.OpenObserveContext
+  constructor(com.openobserve.android.OpenObserveSite, String, String, String, String, Int, String, String, String, TimeInfo, ProcessInfo, NetworkInfo, DeviceInfo, UserInfo, AccountInfo?, com.openobserve.android.privacy.TrackingConsent, String?, Map<String, Map<String, Any?>>)
 data class com.openobserve.android.api.context.ProcessInfo
   constructor(Boolean)
 data class com.openobserve.android.api.context.TimeInfo

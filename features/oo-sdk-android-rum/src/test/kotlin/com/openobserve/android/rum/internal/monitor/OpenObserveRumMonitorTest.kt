@@ -22,7 +22,7 @@ import com.openobserve.android.core.internal.net.FirstPartyHostHeaderTypeResolve
 import com.openobserve.android.core.sampling.DeterministicSampler
 import com.openobserve.android.core.sampling.Sampler
 import com.openobserve.android.internal.telemetry.InternalTelemetryEvent
-import com.openobserve.android.rum.DdRumContentProvider
+import com.openobserve.android.rum.OoRumContentProvider
 import com.openobserve.android.rum.ExperimentalRumApi
 import com.openobserve.android.rum.RumActionType
 import com.openobserve.android.rum.RumAttributes
@@ -1246,7 +1246,7 @@ internal class OpenObserveRumMonitorTest {
     @Test
     fun `M delegate event to rootScope W start() { application is in foreground }`() {
         // Given
-        DdRumContentProvider.processImportance =
+        OoRumContentProvider.processImportance =
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
 
         // When
@@ -1274,7 +1274,7 @@ internal class OpenObserveRumMonitorTest {
         forge: Forge
     ) {
         // Given
-        DdRumContentProvider.processImportance = forge.anElementFrom(
+        OoRumContentProvider.processImportance = forge.anElementFrom(
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE,
             ActivityManager.RunningAppProcessInfo.IMPORTANCE_TOP_SLEEPING,
             @Suppress("DEPRECATION")

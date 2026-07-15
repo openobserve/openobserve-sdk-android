@@ -1,4 +1,4 @@
-class com.openobserve.android.profiling.DdProfilingContentProvider : android.content.ContentProvider
+class com.openobserve.android.profiling.OoProfilingContentProvider : android.content.ContentProvider
   constructor(com.openobserve.android.internal.system.BuildSdkVersionProvider = DEFAULT)
   override fun onCreate(): Boolean
   override fun query(android.net.Uri, Array<String>?, String?, Array<String>?, String?): android.database.Cursor?
