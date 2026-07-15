@@ -56,6 +56,14 @@ echo "==> gate: zero-Datadog (shipped module source)"
 scripts/openobserve/check-no-datadog.sh || { echo "FAILED zero-Datadog gate" >&2; exit 1; }
 echo "==> gate: Apache-2.0 attribution retained"
 [ -f scripts/openobserve/check-attribution.mjs ] && node scripts/openobserve/check-attribution.mjs || echo "    (attribution gate not present — skipping)"
+# HARD GUARD: never publish under Datadog's Sonatype staging profile. Replace the
+# stagingProfileId in build.gradle.kts with OpenObserve's (from the Central Portal
+# after registering the ai.openobserve namespace). See RELEASING.md checklist.
+if [ "$PUBLISH" = "1" ] && grep -q '378eecbbe2cf9' build.gradle.kts; then
+  echo "FAILED: build.gradle.kts still has Datadog's stagingProfileId (378eecbbe2cf9)." >&2
+  echo "        Replace it with OpenObserve's profile id before publishing (RELEASING.md)." >&2
+  exit 1
+fi
 
 # --- 3. build + test ----------------------------------------------------------
 echo "==> assembleLibrariesRelease"
