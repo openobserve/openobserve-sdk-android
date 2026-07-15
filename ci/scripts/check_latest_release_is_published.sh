@@ -17,7 +17,7 @@ if [ -z "$tag_name" ] || [ "$tag_name" = "null" ]; then
 fi
 
 for artifactId in $(./gradlew -q listAllPublishedArtifactIds); do
-  artifact_url="https://repo1.maven.org/maven2/io/openobserve/$artifactId/$tag_name/$artifactId-$tag_name.aar"
+  artifact_url="https://repo1.maven.org/maven2/ai/openobserve/$artifactId/$tag_name/$artifactId-$tag_name.aar"
   status_code=$(curl -s -o /dev/null -w "%{http_code}" "$artifact_url")
 
   if [ $status_code -eq 200 ]; then

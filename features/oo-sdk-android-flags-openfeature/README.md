@@ -20,11 +20,11 @@ Add both the OpenObserve Feature Flags SDK and OpenFeature Provider to your appl
 
 ```kotlin
 dependencies {
-    implementation("io.openobserve:oo-sdk-android-flags:<latest-version>")
-    implementation("io.openobserve:oo-sdk-android-flags-openfeature:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-flags:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-flags-openfeature:<latest-version>")
 
     // Recommended: RUM integration to correlate flags and RUM session data
-    implementation("io.openobserve:oo-sdk-android-rum:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-rum:<latest-version>")
 }
 
 ### Initial setup

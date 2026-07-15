@@ -7,9 +7,9 @@ following to your application's `build.gradle.kts` file.
 
 ```kotlin
 dependencies {
-    implementation("io.openobserve:oo-sdk-android-rum:<latest-version>")
-    implementation("io.openobserve:oo-sdk-android-okhttp:<latest-version>")
-    implementation("io.openobserve:oo-sdk-android-fresco:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-rum:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-okhttp:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-fresco:<latest-version>")
 }
 ```
 

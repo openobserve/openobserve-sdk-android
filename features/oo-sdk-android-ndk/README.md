@@ -9,11 +9,11 @@ Send crash report for issues rising from the C/C++ code in your application.
 ```kotlin
 dependencies {
     // if you want to send native crash reports to RUM product
-    implementation("io.openobserve:oo-sdk-android-rum:x.x.x")
+    implementation("ai.openobserve:oo-sdk-android-rum:x.x.x")
     // if you want to send native crash reports to Logs product
-    implementation("io.openobserve:oo-sdk-android-logs:x.x.x")
+    implementation("ai.openobserve:oo-sdk-android-logs:x.x.x")
 
-    implementation("io.openobserve:oo-sdk-android-ndk:x.x.x")
+    implementation("ai.openobserve:oo-sdk-android-ndk:x.x.x")
 }
 ```
 

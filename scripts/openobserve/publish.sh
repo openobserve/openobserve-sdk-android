@@ -2,7 +2,7 @@
 #
 # OpenObserve Android SDK — build & publish (manual + CI/CD).
 #
-# Publishes the io.openobserve:oo-sdk-android-* modules to Maven Central via the
+# Publishes the ai.openobserve:oo-sdk-android-* modules to Maven Central via the
 # Sonatype staging API. Safe by default: runs to Maven Local (a dry run) unless
 # you pass --publish. The exact same script is used by CI — everything is driven
 # by flags + environment variables, no interactive prompts.
@@ -69,13 +69,13 @@ fi
 
 # --- 4. publish ---------------------------------------------------------------
 if [ "$PUBLISH" = "0" ]; then
-  echo "==> DRY RUN: publishToMavenLocal (~/.m2/repository/io/openobserve)"
+  echo "==> DRY RUN: publishToMavenLocal (~/.m2/repository/ai/openobserve)"
   ./gradlew publishToMavenLocal -Poo-skip-signing
-  echo "OK (dry run). Inspect ~/.m2/repository/io/openobserve, then re-run with --publish."
+  echo "OK (dry run). Inspect ~/.m2/repository/ai/openobserve, then re-run with --publish."
 else
   : "${CENTRAL_PUBLISHER_USERNAME:?set Sonatype token}" "${CENTRAL_PUBLISHER_PASSWORD:?}"
   : "${GPG_PRIVATE_KEY:?set signing key}" "${GPG_PASSWORD:?}"
   echo "==> publishToSonatype + close & release staging repo"
   ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository --stacktrace
-  echo "OK. Published io.openobserve:oo-sdk-android-* $VERSION-$TYPE${NUMBER} to Maven Central (sync ~15-30 min)."
+  echo "OK. Published ai.openobserve:oo-sdk-android-* $VERSION-$TYPE${NUMBER} to Maven Central (sync ~15-30 min)."
 fi

@@ -106,6 +106,6 @@ RUN npm install -g @datadog/datadog-ci
 # Install OpenObserve Java tracer
 ENV DD_TRACER_FOLDER $PWD/oo-java-agent
 RUN mkdir -p $DD_TRACER_FOLDER
-RUN wget -O $DD_TRACER_FOLDER/oo-java-agent.jar https://repo1.maven.org/maven2/io/openobserve/oo-java-agent/$DD_TRACER_VERSION/oo-java-agent-$DD_TRACER_VERSION.jar
+RUN wget -O $DD_TRACER_FOLDER/oo-java-agent.jar https://repo1.maven.org/maven2/ai/openobserve/oo-java-agent/$DD_TRACER_VERSION/oo-java-agent-$DD_TRACER_VERSION.jar
 
 COPY --from=registry.ddbuild.io/oo-octo-sts:v1.8.2 /usr/local/bin/oo-octo-sts /usr/local/bin/oo-octo-sts

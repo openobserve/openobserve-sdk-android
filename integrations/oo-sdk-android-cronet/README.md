@@ -11,7 +11,7 @@ Add the `oo-sdk-android-cronet` and a Cronet engine implementation to your proje
 
 ```kotlin
 dependencies {
-    implementation("io.openobserve:oo-sdk-android-cronet:<version>")
+    implementation("ai.openobserve:oo-sdk-android-cronet:<version>")
     implementation("com.google.android.gms:play-services-cronet:<version>")
 }
 ```

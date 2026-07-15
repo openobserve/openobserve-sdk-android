@@ -15,8 +15,8 @@ import java.util.Properties
 plugins {
     `maven-publish`
     alias(libs.plugins.nexusPublishGradlePlugin)
-    // openobserve: OpenObserve's external `io.openobserve.dependency-license` license-audit
-    // plugin was rebranded to a non-existent `io.openobserve.dependency-license` id. It is
+    // openobserve: OpenObserve's external `ai.openobserve.dependency-license` license-audit
+    // plugin was rebranded to a non-existent `ai.openobserve.dependency-license` id. It is
     // release-time tooling not required to build/ship the SDK — disabled until OpenObserve
     // adopts its own license plugin. See scripts/openobserve (external-coordinate exclusion).
     // alias(libs.plugins.dependencyLicenseGradlePlugin)

@@ -3,7 +3,7 @@
   "pathRenames": [
     {
       "from": "com/datadoghq",
-      "to": "io/openobserve",
+      "to": "ai/openobserve",
       "why": "Gradle Module Metadata signature dirs (src/main/resources/META-INF/com/datadoghq/dd-sdk-android-*/verification.properties) encode the Maven group as a path. MUST run before com/datadog (which does not match com/datadoghq due to the hq boundary, but explicit-first keeps intent clear)."
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "literal": "com.datadoghq",
-      "to": "io.openobserve",
+      "to": "ai.openobserve",
       "why": "Maven group id in publishing config + build.gradle dependency coordinates"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "literal": "com/datadoghq",
-      "to": "io/openobserve",
+      "to": "ai/openobserve",
       "why": "SLASH form of the Maven group (com/datadoghq/dd-java-agent, dd-trace-java in CI/benchmark URLs + KDoc). MUST precede the broad com/datadog slash rule so com/datadoghq is consumed first and never corrupted to com/openobservehq."
     },
     {
@@ -197,7 +197,7 @@
     }
   ],
   "openQuestions": {
-    "Q3_package_root": "com.openobserve.android chosen (mirrors com.datadog.android; Maven group is io.openobserve reverse-DNS). Confirm before publishing.",
+    "Q3_package_root": "com.openobserve.android chosen (mirrors com.datadog.android; Maven group is ai.openobserve reverse-DNS). Confirm before publishing.",
     "Q4_module_scope": "The RN bridge (3.5.3) imports rum, logs, trace, webview, ndk, flags (+ transitive core) at 3.10.0 — NOT okhttp. Doc 01 wanted to EXCLUDE trace + flags. To keep the RN bridge compiling unchanged we must fork+publish everything it imports (incl. trace/webview/flags). Alternative: strip trace/webview/flags usage from the RN bridge. Default: fork what the bridge needs; disable the features at the JS layer, not by removing native modules."
   }
 }

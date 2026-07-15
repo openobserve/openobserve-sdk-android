@@ -6,8 +6,8 @@ To include the OpenObserve integration for Android TV in your project, add the f
 
 ```kotlin
 dependencies {
-    implementation("io.openobserve:oo-sdk-android-rum:<latest-version>")
-    implementation("io.openobserve:oo-sdk-android-tv:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-rum:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-tv:<latest-version>")
 }
 ```
 

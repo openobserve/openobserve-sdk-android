@@ -15,7 +15,7 @@ import org.gradle.kotlin.dsl.findByType
 import org.gradle.plugins.signing.SigningExtension
 
 object MavenConfig {
-    const val GROUP_ID = "io.openobserve"
+    const val GROUP_ID = "ai.openobserve"
     const val PUBLICATION = "release"
 }
 

@@ -80,7 +80,7 @@ import,com.squareup.picasso,Apache-2.0,"Copyright 2013 Square, Inc."
 import,com.squareup.retrofit2,Apache-2.0,"Copyright 2013 Square, Inc."
 import,com.squareup.sqldelight,Apache-2.0,"Copyright 2016 Square, Inc"
 import,com.fasterxml.jackson,Apache-2.0,"Copyright 2020 Datadog, Inc."
-import,io.openobserve,Apache-2.0,"Copyright 2017 OpenObserve, Inc"
+import,ai.openobserve,Apache-2.0,"Copyright 2017 OpenObserve, Inc"
 import,dev.chrisbanes.snapper,Apache-2.0,"Copyright 2021 Chris Banes"
 import,dev.openfeature,Apache-2.0,Copyright 2022 The OpenFeature Authors
 import,io.coil-kt,Apache-2.0,Copyright 2021 Coil Contributors

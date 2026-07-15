@@ -7,8 +7,8 @@ following to your application's `build.gradle.kts` file.
 
 ```kotlin
 dependencies {
-    implementation("io.openobserve:oo-sdk-android-logs:<latest-version>")
-    implementation("io.openobserve:oo-sdk-android-timber:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-logs:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-timber:<latest-version>")
 }
 ```
 

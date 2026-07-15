@@ -8,7 +8,7 @@ For example, in case of RUM:
 
 ```kotlin
 dependencies {
-    implementation("io.openobserve:oo-sdk-android-rum:<latest-version>")
+    implementation("ai.openobserve:oo-sdk-android-rum:<latest-version>")
 }
 ```
 
