@@ -30,15 +30,15 @@ private fun OpenObserveSite.flagsHost(customerDomain: String): String? = when (t
 
     OpenObserveSite.STAGING -> "$customerDomain.ff-cdn.openobserve.com"
     OpenObserveSite.EU1 -> buildFlagsHostString(customerDomain, tld = "eu") // No site in the host, .eu TLD
-    OpenObserveSite.US1 -> buildFlagsHostString(customerDomain) // No site in the host, default .com TLD
+    OpenObserveSite.US1 -> buildFlagsHostString(customerDomain) // No site in the host, default .ai TLD
 
-    OpenObserveSite.US3 -> buildFlagsHostString(customerDomain, dc = "us3", tld = "com")
-    OpenObserveSite.US5 -> buildFlagsHostString(customerDomain, dc = "us5", tld = "com")
-    OpenObserveSite.AP1 -> buildFlagsHostString(customerDomain, dc = "ap1", tld = "com")
-    OpenObserveSite.AP2 -> buildFlagsHostString(customerDomain, dc = "ap2", tld = "com")
+    OpenObserveSite.US3 -> buildFlagsHostString(customerDomain, dc = "us3", tld = "ai")
+    OpenObserveSite.US5 -> buildFlagsHostString(customerDomain, dc = "us5", tld = "ai")
+    OpenObserveSite.AP1 -> buildFlagsHostString(customerDomain, dc = "ap1", tld = "ai")
+    OpenObserveSite.AP2 -> buildFlagsHostString(customerDomain, dc = "ap2", tld = "ai")
 }
 
-private fun buildFlagsHostString(customerDomain: String, dc: String? = null, tld: String = "com"): String {
+private fun buildFlagsHostString(customerDomain: String, dc: String? = null, tld: String = "ai"): String {
     val parts = listOfNotNull(
         customerDomain,
         "ff-cdn",

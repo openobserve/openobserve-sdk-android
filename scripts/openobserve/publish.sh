@@ -38,6 +38,22 @@ esac; done
 
 echo "==> OpenObserve Android publish: $VERSION-$TYPE${NUMBER} (publish=$PUBLISH)"
 
+# --- 0. toolchain guard -------------------------------------------------------
+# The unit tests use a reflection helper (tools/unit ReflectUtils.setFieldValue ->
+# RemoveFinalModifier) that strips the `final` modifier — a technique the JDK blocked
+# after 17. On JDK 21+ those tests fail with UnsupportedOperationException even though
+# the code is correct. The project targets Java 11/17, so require <= 17.
+JAVA_BIN="${JAVA_HOME:+$JAVA_HOME/bin/}java"
+JAVA_MAJOR=$("$JAVA_BIN" -version 2>&1 | head -1 | sed -E 's/.*version "([0-9]+).*/\1/')
+if [ "${JAVA_MAJOR:-0}" -gt 17 ] && [ "$SKIP_TESTS" = "0" ]; then
+  echo "ERROR: JDK $JAVA_MAJOR detected; this build's unit tests require JDK 17 or lower." >&2
+  echo "       (Android Studio bundles JDK 21 — do NOT use it here.)" >&2
+  echo "       Fix: brew install openjdk@17 && export JAVA_HOME=\$(brew --prefix openjdk@17)/libexec/openjdk.jdk/Contents/Home" >&2
+  echo "       Or re-run with --skip-tests to bypass (NOT for a real release)." >&2
+  exit 2
+fi
+echo "    JDK $JAVA_MAJOR"
+
 # --- 1. set the version in AndroidConfig.kt (single source of truth) -----------
 CFG="buildSrc/src/main/kotlin/com/openobserve/gradle/config/AndroidConfig.kt"
 IFS='.' read -r MAJ MIN PAT <<< "$VERSION"

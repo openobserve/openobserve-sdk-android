@@ -39,7 +39,15 @@ cd openobserve-sdk-android
 scripts/openobserve/publish.sh --version 0.1.0 --type alpha --number 1            # DRY RUN -> ~/.m2, inspect
 scripts/openobserve/publish.sh --version 0.1.0 --type alpha --number 1 --publish  # -> Maven Central (needs CENTRAL_* + GPG_*)
 ```
-Toolchain: JDK 17+, Android SDK, a valid NDK (`sdkmanager --install "ndk;28.0.13004108"`).
+Toolchain: **JDK 17 (NOT 21)**, Android SDK, a valid NDK (`sdkmanager --install "ndk;28.0.13004108"`).
+> ⚠️ **Use JDK 17.** The unit tests use a reflection helper that strips the `final`
+> modifier — blocked after JDK 17, so on JDK 21 (which Android Studio bundles) they fail
+> with `UnsupportedOperationException` even though the code is fine. `publish.sh` hard-fails
+> on JDK > 17. Set it up with:
+> ```bash
+> brew install openjdk@17
+> export JAVA_HOME=$(brew --prefix openjdk@17)/libexec/openjdk.jdk/Contents/Home
+> ```
 Maven resolves transitively, so module order doesn't matter.
 
 ### 2. iOS → CocoaPods  (in parallel with Android)
