@@ -16,3 +16,5 @@ README.md
 
 # Sync + rebrand tooling itself (includes the functional patch series).
 scripts/openobserve
+RELEASING.md
+.idea

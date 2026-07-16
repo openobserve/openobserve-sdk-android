@@ -1,0 +1,314 @@
+diff --git b/build.gradle.kts a/build.gradle.kts
+index 4b313c42e..0fcff6e44 100644
+--- b/build.gradle.kts
++++ a/build.gradle.kts
+@@ -7,6 +7,7 @@
+ 
+ import com.android.build.gradle.LibraryExtension
+ import com.openobserve.gradle.config.AndroidConfig
++import com.openobserve.gradle.config.MavenConfig
+ import com.openobserve.gradle.config.registerSubModuleAggregationTask
+ import org.gradle.api.internal.file.UnionFileTree
+ import org.gradle.api.internal.tasks.DefaultTaskDependencyFactory
+@@ -15,7 +16,11 @@ import java.util.Properties
+ plugins {
+     `maven-publish`
+     alias(libs.plugins.nexusPublishGradlePlugin)
+-    alias(libs.plugins.dependencyLicenseGradlePlugin)
++    // openobserve: OpenObserve's external `ai.openobserve.dependency-license` license-audit
++    // plugin was rebranded to a non-existent `ai.openobserve.dependency-license` id. It is
++    // release-time tooling not required to build/ship the SDK — disabled until OpenObserve
++    // adopts its own license plugin. See scripts/openobserve (external-coordinate exclusion).
++    // alias(libs.plugins.dependencyLicenseGradlePlugin)
+ 
+     // just load into the classpath, so that we can use version-less id(string) in submodules
+     // ideally we need to use aliases in submodules
+@@ -56,9 +61,21 @@ allprojects {
+ }
+ 
+ nexusPublishing {
++    // openobserve: the plugin auto-discovers the staging profile by matching this package
++    // group against the account's Sonatype namespaces. It defaults to the ROOT project's
++    // `group`, which is never set here (the group id is applied per-module via
++    // MavenConfig.GROUP_ID) — so it resolved to "" and discovery failed with
++    // "Failed to find staging profile for package group:". Upstream never hit this because
++    // they hardcoded Datadog's stagingProfileId. Set it explicitly to our namespace.
++    packageGroup.set(MavenConfig.GROUP_ID)
++
+     this.repositories {
+         sonatype {
+-            stagingProfileId = "378eecbbe2cf9"
++            // openobserve: no hardcoded stagingProfileId. Upstream pinned Datadog's own
++            // profile, which must never be used here. The Central Portal namespace id is a
++            // UUID and is NOT an OSSRH staging profile id, so it cannot be pinned either.
++            // Left unset so the nexus-publish plugin auto-discovers the staging profile for
++            // the ai.openobserve namespace from the account at publish time.
+             val sonatypeUsername = System.getenv("CENTRAL_PUBLISHER_USERNAME")
+             val sonatypePassword = System.getenv("CENTRAL_PUBLISHER_PASSWORD")
+             if (sonatypeUsername != null) username.set(sonatypeUsername)
+@@ -73,9 +90,10 @@ nexusPublishing {
+     }
+ }
+ 
+-dependencyLicenses {
+-    transitiveDependencies = true
+-}
++// openobserve: disabled with the dependency-license plugin above.
++// dependencyLicenses {
++//     transitiveDependencies = true
++// }
+ 
+ tasks.register<Delete>("clean") {
+     delete(rootProject.layout.buildDirectory)
+diff --git b/features/oo-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json a/features/oo-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
+index 3b6057b84..427ef21fe 100644
+--- b/features/oo-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
++++ a/features/oo-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
+@@ -45,7 +45,7 @@
+           "description": "Evaluation context (excluding targetingKey)",
+           "additionalProperties": true
+         },
+-        "dd": {
++        "oo": {
+           "type": "object",
+           "description": "OpenObserve-specific context",
+           "properties": {
+diff --git b/features/oo-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt a/features/oo-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
+index 4e15b793b..714c1ab4b 100644
+--- b/features/oo-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
++++ a/features/oo-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
+@@ -30,15 +30,15 @@ private fun OpenObserveSite.flagsHost(customerDomain: String): String? = when (t
+ 
+     OpenObserveSite.STAGING -> "$customerDomain.ff-cdn.openobserve.com"
+     OpenObserveSite.EU1 -> buildFlagsHostString(customerDomain, tld = "eu") // No site in the host, .eu TLD
+-    OpenObserveSite.US1 -> buildFlagsHostString(customerDomain) // No site in the host, default .com TLD
++    OpenObserveSite.US1 -> buildFlagsHostString(customerDomain) // No site in the host, default .ai TLD
+ 
+-    OpenObserveSite.US3 -> buildFlagsHostString(customerDomain, dc = "us3", tld = "com")
+-    OpenObserveSite.US5 -> buildFlagsHostString(customerDomain, dc = "us5", tld = "com")
+-    OpenObserveSite.AP1 -> buildFlagsHostString(customerDomain, dc = "ap1", tld = "com")
+-    OpenObserveSite.AP2 -> buildFlagsHostString(customerDomain, dc = "ap2", tld = "com")
++    OpenObserveSite.US3 -> buildFlagsHostString(customerDomain, dc = "us3", tld = "ai")
++    OpenObserveSite.US5 -> buildFlagsHostString(customerDomain, dc = "us5", tld = "ai")
++    OpenObserveSite.AP1 -> buildFlagsHostString(customerDomain, dc = "ap1", tld = "ai")
++    OpenObserveSite.AP2 -> buildFlagsHostString(customerDomain, dc = "ap2", tld = "ai")
+ }
+ 
+-private fun buildFlagsHostString(customerDomain: String, dc: String? = null, tld: String = "com"): String {
++private fun buildFlagsHostString(customerDomain: String, dc: String? = null, tld: String = "ai"): String {
+     val parts = listOfNotNull(
+         customerDomain,
+         "ff-cdn",
+diff --git b/features/oo-sdk-android-rum/src/main/json/telemetry/configuration-schema.json a/features/oo-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
+index fdfff1318..4756e92d3 100644
+--- b/features/oo-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
++++ a/features/oo-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
+@@ -189,7 +189,7 @@
+                   "type": "array",
+                   "items": {
+                     "type": "string",
+-                    "enum": ["datadog", "b3", "b3multi", "tracecontext"]
++                    "enum": ["openobserve", "b3", "b3multi", "tracecontext"]
+                   },
+                   "description": "A list of selected tracing propagators"
+                 },
+diff --git b/features/oo-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt a/features/oo-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
+index 1ded33f24..f4da38c03 100644
+--- b/features/oo-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
++++ a/features/oo-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
+@@ -330,7 +330,7 @@ internal class OpenObserveLateCrashReporter(
+     }
+ 
+     private val ViewEvent.sampleRate: Float
+-        get() = dd.configuration?.sessionSampleRate?.toFloat() ?: 0f
++        get() = oo.configuration?.sessionSampleRate?.toFloat() ?: 0f
+ 
+     private val ViewEvent.isWithinSessionAvailability: Boolean
+         get() {
+diff --git b/features/oo-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt a/features/oo-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
+index 4d7eeb0a3..f968f3a19 100644
+--- b/features/oo-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
++++ a/features/oo-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
+@@ -21,7 +21,7 @@ internal class DeserializedViewEventAssert(actual: ViewEvent) :
+     fun isEqualTo(expected: ViewEvent): DeserializedViewEventAssert {
+         assertThat(actual)
+             .usingRecursiveComparison()
+-            .ignoringFields("context", "usr", "account", "view", "device", "dd.configuration")
++            .ignoringFields("context", "usr", "account", "view", "device", "oo.configuration")
+             .isEqualTo(expected)
+         assertConfigurationEquals(actual.oo.configuration, expected.oo.configuration)
+         assertThat(actual.view)
+diff --git b/features/oo-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt a/features/oo-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
+index 31b5d315e..4f898c51f 100644
+--- b/features/oo-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
++++ a/features/oo-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
+@@ -340,7 +340,7 @@ internal class OtelTracerBuilderProviderTest {
+         // Then
+         assertThat(tracer).isNotNull()
+         val span = tracer.spanBuilder(operation).startSpan() as OtelSpan
+-        val agentSpanContext = span.ooSpanContext as OpenObserveSpanContext
++        val agentSpanContext = span.openObserveSpanContext as OpenObserveSpanContext
+         assertThat(agentSpanContext.tags).containsEntry(key, value)
+     }
+ 
+diff --git b/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt a/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
+index 8b5c15bc9..09053d97e 100644
+--- b/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
++++ a/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
+@@ -103,7 +103,7 @@ internal class CoreTracerSpanToSpanEventMapper(
+         resolveSpanLinks(event)?.let { meta[SPAN_LINKS_KEY] = it }
+         return SpanEvent.Meta(
+             version = ooContext.version,
+-            oo = dd,
++            oo = oo,
+             span = SpanEvent.Span(),
+             tracer = SpanEvent.Tracer(
+                 version = ooContext.sdkVersion
+diff --git b/features/oo-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt a/features/oo-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
+index 1ceece9b1..fec5bffef 100644
+--- b/features/oo-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
++++ a/features/oo-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
+@@ -42,12 +42,12 @@ internal class WebViewRumEventMapper(
+         }
+         event.add(CONTAINER_KEY_NAME, containerObject)
+         val oo = event.get(DD_KEY_NAME)?.asJsonObject
+-        if (dd != null) {
+-            val ddSession = dd.get(DD_SESSION_KEY_NAME)?.asJsonObject ?: JsonObject()
+-            dd.add(DD_SESSION_KEY_NAME, ddSession)
++        if (oo != null) {
++            val ddSession = oo.get(DD_SESSION_KEY_NAME)?.asJsonObject ?: JsonObject()
++            oo.add(DD_SESSION_KEY_NAME, ddSession)
+             if (!sessionReplayEnabled) {
+                 // RUM-4084 disable webview SR if host app doesn't have SR
+-                dd.remove(DD_REPLAY_STATS)
++                oo.remove(DD_REPLAY_STATS)
+             }
+         }
+ 
+diff --git b/integrations/oo-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt a/integrations/oo-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
+index acd3937ce..a8146765c 100644
+--- b/integrations/oo-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
++++ a/integrations/oo-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
+@@ -23,12 +23,12 @@ fun Request.Builder.addParentSpan(span: Span): Request.Builder = apply {
+     // we need to trigger sampling decision at this point, because we are doing context propagation out of OpenTelemetry
+     val builder = OkHttpRequestInfoBuilder(this)
+     if (span is OtelSpan) {
+-        _TraceInternalProxy.setTracingSamplingPriorityIfNecessary(span.ooSpanContext)
++        _TraceInternalProxy.setTracingSamplingPriorityIfNecessary(span.openObserveSpanContext)
+         _TraceInternalProxy.propagationHelper.setTraceContext(
+             builder,
+             span.spanContext.traceId,
+             span.spanContext.spanId,
+-            span.ooSpanContext.samplingPriority
++            span.openObserveSpanContext.samplingPriority
+         )
+     } else {
+         _TraceInternalProxy.propagationHelper.setTraceContext(
+diff --git b/sample/automotive/build.gradle.kts a/sample/automotive/build.gradle.kts
+index 8cc16318e..377123c6f 100644
+--- b/sample/automotive/build.gradle.kts
++++ a/sample/automotive/build.gradle.kts
+@@ -17,7 +17,9 @@ plugins {
+     id("com.android.application")
+     kotlin("android")
+     id("com.github.ben-manes.versions")
+-    alias(libs.plugins.ooGradlePlugin)
++    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
++
++    // alias(libs.plugins.ooGradlePlugin)
+ }
+ 
+ android {
+diff --git b/sample/benchmark/build.gradle.kts a/sample/benchmark/build.gradle.kts
+index 5b32788cc..c15ec5115 100644
+--- b/sample/benchmark/build.gradle.kts
++++ a/sample/benchmark/build.gradle.kts
+@@ -10,7 +10,8 @@ import com.openobserve.gradle.config.dependencyUpdateConfig
+ import com.openobserve.gradle.config.java17
+ import com.openobserve.gradle.config.junitConfig
+ import com.openobserve.gradle.config.kotlinConfig
+-import com.openobserve.gradle.plugin.InstrumentationMode
++// openobserve: openobserve-sdk-android-gradle-plugin (#7) not yet published
++// import com.openobserve.gradle.plugin.InstrumentationMode
+ 
+ plugins {
+     id("com.android.application")
+@@ -19,7 +20,9 @@ plugins {
+     alias(libs.plugins.kotlinSPGradlePlugin)
+     kotlin("plugin.serialization")
+     id("kotlin-parcelize")
+-    alias(libs.plugins.ooGradlePlugin)
++    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
++
++    // alias(libs.plugins.ooGradlePlugin)
+     id("transitiveDependencies")
+ }
+ 
+@@ -82,9 +85,10 @@ android {
+     }
+ }
+ 
+-datadog {
+-    composeInstrumentation = InstrumentationMode.AUTO
+-}
++// openobserve: gradle plugin (#7) disabled until published
++// datadog {
++//     composeInstrumentation = InstrumentationMode.AUTO
++// }
+ 
+ dependencies {
+ 
+diff --git b/sample/kotlin/build.gradle.kts a/sample/kotlin/build.gradle.kts
+index afdf1f13d..f48362b64 100644
+--- b/sample/kotlin/build.gradle.kts
++++ a/sample/kotlin/build.gradle.kts
+@@ -13,7 +13,8 @@ import com.openobserve.gradle.config.javadocConfig
+ import com.openobserve.gradle.config.junitConfig
+ import com.openobserve.gradle.config.kotlinConfig
+ import com.openobserve.gradle.config.taskConfig
+-import com.openobserve.gradle.plugin.InstrumentationMode
++// openobserve: openobserve-sdk-android-gradle-plugin (#7) not yet published
++// import com.openobserve.gradle.plugin.InstrumentationMode
+ 
+ plugins {
+     id("com.android.application")
+@@ -23,7 +24,9 @@ plugins {
+     id("org.jetbrains.dokka-javadoc")
+     id("com.squareup.sqldelight")
+     id("com.google.devtools.ksp")
+-    alias(libs.plugins.ooGradlePlugin)
++    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
++
++    // alias(libs.plugins.ooGradlePlugin)
+ }
+ 
+ sqldelight {
+@@ -142,9 +145,10 @@ android {
+     }
+ }
+ 
+-datadog {
+-    composeInstrumentation = InstrumentationMode.AUTO
+-}
++// openobserve: gradle plugin (#7) disabled until published
++// datadog {
++//     composeInstrumentation = InstrumentationMode.AUTO
++// }
+ 
+ dependencies {
+     // OpenObserve Libraries
+diff --git b/sample/tv/build.gradle.kts a/sample/tv/build.gradle.kts
+index 82850feb8..d5483690b 100644
+--- b/sample/tv/build.gradle.kts
++++ a/sample/tv/build.gradle.kts
+@@ -16,7 +16,9 @@ plugins {
+     id("com.android.application")
+     kotlin("android")
+     id("com.github.ben-manes.versions")
+-    alias(libs.plugins.ooGradlePlugin)
++    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
++
++    // alias(libs.plugins.ooGradlePlugin)
+ }
+ 
+ android {

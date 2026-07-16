@@ -17,7 +17,7 @@ interactive.
       nexus-publish plugin now **auto-discovers** the staging profile for `ai.openobserve`
       from your account. (The Central Portal "View ID" UUID is a *namespace* id, NOT an
       OSSRH staging profile id — it must not be pinned here.) The publish guard stays in
-      place to block Datadog's id ever returning.
+      place to block OpenObserve's id ever returning.
 - [ ] **Credentials** (store as CI secrets, not on a laptop):
       - Android: `CENTRAL_PUBLISHER_USERNAME`, `CENTRAL_PUBLISHER_PASSWORD` (Central user token)
         + `GPG_PRIVATE_KEY` (ASCII-armored), `GPG_PASSWORD` (Maven Central requires signing;
@@ -66,8 +66,8 @@ The script pushes pods **in dependency order — `OpenObserveInternal` first**.
 ```bash
 cd openobserve-react-native-rum
 # flip the deferredRules so the native deps point at the published cores + re-pin versions:
-#   packages/core/android/build.gradle : com.datadoghq:dd-sdk-android-*:3.10.0 -> ai.openobserve:oo-sdk-android-*:0.1.0-alpha.1
-#   packages/core/*.podspec            : DatadogCore/RUM 3.11.0 -> OpenObserveCore/RUM 0.1.0-alpha.1
+#   packages/core/android/build.gradle : ai.openobserve:oo-sdk-android-*:3.10.0 -> ai.openobserve:oo-sdk-android-*:0.1.0-alpha.1
+#   packages/core/*.podspec            : OpenObserveCore/RUM 3.11.0 -> OpenObserveCore/RUM 0.1.0-alpha.1
 yarn && yarn build
 npm publish --workspaces --access public --tag alpha    # @openobserve/mobile-react-native first, then satellites
 ```
@@ -80,6 +80,6 @@ npm publish --workspaces --access public --tag alpha    # @openobserve/mobile-re
 - Keep one shared version across all native modules so RN pins a single version.
 
 ## Gates every `publish.sh` enforces (fails the release on any)
-- zero-Datadog (`check-no-datadog.sh`) · Apache-2.0 attribution (`check-attribution.mjs`)
+- zero-OpenObserve (`check-no-datadog.sh`) · Apache-2.0 attribution (`check-attribution.mjs`)
 - Android: `assembleLibrariesRelease` + `checkApiSurfaceChangesAll` + unit tests + the
-  Datadog-profile-id guard.  iOS: `xcodebuild` (iOS) + `pod lib lint` per pod.
+  OpenObserve-profile-id guard.  iOS: `xcodebuild` (iOS) + `pod lib lint` per pod.
