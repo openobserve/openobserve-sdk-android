@@ -7,6 +7,7 @@
 
 import com.android.build.gradle.LibraryExtension
 import com.openobserve.gradle.config.AndroidConfig
+import com.openobserve.gradle.config.MavenConfig
 import com.openobserve.gradle.config.registerSubModuleAggregationTask
 import org.gradle.api.internal.file.UnionFileTree
 import org.gradle.api.internal.tasks.DefaultTaskDependencyFactory
@@ -60,6 +61,14 @@ allprojects {
 }
 
 nexusPublishing {
+    // openobserve: the plugin auto-discovers the staging profile by matching this package
+    // group against the account's Sonatype namespaces. It defaults to the ROOT project's
+    // `group`, which is never set here (the group id is applied per-module via
+    // MavenConfig.GROUP_ID) — so it resolved to "" and discovery failed with
+    // "Failed to find staging profile for package group:". Upstream never hit this because
+    // they hardcoded Datadog's stagingProfileId. Set it explicitly to our namespace.
+    packageGroup.set(MavenConfig.GROUP_ID)
+
     this.repositories {
         sonatype {
             // openobserve: no hardcoded stagingProfileId. Upstream pinned Datadog's own
