@@ -13,11 +13,11 @@ interactive.
       (reverse-DNS of openobserve.ai). Verify via the DNS TXT record it gives you.
       *Alternative:* `io.github.openobserve` verified via a marker repo in the
       github.com/openobserve org — if you switch, change the Maven group id in all forks.
-- [ ] **Replace the Sonatype staging profile id.** `build.gradle.kts` still ships
-      Datadog's placeholder `stagingProfileId = "378eecbbe2cf9"`. Get YOUR profile id
-      from the Central Portal (after registering the namespace) and put it there.
-      👉 `publish.sh --publish` **hard-fails** while the Datadog id is present, so this
-      cannot be missed — but replace it early.
+- [x] ~~Replace the Sonatype staging profile id~~ — **DONE**: the hardcoded id is removed; the
+      nexus-publish plugin now **auto-discovers** the staging profile for `ai.openobserve`
+      from your account. (The Central Portal "View ID" UUID is a *namespace* id, NOT an
+      OSSRH staging profile id — it must not be pinned here.) The publish guard stays in
+      place to block Datadog's id ever returning.
 - [ ] **Credentials** (store as CI secrets, not on a laptop):
       - Android: `CENTRAL_PUBLISHER_USERNAME`, `CENTRAL_PUBLISHER_PASSWORD` (Central user token)
         + `GPG_PRIVATE_KEY` (ASCII-armored), `GPG_PASSWORD` (Maven Central requires signing;

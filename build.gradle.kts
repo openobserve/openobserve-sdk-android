@@ -62,7 +62,11 @@ allprojects {
 nexusPublishing {
     this.repositories {
         sonatype {
-            stagingProfileId = "378eecbbe2cf9"
+            // openobserve: no hardcoded stagingProfileId. Upstream pinned Datadog's own
+            // profile, which must never be used here. The Central Portal namespace id is a
+            // UUID and is NOT an OSSRH staging profile id, so it cannot be pinned either.
+            // Left unset so the nexus-publish plugin auto-discovers the staging profile for
+            // the ai.openobserve namespace from the account at publish time.
             val sonatypeUsername = System.getenv("CENTRAL_PUBLISHER_USERNAME")
             val sonatypePassword = System.getenv("CENTRAL_PUBLISHER_PASSWORD")
             if (sonatypeUsername != null) username.set(sonatypeUsername)
