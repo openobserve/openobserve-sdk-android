@@ -340,7 +340,7 @@ internal class OtelTracerBuilderProviderTest {
         // Then
         assertThat(tracer).isNotNull()
         val span = tracer.spanBuilder(operation).startSpan() as OtelSpan
-        val agentSpanContext = span.ooSpanContext as OpenObserveSpanContext
+        val agentSpanContext = span.openObserveSpanContext as OpenObserveSpanContext
         assertThat(agentSpanContext.tags).containsEntry(key, value)
     }
 
