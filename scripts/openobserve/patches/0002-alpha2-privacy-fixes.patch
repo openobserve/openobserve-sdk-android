@@ -1,0 +1,206 @@
+diff --git b/features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java a/features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
+index 4396f91dc..04e28aa28 100644
+--- b/features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
++++ a/features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
+@@ -1,6 +1,5 @@
+ package com.openobserve.trace.api;
+ 
+-import static com.openobserve.trace.api.TracePropagationStyle.OPENOBSERVE;
+ import static com.openobserve.trace.api.TracePropagationStyle.TRACECONTEXT;
+ import static java.util.Arrays.asList;
+ 
+@@ -66,7 +65,20 @@ public final class ConfigDefaults {
+   static final int DEFAULT_SCOPE_ITERATION_KEEP_ALIVE = 30; // in seconds
+   static final int DEFAULT_PARTIAL_FLUSH_MIN_SPANS = 1000;
+   static final boolean DEFAULT_PROPAGATION_EXTRACT_LOG_HEADER_NAMES_ENABLED = false;
+-  static final Set<TracePropagationStyle> DEFAULT_TRACE_PROPAGATION_STYLE = new LinkedHashSet<>(asList(OPENOBSERVE, TRACECONTEXT));
++  // openobserve: upstream defaulted to asList(OPENOBSERVE, TRACECONTEXT) — OPENOBSERVE being the
++  // upstream vendor's proprietary `x-<vendor>-*` format (this enum case was renamed by the rebrand;
++  // the wire bytes are unchanged). Config applies this to BOTH inject and extract, so out of the box
++  // the tracer INJECTED a competitor's headers into outbound requests. Those headers are read only
++  // by an upstream-instrumented APM — OpenObserve's backend speaks W3C `traceparent` and never
++  // parsed them — so the default put a competitor's identity on the wire while doing nothing for us.
++  //
++  // W3C Trace Context only. This also narrows EXTRACT, which is acceptable and near-vestigial here:
++  // this is a vendored server tracer, and a mobile app is a trace ROOT — it does not serve inbound
++  // requests carrying trace context. Anyone who needs the upstream format can still set
++  // TRACE_PROPAGATION_STYLE explicitly; the codec is retained (removing it is a separate change —
++  // it is structural in this vendored core: TracePropagationStyle, PropagationTags.HeaderType sized
++  // via values().length, PTagsFactory, OpenObserveHttpCodec).
++  static final Set<TracePropagationStyle> DEFAULT_TRACE_PROPAGATION_STYLE = new LinkedHashSet<>(asList(TRACECONTEXT));
+   static final boolean DEFAULT_JMX_FETCH_ENABLED = true;
+   static final boolean DEFAULT_TRACE_AGENT_V05_ENABLED = false;
+ 
+diff --git b/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt a/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
+index ccdd0e065..b693b8f3c 100644
+--- b/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
++++ a/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
+@@ -52,17 +52,24 @@ class ApmNetworkInstrumentationConfiguration internal constructor(
+     internal var headerPropagationOnly: Boolean = false
+ ) {
+     /**
+-     * Creates a configuration with a list of traced hosts using default header types
+-     * ([TracingHeaderType.OPENOBSERVE] and [TracingHeaderType.TRACECONTEXT]).
++     * Creates a configuration with a list of traced hosts using the default header type
++     * ([TracingHeaderType.TRACECONTEXT]).
++     *
++     * openobserve: upstream defaulted to [TracingHeaderType.OPENOBSERVE] + TRACECONTEXT, so this
++     * convenience constructor injected the upstream vendor's proprietary `x-<vendor>-*` headers
++     * into every traced request with NO opt-in. Those headers go to the CUSTOMER's own backend for
++     * trace linking — only an upstream-instrumented APM reads them, and OpenObserve's backend does
++     * not parse them at all (it speaks W3C `traceparent`). So the default put a competitor's
++     * identity on the wire for every user while doing nothing for ours.
++     *
++     * W3C Trace Context is the interoperable default and the one OpenObserve actually reads.
++     * Callers who still need the upstream format can pass it explicitly via the map constructor.
+      *
+      * @param tracedHosts a list of hosts to trace.
+      */
+     constructor(tracedHosts: List<String>) : this(
+         tracedHosts.associateWith {
+-            setOf(
+-                TracingHeaderType.OPENOBSERVE,
+-                TracingHeaderType.TRACECONTEXT
+-            )
++            setOf(TracingHeaderType.TRACECONTEXT)
+         }
+     )
+ 
+diff --git b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
+index 707d5a983..f39a83e82 100644
+--- b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
++++ a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
+@@ -469,12 +469,10 @@ internal class CoreFeature(
+         }
+         kronosClock = AndroidClockFactory.createKronosClock(
+             safeContext,
+-            ntpHosts = listOf(
+-                OpenObserveNtpEndpoint.NTP_0,
+-                OpenObserveNtpEndpoint.NTP_1,
+-                OpenObserveNtpEndpoint.NTP_2,
+-                OpenObserveNtpEndpoint.NTP_3
+-            ).map { it.host },
++            // openobserve: enumerate the endpoints rather than naming them one by one — upstream
++            // listed NTP_0..NTP_3 explicitly, so changing the endpoint set meant editing here too
++            // (and dropping one silently broke this call site).
++            ntpHosts = OpenObserveNtpEndpoint.values().map { it.host },
+             cacheExpirationMs = TimeUnit.MINUTES.toMillis(NTP_CACHE_EXPIRATION_MINUTES),
+             minWaitTimeBetweenSyncMs = TimeUnit.MINUTES.toMillis(NTP_DELAY_BETWEEN_SYNCS_MINUTES),
+             syncListener = LoggingSyncListener(internalLogger)
+diff --git b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
+index 40b5686e9..e27cb26fc 100644
+--- b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
++++ a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
+@@ -66,11 +66,13 @@ class DefaultFirstPartyHostHeaderTypeResolver(
+     }
+ 
+     internal fun addKnownHosts(hosts: List<String>) {
++        // openobserve: upstream defaulted to OPENOBSERVE (its proprietary `x-<vendor>-*` format)
++        // + TRACECONTEXT here, so simply naming a first-party host injected a competitor's headers
++        // into its requests with no opt-in. Those headers are only read by an upstream-instrumented
++        // APM; OpenObserve's backend speaks W3C `traceparent`. Default to the interoperable format
++        // we actually read — callers wanting another type use addKnownHostsWithHeaderTypes().
+         knownHosts = knownHosts + hosts.associate {
+-            it.lowercase(Locale.US) to setOf(
+-                TracingHeaderType.OPENOBSERVE,
+-                TracingHeaderType.TRACECONTEXT
+-            )
++            it.lowercase(Locale.US) to setOf(TracingHeaderType.TRACECONTEXT)
+         }
+     }
+ 
+diff --git b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
+index 2f493fed6..fcb9efe3e 100644
+--- b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
++++ a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
+@@ -7,27 +7,43 @@
+ package com.openobserve.android.core.internal.time
+ 
+ /**
+- * This object contains constant values for all the OpenObserve NTP Endpoint urls used in the SDK.
++ * NTP endpoints used to synchronize the SDK clock.
++ *
++ * openobserve: upstream pointed these at its own registered *vendor zone* in the NTP Pool Project
++ * (`[0-3].<upstream-vendor>.pool.ntp.org`), and CoreFeature registers all of them by DEFAULT — so
++ * every app embedding this SDK emitted DNS lookups naming the upstream vendor on startup. No SDK
++ * data travels over NTP (UDP/123 carries timestamps only) and that zone resolves to community pool
++ * servers rather than upstream infrastructure, but the lookups are visible to enterprise DNS
++ * logging, proxies and packet capture, and are enough for SDK-fingerprinting tools to report an
++ * OpenObserve app as embedding a competitor's SDK. It also made our clock sync depend on a DNS zone
++ * a competitor controls and could repoint at will.
++ *
++ * The rebrand codemod could not reach these string literals: every upstream-identity rule requires
++ * an uppercase letter or a suffix, and a bare lowercase hostname label matches none of them. See
++ * scripts/openobserve/rename-map.json (intentionallyNotRebranded) and check-no-datadog.sh, which
++ * now fails on any upstream-named network host.
++ *
++ * INTERIM: neutral public anycast NTP — no registration, globally distributed. These are the SAME
++ * two providers the iOS SDK uses (ServerOffsetPublisher.OpenObserveNTPServers), so both platforms
++ * behave identically. Note the NTP Pool Project explicitly asks vendors NOT to hardcode the generic
++ * `pool.ntp.org` in distributed software — which is exactly why upstream registered a vendor zone —
++ * so the generic pool is not a correct destination for us either.
++ * TODO(openobserve): register our own `openobserve.pool.ntp.org` vendor zone at
++ * https://www.ntppool.org/vendors.html and point these there — the proper long-term fix.
++ *
++ * Two providers rather than four hosts: the callers pick among the registered endpoints, and a
++ * single entry would let one provider's outage stop clock sync entirely. On failure the offset
++ * falls back to the device clock — degraded event ordering, never a crash.
+  */
+ internal enum class OpenObserveNtpEndpoint(val host: String) {
+ 
+     /**
+      * Endpoint for the Network Time Protocol time syncing.
+      */
+-    NTP_0("0.datadog.pool.ntp.org"),
++    NTP_0("time.cloudflare.com"),
+ 
+     /**
+      * Endpoint for the Network Time Protocol time syncing.
+      */
+-    NTP_1("1.datadog.pool.ntp.org"),
+-
+-    /**
+-     * Endpoint for the Network Time Protocol time syncing.
+-     */
+-    NTP_2("2.datadog.pool.ntp.org"),
+-
+-    /**
+-     * Endpoint for the Network Time Protocol time syncing.
+-     */
+-    NTP_3("3.datadog.pool.ntp.org")
++    NTP_1("time.google.com")
+ }
+diff --git b/oo-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt a/oo-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
+index 6ab7cc129..d85a0e5c3 100644
+--- b/oo-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
++++ a/oo-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
+@@ -330,7 +330,7 @@ internal class DefaultFirstPartyHostHeaderTypeResolverTest {
+     }
+ 
+     @Test
+-    fun `M use datadog and tracecontext header types W addKnownHosts(String)`(
++    fun `M use tracecontext header type only W addKnownHosts(String)`(
+         @StringForgery(regex = "http(s?)") scheme: String,
+         forge: Forge
+     ) {
+@@ -340,13 +340,16 @@ internal class DefaultFirstPartyHostHeaderTypeResolverTest {
+         testedDetector.addKnownHosts(fakeHosts)
+ 
+         // When + Then
+-        val expectedHeaderTypes = setOf(
+-            TracingHeaderType.OPENOBSERVE,
+-            TracingHeaderType.TRACECONTEXT
+-        )
++        // openobserve: upstream asserted OPENOBSERVE (its proprietary `x-<vendor>-*` format) +
++        // TRACECONTEXT here, pinning the silent injection of a competitor's headers into every
++        // first-party request as EXPECTED behaviour — so the suite would have gone red on the fix
++        // rather than catching the problem. Assert the inverse: naming a host must opt you into
++        // nothing but W3C Trace Context, the format OpenObserve actually reads.
++        val expectedHeaderTypes = setOf(TracingHeaderType.TRACECONTEXT)
+         fakeUrls.forEach {
+             val headerTypes = testedDetector.headerTypesForUrl(it)
+             assertThat(headerTypes).isEqualTo(expectedHeaderTypes)
++            assertThat(headerTypes).doesNotContain(TracingHeaderType.OPENOBSERVE)
+         }
+     }
+ 

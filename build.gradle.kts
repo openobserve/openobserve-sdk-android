@@ -66,12 +66,12 @@ nexusPublishing {
     // `group`, which is never set here (the group id is applied per-module via
     // MavenConfig.GROUP_ID) — so it resolved to "" and discovery failed with
     // "Failed to find staging profile for package group:". Upstream never hit this because
-    // they hardcoded OpenObserve's stagingProfileId. Set it explicitly to our namespace.
+    // the upstream vendor hardcoded their own stagingProfileId. Set it explicitly to our namespace.
     packageGroup.set(MavenConfig.GROUP_ID)
 
     this.repositories {
         sonatype {
-            // openobserve: no hardcoded stagingProfileId. Upstream pinned OpenObserve's own
+            // openobserve: no hardcoded stagingProfileId. The upstream vendor pinned their own
             // profile, which must never be used here. The Central Portal namespace id is a
             // UUID and is NOT an OSSRH staging profile id, so it cannot be pinned either.
             // Left unset so the nexus-publish plugin auto-discovers the staging profile for
