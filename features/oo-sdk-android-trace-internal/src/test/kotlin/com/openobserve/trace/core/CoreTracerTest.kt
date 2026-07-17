@@ -19,6 +19,7 @@ import com.openobserve.trace.common.writer.ListWriter
 import com.openobserve.trace.common.writer.NoOpWriter
 import com.openobserve.trace.common.writer.Writer
 import com.openobserve.trace.core.propagation.HttpCodec
+import com.openobserve.trace.core.propagation.TagContextExtractor
 import com.openobserve.trace.logger.OpenObserveCoreTracerLogger
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -42,8 +43,17 @@ internal class CoreTracerTest : DDCoreSpecification() {
         assertThat(tracer.internalLogger).isSameAs(mockLogger)
         val injector: HttpCodec.Injector = tracer.propagate().getFieldValue("injector")
         val extractor: HttpCodec.Extractor = tracer.propagate().getFieldValue("extractor")
+        // createInjector always wraps in a CompoundInjector, even for a single style.
         assertThat(injector).isInstanceOf(HttpCodec.CompoundInjector::class.java)
-        assertThat(extractor).isInstanceOf(HttpCodec.CompoundExtractor::class.java)
+        // openobserve: upstream asserted a CompoundExtractor here, which was only ever true
+        // because DEFAULT_TRACE_PROPAGATION_STYLE held TWO styles — its proprietary
+        // `x-<vendor>-*` format plus W3C. That default injected a competitor's headers into
+        // every traced request with no opt-in and is now W3C Trace Context alone, so
+        // HttpCodec.createExtractor takes its `case 1: return extractors.get(0)` branch and
+        // hands back the single W3C extractor rather than compounding one element.
+        // W3CHttpCodec.newExtractor returns a TagContextExtractor driven by a
+        // W3CContextInterpreter — so this asserts the W3C extractor, not a weaker claim.
+        assertThat(extractor).isInstanceOf(TagContextExtractor::class.java)
         assertThat(tracer.log).isInstanceOf(OpenObserveCoreTracerLogger::class.java)
 
         // Tear down
