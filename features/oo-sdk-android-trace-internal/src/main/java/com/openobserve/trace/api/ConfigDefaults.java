@@ -1,6 +1,5 @@
 package com.openobserve.trace.api;
 
-import static com.openobserve.trace.api.TracePropagationStyle.OPENOBSERVE;
 import static com.openobserve.trace.api.TracePropagationStyle.TRACECONTEXT;
 import static java.util.Arrays.asList;
 
@@ -66,7 +65,20 @@ public final class ConfigDefaults {
   static final int DEFAULT_SCOPE_ITERATION_KEEP_ALIVE = 30; // in seconds
   static final int DEFAULT_PARTIAL_FLUSH_MIN_SPANS = 1000;
   static final boolean DEFAULT_PROPAGATION_EXTRACT_LOG_HEADER_NAMES_ENABLED = false;
-  static final Set<TracePropagationStyle> DEFAULT_TRACE_PROPAGATION_STYLE = new LinkedHashSet<>(asList(OPENOBSERVE, TRACECONTEXT));
+  // openobserve: upstream defaulted to asList(OPENOBSERVE, TRACECONTEXT) — OPENOBSERVE being the
+  // upstream vendor's proprietary `x-<vendor>-*` format (this enum case was renamed by the rebrand;
+  // the wire bytes are unchanged). Config applies this to BOTH inject and extract, so out of the box
+  // the tracer INJECTED a competitor's headers into outbound requests. Those headers are read only
+  // by an upstream-instrumented APM — OpenObserve's backend speaks W3C `traceparent` and never
+  // parsed them — so the default put a competitor's identity on the wire while doing nothing for us.
+  //
+  // W3C Trace Context only. This also narrows EXTRACT, which is acceptable and near-vestigial here:
+  // this is a vendored server tracer, and a mobile app is a trace ROOT — it does not serve inbound
+  // requests carrying trace context. Anyone who needs the upstream format can still set
+  // TRACE_PROPAGATION_STYLE explicitly; the codec is retained (removing it is a separate change —
+  // it is structural in this vendored core: TracePropagationStyle, PropagationTags.HeaderType sized
+  // via values().length, PTagsFactory, OpenObserveHttpCodec).
+  static final Set<TracePropagationStyle> DEFAULT_TRACE_PROPAGATION_STYLE = new LinkedHashSet<>(asList(TRACECONTEXT));
   static final boolean DEFAULT_JMX_FETCH_ENABLED = true;
   static final boolean DEFAULT_TRACE_AGENT_V05_ENABLED = false;
 

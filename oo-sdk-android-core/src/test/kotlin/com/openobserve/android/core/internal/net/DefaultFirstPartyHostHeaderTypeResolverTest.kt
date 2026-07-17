@@ -330,7 +330,7 @@ internal class DefaultFirstPartyHostHeaderTypeResolverTest {
     }
 
     @Test
-    fun `M use datadog and tracecontext header types W addKnownHosts(String)`(
+    fun `M use tracecontext header type only W addKnownHosts(String)`(
         @StringForgery(regex = "http(s?)") scheme: String,
         forge: Forge
     ) {
@@ -340,13 +340,16 @@ internal class DefaultFirstPartyHostHeaderTypeResolverTest {
         testedDetector.addKnownHosts(fakeHosts)
 
         // When + Then
-        val expectedHeaderTypes = setOf(
-            TracingHeaderType.OPENOBSERVE,
-            TracingHeaderType.TRACECONTEXT
-        )
+        // openobserve: upstream asserted OPENOBSERVE (its proprietary `x-<vendor>-*` format) +
+        // TRACECONTEXT here, pinning the silent injection of a competitor's headers into every
+        // first-party request as EXPECTED behaviour — so the suite would have gone red on the fix
+        // rather than catching the problem. Assert the inverse: naming a host must opt you into
+        // nothing but W3C Trace Context, the format OpenObserve actually reads.
+        val expectedHeaderTypes = setOf(TracingHeaderType.TRACECONTEXT)
         fakeUrls.forEach {
             val headerTypes = testedDetector.headerTypesForUrl(it)
             assertThat(headerTypes).isEqualTo(expectedHeaderTypes)
+            assertThat(headerTypes).doesNotContain(TracingHeaderType.OPENOBSERVE)
         }
     }
 

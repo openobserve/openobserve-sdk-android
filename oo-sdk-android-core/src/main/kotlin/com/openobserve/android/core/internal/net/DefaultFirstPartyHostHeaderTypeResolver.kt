@@ -66,11 +66,13 @@ class DefaultFirstPartyHostHeaderTypeResolver(
     }
 
     internal fun addKnownHosts(hosts: List<String>) {
+        // openobserve: upstream defaulted to OPENOBSERVE (its proprietary `x-<vendor>-*` format)
+        // + TRACECONTEXT here, so simply naming a first-party host injected a competitor's headers
+        // into its requests with no opt-in. Those headers are only read by an upstream-instrumented
+        // APM; OpenObserve's backend speaks W3C `traceparent`. Default to the interoperable format
+        // we actually read — callers wanting another type use addKnownHostsWithHeaderTypes().
         knownHosts = knownHosts + hosts.associate {
-            it.lowercase(Locale.US) to setOf(
-                TracingHeaderType.OPENOBSERVE,
-                TracingHeaderType.TRACECONTEXT
-            )
+            it.lowercase(Locale.US) to setOf(TracingHeaderType.TRACECONTEXT)
         }
     }
 

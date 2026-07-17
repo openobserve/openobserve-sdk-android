@@ -52,17 +52,24 @@ class ApmNetworkInstrumentationConfiguration internal constructor(
     internal var headerPropagationOnly: Boolean = false
 ) {
     /**
-     * Creates a configuration with a list of traced hosts using default header types
-     * ([TracingHeaderType.OPENOBSERVE] and [TracingHeaderType.TRACECONTEXT]).
+     * Creates a configuration with a list of traced hosts using the default header type
+     * ([TracingHeaderType.TRACECONTEXT]).
+     *
+     * openobserve: upstream defaulted to [TracingHeaderType.OPENOBSERVE] + TRACECONTEXT, so this
+     * convenience constructor injected the upstream vendor's proprietary `x-<vendor>-*` headers
+     * into every traced request with NO opt-in. Those headers go to the CUSTOMER's own backend for
+     * trace linking — only an upstream-instrumented APM reads them, and OpenObserve's backend does
+     * not parse them at all (it speaks W3C `traceparent`). So the default put a competitor's
+     * identity on the wire for every user while doing nothing for ours.
+     *
+     * W3C Trace Context is the interoperable default and the one OpenObserve actually reads.
+     * Callers who still need the upstream format can pass it explicitly via the map constructor.
      *
      * @param tracedHosts a list of hosts to trace.
      */
     constructor(tracedHosts: List<String>) : this(
         tracedHosts.associateWith {
-            setOf(
-                TracingHeaderType.OPENOBSERVE,
-                TracingHeaderType.TRACECONTEXT
-            )
+            setOf(TracingHeaderType.TRACECONTEXT)
         }
     )
 
