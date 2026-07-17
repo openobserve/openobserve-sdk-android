@@ -469,12 +469,10 @@ internal class CoreFeature(
         }
         kronosClock = AndroidClockFactory.createKronosClock(
             safeContext,
-            ntpHosts = listOf(
-                OpenObserveNtpEndpoint.NTP_0,
-                OpenObserveNtpEndpoint.NTP_1,
-                OpenObserveNtpEndpoint.NTP_2,
-                OpenObserveNtpEndpoint.NTP_3
-            ).map { it.host },
+            // openobserve: enumerate the endpoints rather than naming them one by one — upstream
+            // listed NTP_0..NTP_3 explicitly, so changing the endpoint set meant editing here too
+            // (and dropping one silently broke this call site).
+            ntpHosts = OpenObserveNtpEndpoint.values().map { it.host },
             cacheExpirationMs = TimeUnit.MINUTES.toMillis(NTP_CACHE_EXPIRATION_MINUTES),
             minWaitTimeBetweenSyncMs = TimeUnit.MINUTES.toMillis(NTP_DELAY_BETWEEN_SYNCS_MINUTES),
             syncListener = LoggingSyncListener(internalLogger)

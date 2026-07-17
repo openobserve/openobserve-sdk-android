@@ -36,8 +36,14 @@ fi
 # --- CONTENT ------------------------------------------------------------------
 # Identity tokens that must never appear in shipped source. Wire prefixes
 # (ddtags/ddsource/DD-API-KEY) are covered by step 2 and included here.
+#
+# NOTE: `datadog\.pool` / `datadog\.<label>\.<tld>` catch HOSTNAMES. Every other pattern here
+# needs an uppercase letter or the `hq` suffix, so a bare lowercase hostname label matched NONE
+# of them — and this gate reported PASS while oo-sdk-android-core shipped
+# `[0-3].datadog.pool.ntp.org`, contacted by DEFAULT on every SDK init via CoreFeature. That went
+# out in the published 0.1.0-alpha1 and can only be superseded, never recalled. Do not remove.
 HITS=$(echo "$PATHS" | xargs grep -nE \
-  'com\.datadog|com/datadog|com\.datadoghq|\bDatadog[A-Za-z]|\bDATADOG|datad0g|ddog-gov|\bddtags\b|\bddsource\b|DD-API-KEY|dogstatsd' \
+  'com\.datadog|com/datadog|com\.datadoghq|\bDatadog[A-Za-z]|\bDATADOG|datad0g|ddog-gov|\bddtags\b|\bddsource\b|DD-API-KEY|dogstatsd|datadog\.pool|datadog\.[a-z]+\.(org|com|net)' \
   2>/dev/null \
   | grep -viE 'developed at Datadog|Copyright .*Datadog|licensed under' \
   || true)

@@ -39,20 +39,48 @@ esac; done
 echo "==> OpenObserve Android publish: $VERSION-$TYPE${NUMBER} (publish=$PUBLISH)"
 
 # --- 0. toolchain guard -------------------------------------------------------
-# The unit tests use a reflection helper (tools/unit ReflectUtils.setFieldValue ->
-# RemoveFinalModifier) that strips the `final` modifier — a technique the JDK blocked
-# after 17. On JDK 21+ those tests fail with UnsupportedOperationException even though
-# the code is correct. The project targets Java 11/17, so require <= 17.
+# Resolve the JDK before trusting PATH. `/usr/libexec/java_home` is NOT reliable here:
+# on a stock macOS it reports only the Java 1.8 applet plugin and never sees a Homebrew
+# JDK, so `java_home -v 17` silently hands back Java 8.
+if [ -z "${JAVA_HOME:-}" ] || [ ! -x "${JAVA_HOME}/bin/java" ]; then
+  for c in /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home \
+           /usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home \
+           /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home; do
+    if [ -x "$c/bin/java" ]; then export JAVA_HOME="$c"; break; fi
+  done
+fi
 JAVA_BIN="${JAVA_HOME:+$JAVA_HOME/bin/}java"
+command -v "$JAVA_BIN" > /dev/null 2>&1 || { echo "ERROR: no java found. Install openjdk@17." >&2; exit 2; }
+# Java 8 reports version "1.8.0_x" (major parses as 1); Java 17 reports "17.0.x".
 JAVA_MAJOR=$("$JAVA_BIN" -version 2>&1 | head -1 | sed -E 's/.*version "([0-9]+).*/\1/')
-if [ "${JAVA_MAJOR:-0}" -gt 17 ] && [ "$SKIP_TESTS" = "0" ]; then
-  echo "ERROR: JDK $JAVA_MAJOR detected; this build's unit tests require JDK 17 or lower." >&2
-  echo "       (Android Studio bundles JDK 21 — do NOT use it here.)" >&2
-  echo "       Fix: brew install openjdk@17 && export JAVA_HOME=\$(brew --prefix openjdk@17)/libexec/openjdk.jdk/Contents/Home" >&2
-  echo "       Or re-run with --skip-tests to bypass (NOT for a real release)." >&2
+# Bound BOTH ends. The unit tests use a reflection helper (tools/unit
+# ReflectUtils.setFieldValue -> RemoveFinalModifier) that strips the `final` modifier — a
+# technique the JDK blocked after 17, so JDK 21 (which Android Studio bundles) fails those
+# tests even though the code is correct. The old guard only rejected > 17, so an
+# unset JAVA_HOME falling back to the Java 1.8 applet plugin parsed as major "1", passed
+# `1 > 17` == false, and failed later with an unrelated error.
+if [ "${JAVA_MAJOR:-0}" -gt 17 ] || [ "${JAVA_MAJOR:-0}" -lt 11 ]; then
+  echo "ERROR: JDK '$JAVA_MAJOR' at ${JAVA_HOME:-<PATH>} — this build needs JDK 11-17 (17 recommended)." >&2
+  echo "       > 17: the unit tests' final-stripping reflection helper is blocked (Android Studio ships 21)." >&2
+  echo "       < 11: too old to compile this project." >&2
+  echo "       Fix: brew install openjdk@17" >&2
+  echo "            export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home" >&2
   exit 2
 fi
-echo "    JDK $JAVA_MAJOR"
+
+# The Android SDK. publish.sh previously only mentioned ANDROID_HOME in a comment and never
+# checked it, so a shell without it (CI, cron, any non-login shell) got
+# "SDK location not found" from Gradle after the gates had already run.
+if [ -z "${ANDROID_HOME:-}" ] && [ ! -f local.properties ]; then
+  for c in "$HOME/Library/Android/sdk" /usr/local/share/android-sdk /opt/homebrew/share/android-sdk; do
+    if [ -d "$c" ]; then export ANDROID_HOME="$c"; break; fi
+  done
+fi
+if [ -z "${ANDROID_HOME:-}" ] && [ ! -f local.properties ]; then
+  echo "ERROR: Android SDK not found. Set ANDROID_HOME or add sdk.dir=... to local.properties." >&2
+  exit 2
+fi
+echo "    JDK $JAVA_MAJOR (${JAVA_HOME:-PATH}) | ANDROID_HOME ${ANDROID_HOME:-<local.properties>}"
 
 # --- 1. set the version in AndroidConfig.kt (single source of truth) -----------
 CFG="buildSrc/src/main/kotlin/com/openobserve/gradle/config/AndroidConfig.kt"
