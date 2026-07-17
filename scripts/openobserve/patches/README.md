@@ -24,6 +24,39 @@ Fixes found by the publish dry-run. Each is something no string rule can do:
 - **`"dd.configuration"` -> `"oo.configuration"`** (DeserializedViewEventAssert) — a field-path
   STRING literal; missing it silently un-ignored a field and looked like flaky tests.
 
+## 0002-alpha2-privacy-fixes.patch (6 files)
+The alpha2 privacy fixes. Each is a behavioural change to a value, not a token rename, so no
+`rename-map.json` rule can express it — and a sync WILL revert them (verified: a freshly synced
+tree restores `0.<upstream-vendor>.pool.ntp.org`, and check-no-datadog.sh then fails on it).
+
+- **OpenObserveNtpEndpoint + CoreFeature** — the SDK contacted the upstream vendor's NTP pool by
+  DEFAULT on every init. Now two neutral anycast providers (the same pair iOS uses). CoreFeature
+  enumerates the endpoints rather than naming NTP_0..NTP_3, so changing the set can't silently
+  break the call site.
+- **ApmNetworkInstrumentationConfiguration / DefaultFirstPartyHostHeaderTypeResolver /
+  ConfigDefaults** — three defaults injected the upstream vendor's proprietary `x-<vendor>-*`
+  headers into every first-party request with NO opt-in. All now W3C Trace Context only.
+- **DefaultFirstPartyHostHeaderTypeResolverTest** — upstream's test ASSERTED that injection as
+  expected behaviour, so a correct fix turned the suite red. Inverted into a guard.
+
+## Generating these patches — two traps that silently lose fixes
+
+**1. Do NOT exclude `**/api/**`.** It looks like it targets the generated API surface, but it also
+matches real source packages named `api` — e.g.
+`features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java`.
+That glob silently dropped the propagator-default fix from this patch. Exclude the generated files
+precisely instead:
+```
+':!**/api/apiSurface' ':!**/api/*.api' ':!**/api/compiler-meta.txt'
+```
+(60 generated files vs 223 real source files under an `api/` package.)
+
+**2. Never write the upstream vendor's name in our own comments.** rebrand.mjs runs over the whole
+tree, including our prose. Two comments in build.gradle.kts were rewritten from "Datadog's
+stagingProfileId" to "OpenObserve's stagingProfileId" — inverting the meaning of the comment that
+explains why that profile id must never be reused. Say "the upstream vendor". The mirror image of
+this also bites: quoting a forbidden token in a comment trips check-no-datadog.sh.
+
 ## After every sync — regenerate, don't patch
 Generated files are intentionally NOT in the patch:
 ```bash
