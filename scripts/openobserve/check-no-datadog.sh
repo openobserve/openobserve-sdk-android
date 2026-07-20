@@ -33,11 +33,14 @@ if [ -n "$PATH_HITS" ]; then
   FAIL=1
 fi
 
+# NOTE: `dd=s:` / `dd=p:` catch the W3C TRACESTATE vendor key. Every other pattern here
+# needs an uppercase letter or the `hq` suffix, so a bare lowercase `dd=` matched none —
+# and it is on the DEFAULT path now that tracecontext is the default propagator. Do not remove.
 # --- CONTENT ------------------------------------------------------------------
 # Identity tokens that must never appear in shipped source. Wire prefixes
 # (ddtags/ddsource/DD-API-KEY) are covered by step 2 and included here.
 #
-# NOTE: `datadog\.pool` / `datadog\.<label>\.<tld>` catch HOSTNAMES. Every other pattern here
+# NOTE: `\bdd=s:|\bdd=p:|datadog\.pool` / `datadog\.<label>\.<tld>` catch HOSTNAMES. Every other pattern here
 # needs an uppercase letter or the `hq` suffix, so a bare lowercase hostname label matched NONE
 # of them — and this gate reported PASS while oo-sdk-android-core shipped
 # `[0-3].datadog.pool.ntp.org`, contacted by DEFAULT on every SDK init via CoreFeature. That went

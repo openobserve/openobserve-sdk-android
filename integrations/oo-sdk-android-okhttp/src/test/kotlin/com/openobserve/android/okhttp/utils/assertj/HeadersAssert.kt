@@ -59,9 +59,9 @@ internal class HeadersAssert(actual: Headers) :
                     "We were expecting to have OpenObserve vendor for" +
                         " [$TRACESTATE_HEADER_NAME] header, but the actual header value is [$headerValue]"
                 )
-                .startsWith("dd=")
+                .startsWith("oo=")
 
-            val rawActualTags = vendor.substringAfter("dd=")
+            val rawActualTags = vendor.substringAfter("oo=")
                 .split(";")
                 .map { it.split(":").let { it[0] to it[1] } }
                 .groupBy { it.first }

@@ -951,7 +951,7 @@ internal constructor(
 
         // https://www.w3.org/TR/trace-context/#traceparent-header
         internal const val W3C_TRACEPARENT_DROP_SAMPLING_DECISION = "00-%s-%s-00"
-        internal const val W3C_TRACESTATE_DROP_SAMPLING_DECISION = "dd=p:%s;s:0"
+        internal const val W3C_TRACESTATE_DROP_SAMPLING_DECISION = "oo=p:%s;s:0"
         internal const val W3C_SAMPLING_DECISION_INDEX = 3
         internal const val W3C_TRACE_ID_LENGTH = 32
         internal const val W3C_PARENT_ID_LENGTH = 16

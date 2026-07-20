@@ -678,7 +678,7 @@ internal class InvalidStringFormatTest {
             """
                 class Foo {
                     companion object {
-                        private const val PATTERN = "dd=p:%s;s:0"
+                        private const val PATTERN = "oo=p:%s;s:0"
                     }
 
                     fun test(a: String): String {
