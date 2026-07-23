@@ -18,11 +18,11 @@ CPU and Memory profiling was done for the minified `release` build type with `pr
 
 SDK modules which were added to the application:
 
-* `oo-sdk-android-logs`
-* `oo-sdk-android-trace`
-* `oo-sdk-android-rum`
-* `oo-sdk-android-okhttp`
-* `oo-sdk-android-glide`
+* `o2-sdk-android-logs`
+* `o2-sdk-android-trace`
+* `o2-sdk-android-rum`
+* `o2-sdk-android-okhttp`
+* `o2-sdk-android-glide`
 
 SDK was set up with default settings.
 

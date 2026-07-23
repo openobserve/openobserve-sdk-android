@@ -28,8 +28,8 @@ ktlint -F "**/*.kt" "**/*.kts" '!**/build/generated/**' '!**/build/kspCaches/**'
 Every publishable module has `api/apiSurface` and `api/<module>.api` checked into git. **CI fails if these are stale.** After any public API change, update them:
 
 ```bash
-./gradlew :features:oo-sdk-android-rum:generateApiSurface  # updates api/apiSurface
-./gradlew :features:oo-sdk-android-rum:apiDump             # updates api/<module>.api
+./gradlew :features:o2-sdk-android-rum:generateApiSurface  # updates api/apiSurface
+./gradlew :features:o2-sdk-android-rum:apiDump             # updates api/<module>.api
 ```
 
 Or for all modules: `./gradlew checkApiSurfaceChangesAll` (verifies) vs. running the update tasks per-module.
@@ -87,7 +87,7 @@ Test method naming: `` `M <expected behavior> W <method()> {context}` ``
 
 Each module has a `Configurator` in `src/test/.../utils/forge/` extending `BaseConfigurator` (from `tools/unit`). It registers all `ForgeryFactory` implementations for that module's types. When adding a new data class used in tests, add a `ForgeryFactory` and register it in `Configurator`.
 
-Shared factories: `forge.useCoreFactories()` (from `oo-sdk-android-core` testFixtures).
+Shared factories: `forge.useCoreFactories()` (from `o2-sdk-android-core` testFixtures).
 
 # Sample App Config
 
@@ -110,7 +110,7 @@ Filename matches the flavor: `config/us1.json`, `config/staging.json`, etc. Get 
 
 # Generated Models
 
-Some modules generate Kotlin data classes from JSON schemas at build time (e.g. `features/oo-sdk-android-rum/src/main/json/`). The generated Kotlin files land in `build/generated/json2kotlin/` — **do not edit them directly**. Edit the JSON schemas instead and rebuild.
+Some modules generate Kotlin data classes from JSON schemas at build time (e.g. `features/o2-sdk-android-rum/src/main/json/`). The generated Kotlin files land in `build/generated/json2kotlin/` — **do not edit them directly**. Edit the JSON schemas instead and rebuild.
 
 # Commits
 

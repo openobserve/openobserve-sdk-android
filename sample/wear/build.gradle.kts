@@ -67,11 +67,11 @@ dependencies {
     implementation(libs.timber)
     coreLibraryDesugaring(libs.androidDesugaringSdk)
 
-    implementation(project(":features:oo-sdk-android-ndk"))
-    implementation(project(":features:oo-sdk-android-rum"))
-    implementation(project(":features:oo-sdk-android-logs"))
-    implementation(project(":features:oo-sdk-android-trace"))
-    implementation(project(":features:oo-sdk-android-trace-otel"))
+    implementation(project(":features:o2-sdk-android-ndk"))
+    implementation(project(":features:o2-sdk-android-rum"))
+    implementation(project(":features:o2-sdk-android-logs"))
+    implementation(project(":features:o2-sdk-android-trace"))
+    implementation(project(":features:o2-sdk-android-trace-otel"))
 
     implementation("androidx.wear:wear:1.2.0")
     implementation("androidx.core:core-ktx:1.7.0")

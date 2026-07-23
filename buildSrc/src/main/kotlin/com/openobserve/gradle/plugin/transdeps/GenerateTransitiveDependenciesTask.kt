@@ -36,7 +36,7 @@ abstract class GenerateTransitiveDependenciesTask : DefaultTask() {
     abstract val dependenciesFile: RegularFileProperty
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description = "Generate the list of transitive dependencies of the library"
     }
 

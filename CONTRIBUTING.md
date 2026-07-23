@@ -23,36 +23,36 @@ In addition, to be able to run the static analysis tools locally, you should run
 
 This project hosts the following modules:
 
-  - `oo-sdk-android-core`: the main library implementing the core functionality of SDK (storage and upload of data, core APIs);
-  - `oo-sdk-android-internal`: a library providing internal APIs, classes and utilities shared by the SDK modules;
+  - `o2-sdk-android-core`: the main library implementing the core functionality of SDK (storage and upload of data, core APIs);
+  - `o2-sdk-android-internal`: a library providing internal APIs, classes and utilities shared by the SDK modules;
   - `features/***`: a set of libraries implementing OpenObserve products: 
-    - `features/oo-sdk-android-logs`: a library to send logs to OpenObserve;
-    - `features/oo-sdk-android-rum`: a library to track user navigation and interaction;
-    - `features/oo-sdk-android-ndk`: a lightweight library to track crashes from NDK libraries;
-    - `features/oo-sdk-android-session-replay`: a library to capture the window content;
-    - `features/oo-sdk-android-session-replay-compose`: an extension for Session Replay to integrate with the Jetpack Compose;
-    - `features/oo-sdk-android-session-replay-material`: an extension for Session Replay to integrate with the Material Design library;
-    - `features/oo-sdk-android-trace`: a library to measure performance of operations locally;
-    - `features/oo-sdk-android-trace-api`: a library containing API definitions for the Trace library;
-    - `features/oo-sdk-android-trace-internal`: a library containing internal classes for the Trace library;
-    - `features/oo-sdk-android-trace-otel`: an extension of Trace library to integrate with [OpenTelemetry](https://opentelemetry.io/);
-    - `features/oo-sdk-android-webview`: a library to forward logs and RUM events captured in a webview to be linked with the mobile session;
-    - `features/oo-sdk-android-profiling`: a library to record application performance profiles;
+    - `features/o2-sdk-android-logs`: a library to send logs to OpenObserve;
+    - `features/o2-sdk-android-rum`: a library to track user navigation and interaction;
+    - `features/o2-sdk-android-ndk`: a lightweight library to track crashes from NDK libraries;
+    - `features/o2-sdk-android-session-replay`: a library to capture the window content;
+    - `features/o2-sdk-android-session-replay-compose`: an extension for Session Replay to integrate with the Jetpack Compose;
+    - `features/o2-sdk-android-session-replay-material`: an extension for Session Replay to integrate with the Material Design library;
+    - `features/o2-sdk-android-trace`: a library to measure performance of operations locally;
+    - `features/o2-sdk-android-trace-api`: a library containing API definitions for the Trace library;
+    - `features/o2-sdk-android-trace-internal`: a library containing internal classes for the Trace library;
+    - `features/o2-sdk-android-trace-otel`: an extension of Trace library to integrate with [OpenTelemetry](https://opentelemetry.io/);
+    - `features/o2-sdk-android-webview`: a library to forward logs and RUM events captured in a webview to be linked with the mobile session;
+    - `features/o2-sdk-android-profiling`: a library to record application performance profiles;
   - `integrations/***`: a set of libraries integrating OpenObserve products in third party libraries:
-    - `integrations/oo-sdk-android-apollo`: a lightweight library providing a bridge integration between OpenObserve SDK and [Apollo Kotlin](https://github.com/apollographql/apollo-kotlin)
-    - `integrations/oo-sdk-android-coil`: a lightweight library providing a bridge integration between OpenObserve SDK and [Coil](https://coil-kt.github.io/coil/);
-    - `integrations/oo-sdk-android-coil3`: a lightweight library providing a bridge integration between OpenObserve SDK and [Coil 3](https://coil-kt.github.io/coil/);
-    - `integrations/oo-sdk-android-compose`: a lightweight library providing a bridge integration between OpenObserve SDK and [Jetpack Compose](https://developer.android.com/jetpack/compose);
-    - `integrations/oo-sdk-android-fresco`: a lightweight library providing a bridge integration between OpenObserve SDK and [Fresco](https://frescolib.org/);
-    - `integrations/oo-sdk-android-glide`: a lightweight library providing a bridge integration between OpenObserve SDK and [Glide](https://bumptech.github.io/glide/);
-    - `integrations/oo-sdk-android-okhttp`: a lightweight library providing an instrumentation for [OkHttp](https://square.github.io/okhttp/);
-    - `integrations/oo-sdk-android-okhttp-otel`: a lightweight library providing a support of [OpenTelemetry](https://opentelemetry.io/) for the [OkHttp](https://square.github.io/okhttp/) instrumentation;
-    - `integrations/oo-sdk-android-rum-coroutines`: a set of extensions for Kotlin Coroutines to ease the work with the RUM library;
-    - `integrations/oo-sdk-android-rx`: a lightweight library providing a bridge integration between OpenObserve SDK and [RxJava](https://github.com/ReactiveX/RxJava);
-    - `integrations/oo-sdk-android-sqldelight`: a lightweight library providing a bridge integration between OpenObserve SDK and [SQLDelight](https://cashapp.github.io/sqldelight/);
-    - `integrations/oo-sdk-android-timber`: a lightweight library providing a bridge integration between OpenObserve SDK and [Timber](https://github.com/JakeWharton/timber);
-    - `integrations/oo-sdk-android-tv`: a lightweight library providing extensions for [Android TV](https://www.android.com/tv/)
-    - `integrations/oo-sdk-android-trace-coroutines`: a set of extensions for Kotlin Coroutines to ease the work with the Trace library;
+    - `integrations/o2-sdk-android-apollo`: a lightweight library providing a bridge integration between OpenObserve SDK and [Apollo Kotlin](https://github.com/apollographql/apollo-kotlin)
+    - `integrations/o2-sdk-android-coil`: a lightweight library providing a bridge integration between OpenObserve SDK and [Coil](https://coil-kt.github.io/coil/);
+    - `integrations/o2-sdk-android-coil3`: a lightweight library providing a bridge integration between OpenObserve SDK and [Coil 3](https://coil-kt.github.io/coil/);
+    - `integrations/o2-sdk-android-compose`: a lightweight library providing a bridge integration between OpenObserve SDK and [Jetpack Compose](https://developer.android.com/jetpack/compose);
+    - `integrations/o2-sdk-android-fresco`: a lightweight library providing a bridge integration between OpenObserve SDK and [Fresco](https://frescolib.org/);
+    - `integrations/o2-sdk-android-glide`: a lightweight library providing a bridge integration between OpenObserve SDK and [Glide](https://bumptech.github.io/glide/);
+    - `integrations/o2-sdk-android-okhttp`: a lightweight library providing an instrumentation for [OkHttp](https://square.github.io/okhttp/);
+    - `integrations/o2-sdk-android-okhttp-otel`: a lightweight library providing a support of [OpenTelemetry](https://opentelemetry.io/) for the [OkHttp](https://square.github.io/okhttp/) instrumentation;
+    - `integrations/o2-sdk-android-rum-coroutines`: a set of extensions for Kotlin Coroutines to ease the work with the RUM library;
+    - `integrations/o2-sdk-android-rx`: a lightweight library providing a bridge integration between OpenObserve SDK and [RxJava](https://github.com/ReactiveX/RxJava);
+    - `integrations/o2-sdk-android-sqldelight`: a lightweight library providing a bridge integration between OpenObserve SDK and [SQLDelight](https://cashapp.github.io/sqldelight/);
+    - `integrations/o2-sdk-android-timber`: a lightweight library providing a bridge integration between OpenObserve SDK and [Timber](https://github.com/JakeWharton/timber);
+    - `integrations/o2-sdk-android-tv`: a lightweight library providing extensions for [Android TV](https://www.android.com/tv/)
+    - `integrations/o2-sdk-android-trace-coroutines`: a set of extensions for Kotlin Coroutines to ease the work with the Trace library;
   - `instrumented/***`: a set of modules used to run instrumented tests:
     - `instrumented/integration`: a test module with integration tests using Espresso;
   - `reliability/***`: a set of modules used to run integration tests:

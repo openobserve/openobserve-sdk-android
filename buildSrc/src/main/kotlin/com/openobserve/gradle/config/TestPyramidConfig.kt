@@ -13,7 +13,7 @@ fun Project.registerSubModuleAggregationTask(
     taskName: String,
     subModuleTaskName: String,
     subModulePathPrefix: String = ":",
-    subModuleNamePrefix: String = "oo-sdk-android-",
+    subModuleNamePrefix: String = "o2-sdk-android-",
     exceptions: Set<String> = emptySet(),
     additionalConfiguration: Task.() -> Unit = {}
 ) {

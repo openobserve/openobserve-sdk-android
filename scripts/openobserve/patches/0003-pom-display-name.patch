@@ -1,0 +1,63 @@
+diff --git a/buildSrc/src/main/kotlin/com/openobserve/gradle/config/MavenConfig.kt b/buildSrc/src/main/kotlin/com/openobserve/gradle/config/MavenConfig.kt
+index 4f8a29bb7..aaf959232 100644
+--- a/buildSrc/src/main/kotlin/com/openobserve/gradle/config/MavenConfig.kt
++++ b/buildSrc/src/main/kotlin/com/openobserve/gradle/config/MavenConfig.kt
+@@ -17,6 +17,46 @@ import org.gradle.plugins.signing.SigningExtension
+ object MavenConfig {
+     const val GROUP_ID = "ai.openobserve"
+     const val PUBLICATION = "release"
++
++    private const val ARTIFACT_PREFIX = "o2-sdk-android-"
++    private const val DISPLAY_PREFIX = "OpenObserve SDK Android"
++
++    /**
++     * Tokens that must not be naively capitalized. Anything absent from this map is
++     * title-cased, so a new module needs an entry here only when its name is an
++     * acronym or has interior capitals.
++     */
++    private val ACRONYMS = mapOf(
++        "rum" to "RUM",
++        "ndk" to "NDK",
++        "api" to "API",
++        "tv" to "TV",
++        "rx" to "Rx",
++        "otel" to "OTel",
++        "okhttp" to "OkHttp",
++        "webview" to "WebView",
++        "openfeature" to "OpenFeature",
++        "sqldelight" to "SQLDelight",
++        "coil3" to "Coil3"
++    )
++
++    /**
++     * Human-readable POM `<name>`, e.g. `o2-sdk-android-internal` ->
++     * "OpenObserve SDK Android Internal".
++     *
++     * Upstream set `<name>` to the raw Gradle module name, so Maven Central rendered the
++     * artifactId as the display name. Deriving the label from the artifactId rather than
++     * hardcoding a table per module means the two cannot drift apart on a rename.
++     */
++    fun displayName(artifactId: String): String {
++        val suffix = artifactId.removePrefix(ARTIFACT_PREFIX)
++            .split('-')
++            .filter { it.isNotEmpty() }
++            .joinToString(" ") { token ->
++                ACRONYMS[token] ?: token.replaceFirstChar { it.uppercase() }
++            }
++        return if (suffix.isEmpty()) DISPLAY_PREFIX else "$DISPLAY_PREFIX $suffix"
++    }
+ }
+ 
+ fun Project.publishingConfig(
+@@ -56,7 +96,10 @@ fun Project.publishingConfig(
+                 version = AndroidConfig.VERSION.name
+ 
+                 pom {
+-                    name.set(projectName)
++                    // Derived from the artifactId (what is actually published), not the Gradle
++                    // module name, so a module whose artifactId is overridden still gets a label
++                    // matching the coordinate consumers resolve.
++                    name.set(MavenConfig.displayName(customArtifactId))
+                     description.set(projectDescription)
+                     url.set("https://github.com/openobserve/openobserve-sdk-android/")
+ 

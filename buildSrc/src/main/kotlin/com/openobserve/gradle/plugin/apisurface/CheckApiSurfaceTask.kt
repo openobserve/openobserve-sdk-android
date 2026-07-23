@@ -29,7 +29,7 @@ abstract class CheckApiSurfaceTask @Inject constructor(
     abstract val javaSurfaceFile: RegularFileProperty
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description = "Check the API surface of the library"
     }
 

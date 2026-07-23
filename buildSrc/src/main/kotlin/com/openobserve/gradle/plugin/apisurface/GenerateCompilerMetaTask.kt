@@ -28,7 +28,7 @@ abstract class GenerateCompilerMetaTask @Inject constructor(
     abstract val compiledClassesDirectory: DirectoryProperty
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description = "List compiler metadata properties"
     }
 
@@ -42,7 +42,7 @@ abstract class GenerateCompilerMetaTask @Inject constructor(
                 val relativePath = it.relativeTo(classesDir).path
                 it.extension == "class" &&
                     !it.name.contains("$") &&
-                    it.path.contains("datadog") &&
+                    it.path.contains("openobserve") &&
                     !relativePath.contains("test", ignoreCase = true)
             }
             .firstOrNull()

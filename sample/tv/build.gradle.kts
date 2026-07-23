@@ -16,7 +16,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("com.github.ben-manes.versions")
-    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
+    // openobserve: o2-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 
     // alias(libs.plugins.ooGradlePlugin)
 }
@@ -70,14 +70,14 @@ repositories {
 
 dependencies {
 
-    implementation(project(":oo-sdk-android-core"))
-    implementation(project(":features:oo-sdk-android-rum"))
-    implementation(project(":features:oo-sdk-android-logs"))
-    implementation(project(":features:oo-sdk-android-session-replay"))
-    implementation(project(":features:oo-sdk-android-session-replay-material"))
-    implementation(project(":integrations:oo-sdk-android-okhttp"))
-    implementation(project(":integrations:oo-sdk-android-timber"))
-    implementation(project(":integrations:oo-sdk-android-tv"))
+    implementation(project(":o2-sdk-android-core"))
+    implementation(project(":features:o2-sdk-android-rum"))
+    implementation(project(":features:o2-sdk-android-logs"))
+    implementation(project(":features:o2-sdk-android-session-replay"))
+    implementation(project(":features:o2-sdk-android-session-replay-material"))
+    implementation(project(":integrations:o2-sdk-android-okhttp"))
+    implementation(project(":integrations:o2-sdk-android-timber"))
+    implementation(project(":integrations:o2-sdk-android-tv"))
 
     implementation(libs.kotlin)
 

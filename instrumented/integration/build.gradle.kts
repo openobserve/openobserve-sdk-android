@@ -90,13 +90,13 @@ dependencies {
     if (project.hasProperty(com.openobserve.gradle.Properties.USE_DESUGARING)) {
         coreLibraryDesugaring(libs.androidDesugaringSdk)
     }
-    implementation(project(":features:oo-sdk-android-session-replay"))
-    implementation(project(":features:oo-sdk-android-logs"))
-    implementation(project(":features:oo-sdk-android-trace"))
-    implementation(project(":features:oo-sdk-android-rum"))
-    implementation(project(":oo-sdk-android-internal"))
-    implementation(project(":integrations:oo-sdk-android-okhttp"))
-    implementation(project(":integrations:oo-sdk-android-cronet"))
+    implementation(project(":features:o2-sdk-android-session-replay"))
+    implementation(project(":features:o2-sdk-android-logs"))
+    implementation(project(":features:o2-sdk-android-trace"))
+    implementation(project(":features:o2-sdk-android-rum"))
+    implementation(project(":o2-sdk-android-internal"))
+    implementation(project(":integrations:o2-sdk-android-okhttp"))
+    implementation(project(":integrations:o2-sdk-android-cronet"))
     implementation(libs.cronetPlayServices)
 
     implementation(libs.gson)
@@ -106,7 +106,7 @@ dependencies {
     implementation(libs.elmyr)
     implementation(libs.leakCanaryAndroid)
 
-    androidTestImplementation(project(":oo-sdk-android-internal"))
+    androidTestImplementation(project(":o2-sdk-android-internal"))
     androidTestImplementation(libs.leakCanaryInstrumentation)
     androidTestImplementation(project(":tools:unit")) {
         attributes {
@@ -119,8 +119,8 @@ dependencies {
     androidTestImplementation(libs.assertJ)
     androidTestImplementation(libs.bundles.integrationTests)
     androidTestImplementation(libs.okHttpMock)
-    androidTestImplementation(project(":features:oo-sdk-android-trace-internal"))
-    androidTestImplementation(testFixtures(project(":features:oo-sdk-android-trace")))
+    androidTestImplementation(project(":features:o2-sdk-android-trace-internal"))
+    androidTestImplementation(testFixtures(project(":features:o2-sdk-android-trace")))
     if (project.hasProperty(com.openobserve.gradle.Properties.USE_API21_JAVA_BACKPORT)) {
         // this is needed to make AssertJ working on APIs <24
         androidTestImplementation(project(":tools:javabackport"))

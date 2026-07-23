@@ -32,7 +32,7 @@ interactive.
 
 ## Release order & commands
 
-### 1. Android → Maven Central  (`ai.openobserve:oo-sdk-android-*`)
+### 1. Android → Maven Central  (`ai.openobserve:o2-sdk-android-*`)
 ```bash
 cd openobserve-sdk-android
 ./gradlew apiDump                                  # refresh the 28 .api ABI files after the rebrand renames — commit the result
@@ -66,7 +66,7 @@ The script pushes pods **in dependency order — `OpenObserveInternal` first**.
 ```bash
 cd openobserve-react-native-rum
 # flip the deferredRules so the native deps point at the published cores + re-pin versions:
-#   packages/core/android/build.gradle : ai.openobserve:oo-sdk-android-*:3.10.0 -> ai.openobserve:oo-sdk-android-*:0.1.0-alpha.1
+#   packages/core/android/build.gradle : ai.openobserve:o2-sdk-android-*:3.10.0 -> ai.openobserve:o2-sdk-android-*:0.1.0-alpha.1
 #   packages/core/*.podspec            : OpenObserveCore/RUM 3.11.0 -> OpenObserveCore/RUM 0.1.0-alpha.1
 yarn && yarn build
 npm publish --workspaces --access public --tag alpha    # @openobserve/mobile-react-native first, then satellites

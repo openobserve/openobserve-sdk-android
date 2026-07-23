@@ -70,10 +70,10 @@ android {
 
 dependencies {
 
-    implementation(project(":features:oo-sdk-android-logs"))
-    implementation(project(":features:oo-sdk-android-trace"))
-    implementation(project(":features:oo-sdk-android-trace-otel"))
-    implementation(project(":integrations:oo-sdk-android-okhttp"))
+    implementation(project(":features:o2-sdk-android-logs"))
+    implementation(project(":features:o2-sdk-android-trace"))
+    implementation(project(":features:o2-sdk-android-trace-otel"))
+    implementation(project(":integrations:o2-sdk-android-okhttp"))
 
     implementation(libs.kotlin)
 

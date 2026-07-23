@@ -45,7 +45,7 @@ abstract class GenerateVerificationXmlTask : DefaultTask() {
     abstract val outputFile: RegularFileProperty
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description =
             "Generate the verification-metadata.xml for the artifact built from the module"
     }

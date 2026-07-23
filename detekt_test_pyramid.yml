@@ -86,7 +86,7 @@ datadog-test-pyramid:
     internalPackagePrefix: 'com.openobserve'
   ApiSurface:
     active: true
-    includes: [ '**/oo-sdk-android-*/**' ]
+    includes: [ '**/o2-sdk-android-*/**' ]
     excludes:
       - '**/build/**'
       - '**/test/**'
@@ -99,7 +99,7 @@ datadog-test-pyramid:
       - '**/instrumented/**'
       - '**/sample/**'
       - '**/tools/**'
-      - '**/oo-sdk-android-internal/**'
+      - '**/o2-sdk-android-internal/**'
     internalPackagePrefix: 'com.openobserve'
     ignoredAnnotations:
       - "com.openobserve.android.lint.InternalApi"

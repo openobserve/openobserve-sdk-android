@@ -26,7 +26,7 @@ The Android SDK uses `CurlInterceptor` to log every outgoing HTTP request as a `
 
 ### 1. Enable Request Body Logging
 
-In `oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt`, find the `OkHttpClient` builder block inside `if (BuildConfig.DEBUG)` and enable body printing on the `CurlInterceptor`:
+In `o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt`, find the `OkHttpClient` builder block inside `if (BuildConfig.DEBUG)` and enable body printing on the `CurlInterceptor`:
 
 ```kotlin
 // Before (body suppressed):

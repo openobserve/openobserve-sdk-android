@@ -39,11 +39,21 @@ tree restores `0.<upstream-vendor>.pool.ntp.org`, and check-no-datadog.sh then f
 - **DefaultFirstPartyHostHeaderTypeResolverTest** — upstream's test ASSERTED that injection as
   expected behaviour, so a correct fix turned the suite red. Inverted into a guard.
 
+## 0003-pom-display-name.patch (1 file)
+- **MavenConfig.kt** — upstream sets the POM `<name>` to the raw Gradle module name, so Maven
+  Central renders the artifactId (`o2-sdk-android-internal`) as the package's display name.
+  This derives a human-readable label from the artifactId instead
+  (`OpenObserve SDK Android Internal`), with an acronym table for the tokens that must not be
+  naively title-cased (RUM, NDK, API, TV, Rx, OTel, OkHttp, WebView, OpenFeature, SQLDelight).
+  Not expressible as a rename rule: it is new logic, not a string swap. Deriving it from the
+  artifactId rather than hardcoding a per-module table means the label cannot drift from the
+  coordinate on a future rename.
+
 ## Generating these patches — two traps that silently lose fixes
 
 **1. Do NOT exclude `**/api/**`.** It looks like it targets the generated API surface, but it also
 matches real source packages named `api` — e.g.
-`features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java`.
+`features/o2-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java`.
 That glob silently dropped the propagator-default fix from this patch. Exclude the generated files
 precisely instead:
 ```
@@ -62,7 +72,22 @@ Generated files are intentionally NOT in the patch:
 ```bash
 ./gradlew apiDump   # api/*.api + api/apiSurface, then commit
 ```
-`verification.properties` (Gradle module metadata) likewise regenerates.
+
+**`verification.properties` does NOT regenerate — it is checked-in source.** It lives under
+`src/main/resources/META-INF/<groupId-as-path>/<artifactId>/`, so it SHIPS INSIDE THE AAR and
+the coordinate appears in the path twice (module dir + marker dir). Two bugs lived here:
+
+- `movesForRule` drops any directory nested under one it is already moving, so a single
+  pathRenames pass renamed the outer module dir and let the inner marker dir ride along with the
+  OLD coordinate. `rebrand.mjs` now iterates pathRenames to a fixpoint (bounded at 10 passes);
+  pass 2 finds the inner dirs once their parents are no longer pending. The
+  `dd-sdk-android-` rule went from 32 moves to 44 — the 12 missing ones were these markers.
+- The tree carried `META-INF/io/openobserve/...`, which NO rule and NO patch produced — hand
+  drift that a sync would have silently reverted. The correct segment is the groupId as a path:
+  groupId is `ai.openobserve`, so it is `META-INF/ai/openobserve/` (upstream: `com.datadoghq` ->
+  `META-INF/com/datadoghq/`). Fixed in the tree; the codemod already produced the right value.
+
+Both shipped in 0.1.0-alpha1..alpha3 and can only be superseded, never recalled.
 
 ## Regenerating this patch
 After changing the fork, re-derive it against a simulated sync:

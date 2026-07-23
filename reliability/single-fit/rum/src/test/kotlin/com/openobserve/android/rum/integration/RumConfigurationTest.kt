@@ -361,7 +361,7 @@ class RumConfigurationTest {
         }
         assertThat(request.url).isEqualTo(expectedUrl)
 
-        assertThat(request.headers).containsEntry("OO-API-KEY", expectedClientToken)
+        assertThat(request.headers).containsEntry("O2-API-KEY", expectedClientToken)
         assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
         assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
@@ -411,7 +411,7 @@ class RumConfigurationTest {
             }
         }
         assertThat(request.url).isEqualTo(expectedUrl)
-        assertThat(request.headers).containsEntry("OO-API-KEY", expectedClientToken)
+        assertThat(request.headers).containsEntry("O2-API-KEY", expectedClientToken)
         assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
         assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")

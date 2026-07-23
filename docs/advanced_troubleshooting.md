@@ -20,7 +20,7 @@ This issue can occur if your dependencies rely on different Guava artifacts as t
 Solve this issue by excluding the conflicting module from your dependency:
 
 ```
-implementation ("ai.openobserve:oo-sdk-android:1.3.0") {
+implementation ("ai.openobserve:o2-sdk-android:1.3.0") {
     exclude group: 'com.google.guava', module: 'listenablefuture'
 }
 ```
@@ -52,7 +52,7 @@ If you encounter another issue when building your application with the OpenObser
 
 ### Crash with `java.lang.NoSuchMethodError: No virtual method setInitialDelay`
 
-If your application crashes with a similar message, this is most likely due to a conflict in the Android WorkManager dependency. The `oo-sdk-android` library uses the AndroidX `androidx.work:work-runtime` artifact with a version above `2.2.0`. There was a change in the signature of the `WorkRequest.Builder` class, that make modules built with a previous version incompatible. Make sure your modules and dependency target the same version of the `androidx.work:work-runtime` library.
+If your application crashes with a similar message, this is most likely due to a conflict in the Android WorkManager dependency. The `o2-sdk-android` library uses the AndroidX `androidx.work:work-runtime` artifact with a version above `2.2.0`. There was a change in the signature of the `WorkRequest.Builder` class, that make modules built with a previous version incompatible. Make sure your modules and dependency target the same version of the `androidx.work:work-runtime` library.
 
 You can check which version your dependencies are using by typing the following command in a shell prompt:
 

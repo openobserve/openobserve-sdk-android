@@ -24,7 +24,7 @@ plugins {
     id("org.jetbrains.dokka-javadoc")
     id("com.squareup.sqldelight")
     id("com.google.devtools.ksp")
-    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
+    // openobserve: o2-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 
     // alias(libs.plugins.ooGradlePlugin)
 }
@@ -119,7 +119,7 @@ android {
             create("release") {
                 storeFile = File(project.rootDir, "sample-android.keystore")
                 storePassword = e2ePassword
-                keyAlias = "oo-sdk-android"
+                keyAlias = "o2-sdk-android"
                 keyPassword = e2ePassword
             }
         }
@@ -152,32 +152,32 @@ android {
 
 dependencies {
     // OpenObserve Libraries
-    implementation(project(":features:oo-sdk-android-logs"))
-    implementation(project(":features:oo-sdk-android-flags"))
-    implementation(project(":features:oo-sdk-android-flags-openfeature"))
-    implementation(project(":features:oo-sdk-android-rum"))
-    implementation(project(":features:oo-sdk-android-rum-debug-widget"))
-    implementation(project(":features:oo-sdk-android-trace"))
-    implementation(project(":features:oo-sdk-android-trace-otel"))
-    implementation(project(":features:oo-sdk-android-ndk"))
-    implementation(project(":features:oo-sdk-android-webview"))
-    implementation(project(":features:oo-sdk-android-session-replay"))
-    implementation(project(":features:oo-sdk-android-session-replay-material"))
-    implementation(project(":features:oo-sdk-android-session-replay-compose"))
-    implementation(project(":features:oo-sdk-android-profiling"))
-    implementation(project(":integrations:oo-sdk-android-trace-coroutines"))
-    implementation(project(":integrations:oo-sdk-android-rum-coroutines"))
-    implementation(project(":integrations:oo-sdk-android-rx"))
-    implementation(project(":integrations:oo-sdk-android-timber"))
-    implementation(project(":integrations:oo-sdk-android-coil"))
-    implementation(project(":integrations:oo-sdk-android-coil3"))
-    implementation(project(":integrations:oo-sdk-android-glide"))
-    implementation(project(":integrations:oo-sdk-android-fresco"))
-    implementation(project(":integrations:oo-sdk-android-sqldelight"))
-    implementation(project(":integrations:oo-sdk-android-compose"))
-    implementation(project(":integrations:oo-sdk-android-cronet"))
-    implementation(project(":integrations:oo-sdk-android-okhttp"))
-    implementation(project(":integrations:oo-sdk-android-okhttp-otel"))
+    implementation(project(":features:o2-sdk-android-logs"))
+    implementation(project(":features:o2-sdk-android-flags"))
+    implementation(project(":features:o2-sdk-android-flags-openfeature"))
+    implementation(project(":features:o2-sdk-android-rum"))
+    implementation(project(":features:o2-sdk-android-rum-debug-widget"))
+    implementation(project(":features:o2-sdk-android-trace"))
+    implementation(project(":features:o2-sdk-android-trace-otel"))
+    implementation(project(":features:o2-sdk-android-ndk"))
+    implementation(project(":features:o2-sdk-android-webview"))
+    implementation(project(":features:o2-sdk-android-session-replay"))
+    implementation(project(":features:o2-sdk-android-session-replay-material"))
+    implementation(project(":features:o2-sdk-android-session-replay-compose"))
+    implementation(project(":features:o2-sdk-android-profiling"))
+    implementation(project(":integrations:o2-sdk-android-trace-coroutines"))
+    implementation(project(":integrations:o2-sdk-android-rum-coroutines"))
+    implementation(project(":integrations:o2-sdk-android-rx"))
+    implementation(project(":integrations:o2-sdk-android-timber"))
+    implementation(project(":integrations:o2-sdk-android-coil"))
+    implementation(project(":integrations:o2-sdk-android-coil3"))
+    implementation(project(":integrations:o2-sdk-android-glide"))
+    implementation(project(":integrations:o2-sdk-android-fresco"))
+    implementation(project(":integrations:o2-sdk-android-sqldelight"))
+    implementation(project(":integrations:o2-sdk-android-compose"))
+    implementation(project(":integrations:o2-sdk-android-cronet"))
+    implementation(project(":integrations:o2-sdk-android-okhttp"))
+    implementation(project(":integrations:o2-sdk-android-okhttp-otel"))
 
     // Desugaring SDK
     coreLibraryDesugaring(libs.androidDesugaringSdk)

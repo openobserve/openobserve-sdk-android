@@ -17,7 +17,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("com.github.ben-manes.versions")
-    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
+    // openobserve: o2-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 
     // alias(libs.plugins.ooGradlePlugin)
 }
@@ -67,8 +67,8 @@ android {
 
 dependencies {
     // OpenObserve Libraries
-    implementation(project(":features:oo-sdk-android-logs"))
-    implementation(project(":features:oo-sdk-android-rum"))
+    implementation(project(":features:o2-sdk-android-logs"))
+    implementation(project(":features:o2-sdk-android-rum"))
 
     implementation(libs.kotlin)
 

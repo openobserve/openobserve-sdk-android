@@ -28,7 +28,7 @@ abstract class GitCloneDependenciesTask @Inject constructor(
     abstract val projectDirPath: Property<String>
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description = "Clones the source code of a dependency into this module"
         outputs.upToDateWhen { false }
     }

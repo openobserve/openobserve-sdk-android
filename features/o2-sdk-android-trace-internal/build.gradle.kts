@@ -1,0 +1,88 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache License Version 2.0.
+ * This product includes software developed at Datadog (https://www.datadoghq.com/).
+ * Copyright 2016-Present Datadog, Inc.
+ */
+@file:Suppress("StringLiteralDuplication")
+
+import com.openobserve.gradle.config.androidLibraryConfig
+import com.openobserve.gradle.config.dependencyUpdateConfig
+import com.openobserve.gradle.config.detektCustomConfig
+import com.openobserve.gradle.config.javadocConfig
+import com.openobserve.gradle.config.junitConfig
+import com.openobserve.gradle.config.kotlinConfig
+import com.openobserve.gradle.config.publishingConfig
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+plugins {
+    // Build
+    id("com.android.library")
+    kotlin("android")
+    id("com.google.devtools.ksp")
+
+    // Publish
+    `maven-publish`
+    signing
+    id("org.jetbrains.dokka-javadoc")
+
+    // Analysis tools
+    id("com.github.ben-manes.versions")
+
+    // Tests
+    id("de.mobilej.unmock")
+    id("org.jetbrains.kotlinx.kover")
+
+    // Internal Generation
+    id("apiSurface")
+    id("transitiveDependencies")
+    id("binary-compatibility-validator")
+}
+
+android {
+    namespace = "com.openobserve.android.trace.internal"
+
+    libraryVariants.all {
+        packageLibraryProvider.configure {
+            from("src/main/resources") {
+                include("META-INF/**/verification.properties")
+            }
+        }
+    }
+}
+
+dependencies {
+    api(project(":o2-sdk-android-core"))
+    implementation(project(":o2-sdk-android-internal"))
+    implementation(libs.gson)
+    implementation(libs.androidXAnnotation)
+    implementation(libs.bundles.traceCore)
+
+    testImplementation(project(":tools:unit")) {
+        attributes {
+            attribute(
+                com.android.build.api.attributes.ProductFlavorAttr.of("platform"),
+                objects.named("jvm")
+            )
+        }
+    }
+    testImplementation(testFixtures(project(":o2-sdk-android-core")))
+    testImplementation(libs.bundles.jUnit5)
+    testImplementation(libs.bundles.testTools)
+    testImplementation(libs.systemStubsJupiter)
+}
+
+unMock {
+    keepStartingWith("org.json")
+}
+
+apply(from = "clone_dd_trace.gradle.kts")
+
+kotlinConfig(jvmBytecodeTarget = JvmTarget.JVM_11)
+androidLibraryConfig()
+junitConfig()
+javadocConfig()
+dependencyUpdateConfig()
+publishingConfig(
+    "Internal APM support library for Android applications."
+)
+detektCustomConfig()

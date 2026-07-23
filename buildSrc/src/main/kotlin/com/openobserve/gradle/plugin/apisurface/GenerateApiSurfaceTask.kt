@@ -36,7 +36,7 @@ abstract class GenerateApiSurfaceTask : DefaultTask() {
     private lateinit var visitor: KotlinFileVisitor
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description = "Generate the API surface of the library"
     }
 

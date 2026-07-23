@@ -95,7 +95,7 @@ class PackageNameVisibility(
         private const val INTERNAL_PACKAGE = "internal"
 
         /**
-         * This package name refers to the package in `oo-sdk-android-internal` module, all the classes should not be
+         * This package name refers to the package in `o2-sdk-android-internal` module, all the classes should not be
          * declared with internal modifier so that they can be used by other modules, in this case, all the packages
          * under it should escape from this check rule.
          */

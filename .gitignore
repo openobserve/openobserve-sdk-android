@@ -29,7 +29,7 @@ config/*
 # Kotlin
 .kotlin/
 
-# oo-sdk-android tools
+# o2-sdk-android tools
 gh_token
 sdk_classpath
 detekt_classpath

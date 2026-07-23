@@ -5,7 +5,7 @@
  * Two phases (order matters):
  *   1. pathRenames — git mv the Kotlin package namespace (com/datadog/android ->
  *      com/openobserve/android) and the Maven module dirs (dd-sdk-android-* ->
- *      oo-sdk-android-*). Directory moves must happen before content rewrites so
+ *      o2-sdk-android-*). Directory moves must happen before content rewrites so
  *      the content pass sees the final tree.
  *   2. content rules — rewrite file text (package/import decls, Maven coordinates,
  *      public API type names, JNI symbols, _dd -> _oo).
@@ -56,7 +56,7 @@ function tracked() {
 // ---- Phase 1: path renames (git mv) -----------------------------------------
 // Each rule is applied against a FRESH scan of the tree, so rules compose: the
 // package-dir rule (com/datadog -> com/openobserve) runs first on the inner dirs,
-// then the module-dir rule (dd-sdk-android-* -> oo-sdk-android-*) moves the outer
+// then the module-dir rule (dd-sdk-android-* -> o2-sdk-android-*) moves the outer
 // dirs carrying the already-renamed package dirs. Within a single rule we drop a
 // move nested under another move OF THE SAME RULE (git mv carries nested content);
 // we do NOT drop across rules — that was the bug that lost the package-dir moves.
@@ -135,18 +135,35 @@ function applyRules(s) {
 const LIST = process.argv.includes('--list')
 let totalMoves = 0
 for (const rule of pathRenames) {
-  // For --check, dirsNow() is stable (no mutation) so each rule reports against the
-  // original tree — counts are exact even though nested target paths shown are pre-move.
-  const moves = movesForRule(rule, dirsNow())
-  totalMoves += moves.length
-  console.log(`pathRename [${rule.from || rule.fromPrefix}]: ${moves.length} moves ${CHECK ? '(would run)' : ''}`)
-  if (LIST) moves.slice(0, 20).forEach(([a, b]) => console.log(`  ${a} -> ${b}`))
-  if (!CHECK && !CONTENT_ONLY) {
-    for (const [from, to] of moves) {
+  // Iterate to a fixpoint. movesForRule drops any directory nested under one it is
+  // already moving (so a parent and child are not moved twice in one pass), but the
+  // coordinate appears at TWO depths in this tree:
+  //
+  //   dd-sdk-android-internal/src/main/resources/META-INF/com/datadoghq/dd-sdk-android-internal/
+  //
+  // A single pass renames the outer module dir and drops the inner marker dir as
+  // "nested under an already-moved path", so the inner one rides along keeping the old
+  // coordinate. Those verification.properties markers live under src/main/resources and
+  // therefore SHIP INSIDE THE AAR, leaving a published o2-sdk-android-* artifact carrying
+  // a META-INF marker directory named for a different coordinate than its own.
+  //
+  // After pass 1 the parents are renamed, so the inner dirs are no longer nested under
+  // anything pending and pass 2 finds them. Bounded rather than while(true): a rule whose
+  // target still matches its own pattern would otherwise loop forever.
+  let moves = []
+  for (let pass = 0; pass < 10; pass++) {
+    const found = movesForRule(rule, dirsNow())
+    if (found.length === 0) break
+    moves = moves.concat(found)
+    if (CHECK || CONTENT_ONLY) break // no mutation, so pass 2 would repeat pass 1 forever
+    for (const [from, to] of found) {
       fs.mkdirSync(path.dirname(to), { recursive: true })
       git(['mv', from, to])
     }
   }
+  totalMoves += moves.length
+  console.log(`pathRename [${rule.from || rule.fromPrefix}]: ${moves.length} moves ${CHECK ? '(would run)' : ''}`)
+  if (LIST) moves.slice(0, 20).forEach(([a, b]) => console.log(`  ${a} -> ${b}`))
 }
 console.log(`pathRenames total: ${totalMoves} directory moves`)
 

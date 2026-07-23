@@ -162,7 +162,7 @@ internal class OpenObserveHttpClient(
         /**
          * OpenObserve API key header.
          */
-        private const val HEADER_API_KEY: String = "OO-API-KEY"
+        private const val HEADER_API_KEY: String = "O2-API-KEY"
 
         /**
          * OpenObserve Event Platform Origin header, e.g. android, flutter, etc.

@@ -24,7 +24,7 @@ TARGET_GRADLE_PLUGIN = "gradle-plugin"
 REPOSITORIES = {
     TARGET_APP: "datadog-android",
     TARGET_DEMO: "shopist-android",
-    TARGET_GRADLE_PLUGIN: "oo-sdk-android-gradle-plugin",
+    TARGET_GRADLE_PLUGIN: "o2-sdk-android-gradle-plugin",
     # Flutter is not needed because it pulls updates instead of being pushed them with the dogfood script.
 }
 

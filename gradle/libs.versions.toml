@@ -377,7 +377,7 @@ traceCore = [
 [plugins]
 versionsGradlePlugin = { id = "com.github.ben-manes.versions", version.ref = "versionsGradlePlugin" }
 nexusPublishGradlePlugin = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexusPublishGradlePlugin" }
-ooGradlePlugin = { id = "ai.openobserve.oo-sdk-android-gradle-plugin", version.ref = "ooPlugin" }
+ooGradlePlugin = { id = "ai.openobserve.o2-sdk-android-gradle-plugin", version.ref = "ooPlugin" }
 composeCompilerPlugin = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 apolloPlugin = { id = "com.apollographql.apollo", version.ref = "apollo" }
 dependencyLicenseGradlePlugin = { id = "ai.openobserve.dependency-license", version.ref = "dependencyLicense" }

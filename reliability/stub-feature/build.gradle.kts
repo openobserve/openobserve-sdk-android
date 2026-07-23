@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":oo-sdk-android-core"))
+    implementation(project(":o2-sdk-android-core"))
     implementation(libs.kotlin)
 
     // Testing

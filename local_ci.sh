@@ -114,7 +114,7 @@ sync_detekt_configs() {
     trap restore_dd_source EXIT
 
     if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
-      git stash push -u -m "oo-sdk-android-detekt-sync" > /dev/null
+      git stash push -u -m "o2-sdk-android-detekt-sync" > /dev/null
       stashed=1
     fi
 

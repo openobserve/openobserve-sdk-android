@@ -11,7 +11,7 @@ set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
 # Search shipped library source only (not samples/tests/tooling/build).
-PATHS=$(git ls-files 'features/*/src/main/*' 'oo-sdk-android-*/src/main/*' 'integrations/*/src/main/*' 2>/dev/null || true)
+PATHS=$(git ls-files 'features/*/src/main/*' 'o2-sdk-android-*/src/main/*' 'integrations/*/src/main/*' 2>/dev/null || true)
 [ -n "$PATHS" ] || { echo "no shipped source found?"; exit 1; }
 
 FAIL=0
@@ -42,9 +42,10 @@ fi
 #
 # NOTE: `\bdd=s:|\bdd=p:|datadog\.pool` / `datadog\.<label>\.<tld>` catch HOSTNAMES. Every other pattern here
 # needs an uppercase letter or the `hq` suffix, so a bare lowercase hostname label matched NONE
-# of them — and this gate reported PASS while oo-sdk-android-core shipped
+# of them — and this gate reported PASS while the core module shipped
 # `[0-3].datadog.pool.ntp.org`, contacted by DEFAULT on every SDK init via CoreFeature. That went
-# out in the published 0.1.0-alpha1 and can only be superseded, never recalled. Do not remove.
+# out in the published 0.1.0-alpha1 (as oo-sdk-android-core, the coordinate at the time) and can
+# only be superseded, never recalled. Do not remove.
 HITS=$(echo "$PATHS" | xargs grep -nE \
   'com\.datadog|com/datadog|com\.datadoghq|\bDatadog[A-Za-z]|\bDATADOG|datad0g|ddog-gov|\bddtags\b|\bddsource\b|DD-API-KEY|dogstatsd|datadog\.pool|datadog\.[a-z]+\.(org|com|net)' \
   2>/dev/null \
@@ -59,5 +60,37 @@ if [ -n "$HITS" ]; then
   FAIL=1
 fi
 
+# --- BUILD TOOLING (buildSrc) -------------------------------------------------
+# buildSrc does not ship, so it is not part of the zero-Datadog *artifact* claim — but an
+# identity token here is not merely cosmetic, it BREAKS THE BUILD. GenerateCompilerMetaTask
+# selected a representative class file with `it.path.contains("datadog")`; once the rebrand
+# renamed the package to com/openobserve/ that filter matched zero files and every
+# `./gradlew assembleLibrariesDebug` failed with "Couldn't find any class file to get
+# compilation metadata". It was invisible to the section above (which never scanned buildSrc)
+# AND to every rename-map rule (bare lowercase `datadog`: no word boundary, no uppercase, no
+# `hq` suffix — the same blind spot that shipped the NTP hosts and the dd= tracestate key).
+#
+# The bare quoted "datadog" pattern is deliberately included here and NOT above: shipped
+# source legitimately has none, while build tooling is where such literals hide.
+BUILDSRC=$(git ls-files 'buildSrc/**' 2>/dev/null || true)
+if [ -n "$BUILDSRC" ]; then
+  BS_HITS=$(echo "$BUILDSRC" | xargs grep -nE \
+    'com\.datadog|com/datadog|com\.datadoghq|\bDatadog[A-Za-z]|\bDATADOG|datad0g|"datadog"' \
+    2>/dev/null \
+    | grep -viE 'developed at Datadog|Copyright .*Datadog|licensed under' \
+    || true)
+  if [ -n "$BS_HITS" ]; then
+    echo "ZERO-DATADOG GATE FAILED — Datadog identity token in buildSrc (breaks the build, not just branding):"
+    echo "$BS_HITS" | head -20
+    echo "total: $(echo "$BS_HITS" | wc -l | tr -d ' ') lines"
+    FAIL=1
+  fi
+fi
+
+# NOT scanned on purpose: features/*/clone_dd_trace.gradle.kts. Its datadog/trace/** entries are
+# paths inside the UPSTREAM dd-trace-java repository being cloned — external coordinates, like
+# @datadog/datadog-ci in the RN fork. Renaming them makes the clone 404. It sits outside every
+# glob above (not under src/main/, not under buildSrc/); keep it that way.
+
 [ "$FAIL" = "0" ] || exit 1
-echo "zero-Datadog gate: PASS (shipped module source is clean — paths + content)"
+echo "zero-Datadog gate: PASS (shipped module source + buildSrc clean — paths + content)"

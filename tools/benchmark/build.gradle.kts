@@ -33,8 +33,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":oo-sdk-android-core"))
-    implementation(project(":oo-sdk-android-internal"))
+    implementation(project(":o2-sdk-android-core"))
+    implementation(project(":o2-sdk-android-internal"))
     implementation(libs.kotlin)
     implementation(libs.okHttp)
     implementation(libs.openTelemetryApi)
@@ -61,5 +61,5 @@ dependencyUpdateConfig()
 androidLibraryConfig()
 publishingConfig(
     projectDescription = "An internal benchmarking tool to measure the overhead of OpenObserve SDK",
-    customArtifactId = "oo-sdk-android-benchmark-internal"
+    customArtifactId = "o2-sdk-android-benchmark-internal"
 )

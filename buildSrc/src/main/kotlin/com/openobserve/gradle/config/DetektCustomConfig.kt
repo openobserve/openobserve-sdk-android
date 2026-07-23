@@ -35,7 +35,7 @@ abstract class PrintDetektClassPath : DefaultTask() {
     abstract val projectDirectoryPath: Property<String>
 
     init {
-        group = "datadog"
+        group = "openobserve"
     }
 
     @TaskAction
@@ -112,7 +112,7 @@ fun Project.detektCustomConfig() {
     }
 
     tasks.register<JavaExec>("customDetektRules") {
-        group = "datadog"
+        group = "openobserve"
 
         classpath = files("${rootDir.absolutePath}/detekt-cli-1.23.4-all.jar")
 

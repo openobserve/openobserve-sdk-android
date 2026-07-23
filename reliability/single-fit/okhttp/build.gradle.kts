@@ -29,10 +29,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":features:oo-sdk-android-trace"))
-    implementation(project(":features:oo-sdk-android-trace-otel"))
-    implementation(project(":integrations:oo-sdk-android-okhttp"))
-    implementation(project(":integrations:oo-sdk-android-okhttp-otel"))
+    implementation(project(":features:o2-sdk-android-trace"))
+    implementation(project(":features:o2-sdk-android-trace-otel"))
+    implementation(project(":integrations:o2-sdk-android-okhttp"))
+    implementation(project(":integrations:o2-sdk-android-okhttp-otel"))
     implementation(libs.kotlin)
 
     // Testing
@@ -44,12 +44,12 @@ dependencies {
             )
         }
     }
-    testImplementation(project(":oo-sdk-android-internal"))
-    testImplementation(testFixtures(project(":oo-sdk-android-core")))
-    testImplementation(testFixtures(project(":features:oo-sdk-android-trace")))
+    testImplementation(project(":o2-sdk-android-internal"))
+    testImplementation(testFixtures(project(":o2-sdk-android-core")))
+    testImplementation(testFixtures(project(":features:o2-sdk-android-trace")))
     testImplementation(project(":reliability:stub-core"))
-    testImplementation(project(":integrations:oo-sdk-android-apollo"))
-    testImplementation(project(":features:oo-sdk-android-rum"))
+    testImplementation(project(":integrations:o2-sdk-android-apollo"))
+    testImplementation(project(":features:o2-sdk-android-rum"))
     testImplementation(libs.bundles.jUnit5)
     testImplementation(libs.bundles.testTools)
     testImplementation(libs.okHttp)

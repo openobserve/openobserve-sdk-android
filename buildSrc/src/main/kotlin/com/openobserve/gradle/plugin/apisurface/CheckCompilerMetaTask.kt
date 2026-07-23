@@ -24,7 +24,7 @@ abstract class CheckCompilerMetaTask @Inject constructor(
     abstract val metadataInfoFile: RegularFileProperty
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description = "Check the compiler metadata of the library"
     }
 

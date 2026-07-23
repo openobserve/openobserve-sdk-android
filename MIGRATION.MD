@@ -40,7 +40,7 @@ Trace.enable(
 1. Add the `OpenTelemetry` dependency to your `build.gradle.kts`:
 
 ```kotlin
-implementation(project("ai.openobserve:oo-sdk-android-trace-otel:x.x.x"))
+implementation(project("ai.openobserve:o2-sdk-android-trace-otel:x.x.x"))
 ```
 
 2. Replace the `OpenTracing` configuration:
@@ -153,7 +153,7 @@ Replacement hints:
 
 ### OkHttp instrumentation changes
 
-The OkHttp instrumentation (`ai.openobserve:oo-sdk-android-okhttp:x.x.x`) doesn't require desugaring support. However few migration actions may be necessary.
+The OkHttp instrumentation (`ai.openobserve:o2-sdk-android-okhttp:x.x.x`) doesn't require desugaring support. However few migration actions may be necessary.
 
 The default sample rate for the `traceSampler` got increased to 100% with the Android SDK version `3.0.0`.
 
@@ -250,17 +250,17 @@ The main changes introduced in SDK 2.0 compared to 1.x are:
 
 1. All relevant products (RUM, Trace, Logs, etc.) are now extracted into different modules. That allows you to integrate only what is needed into your application.
 
-Whereas all products in version 1.x were contained in the single artifact `ai.openobserve:oo-sdk-android:x.x.x`, you now need to adopt the following artifacts:
+Whereas all products in version 1.x were contained in the single artifact `ai.openobserve:o2-sdk-android:x.x.x`, you now need to adopt the following artifacts:
 
-* RUM: `ai.openobserve:oo-sdk-android-rum:x.x.x`
-* Logs: `ai.openobserve:oo-sdk-android-logs:x.x.x`
-* Trace: `ai.openobserve:oo-sdk-android-trace:x.x.x`
-* WebView Tracking: `ai.openobserve:oo-sdk-android-webview:x.x.x`
-* OkHttp instrumentation: `ai.openobserve:oo-sdk-android-okhttp:x.x.x`
+* RUM: `ai.openobserve:o2-sdk-android-rum:x.x.x`
+* Logs: `ai.openobserve:o2-sdk-android-logs:x.x.x`
+* Trace: `ai.openobserve:o2-sdk-android-trace:x.x.x`
+* WebView Tracking: `ai.openobserve:o2-sdk-android-webview:x.x.x`
+* OkHttp instrumentation: `ai.openobserve:o2-sdk-android-okhttp:x.x.x`
 
 **Note**: If you utilize NDK Crash Reporting and WebView Tracking, you also need to add RUM and/or Logs artifacts to be able to report events to RUM and/or Logs respectively.
 
-Reference to the `ai.openobserve:oo-sdk-android` artifact should be removed from your Gradle buildscript, this artifact doesn't exist anymore.
+Reference to the `ai.openobserve:o2-sdk-android` artifact should be removed from your Gradle buildscript, this artifact doesn't exist anymore.
 
 **Note**: The Maven coordinates of all the other artifacts stay the same.
 
@@ -316,7 +316,7 @@ All the classes related to the Logs product are now strictly contained in the `c
 To use Logs product, import the following artifact:
 
 ```kotlin
-implementation("ai.openobserve:oo-sdk-android-logs:x.x.x")
+implementation("ai.openobserve:o2-sdk-android-logs:x.x.x")
 ```
 
 You can enable the Logs product with the following snippet:
@@ -352,7 +352,7 @@ All the classes related to the Trace product are now strictly contained in the `
 To use the Trace product, import the following artifact:
 
 ```kotlin
-implementation("ai.openobserve:oo-sdk-android-trace:x.x.x")
+implementation("ai.openobserve:o2-sdk-android-trace:x.x.x")
 ```
 
 Enable the Trace product with the following snippet:
@@ -387,7 +387,7 @@ All classes related to the RUM product are now strictly contained in the `com.op
 To use the RUM product, import the following artifact:
 
 ```kotlin
-implementation("ai.openobserve:oo-sdk-android-rum:x.x.x")
+implementation("ai.openobserve:o2-sdk-android-rum:x.x.x")
 ```
 
 The RUM product can be enabled with the following snippet:
@@ -429,7 +429,7 @@ API changes:
 
 ### NDK Crash Reporting changes
 
-The artifact name stays the same as before: `ai.openobserve:oo-sdk-android-ndk:x.x.x`
+The artifact name stays the same as before: `ai.openobserve:o2-sdk-android-ndk:x.x.x`
 
 NDK Crash Reporting can be enabled using the following snippet:
 
@@ -443,7 +443,7 @@ This configuration replaces the `com.openobserve.android.core.configuration.Conf
 
 ### WebView Tracking changes
 
-The artifact name stays the same as before: `ai.openobserve:oo-sdk-android-webview:x.x.x`
+The artifact name stays the same as before: `ai.openobserve:o2-sdk-android-webview:x.x.x`
 
 You can enable WebView Tracking with the following snippet:
 
@@ -466,7 +466,7 @@ API changes:
 In order to be able to use OkHttp Tracking you need to import the following artifact:
 
 ```kotlin
-implementation("ai.openobserve:oo-sdk-android-okhttp:x.x.x")
+implementation("ai.openobserve:o2-sdk-android-okhttp:x.x.x")
 ```
 
 OkHttp instrumentation now supports the case when OpenObserve SDK is initialized after the OkHttp client, allowing you to create `com.openobserve.android.okhttp.OpenObserveEventListener`, `com.openobserve.android.okhttp.OpenObserveInterceptor`, and `com.openobserve.android.okhttp.trace.TracingInterceptor` before OpenObserve SDK. OkHttp instrumentation starts reporting events to OpenObserve once OpenObserve SDK is initialized.
@@ -474,27 +474,27 @@ OkHttp instrumentation now supports the case when OpenObserve SDK is initialized
 Also, both `com.openobserve.android.okhttp.OpenObserveInterceptor` and `com.openobserve.android.okhttp.trace.TracingInterceptor` improve the integration with remote configuration, allowing you to control sampling dynamically.
 In order to do that, you need to provide your own implementation of the `com.openobserve.android.core.sampling.Sampler` interface in the `com.openobserve.android.okhttp.OpenObserveInterceptor`/`com.openobserve.android.okhttp.trace.TracingInterceptor` constructor. It is queried for each request to make the sampling decision.
 
-### `oo-sdk-android-ktx` module removal
+### `o2-sdk-android-ktx` module removal
 
-In order to provide the better granularity for the OpenObserve SDK libraries used, `oo-sdk-android-ktx` module which was containing extension methods for both RUM and Trace features is removed and the code was re-arranged between the other modules:
+In order to provide the better granularity for the OpenObserve SDK libraries used, `o2-sdk-android-ktx` module which was containing extension methods for both RUM and Trace features is removed and the code was re-arranged between the other modules:
 
 | `1.x`                                                                                     | '2.0'                                                                                       | Module name                       |
 |-------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|-----------------------------------|
-| `com.openobserve.android.ktx.coroutine#kotlinx.coroutines.CoroutineScope.launchTraced`        | `com.openobserve.android.trace.coroutines#kotlinx.coroutines.CoroutineScope.launchTraced`       | `oo-sdk-android-trace-coroutines` |
-| `com.openobserve.android.ktx.coroutine#runBlockingTraced`                                     | `com.openobserve.android.trace.coroutines#runBlockingTraced`                                    | `oo-sdk-android-trace-coroutines` |
-| `com.openobserve.android.ktx.coroutine#kotlinx.coroutines.CoroutineScope.asyncTraced`         | `com.openobserve.android.trace.coroutines#kotlinx.coroutines.CoroutineScope.asyncTraced`        | `oo-sdk-android-trace-coroutines` |
-| `com.openobserve.android.ktx.coroutine#kotlinx.coroutines.Deferred<T>.awaitTraced`            | `com.openobserve.android.trace.coroutines#kotlinx.coroutines.Deferred<T>.awaitTraced`           | `oo-sdk-android-trace-coroutines` |
-| `com.openobserve.android.ktx.coroutine#withContextTraced`                                     | `com.openobserve.android.trace.coroutines#withContextTraced`                                    | `oo-sdk-android-trace-coroutines` |
-| `com.openobserve.android.ktx.coroutine.CoroutineScopeSpan`                                    | `com.openobserve.android.trace.coroutines.CoroutineScopeSpan`                                   | `oo-sdk-android-trace-coroutines` |
-| `com.openobserve.android.ktx.sqlite#android.database.sqlite.SQLiteDatabase.transactionTraced` | `com.openobserve.android.trace.sqlite#android.database.sqlite.SQLiteDatabase.transactionTraced` | `oo-sdk-android-trace`            |
-| `com.openobserve.android.ktx.tracing#io.opentracing.Span.setError`                            | `com.openobserve.android.trace#io.opentracing.Span.setError`                                    | `oo-sdk-android-trace`            |
-| `com.openobserve.android.ktx.tracing#withinSpan`                                              | `com.openobserve.android.trace#withinSpan`                                                      | `oo-sdk-android-trace`            |
-| `com.openobserve.android.ktx.coroutine#sendErrorToOpenObserve`                                    | `com.openobserve.android.rum.coroutines#sendErrorToOpenObserve`                                     | `oo-sdk-android-rum-coroutines`   |
-| `com.openobserve.android.ktx.rum#java.io.Closeable.useMonitored`                              | `com.openobserve.android.rum#java.io.Closeable.useMonitored`                                    | `oo-sdk-android-rum`              |
-| `com.openobserve.android.ktx.rum#android.content.Context.getAssetAsRumResource`               | `com.openobserve.android.rum.resource#android.content.Context.getAssetAsRumResource`            | `oo-sdk-android-rum`              |
-| `com.openobserve.android.ktx.rum#android.content.Context.getRawResAsRumResource`              | `com.openobserve.android.rum.resource#android.content.Context.getRawResAsRumResource`           | `oo-sdk-android-rum`              |
-| `com.openobserve.android.ktx.rum#java.io.InputStream.asRumResource`                           | `com.openobserve.android.rum.resource#java.io.InputStream.asRumResource`                        | `oo-sdk-android-rum`              |
-| `com.openobserve.android.ktx.tracing#okhttp3.Request.Builder.parentSpan`                      | `com.openobserve.android.okhttp.trace#okhttp3.Request.Builder.parentSpan`                       | `oo-sdk-android-okhttp`           |
+| `com.openobserve.android.ktx.coroutine#kotlinx.coroutines.CoroutineScope.launchTraced`        | `com.openobserve.android.trace.coroutines#kotlinx.coroutines.CoroutineScope.launchTraced`       | `o2-sdk-android-trace-coroutines` |
+| `com.openobserve.android.ktx.coroutine#runBlockingTraced`                                     | `com.openobserve.android.trace.coroutines#runBlockingTraced`                                    | `o2-sdk-android-trace-coroutines` |
+| `com.openobserve.android.ktx.coroutine#kotlinx.coroutines.CoroutineScope.asyncTraced`         | `com.openobserve.android.trace.coroutines#kotlinx.coroutines.CoroutineScope.asyncTraced`        | `o2-sdk-android-trace-coroutines` |
+| `com.openobserve.android.ktx.coroutine#kotlinx.coroutines.Deferred<T>.awaitTraced`            | `com.openobserve.android.trace.coroutines#kotlinx.coroutines.Deferred<T>.awaitTraced`           | `o2-sdk-android-trace-coroutines` |
+| `com.openobserve.android.ktx.coroutine#withContextTraced`                                     | `com.openobserve.android.trace.coroutines#withContextTraced`                                    | `o2-sdk-android-trace-coroutines` |
+| `com.openobserve.android.ktx.coroutine.CoroutineScopeSpan`                                    | `com.openobserve.android.trace.coroutines.CoroutineScopeSpan`                                   | `o2-sdk-android-trace-coroutines` |
+| `com.openobserve.android.ktx.sqlite#android.database.sqlite.SQLiteDatabase.transactionTraced` | `com.openobserve.android.trace.sqlite#android.database.sqlite.SQLiteDatabase.transactionTraced` | `o2-sdk-android-trace`            |
+| `com.openobserve.android.ktx.tracing#io.opentracing.Span.setError`                            | `com.openobserve.android.trace#io.opentracing.Span.setError`                                    | `o2-sdk-android-trace`            |
+| `com.openobserve.android.ktx.tracing#withinSpan`                                              | `com.openobserve.android.trace#withinSpan`                                                      | `o2-sdk-android-trace`            |
+| `com.openobserve.android.ktx.coroutine#sendErrorToOpenObserve`                                    | `com.openobserve.android.rum.coroutines#sendErrorToOpenObserve`                                     | `o2-sdk-android-rum-coroutines`   |
+| `com.openobserve.android.ktx.rum#java.io.Closeable.useMonitored`                              | `com.openobserve.android.rum#java.io.Closeable.useMonitored`                                    | `o2-sdk-android-rum`              |
+| `com.openobserve.android.ktx.rum#android.content.Context.getAssetAsRumResource`               | `com.openobserve.android.rum.resource#android.content.Context.getAssetAsRumResource`            | `o2-sdk-android-rum`              |
+| `com.openobserve.android.ktx.rum#android.content.Context.getRawResAsRumResource`              | `com.openobserve.android.rum.resource#android.content.Context.getRawResAsRumResource`           | `o2-sdk-android-rum`              |
+| `com.openobserve.android.ktx.rum#java.io.InputStream.asRumResource`                           | `com.openobserve.android.rum.resource#java.io.InputStream.asRumResource`                        | `o2-sdk-android-rum`              |
+| `com.openobserve.android.ktx.tracing#okhttp3.Request.Builder.parentSpan`                      | `com.openobserve.android.okhttp.trace#okhttp3.Request.Builder.parentSpan`                       | `o2-sdk-android-okhttp`           |
 
 ## Using a Secondary Instance of the SDK
 

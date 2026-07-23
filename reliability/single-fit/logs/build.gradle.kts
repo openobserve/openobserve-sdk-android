@@ -28,8 +28,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":oo-sdk-android-core"))
-    implementation(project(":features:oo-sdk-android-logs"))
+    implementation(project(":o2-sdk-android-core"))
+    implementation(project(":features:o2-sdk-android-logs"))
     implementation(libs.kotlin)
 
     // Testing
@@ -41,7 +41,7 @@ dependencies {
             )
         }
     }
-    testImplementation(testFixtures(project(":oo-sdk-android-core")))
+    testImplementation(testFixtures(project(":o2-sdk-android-core")))
     testImplementation(project(":reliability:stub-core"))
     testImplementation(libs.bundles.jUnit5)
     testImplementation(libs.bundles.testTools)

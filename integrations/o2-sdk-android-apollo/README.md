@@ -1,0 +1,55 @@
+# OpenObserve Integration for Apollo Kotlin
+
+## Getting started
+
+**Note:** The integration only supports Apollo version 4.
+
+To include the integration for [Apollo Kotlin][1] in your project, add the
+following to your application's `build.gradle.kts` file.
+
+```kotlin
+dependencies {
+    implementation("ai.openobserve:o2-sdk-android-okhttp:<latest-version>")
+    implementation("ai.openobserve:o2-sdk-android-rum:<latest-version>")
+    implementation("ai.openobserve:o2-sdk-android-apollo:<latest-version>")
+}
+```
+
+### Initial setup
+
+1. Set up RUM monitoring with [OpenObserve Android RUM][2].
+2. Set up OkHttp instrumentation with the [OpenObserve RUM SDK][3].
+
+Add the OpenObserve interceptor to your Apollo Client setup:
+ 
+```kotlin
+val apolloClient = ApolloClient.Builder()
+    .serverUrl([graphQLEndpoint])
+    .addInterceptor(OpenObserveApolloInterceptor())
+    .okHttpClient([okhttpClientConfiguration])
+    .build()
+```
+
+This automatically adds OpenObserve headers to your GraphQL requests, allowing them to be tracked
+by OpenObserve. Note that while `query` and `mutation` type operations are tracked, `subscription` operations are not.
+
+#### Sending GraphQL payloads
+
+GraphQL payload sending is disabled by default. To enable it, set the `sendGraphQLPayloads` flag in the `OpenObserveApolloInterceptor` constructor as follows:
+
+```kotlin
+OpenObserveApolloInterceptor(sendGraphQLPayloads = true)
+```
+
+## Contributing
+
+For details on contributing, read the 
+[Contributing Guide](../../CONTRIBUTING.md).
+
+## License
+
+[Apache License, v2.0](../../LICENSE)
+
+[1]: https://github.com/apollographql/apollo-kotlin
+[2]: https://openobserve.ai/docs/real_user_monitoring/android/?tab=kotlin
+[3]: https://openobserve.ai/docs/real_user_monitoring/android/advanced_configuration/?tab=kotlin#automatically-track-network-requests

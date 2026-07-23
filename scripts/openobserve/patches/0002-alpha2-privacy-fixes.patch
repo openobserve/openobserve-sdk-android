@@ -1,7 +1,7 @@
-diff --git b/features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java a/features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
+diff --git b/features/o2-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java a/features/o2-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
 index 4396f91dc..04e28aa28 100644
---- b/features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
-+++ a/features/oo-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
+--- b/features/o2-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
++++ a/features/o2-sdk-android-trace-internal/src/main/java/com/openobserve/trace/api/ConfigDefaults.java
 @@ -1,6 +1,5 @@
  package com.openobserve.trace.api;
  
@@ -31,10 +31,10 @@ index 4396f91dc..04e28aa28 100644
    static final boolean DEFAULT_JMX_FETCH_ENABLED = true;
    static final boolean DEFAULT_TRACE_AGENT_V05_ENABLED = false;
  
-diff --git b/features/oo-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/core/CoreTracerTest.kt a/features/oo-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/core/CoreTracerTest.kt
+diff --git b/features/o2-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/core/CoreTracerTest.kt a/features/o2-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/core/CoreTracerTest.kt
 index fad84c3fd..6fe69fd54 100644
---- b/features/oo-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/core/CoreTracerTest.kt
-+++ a/features/oo-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/core/CoreTracerTest.kt
+--- b/features/o2-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/core/CoreTracerTest.kt
++++ a/features/o2-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/core/CoreTracerTest.kt
 @@ -19,6 +19,7 @@ import com.openobserve.trace.common.writer.ListWriter
  import com.openobserve.trace.common.writer.NoOpWriter
  import com.openobserve.trace.common.writer.Writer
@@ -62,10 +62,10 @@ index fad84c3fd..6fe69fd54 100644
          assertThat(tracer.log).isInstanceOf(OpenObserveCoreTracerLogger::class.java)
  
          // Tear down
-diff --git b/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt a/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
+diff --git b/features/o2-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt a/features/o2-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
 index ccdd0e065..b693b8f3c 100644
---- b/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
-+++ a/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
+--- b/features/o2-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
++++ a/features/o2-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/ApmNetworkInstrumentationConfiguration.kt
 @@ -52,17 +52,24 @@ class ApmNetworkInstrumentationConfiguration internal constructor(
      internal var headerPropagationOnly: Boolean = false
  ) {
@@ -97,10 +97,10 @@ index ccdd0e065..b693b8f3c 100644
          }
      )
  
-diff --git b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
+diff --git b/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt a/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
 index 707d5a983..f39a83e82 100644
---- b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
-+++ a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
+--- b/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
++++ a/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/CoreFeature.kt
 @@ -469,12 +469,10 @@ internal class CoreFeature(
          }
          kronosClock = AndroidClockFactory.createKronosClock(
@@ -118,10 +118,10 @@ index 707d5a983..f39a83e82 100644
              cacheExpirationMs = TimeUnit.MINUTES.toMillis(NTP_CACHE_EXPIRATION_MINUTES),
              minWaitTimeBetweenSyncMs = TimeUnit.MINUTES.toMillis(NTP_DELAY_BETWEEN_SYNCS_MINUTES),
              syncListener = LoggingSyncListener(internalLogger)
-diff --git b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
+diff --git b/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt a/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
 index 40b5686e9..e27cb26fc 100644
---- b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
-+++ a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
+--- b/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
++++ a/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolver.kt
 @@ -66,11 +66,13 @@ class DefaultFirstPartyHostHeaderTypeResolver(
      }
  
@@ -140,10 +140,10 @@ index 40b5686e9..e27cb26fc 100644
          }
      }
  
-diff --git b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
+diff --git b/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt a/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
 index 2f493fed6..fcb9efe3e 100644
---- b/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
-+++ a/oo-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
+--- b/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
++++ a/o2-sdk-android-core/src/main/kotlin/com/openobserve/android/core/internal/time/OpenObserveNtpEndpoint.kt
 @@ -7,27 +7,43 @@
  package com.openobserve.android.core.internal.time
  
@@ -201,10 +201,10 @@ index 2f493fed6..fcb9efe3e 100644
 -    NTP_3("3.datadog.pool.ntp.org")
 +    NTP_1("time.google.com")
  }
-diff --git b/oo-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt a/oo-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
+diff --git b/o2-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt a/o2-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
 index 6ab7cc129..d85a0e5c3 100644
---- b/oo-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
-+++ a/oo-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
+--- b/o2-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
++++ a/o2-sdk-android-core/src/test/kotlin/com/openobserve/android/core/internal/net/DefaultFirstPartyHostHeaderTypeResolverTest.kt
 @@ -330,7 +330,7 @@ internal class DefaultFirstPartyHostHeaderTypeResolverTest {
      }
  

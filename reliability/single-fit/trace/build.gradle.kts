@@ -32,9 +32,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":oo-sdk-android-core"))
-    implementation(project(":features:oo-sdk-android-trace"))
-    implementation(project(":features:oo-sdk-android-trace-otel"))
+    implementation(project(":o2-sdk-android-core"))
+    implementation(project(":features:o2-sdk-android-trace"))
+    implementation(project(":features:o2-sdk-android-trace-otel"))
     implementation(libs.kotlin)
 
     // Desugaring SDK
@@ -50,10 +50,10 @@ dependencies {
         }
     }
     testImplementation(project(":reliability:stub-core"))
-    testImplementation(project(":oo-sdk-android-internal"))
-    testImplementation(project(":features:oo-sdk-android-trace-internal"))
-    testImplementation(testFixtures(project(":oo-sdk-android-core")))
-    testImplementation(testFixtures(project(":features:oo-sdk-android-trace")))
+    testImplementation(project(":o2-sdk-android-internal"))
+    testImplementation(project(":features:o2-sdk-android-trace-internal"))
+    testImplementation(testFixtures(project(":o2-sdk-android-core")))
+    testImplementation(testFixtures(project(":features:o2-sdk-android-trace")))
     testImplementation(libs.bundles.jUnit5)
     testImplementation(libs.bundles.testTools)
     testImplementation(libs.okHttp)

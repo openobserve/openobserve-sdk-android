@@ -37,7 +37,7 @@ import java.io.File
 abstract class GenerateJsonSchemaTask : DefaultTask() {
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description = "Read source JSON schema files and generate the relevant Kotlin data classes"
     }
 

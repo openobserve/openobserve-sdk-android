@@ -2,7 +2,7 @@
 #
 # OpenObserve Android SDK — build & publish (manual + CI/CD).
 #
-# Publishes the ai.openobserve:oo-sdk-android-* modules to Maven Central via the
+# Publishes the ai.openobserve:o2-sdk-android-* modules to Maven Central via the
 # Sonatype staging API. Safe by default: runs to Maven Local (a dry run) unless
 # you pass --publish. The exact same script is used by CI — everything is driven
 # by flags + environment variables, no interactive prompts.
@@ -129,5 +129,5 @@ else
   : "${GPG_PRIVATE_KEY:?set signing key}" "${GPG_PASSWORD:?}"
   echo "==> publishToSonatype + close & release staging repo"
   ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository --stacktrace
-  echo "OK. Published ai.openobserve:oo-sdk-android-* $VERSION-$TYPE${NUMBER} to Maven Central (sync ~15-30 min)."
+  echo "OK. Published ai.openobserve:o2-sdk-android-* $VERSION-$TYPE${NUMBER} to Maven Central (sync ~15-30 min)."
 fi

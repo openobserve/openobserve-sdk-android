@@ -92,7 +92,7 @@ class TraceConfigurationTest {
         // Then
         checkNotNull(request)
         assertThat(request.url).isEqualTo("${expectedSite.intakeEndpoint}/api/v2/spans")
-        assertThat(request.headers).containsEntry("OO-API-KEY", expectedClientToken)
+        assertThat(request.headers).containsEntry("O2-API-KEY", expectedClientToken)
         assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
         assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
@@ -126,7 +126,7 @@ class TraceConfigurationTest {
         // Then
         checkNotNull(request)
         assertThat(request.url).isEqualTo(fakeEndpoint)
-        assertThat(request.headers).containsEntry("OO-API-KEY", expectedClientToken)
+        assertThat(request.headers).containsEntry("O2-API-KEY", expectedClientToken)
         assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
         assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")

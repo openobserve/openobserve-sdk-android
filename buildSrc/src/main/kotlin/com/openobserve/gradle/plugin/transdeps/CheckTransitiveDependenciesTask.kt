@@ -23,7 +23,7 @@ abstract class CheckTransitiveDependenciesTask @Inject constructor(
     abstract val dependenciesFile: RegularFileProperty
 
     init {
-        group = "datadog"
+        group = "openobserve"
         description = "Check the transitive dependencies of the library"
     }
 

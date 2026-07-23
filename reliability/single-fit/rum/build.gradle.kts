@@ -28,9 +28,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":oo-sdk-android-core"))
-    implementation(project(":oo-sdk-android-internal"))
-    implementation(project(":features:oo-sdk-android-rum"))
+    implementation(project(":o2-sdk-android-core"))
+    implementation(project(":o2-sdk-android-internal"))
+    implementation(project(":features:o2-sdk-android-rum"))
     implementation(libs.kotlin)
     implementation(libs.bundles.androidXNavigation)
 
@@ -43,8 +43,8 @@ dependencies {
             )
         }
     }
-    testImplementation(testFixtures(project(":oo-sdk-android-core")))
-    testImplementation(testFixtures(project(":features:oo-sdk-android-rum")))
+    testImplementation(testFixtures(project(":o2-sdk-android-core")))
+    testImplementation(testFixtures(project(":features:o2-sdk-android-rum")))
     testImplementation(project(":reliability:stub-core"))
     testImplementation(libs.bundles.androidXNavigation)
     testImplementation(libs.bundles.jUnit5)

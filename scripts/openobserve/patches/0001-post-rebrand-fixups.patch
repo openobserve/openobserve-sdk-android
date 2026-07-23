@@ -60,10 +60,10 @@ index 4b313c42e..8896718aa 100644
  
  tasks.register<Delete>("clean") {
      delete(rootProject.layout.buildDirectory)
-diff --git b/features/oo-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json a/features/oo-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
+diff --git b/features/o2-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json a/features/o2-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
 index 3b6057b84..427ef21fe 100644
---- b/features/oo-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
-+++ a/features/oo-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
+--- b/features/o2-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
++++ a/features/o2-sdk-android-flags/src/main/json/flags/flag-evaluation-schema.json
 @@ -45,7 +45,7 @@
            "description": "Evaluation context (excluding targetingKey)",
            "additionalProperties": true
@@ -73,10 +73,10 @@ index 3b6057b84..427ef21fe 100644
            "type": "object",
            "description": "OpenObserve-specific context",
            "properties": {
-diff --git b/features/oo-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt a/features/oo-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
+diff --git b/features/o2-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt a/features/o2-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
 index 4e15b793b..714c1ab4b 100644
---- b/features/oo-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
-+++ a/features/oo-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
+--- b/features/o2-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
++++ a/features/o2-sdk-android-flags/src/main/kotlin/com/openobserve/android/flags/internal/OpenObserveSiteExtensions.kt
 @@ -30,15 +30,15 @@ private fun OpenObserveSite.flagsHost(customerDomain: String): String? = when (t
  
      OpenObserveSite.STAGING -> "$customerDomain.ff-cdn.openobserve.com"
@@ -99,10 +99,10 @@ index 4e15b793b..714c1ab4b 100644
      val parts = listOfNotNull(
          customerDomain,
          "ff-cdn",
-diff --git b/features/oo-sdk-android-rum/src/main/json/telemetry/configuration-schema.json a/features/oo-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
+diff --git b/features/o2-sdk-android-rum/src/main/json/telemetry/configuration-schema.json a/features/o2-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
 index fdfff1318..4756e92d3 100644
---- b/features/oo-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
-+++ a/features/oo-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
+--- b/features/o2-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
++++ a/features/o2-sdk-android-rum/src/main/json/telemetry/configuration-schema.json
 @@ -189,7 +189,7 @@
                    "type": "array",
                    "items": {
@@ -112,10 +112,10 @@ index fdfff1318..4756e92d3 100644
                    },
                    "description": "A list of selected tracing propagators"
                  },
-diff --git b/features/oo-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt a/features/oo-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
+diff --git b/features/o2-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt a/features/o2-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
 index 1ded33f24..f4da38c03 100644
---- b/features/oo-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
-+++ a/features/oo-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
+--- b/features/o2-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
++++ a/features/o2-sdk-android-rum/src/main/kotlin/com/openobserve/android/rum/internal/OpenObserveLateCrashReporter.kt
 @@ -330,7 +330,7 @@ internal class OpenObserveLateCrashReporter(
      }
  
@@ -125,10 +125,10 @@ index 1ded33f24..f4da38c03 100644
  
      private val ViewEvent.isWithinSessionAvailability: Boolean
          get() {
-diff --git b/features/oo-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt a/features/oo-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
+diff --git b/features/o2-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt a/features/o2-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
 index 4d7eeb0a3..f968f3a19 100644
---- b/features/oo-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
-+++ a/features/oo-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
+--- b/features/o2-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
++++ a/features/o2-sdk-android-rum/src/test/kotlin/com/openobserve/android/rum/utils/assertj/DeserializedViewEventAssert.kt
 @@ -21,7 +21,7 @@ internal class DeserializedViewEventAssert(actual: ViewEvent) :
      fun isEqualTo(expected: ViewEvent): DeserializedViewEventAssert {
          assertThat(actual)
@@ -138,10 +138,10 @@ index 4d7eeb0a3..f968f3a19 100644
              .isEqualTo(expected)
          assertConfigurationEquals(actual.oo.configuration, expected.oo.configuration)
          assertThat(actual.view)
-diff --git b/features/oo-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt a/features/oo-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
+diff --git b/features/o2-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt a/features/o2-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
 index 31b5d315e..4f898c51f 100644
---- b/features/oo-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
-+++ a/features/oo-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
+--- b/features/o2-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
++++ a/features/o2-sdk-android-trace-otel/src/test/kotlin/com/openobserve/android/trace/opentelemetry/OtelTracerBuilderProviderTest.kt
 @@ -340,7 +340,7 @@ internal class OtelTracerBuilderProviderTest {
          // Then
          assertThat(tracer).isNotNull()
@@ -151,10 +151,10 @@ index 31b5d315e..4f898c51f 100644
          assertThat(agentSpanContext.tags).containsEntry(key, value)
      }
  
-diff --git b/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt a/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
+diff --git b/features/o2-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt a/features/o2-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
 index 8b5c15bc9..09053d97e 100644
---- b/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
-+++ a/features/oo-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
+--- b/features/o2-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
++++ a/features/o2-sdk-android-trace/src/main/kotlin/com/openobserve/android/trace/internal/domain/event/CoreTracerSpanToSpanEventMapper.kt
 @@ -103,7 +103,7 @@ internal class CoreTracerSpanToSpanEventMapper(
          resolveSpanLinks(event)?.let { meta[SPAN_LINKS_KEY] = it }
          return SpanEvent.Meta(
@@ -164,10 +164,10 @@ index 8b5c15bc9..09053d97e 100644
              span = SpanEvent.Span(),
              tracer = SpanEvent.Tracer(
                  version = ooContext.sdkVersion
-diff --git b/features/oo-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt a/features/oo-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
+diff --git b/features/o2-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt a/features/o2-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
 index 1ceece9b1..fec5bffef 100644
---- b/features/oo-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
-+++ a/features/oo-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
+--- b/features/o2-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
++++ a/features/o2-sdk-android-webview/src/main/kotlin/com/openobserve/android/webview/internal/rum/WebViewRumEventMapper.kt
 @@ -42,12 +42,12 @@ internal class WebViewRumEventMapper(
          }
          event.add(CONTAINER_KEY_NAME, containerObject)
@@ -185,10 +185,10 @@ index 1ceece9b1..fec5bffef 100644
              }
          }
  
-diff --git b/integrations/oo-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt a/integrations/oo-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
+diff --git b/integrations/o2-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt a/integrations/o2-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
 index acd3937ce..a8146765c 100644
---- b/integrations/oo-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
-+++ a/integrations/oo-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
+--- b/integrations/o2-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
++++ a/integrations/o2-sdk-android-okhttp-otel/src/main/kotlin/com/openobserve/android/okhttp/otel/OkHttpExt.kt
 @@ -23,12 +23,12 @@ fun Request.Builder.addParentSpan(span: Span): Request.Builder = apply {
      // we need to trigger sampling decision at this point, because we are doing context propagation out of OpenTelemetry
      val builder = OkHttpRequestInfoBuilder(this)
@@ -213,7 +213,7 @@ index 8cc16318e..377123c6f 100644
      kotlin("android")
      id("com.github.ben-manes.versions")
 -    alias(libs.plugins.ooGradlePlugin)
-+    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
++    // openobserve: o2-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 +
 +    // alias(libs.plugins.ooGradlePlugin)
  }
@@ -238,7 +238,7 @@ index 5b32788cc..c15ec5115 100644
      kotlin("plugin.serialization")
      id("kotlin-parcelize")
 -    alias(libs.plugins.ooGradlePlugin)
-+    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
++    // openobserve: o2-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 +
 +    // alias(libs.plugins.ooGradlePlugin)
      id("transitiveDependencies")
@@ -277,7 +277,7 @@ index afdf1f13d..f48362b64 100644
      id("com.squareup.sqldelight")
      id("com.google.devtools.ksp")
 -    alias(libs.plugins.ooGradlePlugin)
-+    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
++    // openobserve: o2-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 +
 +    // alias(libs.plugins.ooGradlePlugin)
  }
@@ -306,7 +306,7 @@ index 82850feb8..d5483690b 100644
      kotlin("android")
      id("com.github.ben-manes.versions")
 -    alias(libs.plugins.ooGradlePlugin)
-+    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
++    // openobserve: o2-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 +
 +    // alias(libs.plugins.ooGradlePlugin)
  }

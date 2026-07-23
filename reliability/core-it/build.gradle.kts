@@ -66,7 +66,7 @@ dependencies {
     if (project.hasProperty(com.openobserve.gradle.Properties.USE_DESUGARING)) {
         coreLibraryDesugaring(libs.androidDesugaringSdk)
     }
-    implementation(project(":oo-sdk-android-core"))
+    implementation(project(":o2-sdk-android-core"))
     implementation(libs.kotlin)
 
     // Testing

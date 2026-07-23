@@ -57,4 +57,4 @@ internal interface OpenTelemetryModule {
     }
 }
 
-private const val BENCHMARK_APP_TRACER_INSTRUMENTATION_SCOPE_NAME = "oo-sdk-android-benchmark"
+private const val BENCHMARK_APP_TRACER_INSTRUMENTATION_SCOPE_NAME = "o2-sdk-android-benchmark"

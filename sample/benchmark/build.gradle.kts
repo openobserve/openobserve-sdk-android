@@ -20,7 +20,7 @@ plugins {
     alias(libs.plugins.kotlinSPGradlePlugin)
     kotlin("plugin.serialization")
     id("kotlin-parcelize")
-    // openobserve: oo-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
+    // openobserve: o2-sdk-android-gradle-plugin fork (openobserve-sdk-android-gradle-plugin, doc 06 #7) not yet published; ProGuard-upload plugin not needed to build the sample.
 
     // alias(libs.plugins.ooGradlePlugin)
     id("transitiveDependencies")
@@ -59,7 +59,7 @@ android {
             create("release") {
                 storeFile = File(project.rootDir, "sample-benchmark.keystore")
                 storePassword = bmPassword
-                keyAlias = "oo-sdk-android"
+                keyAlias = "o2-sdk-android"
                 keyPassword = bmPassword
             }
         }
@@ -114,18 +114,18 @@ dependencies {
     implementation(libs.coroutinesCore)
     implementation(libs.bundles.ktorClient)
     implementation(libs.kotlinxSerializationJson)
-    implementation(project(":features:oo-sdk-android-logs"))
-    implementation(project(":features:oo-sdk-android-rum"))
-    implementation(project(":features:oo-sdk-android-trace"))
-    implementation(project(":features:oo-sdk-android-trace-otel"))
-    implementation(project(":features:oo-sdk-android-ndk"))
-    implementation(project(":features:oo-sdk-android-webview"))
-    implementation(project(":features:oo-sdk-android-session-replay"))
-    implementation(project(":features:oo-sdk-android-session-replay-material"))
-    implementation(project(":features:oo-sdk-android-session-replay-compose"))
-    implementation(project(":integrations:oo-sdk-android-compose"))
-    implementation(project(":integrations:oo-sdk-android-glide"))
-    implementation(project(":integrations:oo-sdk-android-okhttp"))
+    implementation(project(":features:o2-sdk-android-logs"))
+    implementation(project(":features:o2-sdk-android-rum"))
+    implementation(project(":features:o2-sdk-android-trace"))
+    implementation(project(":features:o2-sdk-android-trace-otel"))
+    implementation(project(":features:o2-sdk-android-ndk"))
+    implementation(project(":features:o2-sdk-android-webview"))
+    implementation(project(":features:o2-sdk-android-session-replay"))
+    implementation(project(":features:o2-sdk-android-session-replay-material"))
+    implementation(project(":features:o2-sdk-android-session-replay-compose"))
+    implementation(project(":integrations:o2-sdk-android-compose"))
+    implementation(project(":integrations:o2-sdk-android-glide"))
+    implementation(project(":integrations:o2-sdk-android-okhttp"))
     implementation(project(":tools:benchmark"))
 
     testImplementation(libs.bundles.jUnit5)
