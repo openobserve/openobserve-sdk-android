@@ -129,5 +129,40 @@ else
   : "${GPG_PRIVATE_KEY:?set signing key}" "${GPG_PASSWORD:?}"
   echo "==> publishToSonatype + close & release staging repo"
   ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository --stacktrace
-  echo "OK. Published ai.openobserve:o2-sdk-android-* $VERSION-$TYPE${NUMBER} to Maven Central (sync ~15-30 min)."
+  FULL_VERSION="$VERSION-$TYPE${NUMBER}"
+  echo "OK. Published ai.openobserve:o2-sdk-android-* $FULL_VERSION to Maven Central (sync ~15-30 min)."
+  cat <<EOF
+
+────────────────────────────────────────────────────────────────────────────
+MANUAL STEPS — this script does NOT do these. See RELEASING.md.
+────────────────────────────────────────────────────────────────────────────
+
+1. VERIFY on Maven Central (not here — this script only reports what Gradle did).
+   Central lags 15-30 min. Both .pom AND .aar must return 200; a .pom alone is not
+   a usable artifact. Pace the requests — unthrottled loops get rate-limited to 000
+   and read as "missing":
+
+     B=https://repo1.maven.org/maven2/ai/openobserve
+     for m in core internal rum logs trace webview ndk flags session-replay; do
+       for e in pom aar; do
+         curl -s -o /dev/null -w "%{http_code} o2-sdk-android-\$m.\$e\n" \\
+           "\$B/o2-sdk-android-\$m/$FULL_VERSION/o2-sdk-android-\$m-$FULL_VERSION.\$e"
+       done; sleep 0.3
+     done
+
+   mvnrepository.com is a third-party crawler and lags by up to a day. Absence there
+   is not evidence of a failed publish; repo1.maven.org is authoritative.
+
+2. COMMIT + PUSH this branch. The published artifacts should have a matching commit
+   on origin. This script tags nothing on Android.
+
+3. RELEASE THE OTHER PLATFORMS in order — iOS may run in parallel, RN goes LAST and
+   only once every native pin actually resolves:
+     openobserve-sdk-ios/scripts/openobserve/publish.sh --version <x.y.z-alpha.N> --publish
+     openobserve-react-native-rum/RELEASING.md      (manual — no script exists)
+
+4. AFTER ANY UPSTREAM SYNC, regenerate what patches cannot carry:
+     ./gradlew apiDump        # api/*.api + api/apiSurface + compiler-meta.txt
+
+EOF
 fi
