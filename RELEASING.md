@@ -84,6 +84,27 @@ npm cannot unpublish after 72 hours, so step 1 is not optional.
 
 ---
 
+## Coordinate history — why `oo-sdk-android-*` also exists on Maven Central
+
+Through `0.1.0-alpha3` this SDK published as **`ai.openobserve:oo-sdk-android-*`**. From
+`0.1.0-alpha4` it publishes as **`ai.openobserve:o2-sdk-android-*`**, matching the `o2-`
+spelling the browser SDK already ships in production (`o2-api-key`, `o2source`,
+`o2-request-id`). The intake auth header moved with it: `OO-API-KEY` → `O2-API-KEY`. Every
+other wire key (`ootags`, `oosource`, `_oo`, the `oo=` tracestate vendor key,
+`oo-client-token`, `oo-application-id`) deliberately stayed as-is.
+
+**`o2-sdk-android-*` is the live coordinate. Ignore `oo-sdk-android-*`.**
+
+The old artifacts remain on Central because Central is immutable — nothing can be edited or
+deleted there. **No relocation POM was published**, deliberately: at the time of the rename
+the only consumers were internal, and a relocation cannot help anyone already pinned anyway
+(it lives inside a POM, and the already-published `alpha1/2/3` POMs can never gain one). It
+would only have redirected someone upgrading to a *newer* version under the old name — who
+could equally just change the coordinate.
+
+If an external consumer ever turns up on `oo-*`, a relocation release can still be published
+at any time; nothing about this decision is one-way.
+
 ## Alpha → beta → stable
 - Prove the pipeline with `--type alpha --number 1` (Android) / `-alpha.1` (iOS/npm `--tag alpha`).
 - Bump `--number`/suffix for each iteration; `--type release` (Android) + drop the suffix for stable.
