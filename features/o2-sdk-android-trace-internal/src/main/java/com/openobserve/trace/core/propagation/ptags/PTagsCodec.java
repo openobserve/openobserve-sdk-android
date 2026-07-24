@@ -56,8 +56,8 @@ abstract class PTagsCodec {
 
     if (newSize > propagationTags.getxOpenObserveTagsLimit()) {
       // Outgoing x-datadog-tags value length exceeds the configured limit
-      // Set _oo.propagation_error:inject_max_size if the configured limit is greater than zero,
-      // else set _oo.propagation_error:disabled
+      // Set _o2.propagation_error:inject_max_size if the configured limit is greater than zero,
+      // else set _o2.propagation_error:disabled
       if (propagationTags.isPropagationTagsDisabled()) {
         tagMap.put(PROPAGATION_ERROR_TAG_KEY, PROPAGATION_ERROR_DISABLED);
       } else {
@@ -149,7 +149,7 @@ abstract class PTagsCodec {
    * Validates the dm tag format with next eBNF:
    *
    * <pre>
-   *   _oo.p.dm = [ service hash ], "-", sampling mechanism;
+   *   _o2.p.dm = [ service hash ], "-", sampling mechanism;
    *
    *   digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
    *   hexadecimal digit = digit | "a" | "b" | "c" | "d" | "e" | "f" ;

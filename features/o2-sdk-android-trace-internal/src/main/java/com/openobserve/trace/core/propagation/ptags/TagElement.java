@@ -2,7 +2,7 @@ package com.openobserve.trace.core.propagation.ptags;
 
 abstract class TagElement implements CharSequence {
   public enum Encoding {
-    OPENOBSERVE("_oo.p."),
+    OPENOBSERVE("_o2.p."),
     W3C("t.");
 
     private final String prefix;

@@ -136,7 +136,7 @@ abstract class ActivityLifecycleTrackingStrategy :
 
     internal companion object {
 
-        internal const val EXTRA_SYNTHETICS_TEST_ID = "_oo.synthetics.test_id"
-        internal const val EXTRA_SYNTHETICS_RESULT_ID = "_oo.synthetics.result_id"
+        internal const val EXTRA_SYNTHETICS_TEST_ID = "_o2.synthetics.test_id"
+        internal const val EXTRA_SYNTHETICS_RESULT_ID = "_o2.synthetics.result_id"
     }
 }

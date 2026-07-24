@@ -25,7 +25,7 @@ internal class LogEventSerializer(
 
     private fun sanitizeTagsAndAttributes(log: LogEvent): LogEvent {
         val sanitizedTags = dataConstraints
-            .validateTags(log.ootags.split(","))
+            .validateTags(log.o2tags.split(","))
             .joinToString(",")
         val sanitizedAttributes = dataConstraints
             .validateAttributes(log.additionalProperties)
@@ -55,7 +55,7 @@ internal class LogEventSerializer(
             )
         }
         return log.copy(
-            ootags = sanitizedTags,
+            o2tags = sanitizedTags,
             additionalProperties = sanitizedAttributes
                 .safeMapValuesToJson(internalLogger)
                 .toMutableMap(),

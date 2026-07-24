@@ -379,7 +379,7 @@ internal class RumResourceScope(
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
                 buildId = ooContext.appBuildId,
-                ootags = buildDDTagsString(ooContext)
+                o2tags = buildDDTagsString(ooContext)
             )
         }
             .onError {
@@ -539,7 +539,7 @@ internal class RumResourceScope(
                 service = ooContext.service,
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
-                ootags = buildDDTagsString(ooContext)
+                o2tags = buildDDTagsString(ooContext)
             )
         }
             .onError {

@@ -48,8 +48,8 @@ done
 # exit on errors
 set -e
 
-# Syncs detekt-common.yml and detekt-public-api.yml from oo-source into config/ at the
-# revision pinned by ci/pipelines/default-pipeline.yml. The oo-source repo is restored
+# Syncs detekt-common.yml and detekt-public-api.yml from o2-source into config/ at the
+# revision pinned by ci/pipelines/default-pipeline.yml. The o2-source repo is restored
 # to its prior state afterwards so switching branches there can't affect our checks.
 sync_detekt_configs() {
   local config_dir="config"
@@ -66,7 +66,7 @@ sync_detekt_configs() {
     | sed -E 's|.*/mobile/(v[0-9]+-[0-9a-f]+)/.*|\1|')
 
   if [ -z "$version" ]; then
-    echo "  Could not extract oo-source detekt template version from $pipeline_file"
+    echo "  Could not extract o2-source detekt template version from $pipeline_file"
     exit 1
   fi
 
@@ -83,11 +83,11 @@ sync_detekt_configs() {
     return 0
   fi
 
-  echo "  Detekt configs out of date (have '${current:-none}', want '$version'); syncing from oo-source"
+  echo "  Detekt configs out of date (have '${current:-none}', want '$version'); syncing from o2-source"
 
   if [ -z "$DD_SOURCE" ]; then
-    echo "  DD_SOURCE not set. Please set it to your local oo-source checkout."
-    echo "  E.g.: export DD_SOURCE=/Volumes/Dev/ci/oo-source"
+    echo "  DD_SOURCE not set. Please set it to your local o2-source checkout."
+    echo "  E.g.: export DD_SOURCE=/Volumes/Dev/ci/o2-source"
     exit 1
   fi
   if [ ! -d "$DD_SOURCE/.git" ]; then
@@ -120,7 +120,7 @@ sync_detekt_configs() {
 
     git fetch --quiet origin main
     if ! git checkout --quiet "$sha" 2>/dev/null; then
-      echo "  Could not check out $sha in $DD_SOURCE — make sure oo-source main is up to date"
+      echo "  Could not check out $sha in $DD_SOURCE — make sure o2-source main is up to date"
       exit 1
     fi
 
@@ -195,7 +195,7 @@ if [[ $ANALYSIS == 1 ]]; then
   fi
 
   echo "---- Detekt"
-  echo "------ Sync Detekt configs from oo-source"
+  echo "------ Sync Detekt configs from o2-source"
   sync_detekt_configs
 
   echo "------ Detekt common rules"

@@ -19,7 +19,7 @@ public class W3CPTagsCodec extends PTagsCodec {
       new RatelimitedLogger(LoggerFactory.getLogger(W3CPTagsCodec.class), 5, TimeUnit.MINUTES);
 
   private static final int MAX_HEADER_SIZE = 256;
-  private static final String OPENOBSERVE_MEMBER_KEY = "oo=";
+  private static final String OPENOBSERVE_MEMBER_KEY = "o2=";
   private static final int EMPTY_SIZE = OPENOBSERVE_MEMBER_KEY.length(); // 3
   private static final char MEMBER_SEPARATOR = ',';
   private static final char ELEMENT_SEPARATOR = ';';
@@ -188,7 +188,7 @@ public class W3CPTagsCodec extends PTagsCodec {
 
   @Override
   protected int estimateHeaderSize(PTags pTags) {
-    int size = EMPTY_SIZE + 1; // 'oo=' and delimiter;
+    int size = EMPTY_SIZE + 1; // 'o2=' and delimiter;
     // Yes, this is a bit much, but better safe than sorry
     size += pTags.getXOpenObserveTagsSize();
     if (pTags.getOrigin() != null) {
@@ -249,7 +249,7 @@ public class W3CPTagsCodec extends PTagsCodec {
     }
     // Check empty OpenObserve list-member only tracestate
     if (size == EMPTY_SIZE) {
-      // If we haven't written anything but the 'oo=', then reset the StringBuilder
+      // If we haven't written anything but the 'o2=', then reset the StringBuilder
       sb.setLength(0);
       size = 0;
     }
@@ -596,7 +596,7 @@ public class W3CPTagsCodec extends PTagsCodec {
       return size;
     }
     String original = w3CPTags.tracestate;
-    int elementStart = w3CPTags.ddMemberStart + EMPTY_SIZE; // skip over 'oo='
+    int elementStart = w3CPTags.ddMemberStart + EMPTY_SIZE; // skip over 'o2='
     int okSize = size;
     while (elementStart < w3CPTags.ddMemberValueEnd && size < MAX_HEADER_SIZE) {
       okSize = size;
@@ -700,12 +700,12 @@ public class W3CPTagsCodec extends PTagsCodec {
     /** The index of the first tracestate list-member position in {@link #tracestate}. */
     private final int firstMemberStart;
     /**
-     * The index of the OpenObserve tracestate list-member (oo=) position in {@link #tracestate}, {@code
+     * The index of the OpenObserve tracestate list-member (o2=) position in {@link #tracestate}, {@code
      * -1 if OpenObserve list-member not found}.
      */
     private final int ddMemberStart;
     /**
-     * The index of the end OpenObserve tracestate list-member (oo=) in {@link #tracestate}, {@code -1
+     * The index of the end OpenObserve tracestate list-member (o2=) in {@link #tracestate}, {@code -1
      * if OpenObserve list-member not found}.
      */
     private final int ddMemberValueEnd;

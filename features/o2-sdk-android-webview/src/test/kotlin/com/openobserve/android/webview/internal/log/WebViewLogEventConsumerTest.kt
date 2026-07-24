@@ -144,7 +144,7 @@ internal class WebViewLogEventConsumerTest {
     }
 
     @Test
-    fun `M write the user event W consume { user event type, known SDK ootags }`(
+    fun `M write the user event W consume { user event type, known SDK o2tags }`(
         forge: Forge
     ) {
         // Given
@@ -157,7 +157,7 @@ internal class WebViewLogEventConsumerTest {
         )
         val eventTags = fakeWebLogEvent.ddTags + knownBrowserSdkTags
         fakeWebLogEvent.addProperty(
-            WebViewLogEventConsumer.OOTAGS_KEY_NAME,
+            WebViewLogEventConsumer.O2TAGS_KEY_NAME,
             eventTags.joinToString(",")
         )
         val expectedTags = eventTags.removeSdkTags() + mobileSdkDdtags()
@@ -295,9 +295,9 @@ internal class WebViewLogEventConsumerTest {
     }
 
     @Test
-    fun `M add local ootags W consume { user log, no extra ootags }`() {
+    fun `M add local o2tags W consume { user log, no extra o2tags }`() {
         // Given
-        fakeWebLogEvent.remove(WebViewLogEventConsumer.OOTAGS_KEY_NAME)
+        fakeWebLogEvent.remove(WebViewLogEventConsumer.O2TAGS_KEY_NAME)
         val expectedDate = fakeTimeOffset +
             fakeWebLogEvent.get(WebViewLogEventConsumer.DATE_KEY_NAME).asLong
         val expectedTags = mobileSdkDdtags()
@@ -312,7 +312,7 @@ internal class WebViewLogEventConsumerTest {
             verify(mockUserLogsWriter).write(eq(mockEventBatchWriter), capture(), eq(EventType.DEFAULT))
             assertThat(firstValue).hasField(WebViewLogEventConsumer.DATE_KEY_NAME, expectedDate)
             assertThat(firstValue).hasField(
-                WebViewLogEventConsumer.OOTAGS_KEY_NAME,
+                WebViewLogEventConsumer.O2TAGS_KEY_NAME,
                 expectedTags.joinToString(",")
             )
         }
@@ -414,7 +414,7 @@ internal class WebViewLogEventConsumerTest {
         aJsonObject.addProperty(WebViewLogEventConsumer.DATE_KEY_NAME, aLong())
         if (aBool()) {
             aJsonObject.addProperty(
-                WebViewLogEventConsumer.OOTAGS_KEY_NAME,
+                WebViewLogEventConsumer.O2TAGS_KEY_NAME,
                 aMap { anAlphabeticalString() to anAlphaNumericalString() }
                     .map { "${it.key}:${it.value}" }
                     .joinToString(",")
@@ -438,7 +438,7 @@ internal class WebViewLogEventConsumerTest {
     }
 
     private val JsonObject.ddTags: List<String>
-        get() = get(WebViewLogEventConsumer.OOTAGS_KEY_NAME)?.asString?.split(",").orEmpty()
+        get() = get(WebViewLogEventConsumer.O2TAGS_KEY_NAME)?.asString?.split(",").orEmpty()
 
     // endregion
 
@@ -465,14 +465,14 @@ internal class WebViewLogEventConsumerTest {
                 add("date", JsonObject())
             }
             val fakeJsonObject4 = JsonObject().apply {
-                add("ootags", JsonObject())
+                add("o2tags", JsonObject())
             }
             val fakeJsonObject5 = JsonObject().apply {
                 val fakeJsonArray = JsonArray().apply {
                     add("1")
                     add("2")
                 }
-                add("ootags", fakeJsonArray)
+                add("o2tags", fakeJsonArray)
             }
             return listOf(
                 Arguments.of(fakeJsonObject1, IllegalStateException::class.java),

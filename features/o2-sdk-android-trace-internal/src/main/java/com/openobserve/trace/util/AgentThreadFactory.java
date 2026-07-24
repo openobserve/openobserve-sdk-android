@@ -6,44 +6,44 @@ import java.util.concurrent.ThreadFactory;
 
 /** A {@link ThreadFactory} implementation that starts all agent {@link Thread}s as daemons. */
 public final class AgentThreadFactory implements ThreadFactory {
-  public static final ThreadGroup AGENT_THREAD_GROUP = new ThreadGroup("oo-trace-java");
+  public static final ThreadGroup AGENT_THREAD_GROUP = new ThreadGroup("o2-trace-java");
 
   public static final long THREAD_JOIN_TIMOUT_MS = 800;
 
   // known agent threads
   public enum AgentThread {
-    TASK_SCHEDULER("oo-task-scheduler"),
+    TASK_SCHEDULER("o2-task-scheduler"),
 
-    TRACE_STARTUP("oo-agent-startup-datadog-tracer"),
-    TRACE_MONITOR("oo-trace-monitor"),
-    TRACE_PROCESSOR("oo-trace-processor"),
-    SPAN_SAMPLING_PROCESSOR("oo-span-sampling-processor"),
-    TRACE_CASSANDRA_ASYNC_SESSION("oo-cassandra-session-executor"),
+    TRACE_STARTUP("o2-agent-startup-datadog-tracer"),
+    TRACE_MONITOR("o2-trace-monitor"),
+    TRACE_PROCESSOR("o2-trace-processor"),
+    SPAN_SAMPLING_PROCESSOR("o2-span-sampling-processor"),
+    TRACE_CASSANDRA_ASYNC_SESSION("o2-cassandra-session-executor"),
 
-    METRICS_AGGREGATOR("oo-metrics-aggregator"),
-    STATSD_CLIENT("oo-statsd-client"),
+    METRICS_AGGREGATOR("o2-metrics-aggregator"),
+    STATSD_CLIENT("o2-statsd-client"),
 
-    JMX_STARTUP("oo-agent-startup-jmxfetch"),
-    JMX_COLLECTOR("oo-jmx-collector"),
+    JMX_STARTUP("o2-agent-startup-jmxfetch"),
+    JMX_COLLECTOR("o2-jmx-collector"),
 
-    PROFILER_STARTUP("oo-agent-startup-datadog-profiler"),
-    PROFILER_RECORDING_SCHEDULER("oo-profiler-recording-scheduler"),
-    PROFILER_HTTP_DISPATCHER("oo-profiler-http-dispatcher"),
+    PROFILER_STARTUP("o2-agent-startup-datadog-profiler"),
+    PROFILER_RECORDING_SCHEDULER("o2-profiler-recording-scheduler"),
+    PROFILER_HTTP_DISPATCHER("o2-profiler-http-dispatcher"),
 
-    APPSEC_HTTP_DISPATCHER("oo-appsec-http-dispatcher"),
+    APPSEC_HTTP_DISPATCHER("o2-appsec-http-dispatcher"),
 
-    TELEMETRY("oo-telemetry"),
+    TELEMETRY("o2-telemetry"),
 
-    FLEET_MANAGEMENT_POLLER("oo-fleet-management-poller"),
-    REMOTE_CONFIG("oo-remote-config"),
+    FLEET_MANAGEMENT_POLLER("o2-fleet-management-poller"),
+    REMOTE_CONFIG("o2-remote-config"),
 
-    TRACER_FLARE("oo-tracer-flare"),
+    TRACER_FLARE("o2-tracer-flare"),
 
-    CWS_TLS("oo-cws-tls"),
+    CWS_TLS("o2-cws-tls"),
 
-    PROCESS_SUPERVISOR("oo-process-supervisor"),
+    PROCESS_SUPERVISOR("o2-process-supervisor"),
 
-    DEBUGGER_HTTP_DISPATCHER("oo-debugger-upload-http-dispatcher");
+    DEBUGGER_HTTP_DISPATCHER("o2-debugger-upload-http-dispatcher");
 
     public final String threadName;
 

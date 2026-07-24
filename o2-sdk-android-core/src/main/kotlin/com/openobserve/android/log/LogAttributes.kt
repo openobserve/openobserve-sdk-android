@@ -361,10 +361,10 @@ object LogAttributes {
      * The source type of error. Used by cross-platform tools to indicate the language
      * or platform that the error originates from, such as Flutter or React Native (String).
      */
-    const val SOURCE_TYPE: String = "_oo.error.source_type"
+    const val SOURCE_TYPE: String = "_o2.error.source_type"
 
     /**
      * Specifies a custom error fingerprint for the supplied log. (String)
      */
-    const val ERROR_FINGERPRINT: String = "_oo.error.fingerprint"
+    const val ERROR_FINGERPRINT: String = "_o2.error.fingerprint"
 }

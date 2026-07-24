@@ -201,8 +201,8 @@ internal class DDSpanContextTest : DDCoreSpecification() {
             .isEqualTo(if (limit == Int.MAX_VALUE) null else limit)
         // single span sampling should not change the trace sampling priority
         assertThat(context.traceSamplingPriority).isEqualTo(PrioritySampling.UNSET.toInt())
-        // make sure the `_oo.p.dm` tag has not been set by single span sampling
-        assertThat(context.propagationTags.createTagMap().containsKey("_oo.p.dm")).isFalse()
+        // make sure the `_o2.p.dm` tag has not been set by single span sampling
+        assertThat(context.propagationTags.createTagMap().containsKey("_o2.p.dm")).isFalse()
     }
 
     @Test
@@ -278,7 +278,7 @@ internal class DDSpanContextTest : DDCoreSpecification() {
     }
 
     private fun dataTagFormat(name: String): String {
-        return "_oo.$name.json"
+        return "_o2.$name.json"
     }
 
     companion object {

@@ -152,7 +152,7 @@ class ResourceEventForgeryFactory :
                 spanId = forge.aNullable { aNumericalString() },
                 traceId = forge.aNullable { aNumericalString() }
             ),
-            ootags = forge.aNullable { ddTagsString() }
+            o2tags = forge.aNullable { ddTagsString() }
         )
     }
 }

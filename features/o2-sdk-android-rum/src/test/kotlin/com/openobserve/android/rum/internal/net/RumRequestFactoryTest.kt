@@ -166,9 +166,9 @@ internal class RumRequestFactoryTest {
         }
 
         return buildString {
-            append("$endpointUrl?oosource=${fakeOpenObserveContext.source}")
+            append("$endpointUrl?o2source=${fakeOpenObserveContext.source}")
             if (queryTags.isNotEmpty()) {
-                append("&ootags=${queryTags.joinToString(",")}")
+                append("&o2tags=${queryTags.joinToString(",")}")
             }
         }
     }

@@ -1605,9 +1605,9 @@ public class Config {
     private Map<String, String> getAzureAppServicesTags() {
         // These variable names and derivations are copied from the dotnet tracer
         // See
-        // https://github.com/DataDog/oo-trace-dotnet/blob/master/tracer/src/com.openobserve.trace/PlatformHelpers/AzureAppServices.cs
+        // https://github.com/DataDog/o2-trace-dotnet/blob/master/tracer/src/com.openobserve.trace/PlatformHelpers/AzureAppServices.cs
         // and
-        // https://github.com/DataDog/oo-trace-dotnet/blob/master/tracer/src/com.openobserve.trace/TraceContext.cs#L207
+        // https://github.com/DataDog/o2-trace-dotnet/blob/master/tracer/src/com.openobserve.trace/TraceContext.cs#L207
         Map<String, String> aasTags = new HashMap<>();
 
         /// The site name of the site instance in Azure where the traced application is running.

@@ -6,5 +6,5 @@
 
 package com.openobserve.android.trace.internal.domain.event
 
-internal const val TRACE_ID_META_KEY = "_oo.p.id"
+internal const val TRACE_ID_META_KEY = "_o2.p.id"
 internal const val APPLICATION_VARIANT_KEY = "variant"

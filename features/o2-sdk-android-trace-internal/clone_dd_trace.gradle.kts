@@ -6,17 +6,17 @@
 
 import com.openobserve.gradle.plugin.gitclone.GitCloneDependenciesTask
 
-val ddTraceRepository = "https://github.com/DataDog/oo-trace-java.git"
+val ddTraceRepository = "https://github.com/DataDog/o2-trace-java.git"
 val ddTraceVersion = "v0.50.0"
 
 tasks.register<GitCloneDependenciesTask>("cloneDdTrace") {
     extension.apply {
         clone(
             ddTraceRepository,
-            "oo-trace-ot",
+            "o2-trace-ot",
             ddTraceVersion,
             listOf(
-                "oo-trace-ot.gradle",
+                "o2-trace-ot.gradle",
                 "README.md",
                 "jfr-openjdk/",
                 "src/jmh/", // JVM based benchmark, not relevant for ART/Dalvik
@@ -37,10 +37,10 @@ tasks.register<GitCloneDependenciesTask>("cloneDdTrace") {
         )
         clone(
             ddTraceRepository,
-            "oo-trace-api",
+            "o2-trace-api",
             ddTraceVersion,
             listOf(
-                "oo-trace-api.gradle",
+                "o2-trace-api.gradle",
                 "src/main/java/datadog/trace/api/GlobalTracer.java",
                 "src/main/java/datadog/trace/api/CorrelationIdentifier.java",
                 "src/test"

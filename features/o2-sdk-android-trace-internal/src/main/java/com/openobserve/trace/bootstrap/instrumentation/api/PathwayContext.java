@@ -5,8 +5,8 @@ import java.util.LinkedHashMap;
 import com.openobserve.android.trace.internal.compat.function.Consumer;
 
 public interface PathwayContext {
-  String PROPAGATION_KEY = "oo-pathway-ctx";
-  String PROPAGATION_KEY_BASE64 = "oo-pathway-ctx-base64";
+  String PROPAGATION_KEY = "o2-pathway-ctx";
+  String PROPAGATION_KEY_BASE64 = "o2-pathway-ctx-base64";
   String OPENOBSERVE_KEY = "_datadog";
 
   boolean isStarted();

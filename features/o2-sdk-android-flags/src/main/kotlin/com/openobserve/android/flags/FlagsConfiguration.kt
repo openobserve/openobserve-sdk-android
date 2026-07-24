@@ -106,7 +106,7 @@ data class FlagsConfiguration internal constructor(
          * Sets a custom endpoint URL for fetching precomputed flag assignments.
          * If not called, flag assignments will be fetched from OpenObserve's default endpoint.
          *
-         * @param endpoint The full endpoint URL, e.g., https://oo-flags-proxy.example.com/flags.
+         * @param endpoint The full endpoint URL, e.g., https://o2-flags-proxy.example.com/flags.
          *                 If null, the default endpoint will be used.
          * @return this [Builder] instance for method chaining.
          */

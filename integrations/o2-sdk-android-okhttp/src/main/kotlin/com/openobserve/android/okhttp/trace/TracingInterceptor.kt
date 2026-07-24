@@ -951,7 +951,7 @@ internal constructor(
 
         // https://www.w3.org/TR/trace-context/#traceparent-header
         internal const val W3C_TRACEPARENT_DROP_SAMPLING_DECISION = "00-%s-%s-00"
-        internal const val W3C_TRACESTATE_DROP_SAMPLING_DECISION = "oo=p:%s;s:0"
+        internal const val W3C_TRACESTATE_DROP_SAMPLING_DECISION = "o2=p:%s;s:0"
         internal const val W3C_SAMPLING_DECISION_INDEX = 3
         internal const val W3C_TRACE_ID_LENGTH = 32
         internal const val W3C_PARENT_ID_LENGTH = 16
@@ -959,7 +959,7 @@ internal constructor(
         internal const val OKHTTP_INTERCEPTOR_SAMPLE_RATE = "okhttp_interceptor_sample_rate"
         internal const val OKHTTP_INTERCEPTOR_HEADER_TYPES = "okhttp_interceptor_header_types"
 
-        private const val AGENT_PSR_ATTRIBUTE = "_oo.agent_psr"
+        private const val AGENT_PSR_ATTRIBUTE = "_o2.agent_psr"
 
         private val DEFAULT_LOCAL_TRACER_FACTORY: (SdkCore, Set<TracingHeaderType>) -> OpenObserveTracer =
             { sdkCore, tracingHeaderTypes: Set<TracingHeaderType> ->

@@ -25,8 +25,8 @@ public class RuleBasedTraceSampler<T extends CoreSpan<T>> implements Sampler, Pr
   private final SimpleRateLimiter rateLimiter;
   private final long rateLimit;
 
-  public static final String SAMPLING_RULE_RATE = "_oo.rule_psr";
-  public static final String SAMPLING_LIMIT_RATE = "_oo.limit_psr";
+  public static final String SAMPLING_RULE_RATE = "_o2.rule_psr";
+  public static final String SAMPLING_LIMIT_RATE = "_o2.limit_psr";
 
   public RuleBasedTraceSampler(
       final List<SamplingRule> samplingRules,

@@ -354,10 +354,10 @@ internal class VitalAppLaunchEventAssert(
     }
 
     fun hasDDTags(ddTags: String) = apply {
-        assertThat(actual.ootags)
+        assertThat(actual.o2tags)
             .overridingErrorMessage(
                 "Expected RUM event to have ddTags: $ddTags" +
-                    " but instead was: ${actual.ootags}"
+                    " but instead was: ${actual.o2tags}"
             )
             .isEqualTo(ddTags)
     }

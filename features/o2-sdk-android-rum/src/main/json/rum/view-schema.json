@@ -15,7 +15,7 @@
       "$ref": "_view-properties-schema.json"
     },
     {
-      "required": ["type", "view", "_oo"],
+      "required": ["type", "view", "_o2"],
       "properties": {
         "type": {
           "type": "string",
@@ -33,7 +33,7 @@
             "resource": { "type": "object" }
           }
         },
-        "_oo": {
+        "_o2": {
           "type": "object",
           "description": "Internal properties",
           "required": ["document_version"],

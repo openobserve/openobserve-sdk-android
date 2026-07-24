@@ -139,7 +139,7 @@ internal abstract class RumTest<R : Activity, T : MockServerActivityTestRule<R>>
         get() = get("view").asJsonObject.get("id").asString
 
     private val JsonObject.documentVersion: Long
-        get() = get("_oo").asJsonObject.get("document_version").asLong
+        get() = get("_o2").asJsonObject.get("document_version").asLong
 
     private fun List<JsonObject>.reduceViewEvents(): List<JsonObject> {
         val maxDocVersionByViewId = mutableMapOf<String, Long>()

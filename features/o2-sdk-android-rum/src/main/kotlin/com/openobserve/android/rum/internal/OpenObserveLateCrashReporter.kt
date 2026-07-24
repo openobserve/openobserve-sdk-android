@@ -285,7 +285,7 @@ internal class OpenObserveLateCrashReporter(
             featureFlags = viewEvent.featureFlags?.let {
                 ErrorEvent.Context(additionalProperties = it.additionalProperties)
             },
-            ootags = buildDDTagsString(ooContext)
+            o2tags = buildDDTagsString(ooContext)
         )
     }
 

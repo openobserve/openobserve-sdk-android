@@ -108,7 +108,7 @@ class RumContextPropagator(private val sdkCoreProvider: () -> FeatureSdkCore?) {
     }
 
     companion object {
-        internal const val OPENOBSERVE_INITIAL_CONTEXT: String = "_oo.openobserve_initial_context"
+        internal const val OPENOBSERVE_INITIAL_CONTEXT: String = "_o2.openobserve_initial_context"
 
         internal const val INITIAL_OPENOBSERVE_CONTEXT_NOT_AVAILABLE_ERROR = "Initial span creation OpenObserve context" +
             " is not available at the write time."

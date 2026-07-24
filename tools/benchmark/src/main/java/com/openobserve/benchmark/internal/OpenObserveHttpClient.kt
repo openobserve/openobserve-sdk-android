@@ -167,17 +167,17 @@ internal class OpenObserveHttpClient(
         /**
          * OpenObserve Event Platform Origin header, e.g. android, flutter, etc.
          */
-        private const val HEADER_EVP_ORIGIN: String = "OO-EVP-ORIGIN"
+        private const val HEADER_EVP_ORIGIN: String = "O2-EVP-ORIGIN"
 
         /**
          * OpenObserve Event Platform Origin version header, e.g. SDK version.
          */
-        private const val HEADER_EVP_ORIGIN_VERSION: String = "OO-EVP-ORIGIN-VERSION"
+        private const val HEADER_EVP_ORIGIN_VERSION: String = "O2-EVP-ORIGIN-VERSION"
 
         /**
          * OpenObserve Request ID header, used for debugging purposes.
          */
-        private const val HEADER_REQUEST_ID: String = "OO-REQUEST-ID"
+        private const val HEADER_REQUEST_ID: String = "O2-REQUEST-ID"
 
         /**
          * text/plain;charset=UTF-8 content type.

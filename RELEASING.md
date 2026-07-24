@@ -89,9 +89,26 @@ npm cannot unpublish after 72 hours, so step 1 is not optional.
 Through `0.1.0-alpha3` this SDK published as **`ai.openobserve:oo-sdk-android-*`**. From
 `0.1.0-alpha4` it publishes as **`ai.openobserve:o2-sdk-android-*`**, matching the `o2-`
 spelling the browser SDK already ships in production (`o2-api-key`, `o2source`,
-`o2-request-id`). The intake auth header moved with it: `OO-API-KEY` → `O2-API-KEY`. Every
-other wire key (`ootags`, `oosource`, `_oo`, the `oo=` tracestate vendor key,
-`oo-client-token`, `oo-application-id`) deliberately stayed as-is.
+`o2-request-id`). The intake auth header moved with it: `OO-API-KEY` → `O2-API-KEY`. At
+that point every other wire key (`ootags`, `oosource`, `_oo`, the `oo=` tracestate vendor
+key, `oo-client-token`, `oo-application-id`) deliberately stayed as-is.
+
+**From `0.1.0-alpha5` those remaining keys move to `o2` too**, so the whole product
+speaks one prefix:
+
+| through alpha4 | from alpha5 |
+|---|---|
+| `ootags` / `oosource` | `o2tags` / `o2source` |
+| `_oo` — ingests as `_oo_trace_id`, `_oo_format_version`, … | `_o2` — `_o2_trace_id`, … |
+| `oo=` W3C tracestate vendor key | `o2=` |
+| `oo-client-token`, `oo-application-id` | `o2-client-token`, `o2-application-id` |
+| `OO-REQUEST-ID` | `O2-REQUEST-ID` |
+
+Data ingested before alpha5 keeps its `_oo_*` columns permanently — renaming a field does
+not rewrite history — so a stream ends up carrying both sets. OpenObserve reads either
+(`web/src/utils/rum/fields.ts`), and **that dual-read must be deployed before an alpha5
+SDK points at an environment**: against an older backend the new keys do not error, they
+just yield empty trace tabs and blank action targets, which reads as a broken SDK.
 
 **`o2-sdk-android-*` is the live coordinate. Ignore `oo-sdk-android-*`.**
 

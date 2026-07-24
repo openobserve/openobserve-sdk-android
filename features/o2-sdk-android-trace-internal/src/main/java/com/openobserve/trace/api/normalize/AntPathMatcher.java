@@ -29,11 +29,11 @@ import java.util.StringTokenizer;
  *       directory
  *   <li><code>com/&#42;&#42;/test.jsp</code> - matches all <code>test.jsp</code> files underneath
  *       the <code>com</code> path
- *   <li><code>ai/openobserve/oo-trace-java/&#42;&#42;/*.jsp</code> - matches all <code>.jsp</code>
- *       files underneath the <code>ai/openobserve/oo-trace-java</code> path
+ *   <li><code>ai/openobserve/o2-trace-java/&#42;&#42;/*.jsp</code> - matches all <code>.jsp</code>
+ *       files underneath the <code>ai/openobserve/o2-trace-java</code> path
  *   <li><code>com/&#42;&#42;/servlet/bla.jsp</code> - matches <code>
- *       ai/openobserve/oo-trace-java/servlet/bla.jsp</code> but also <code>
- *       ai/openobserve/oo-trace-java/testing/servlet/bla.jsp</code> and <code>com/servlet/bla.jsp
+ *       ai/openobserve/o2-trace-java/servlet/bla.jsp</code> but also <code>
+ *       ai/openobserve/o2-trace-java/testing/servlet/bla.jsp</code> and <code>com/servlet/bla.jsp
  *       </code>
  * </ul>
  */

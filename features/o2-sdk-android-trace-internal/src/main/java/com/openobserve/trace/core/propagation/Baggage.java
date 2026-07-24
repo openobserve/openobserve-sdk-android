@@ -16,7 +16,7 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
-// Source: https://github.com/DataDog/oo-trace-java/blob/master/oo-trace-core/src/main/java/datadog/trace/core/baggage/BaggagePropagator.java
+// Source: https://github.com/DataDog/o2-trace-java/blob/master/o2-trace-core/src/main/java/datadog/trace/core/baggage/BaggagePropagator.java
 public final class Baggage {
     private static final char PAIR_SEPARATOR = ',';
     private static final char KEY_VALUE_SEPARATOR = '=';

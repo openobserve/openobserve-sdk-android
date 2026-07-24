@@ -145,7 +145,7 @@ class ErrorEventForgeryFactory : ForgeryFactory<ErrorEvent> {
                 session = forge.aNullable { ErrorEvent.OoSession(aNullable { getForgery() }) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") }
             ),
-            ootags = forge.aNullable { ddTagsString() }
+            o2tags = forge.aNullable { ddTagsString() }
         )
     }
 }

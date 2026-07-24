@@ -93,8 +93,8 @@ class TraceConfigurationTest {
         checkNotNull(request)
         assertThat(request.url).isEqualTo("${expectedSite.intakeEndpoint}/api/v2/spans")
         assertThat(request.headers).containsEntry("O2-API-KEY", expectedClientToken)
-        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
-        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
+        assertThat(request.headers).containsEntry("O2-EVP-ORIGIN", expectedSource)
+        assertThat(request.headers).containsEntry("O2-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
     }
 
@@ -127,8 +127,8 @@ class TraceConfigurationTest {
         checkNotNull(request)
         assertThat(request.url).isEqualTo(fakeEndpoint)
         assertThat(request.headers).containsEntry("O2-API-KEY", expectedClientToken)
-        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
-        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
+        assertThat(request.headers).containsEntry("O2-EVP-ORIGIN", expectedSource)
+        assertThat(request.headers).containsEntry("O2-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
     }
 
@@ -162,11 +162,11 @@ class TraceConfigurationTest {
         val event0 = JsonParser.parseString(eventsWritten[0].eventData) as JsonObject
         assertThat(event0.getString("env")).isEqualTo(stubSdkCore.getOpenObserveContext().env)
         assertThat(event0.getString("spans[0].trace_id")).isEqualTo(leastSignificantTraceId)
-        assertThat(event0.getString("spans[0].meta._oo.p.id")).isEqualTo(mostSignificantTraceId)
+        assertThat(event0.getString("spans[0].meta._o2.p.id")).isEqualTo(mostSignificantTraceId)
         assertThat(event0.getString("spans[0].span_id")).isEqualTo(spanId)
         assertThat(event0.getString("spans[0].service")).isEqualTo(stubSdkCore.getOpenObserveContext().service)
         assertThat(event0.getString("spans[0].meta.version")).isEqualTo(stubSdkCore.getOpenObserveContext().version)
-        assertThat(event0.getString("spans[0].meta._oo.source")).isEqualTo(stubSdkCore.getOpenObserveContext().source)
+        assertThat(event0.getString("spans[0].meta._o2.source")).isEqualTo(stubSdkCore.getOpenObserveContext().source)
         assertThat(event0.getString("spans[0].meta.tracer.version"))
             .isEqualTo(stubSdkCore.getOpenObserveContext().sdkVersion)
         assertThat(event0.getInt("spans[0].error")).isEqualTo(0)
@@ -208,11 +208,11 @@ class TraceConfigurationTest {
         val event0 = JsonParser.parseString(eventsWritten[0].eventData) as JsonObject
         assertThat(event0.getString("env")).isEqualTo(stubSdkCore.getOpenObserveContext().env)
         assertThat(event0.getString("spans[0].trace_id")).isEqualTo(leastSignificantTraceId)
-        assertThat(event0.getString("spans[0].meta._oo.p.id")).isEqualTo(mostSignificantTraceId)
+        assertThat(event0.getString("spans[0].meta._o2.p.id")).isEqualTo(mostSignificantTraceId)
         assertThat(event0.getString("spans[0].span_id")).isEqualTo(spanId)
         assertThat(event0.getString("spans[0].service")).isEqualTo(stubSdkCore.getOpenObserveContext().service)
         assertThat(event0.getString("spans[0].meta.version")).isEqualTo(stubSdkCore.getOpenObserveContext().version)
-        assertThat(event0.getString("spans[0].meta._oo.source")).isEqualTo(stubSdkCore.getOpenObserveContext().source)
+        assertThat(event0.getString("spans[0].meta._o2.source")).isEqualTo(stubSdkCore.getOpenObserveContext().source)
         assertThat(event0.getString("spans[0].meta.tracer.version"))
             .isEqualTo(stubSdkCore.getOpenObserveContext().sdkVersion)
         assertThat(event0.getInt("spans[0].error")).isEqualTo(0)
@@ -261,7 +261,7 @@ class TraceConfigurationTest {
         assertThat(event0.getString("env")).isEqualTo(stubSdkCore.getOpenObserveContext().env)
         assertThat(event0.getString("spans[0].service")).isEqualTo(stubSdkCore.getOpenObserveContext().service)
         assertThat(event0.getString("spans[0].meta.version")).isEqualTo(stubSdkCore.getOpenObserveContext().version)
-        assertThat(event0.getString("spans[0].meta._oo.source")).isEqualTo(stubSdkCore.getOpenObserveContext().source)
+        assertThat(event0.getString("spans[0].meta._o2.source")).isEqualTo(stubSdkCore.getOpenObserveContext().source)
         assertThat(event0.getString("spans[0].meta.tracer.version"))
             .isEqualTo(stubSdkCore.getOpenObserveContext().sdkVersion)
         assertThat(event0.getInt("spans[0].error")).isEqualTo(0)

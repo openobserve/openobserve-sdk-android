@@ -84,8 +84,8 @@ class _RumInternalProxy internal constructor(private val rumMonitor: AdvancedRum
     fun setSyntheticsAttributeFromIntent(intent: Intent) {
         @Suppress("TooGenericExceptionCaught")
         val extras = try { intent.extras } catch (_: Exception) { null }
-        val testId = extras?.getString("_oo.synthetics.test_id")
-        val resultId = extras?.getString("_oo.synthetics.result_id")
+        val testId = extras?.getString("_o2.synthetics.test_id")
+        val resultId = extras?.getString("_o2.synthetics.result_id")
         this.setSyntheticsAttribute(testId, resultId)
     }
 

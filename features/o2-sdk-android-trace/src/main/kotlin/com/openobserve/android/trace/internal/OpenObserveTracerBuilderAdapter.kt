@@ -126,7 +126,7 @@ internal class OpenObserveTracerBuilderAdapter(
         internal const val DEFAULT_URL_AS_RESOURCE_NAME = false
 
         internal fun TracingHeaderType.toPropagationStyle(): String = when (this) {
-            // oo-trace-java code (TracePropagationStyle.valueOfDisplayName)
+            // o2-trace-java code (TracePropagationStyle.valueOfDisplayName)
             // treats "B3" as an alias for B3MULTI, not B3 single header.
             // We must pass this explicitly to get the correct single-header injector.
             TracingHeaderType.B3 -> "B3SINGLE"

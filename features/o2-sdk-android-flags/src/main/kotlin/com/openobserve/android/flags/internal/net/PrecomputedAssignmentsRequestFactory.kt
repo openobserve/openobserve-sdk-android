@@ -139,8 +139,8 @@ internal class PrecomputedAssignmentsRequestFactory(
             ?.get("application_id") as? String
 
     companion object {
-        private const val HEADER_APPLICATION_ID = "oo-application-id"
-        private const val HEADER_CLIENT_TOKEN = "oo-client-token"
+        private const val HEADER_APPLICATION_ID = "o2-application-id"
+        private const val HEADER_CLIENT_TOKEN = "o2-client-token"
         private const val HEADER_CONTENT_TYPE = "Content-Type"
         private const val CONTENT_TYPE_VND_JSON = "application/vnd.api+json"
         private const val PREVIEW_CUSTOMER_DOMAIN = "preview"

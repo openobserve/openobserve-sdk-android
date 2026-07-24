@@ -180,7 +180,7 @@ class CrossFeatureTest {
                 .hasSessionId(viewEvent.session.id)
                 .hasViewId(viewEvent.view.id)
                 .hasActionId(checkNotNull(actionEvent.action.id))
-                .hasTraceId(spanEvent.meta.additionalProperties["_oo.p.id"] + spanEvent.traceId)
+                .hasTraceId(spanEvent.meta.additionalProperties["_o2.p.id"] + spanEvent.traceId)
                 .hasSpanId(spanEvent.spanId.toLong(radix = 16).toString())
             true
         }.doWait(TimeUnit.SECONDS.toMillis(30))
@@ -228,7 +228,7 @@ class CrossFeatureTest {
                 .hasSessionId(viewEvent.session.id)
                 .hasNoViewId()
                 .hasNoActionId()
-                .hasTraceId(spanEvent.meta.additionalProperties["_oo.p.id"] + spanEvent.traceId)
+                .hasTraceId(spanEvent.meta.additionalProperties["_o2.p.id"] + spanEvent.traceId)
                 .hasSpanId(spanEvent.spanId.toLong(radix = 16).toString())
             true
         }.doWait(TimeUnit.SECONDS.toMillis(30))
@@ -276,7 +276,7 @@ class CrossFeatureTest {
                 .hasSessionId(viewEvent.session.id)
                 .hasNoViewId()
                 .hasNoActionId()
-                .hasTraceId(spanEvent.meta.additionalProperties["_oo.p.id"] + spanEvent.traceId)
+                .hasTraceId(spanEvent.meta.additionalProperties["_o2.p.id"] + spanEvent.traceId)
                 .hasSpanId(spanEvent.spanId.toLong(radix = 16).toString())
             true
         }.doWait(TimeUnit.SECONDS.toMillis(30))

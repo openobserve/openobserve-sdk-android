@@ -84,8 +84,8 @@ internal class PrecomputedAssignmentsRequestFactoryTest {
         checkNotNull(request)
         assertThat(request.url.toString()).isEqualTo("https://preview.ff-cdn.openobserve.ai/precompute-assignments")
         assertThat(request.method).isEqualTo("POST")
-        assertThat(request.header("oo-client-token")).isEqualTo(fakeOpenObserveContext.clientToken)
-        assertThat(request.header("oo-application-id")).isEqualTo(fakeRumApplicationId.toString())
+        assertThat(request.header("o2-client-token")).isEqualTo(fakeOpenObserveContext.clientToken)
+        assertThat(request.header("o2-application-id")).isEqualTo(fakeRumApplicationId.toString())
         assertThat(request.header("Content-Type")).isEqualTo("application/vnd.api+json")
     }
 
@@ -109,8 +109,8 @@ internal class PrecomputedAssignmentsRequestFactoryTest {
 
         // Then
         checkNotNull(request)
-        assertThat(request.header("oo-client-token")).isEqualTo(fakeOpenObserveContext.clientToken)
-        assertThat(request.header("oo-application-id")).isNull()
+        assertThat(request.header("o2-client-token")).isEqualTo(fakeOpenObserveContext.clientToken)
+        assertThat(request.header("o2-application-id")).isNull()
         assertThat(request.header("Content-Type")).isEqualTo("application/vnd.api+json")
     }
 

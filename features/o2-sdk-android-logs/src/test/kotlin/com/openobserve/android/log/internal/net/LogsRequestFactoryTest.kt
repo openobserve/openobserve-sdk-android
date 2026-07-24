@@ -66,7 +66,7 @@ internal class LogsRequestFactoryTest {
         requireNotNull(request)
         assertThat(request.url).isEqualTo(
             "${fakeOpenObserveContext.site.intakeEndpoint}/api/v2/logs?" +
-                "oosource=${fakeOpenObserveContext.source}"
+                "o2source=${fakeOpenObserveContext.source}"
         )
         assertThat(request.contentType).isEqualTo(RequestFactory.CONTENT_TYPE_JSON)
         assertThat(request.headers.minus(RequestFactory.HEADER_REQUEST_ID)).isEqualTo(
@@ -111,7 +111,7 @@ internal class LogsRequestFactoryTest {
 
         // Then
         requireNotNull(request)
-        assertThat(request.url).isEqualTo("$fakeEndpoint?oosource=${fakeOpenObserveContext.source}")
+        assertThat(request.url).isEqualTo("$fakeEndpoint?o2source=${fakeOpenObserveContext.source}")
         assertThat(request.contentType).isEqualTo(RequestFactory.CONTENT_TYPE_JSON)
         assertThat(request.headers.minus(RequestFactory.HEADER_REQUEST_ID)).isEqualTo(
             mapOf(

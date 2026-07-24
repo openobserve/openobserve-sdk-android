@@ -155,7 +155,7 @@ class ViewEventForgeryFactory : ForgeryFactory<ViewEvent> {
                     )
                 }
             ),
-            ootags = forge.aNullable { ddTagsString() }
+            o2tags = forge.aNullable { ddTagsString() }
         )
     }
 }

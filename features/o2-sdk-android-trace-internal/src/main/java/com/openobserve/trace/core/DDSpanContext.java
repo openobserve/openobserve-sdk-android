@@ -57,9 +57,9 @@ public class DDSpanContext
   public static final String PRIORITY_SAMPLING_KEY = "_sampling_priority_v1";
   public static final String SAMPLE_RATE_KEY = "_sample_rate";
 
-  public static final String SPAN_SAMPLING_MECHANISM_TAG = "_oo.span_sampling.mechanism";
-  public static final String SPAN_SAMPLING_RULE_RATE_TAG = "_oo.span_sampling.rule_rate";
-  public static final String SPAN_SAMPLING_MAX_PER_SECOND_TAG = "_oo.span_sampling.max_per_second";
+  public static final String SPAN_SAMPLING_MECHANISM_TAG = "_o2.span_sampling.mechanism";
+  public static final String SPAN_SAMPLING_RULE_RATE_TAG = "_o2.span_sampling.rule_rate";
+  public static final String SPAN_SAMPLING_MAX_PER_SECOND_TAG = "_o2.span_sampling.max_per_second";
 
   private static final DDCache<String, UTF8BytesString> THREAD_NAMES =
       DDCaches.newFixedSizeCache(256);
@@ -935,7 +935,7 @@ public class DDSpanContext
   @Override
   public void setDataCurrent(String key, Object value) {
     // TODO is this decided?
-    String tagKey = "_oo." + key + ".json";
+    String tagKey = "_o2." + key + ".json";
     this.setTag(tagKey, value);
   }
 }

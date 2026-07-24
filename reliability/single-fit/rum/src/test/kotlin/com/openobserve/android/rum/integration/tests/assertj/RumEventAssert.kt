@@ -66,7 +66,7 @@ class RumEventAssert(actual: JsonObject) :
 
     fun hasDocumentVersion(version: Int): RumEventAssert {
         // hack because our first RUM View event will always have document_version set to 2
-        hasField("_oo.document_version", (version + 1))
+        hasField("_o2.document_version", (version + 1))
         return this
     }
 
@@ -204,22 +204,22 @@ class RumEventAssert(actual: JsonObject) :
 
     // region configuration
     fun hasSessionReplaySampleRate(sampleRate: Long): RumEventAssert {
-        hasField("_oo.configuration.session_replay_sample_rate", sampleRate)
+        hasField("_o2.configuration.session_replay_sample_rate", sampleRate)
         return this
     }
 
     fun hasTraceSampleRate(sampleRate: Float): RumEventAssert {
-        hasField("_oo.configuration.trace_sample_rate", sampleRate)
+        hasField("_o2.configuration.trace_sample_rate", sampleRate)
         return this
     }
 
     fun doesNotHaveSessionReplaySampleRate(): RumEventAssert {
-        doesNotHaveField("_oo.configuration.session_replay_sample_rate")
+        doesNotHaveField("_o2.configuration.session_replay_sample_rate")
         return this
     }
 
     fun doesNotHaveTraceSampleRate(): RumEventAssert {
-        doesNotHaveField("_oo.configuration.trace_sample_rate")
+        doesNotHaveField("_o2.configuration.trace_sample_rate")
         return this
     }
     // endregion

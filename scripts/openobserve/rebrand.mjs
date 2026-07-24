@@ -8,7 +8,7 @@
  *      o2-sdk-android-*). Directory moves must happen before content rewrites so
  *      the content pass sees the final tree.
  *   2. content rules — rewrite file text (package/import decls, Maven coordinates,
- *      public API type names, JNI symbols, _dd -> _oo).
+ *      public API type names, JNI symbols, _dd -> _o2).
  *
  * Run from the repository root:
  *   node scripts/openobserve/rebrand.mjs            # apply (git mv + content)

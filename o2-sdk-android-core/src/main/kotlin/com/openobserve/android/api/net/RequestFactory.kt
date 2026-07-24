@@ -50,31 +50,31 @@ fun interface RequestFactory {
         /**
          * OpenObserve Event Platform Origin header, e.g. android, flutter, etc.
          */
-        const val HEADER_EVP_ORIGIN: String = "OO-EVP-ORIGIN"
+        const val HEADER_EVP_ORIGIN: String = "O2-EVP-ORIGIN"
 
         /**
          * OpenObserve Event Platform Origin version header, e.g. SDK version.
          */
-        const val HEADER_EVP_ORIGIN_VERSION: String = "OO-EVP-ORIGIN-VERSION"
+        const val HEADER_EVP_ORIGIN_VERSION: String = "O2-EVP-ORIGIN-VERSION"
 
         /**
          * OpenObserve Request ID header, used for debugging purposes.
          */
-        const val HEADER_REQUEST_ID: String = "OO-REQUEST-ID"
+        const val HEADER_REQUEST_ID: String = "O2-REQUEST-ID"
 
         /**
          * OpenObserve source query parameter name.
          */
-        const val QUERY_PARAM_SOURCE: String = "oosource"
+        const val QUERY_PARAM_SOURCE: String = "o2source"
 
         /**
          * OpenObserve tags query parameter name.
          */
-        const val QUERY_PARAM_TAGS: String = "ootags"
+        const val QUERY_PARAM_TAGS: String = "o2tags"
 
         /**
          * OpenObserve Idempotency key header, used to offer more insight into the request retry statistics.
          */
-        const val DD_IDEMPOTENCY_KEY: String = "OO-IDEMPOTENCY-KEY"
+        const val DD_IDEMPOTENCY_KEY: String = "O2-IDEMPOTENCY-KEY"
     }
 }

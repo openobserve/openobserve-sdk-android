@@ -96,7 +96,7 @@
           "description": "The client application package version",
           "readOnly": true
         },
-        "_oo": {
+        "_o2": {
           "type": "object",
           "properties": {
             "source": {
@@ -312,7 +312,7 @@
 
       "required": [
         "version",
-        "_oo",
+        "_o2",
         "span",
         "tracer",
         "usr"

@@ -98,7 +98,7 @@ private fun JsonObject.verifyEventMatches(event: ExpectedApplicationLaunchViewEv
         .hasField("view") {
             hasField("url", "com/openobserve/application-launch/view")
         }
-        .hasField("_oo") {
+        .hasField("_o2") {
             hasField("document_version", event.docVersion)
         }
 
@@ -133,7 +133,7 @@ private fun JsonObject.verifyEventMatches(event: ExpectedViewEvent) {
         .hasField("view") {
             hasField("url", event.viewUrl)
         }
-    this.getAsJsonObject("_oo").apply {
+    this.getAsJsonObject("_o2").apply {
         val documentVersion = getAsJsonPrimitive("document_version").asInt
         Assertions.assertThat(documentVersion)
             .withFailMessage(

@@ -361,7 +361,7 @@ internal class RumActionScope(
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
                 buildId = ooContext.appBuildId,
-                ootags = buildDDTagsString(ooContext)
+                o2tags = buildDDTagsString(ooContext)
             )
         }
             .apply {

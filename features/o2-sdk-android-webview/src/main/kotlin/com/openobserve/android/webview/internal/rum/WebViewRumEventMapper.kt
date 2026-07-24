@@ -80,7 +80,7 @@ internal class WebViewRumEventMapper(
     companion object {
         internal const val APPLICATION_KEY_NAME = "application"
         internal const val SESSION_KEY_NAME = "session"
-        internal const val DD_KEY_NAME = "_oo"
+        internal const val DD_KEY_NAME = "_o2"
         internal const val DD_SESSION_KEY_NAME = "session"
         internal const val DD_REPLAY_STATS = "replay_stats"
         internal const val DATE_KEY_NAME = "date"

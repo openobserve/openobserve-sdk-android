@@ -650,7 +650,7 @@ internal class OtelTracerBuilderProviderTest {
 
     companion object {
 
-        private const val OPENOBSERVE_INITIAL_CONTEXT: String = "_oo.openobserve_initial_context"
+        private const val OPENOBSERVE_INITIAL_CONTEXT: String = "_o2.openobserve_initial_context"
 
         private val Tracer.delegate: OpenObserveTracer
             get() = getFieldValue("tracer")

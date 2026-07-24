@@ -46,6 +46,6 @@ public class CloudNamingV0 implements NamingSchema.ForCloud {
   @NonNull
   @Override
   public String operationForFaas(@NonNull final String provider) {
-    return "oo-tracer-serverless-span";
+    return "o2-tracer-serverless-span";
   }
 }

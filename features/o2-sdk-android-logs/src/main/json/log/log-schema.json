@@ -66,7 +66,7 @@
       ],
       "readOnly": true
     },
-    "_oo": {
+    "_o2": {
       "type": "object",
       "description": "OpenObserve internal information",
       "properties": {
@@ -262,7 +262,7 @@
       "description": "The build version for this application",
       "readOnly": true
     },
-    "ootags": {
+    "o2tags": {
       "type": "string",
       "description": "The list of tags joined into a String and divided by ',' ",
       "readOnly": false
@@ -274,8 +274,8 @@
     "date",
     "service",
     "logger",
-    "_oo",
-    "ootags",
+    "_o2",
+    "o2tags",
     "device",
     "os"
   ],

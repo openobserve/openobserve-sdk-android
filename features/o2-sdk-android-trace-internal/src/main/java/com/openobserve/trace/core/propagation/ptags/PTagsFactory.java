@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class PTagsFactory implements PropagationTags.Factory {
-  static final String PROPAGATION_ERROR_TAG_KEY = "_oo.propagation_error";
+  static final String PROPAGATION_ERROR_TAG_KEY = "_o2.propagation_error";
 
   private final EnumMap<HeaderType, PTagsCodec> DEC_ENC_MAP = new EnumMap<>(HeaderType.class);
 

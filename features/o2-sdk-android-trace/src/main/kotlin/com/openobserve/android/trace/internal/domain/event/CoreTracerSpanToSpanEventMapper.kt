@@ -170,6 +170,6 @@ internal class CoreTracerSpanToSpanEventMapper(
         private const val TRACE_ID_KEY = "trace_id"
         private const val TRACE_STATE_KEY = "tracestate"
         private const val FLAGS_KEY = "flags"
-        internal const val SPAN_LINKS_KEY = "_oo.span_links"
+        internal const val SPAN_LINKS_KEY = "_o2.span_links"
     }
 }

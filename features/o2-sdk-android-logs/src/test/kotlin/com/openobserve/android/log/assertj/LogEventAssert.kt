@@ -85,9 +85,9 @@ internal class LogEventAssert(actual: LogEvent) :
 
     fun hasExactlyTags(expected: Collection<String>): LogEventAssert {
         val serializedTags = expected.joinToString(separator = ",")
-        assertThat(actual.ootags)
+        assertThat(actual.o2tags)
             .overridingErrorMessage(
-                "Expected log to have tags $serializedTags but was ${actual.ootags}"
+                "Expected log to have tags $serializedTags but was ${actual.o2tags}"
             )
             .isEqualTo(serializedTags)
         return this

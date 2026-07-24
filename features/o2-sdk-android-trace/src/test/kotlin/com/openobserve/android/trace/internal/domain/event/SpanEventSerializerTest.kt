@@ -591,7 +591,7 @@ internal class SpanEventSerializerTest {
         private const val KEY_CLIENT = "client"
         private const val KEY_METRICS = "metrics"
         private const val KEY_METRICS_TOP_LEVEL = "_top_level"
-        private const val KEY_DD = "_oo"
+        private const val KEY_DD = "_o2"
         private const val KEY_SOURCE = "source"
         private const val KEY_SPAN = "span"
         private const val KEY_KIND = "kind"

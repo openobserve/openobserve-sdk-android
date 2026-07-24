@@ -57,27 +57,27 @@ object RumAttributes {
     /**
      * Overrides the automatic RUM error event type with a custom one.
      */
-    const val INTERNAL_ERROR_TYPE: String = "_oo.error_type"
+    const val INTERNAL_ERROR_TYPE: String = "_o2.error_type"
 
     /**
      * Overrides the automatic RUM event timestamp with a custom one.
      */
-    const val INTERNAL_TIMESTAMP: String = "_oo.timestamp"
+    const val INTERNAL_TIMESTAMP: String = "_o2.timestamp"
 
     /**
      * Overrides the default RUM error source type with a custom one.
      */
-    const val INTERNAL_ERROR_SOURCE_TYPE: String = "_oo.error.source_type"
+    const val INTERNAL_ERROR_SOURCE_TYPE: String = "_o2.error.source_type"
 
     /**
      * Overrides the default RUM error source `is_crash` with a custom one.
      */
-    const val INTERNAL_ERROR_IS_CRASH: String = "_oo.error.is_crash"
+    const val INTERNAL_ERROR_IS_CRASH: String = "_o2.error.is_crash"
 
     /**
      * All threads information.
      */
-    internal const val INTERNAL_ALL_THREADS: String = "_oo.error.threads"
+    internal const val INTERNAL_ALL_THREADS: String = "_o2.error.threads"
 
     /**
      * Overrides the default view instrumentation type with a custom one.
@@ -98,7 +98,7 @@ object RumAttributes {
      * )
      * ```
      */
-    const val INTERNAL_INSTRUMENTATION_TYPE: String = "_oo.instrumentation_type"
+    const val INTERNAL_INSTRUMENTATION_TYPE: String = "_o2.instrumentation_type"
 
     // endregion
 
@@ -108,60 +108,60 @@ object RumAttributes {
      * Trace Id related to the resource loading. (Number)
      * This value is filled automatically by the [OpenObserveInterceptor].
      */
-    const val TRACE_ID: String = "_oo.trace_id"
+    const val TRACE_ID: String = "_o2.trace_id"
 
     /**
      * Span Id related to the resource loading. (Number)
      * This value is filled automatically by the [OpenObserveInterceptor].
      */
-    const val SPAN_ID: String = "_oo.span_id"
+    const val SPAN_ID: String = "_o2.span_id"
 
     /**
      * Tracing Sample Rate for the resource tracking, between zero and one. (Number)
      * This value is filled automatically by the [OpenObserveInterceptor].
      */
-    const val RULE_PSR: String = "_oo.rule_psr"
+    const val RULE_PSR: String = "_o2.rule_psr"
 
     /**
      * Timings coming from external sources, as object { startTime (number) + duration (number) }.
      */
-    const val RESOURCE_TIMINGS: String = "_oo.resource_timings"
+    const val RESOURCE_TIMINGS: String = "_o2.resource_timings"
 
     /**
      * GraphQL operation type (String).
      */
-    const val GRAPHQL_OPERATION_TYPE: String = "_oo.graphql.operation_type"
+    const val GRAPHQL_OPERATION_TYPE: String = "_o2.graphql.operation_type"
 
     /**
      * GraphQL operation name (String).
      */
-    const val GRAPHQL_OPERATION_NAME: String = "_oo.graphql.operation_name"
+    const val GRAPHQL_OPERATION_NAME: String = "_o2.graphql.operation_name"
 
     /**
      * JSON representation of GraphQL payload (String).
      */
-    const val GRAPHQL_PAYLOAD: String = "_oo.graphql.payload"
+    const val GRAPHQL_PAYLOAD: String = "_o2.graphql.payload"
 
     /**
      * JSON representation of GraphQL variables (String).
      */
-    const val GRAPHQL_VARIABLES: String = "_oo.graphql.variables"
+    const val GRAPHQL_VARIABLES: String = "_o2.graphql.variables"
 
     /**
      * JSON representation of GraphQL errors from the response (String).
      * Expects a JSON array of error objects, each with at least a "message" field.
      */
-    const val GRAPHQL_ERRORS: String = "_oo.graphql.errors"
+    const val GRAPHQL_ERRORS: String = "_o2.graphql.errors"
 
     /**
      * The request headers of the resource. (Map<String, String>)
      */
-    const val REQUEST_HEADERS: String = "_oo.request_headers"
+    const val REQUEST_HEADERS: String = "_o2.request_headers"
 
     /**
      * The response headers of the resource. (Map<String, String>)
      */
-    const val RESPONSE_HEADERS: String = "_oo.response_headers"
+    const val RESPONSE_HEADERS: String = "_o2.response_headers"
 
     // endregion
 
@@ -203,7 +203,7 @@ object RumAttributes {
     /**
      * Specifies a custom error fingerprint for the supplied error.
      */
-    const val ERROR_FINGERPRINT: String = "_oo.error.fingerprint"
+    const val ERROR_FINGERPRINT: String = "_o2.error.fingerprint"
 
     // endregion
 
@@ -345,14 +345,14 @@ object RumAttributes {
      * Custom Flutter vital - First Build Complete. The amount of time between a route change (the start of a view)
      * and when the first `build` method is complete. In nanoseconds since view start.
      */
-    const val FLUTTER_FIRST_BUILD_COMPLETE: String = "_oo.performance.first_build_complete"
+    const val FLUTTER_FIRST_BUILD_COMPLETE: String = "_o2.performance.first_build_complete"
 
     /**
      * Custom value for Interaction To Next view.
      * For Flutter this is the amount of time between an action occurring and the First Build Complete occurring
      * on the next view.
      */
-    const val CUSTOM_INV_VALUE: String = "_oo.view.custom_inv_value"
+    const val CUSTOM_INV_VALUE: String = "_o2.view.custom_inv_value"
 
     // endregion
 }

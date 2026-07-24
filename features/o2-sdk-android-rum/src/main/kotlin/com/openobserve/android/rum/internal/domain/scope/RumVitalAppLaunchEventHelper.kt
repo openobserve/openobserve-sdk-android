@@ -141,7 +141,7 @@ internal class RumVitalAppLaunchEventHelper(
             connectivity = ooContext.networkInfo.toAppLaunchVitalConnectivity(),
             version = ooContext.version,
             service = ooContext.service,
-            ootags = buildDDTagsString(ooContext),
+            o2tags = buildDDTagsString(ooContext),
             vital = VitalAppLaunchEvent.Vital(
                 id = UUID.randomUUID().toString(),
                 name = appLaunchMetric.vitalName(),

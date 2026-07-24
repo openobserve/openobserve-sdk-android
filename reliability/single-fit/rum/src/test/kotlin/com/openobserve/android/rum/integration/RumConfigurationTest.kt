@@ -354,16 +354,16 @@ class RumConfigurationTest {
         checkNotNull(request)
 
         val expectedUrl = buildString {
-            append("${expectedSite.intakeEndpoint}/api/v2/rum?oosource=$expectedSource")
+            append("${expectedSite.intakeEndpoint}/api/v2/rum?o2source=$expectedSource")
             if (expectedTags.isNotEmpty()) {
-                append("&ootags=$expectedTags")
+                append("&o2tags=$expectedTags")
             }
         }
         assertThat(request.url).isEqualTo(expectedUrl)
 
         assertThat(request.headers).containsEntry("O2-API-KEY", expectedClientToken)
-        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
-        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
+        assertThat(request.headers).containsEntry("O2-EVP-ORIGIN", expectedSource)
+        assertThat(request.headers).containsEntry("O2-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
     }
 
@@ -405,15 +405,15 @@ class RumConfigurationTest {
         checkNotNull(request)
 
         val expectedUrl = buildString {
-            append("$fakeEndpoint?oosource=$expectedSource")
+            append("$fakeEndpoint?o2source=$expectedSource")
             if (expectedTags.isNotEmpty()) {
-                append("&ootags=$expectedTags")
+                append("&o2tags=$expectedTags")
             }
         }
         assertThat(request.url).isEqualTo(expectedUrl)
         assertThat(request.headers).containsEntry("O2-API-KEY", expectedClientToken)
-        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN", expectedSource)
-        assertThat(request.headers).containsEntry("OO-EVP-ORIGIN-VERSION", expectedSdkVersion)
+        assertThat(request.headers).containsEntry("O2-EVP-ORIGIN", expectedSource)
+        assertThat(request.headers).containsEntry("O2-EVP-ORIGIN-VERSION", expectedSdkVersion)
         assertThat(request.contentType).isEqualTo("text/plain;charset=UTF-8")
     }
 

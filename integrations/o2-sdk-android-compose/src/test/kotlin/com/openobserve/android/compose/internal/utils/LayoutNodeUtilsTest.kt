@@ -581,7 +581,7 @@ class LayoutNodeUtilsTest {
          * LayoutNodeUtils sends telemetry with default SDK core instance, so in the test we must
          * register the mocked SDK core with default name from [SdkCoreRegistry.DEFAULT_INSTANCE_NAME].
          */
-        private const val DEFAULT_INSTANCE_NAME = "_oo.sdk_core.default"
+        private const val DEFAULT_INSTANCE_NAME = "_o2.sdk_core.default"
 
         // LayoutNode -> LayoutNodeLayoutDelegate -> NodeCoordinator
         private const val EXPECTED_REFLECTION_CHAIN_LENGTH = 3

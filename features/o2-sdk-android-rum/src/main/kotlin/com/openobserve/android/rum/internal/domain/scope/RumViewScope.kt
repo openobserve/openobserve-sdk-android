@@ -101,9 +101,9 @@ internal open class RumViewScope(
     internal val viewId: String = UUID.randomUUID().toString()
     private val sessionId: String = parentScope.getRumContext().let {
         if (it.syntheticsTestId != null) {
-            logSynthetics("_oo.application.id", it.applicationId)
-            logSynthetics("_oo.session.id", it.sessionId)
-            logSynthetics("_oo.view.id", viewId)
+            logSynthetics("_o2.application.id", it.applicationId)
+            logSynthetics("_o2.session.id", it.sessionId)
+            logSynthetics("_o2.view.id", viewId)
         }
         it.sessionId
     }
@@ -411,7 +411,7 @@ internal open class RumViewScope(
             buildVersion = ooContext.versionCode.toString(),
             buildId = ooContext.appBuildId,
             service = ooContext.service,
-            ootags = buildDDTagsString(ooContext),
+            o2tags = buildDDTagsString(ooContext),
             vital = VitalOperationStepEvent.Vital(
                 id = UUID.randomUUID().toString(),
                 name = name,
@@ -814,7 +814,7 @@ internal open class RumViewScope(
                 service = ooContext.service,
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
-                ootags = buildDDTagsString(ooContext)
+                o2tags = buildDDTagsString(ooContext)
             )
         }
             .apply {
@@ -1354,7 +1354,7 @@ internal open class RumViewScope(
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
                 buildId = ooContext.appBuildId,
-                ootags = buildDDTagsString(ooContext)
+                o2tags = buildDDTagsString(ooContext)
             ).apply {
                 sessionEndedMetricDispatcher.onViewTracked(sessionId, this)
             }
@@ -1529,7 +1529,7 @@ internal open class RumViewScope(
                 version = ooContext.version,
                 buildVersion = ooContext.versionCode.toString(),
                 buildId = ooContext.appBuildId,
-                ootags = buildDDTagsString(ooContext)
+                o2tags = buildDDTagsString(ooContext)
             )
         }
             .apply {

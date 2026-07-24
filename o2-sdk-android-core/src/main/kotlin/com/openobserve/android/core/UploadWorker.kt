@@ -135,6 +135,6 @@ class UploadWorker(
 
         internal const val MESSAGE_NOT_INITIALIZED = "OpenObserve has not been initialized."
 
-        internal const val OPENOBSERVE_INSTANCE_NAME = "_oo.sdk.instanceName"
+        internal const val OPENOBSERVE_INSTANCE_NAME = "_o2.sdk.instanceName"
     }
 }

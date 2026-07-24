@@ -17,7 +17,7 @@ internal interface RemoteDataSource {
     @Headers(
         "Content-Type: application/json",
         "O2-API-KEY:${BuildConfig.DD_API_KEY}",
-        "OO-APPLICATION-KEY:${BuildConfig.DD_APPLICATION_KEY}"
+        "O2-APPLICATION-KEY:${BuildConfig.DD_APPLICATION_KEY}"
     )
     @GET("logs/events")
     fun getLogs(@Query("filter[query]") query: String): Single<LogsCollection>

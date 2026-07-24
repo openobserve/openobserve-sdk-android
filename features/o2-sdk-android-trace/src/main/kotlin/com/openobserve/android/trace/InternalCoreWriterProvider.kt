@@ -14,7 +14,7 @@ import com.openobserve.android.trace.api.span.OpenObserveSpanWriter
  * The [com.openobserve.trace.core.CoreTracer] uses this interface to be able to provide custom
  * implementations of the writer. By using this interface, the tracer can be decoupled from the
  * o2-sdk-android-trace-otel module by providing the writer implementation from the o2-sdk-android-trace module.
- * The reason we cannot provide the implementation directly in the oo-track-android-trace-otel module is that the
+ * The reason we cannot provide the implementation directly in the o2-track-android-trace-otel module is that the
  * current Writer implementation is depending on too many classes from the o2-sdk-android-trace module.
  */
 @InternalApi

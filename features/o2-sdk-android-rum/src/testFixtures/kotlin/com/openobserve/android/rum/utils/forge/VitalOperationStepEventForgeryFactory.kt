@@ -60,7 +60,7 @@ class VitalOperationStepEventForgeryFactory : ForgeryFactory<VitalOperationStepE
                 session = forge.aNullable { VitalOperationStepEvent.OoSession(getForgery()) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") }
             ),
-            ootags = forge.aNullable { ddTagsString() },
+            o2tags = forge.aNullable { ddTagsString() },
             view = VitalOperationStepEvent.VitalOperationStepEventView(
                 id = forge.getForgery<UUID>().toString(),
                 referrer = forge.aNullable { getForgery<URL>().toString() },

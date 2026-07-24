@@ -69,6 +69,6 @@ internal class SdkCoreRegistry(
     // endregion
 
     companion object {
-        const val DEFAULT_INSTANCE_NAME = "_oo.sdk_core.default"
+        const val DEFAULT_INSTANCE_NAME = "_o2.sdk_core.default"
     }
 }

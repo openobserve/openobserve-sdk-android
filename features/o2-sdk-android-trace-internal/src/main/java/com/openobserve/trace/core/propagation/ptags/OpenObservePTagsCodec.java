@@ -40,10 +40,10 @@ final class OpenObservePTagsCodec extends PTagsCodec {
    *   comma = ",";
    * </pre>
    *
-   * All tags prefixed with `_oo.p.` are extracted from tagSet except for `_oo.p.upstream_services`.
+   * All tags prefixed with `_o2.p.` are extracted from tagSet except for `_o2.p.upstream_services`.
    * TagSet that doesn't respect the format will be dropped and a warning will be logged.
    *
-   * @return a PropagationTags containing only _oo.p.* tags or an error if the header value is
+   * @return a PropagationTags containing only _o2.p.* tags or an error if the header value is
    *     invalid
    */
   @Override
@@ -53,7 +53,7 @@ final class OpenObservePTagsCodec extends PTagsCodec {
     }
     if (value.length() > xOpenObserveTagsLimit) {
       // Incoming x-datadog-tags value length exceeds ooTagsLimit
-      // Set _oo.propagation_error:extract_max_size
+      // Set _o2.propagation_error:extract_max_size
       return tagsFactory.createInvalid(PROPAGATION_ERROR_EXTRACT_MAX_SIZE);
     }
 

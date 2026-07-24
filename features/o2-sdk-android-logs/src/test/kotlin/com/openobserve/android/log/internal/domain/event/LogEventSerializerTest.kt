@@ -72,11 +72,11 @@ internal class LogEventSerializerTest {
     @Test
     fun `ignores reserved tags keys`(@Forgery fakeLog: LogEvent, forge: Forge) {
         // Given
-        val logWithoutTags = fakeLog.copy(ootags = "")
+        val logWithoutTags = fakeLog.copy(o2tags = "")
         val key = forge.anElementFrom("host", "device", "source")
         val value = forge.aNumericalString()
         val reservedTag = "$key:$value"
-        val logWithReservedTags = fakeLog.copy(ootags = reservedTag)
+        val logWithReservedTags = fakeLog.copy(o2tags = reservedTag)
 
         // When
         val serialized = testedSerializer.serialize(logWithReservedTags)
@@ -249,7 +249,7 @@ internal class LogEventSerializerTest {
             .hasField(KEY_MESSAGE, log.message)
             .hasField(KEY_SERVICE_NAME, log.service)
             .hasField(KEY_DATE, log.date)
-            .hasField(KEY_TAGS, log.ootags)
+            .hasField(KEY_TAGS, log.o2tags)
         log.status.let {
             assertThat(jsonObject).hasField(KEY_STATUS, it.toJson())
         }
@@ -552,7 +552,7 @@ internal class LogEventSerializerTest {
         private const val KEY_VERSION = "version"
         private const val KEY_THREAD_NAME = "thread_name"
         private const val KEY_STATUS = "status"
-        private const val KEY_TAGS = "ootags"
+        private const val KEY_TAGS = "o2tags"
         private const val KEY_SIM_CARRIER = "sim_carrier"
         private const val KEY_NETWORK_CARRIER_ID: String = "id"
         private const val KEY_NETWORK_CARRIER_NAME: String = "name"

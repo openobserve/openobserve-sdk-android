@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * <pre>
  *   - parsing and validation the x-datadog-tags header value
- *   - dropping non _oo.p.* tags
+ *   - dropping non _o2.p.* tags
  *   - error handling and propagation
  *   - concurrent updates to the sampling priority
  *   - producing the x-datadog-tags header value
@@ -52,7 +52,7 @@ public abstract class PropagationTags {
   }
 
   /**
-   * Updates the trace-level sampling priority decision if it hasn't already been made and _oo.p.dm
+   * Updates the trace-level sampling priority decision if it hasn't already been made and _o2.p.dm
    * tag doesn't exist. Called on the root span context.
    */
   public abstract void updateTraceSamplingPriority(int samplingPriority, int samplingMechanism);
@@ -88,15 +88,15 @@ public abstract class PropagationTags {
   public abstract void updateW3CTracestate(String tracestate);
 
   /**
-   * Constructs a header value that includes valid propagated _oo.p.* tags and possibly a new
-   * sampling decision tag _oo.p.dm based on the current state. Returns null if the value length
+   * Constructs a header value that includes valid propagated _o2.p.* tags and possibly a new
+   * sampling decision tag _o2.p.dm based on the current state. Returns null if the value length
    * exceeds a configured limit or empty.
    */
   public abstract String headerValue(HeaderType headerType);
 
   /**
-   * Fills a provided tagMap with valid propagated _oo.p.* tags and possibly a new sampling decision
-   * tags _oo.p.dm (root span only) based on the current state, or sets only an error tag if the
+   * Fills a provided tagMap with valid propagated _o2.p.* tags and possibly a new sampling decision
+   * tags _o2.p.dm (root span only) based on the current state, or sets only an error tag if the
    * header value exceeds a configured limit.
    */
   public abstract void fillTagMap(Map<String, String> tagMap);

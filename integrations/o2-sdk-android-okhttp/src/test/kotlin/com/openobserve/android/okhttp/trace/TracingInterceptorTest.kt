@@ -1713,7 +1713,7 @@ internal open class TracingInterceptorTest {
     // endregion
 
     companion object {
-        private const val OPENOBSERVE_INITIAL_CONTEXT: String = "_oo.openobserve_initial_context"
+        private const val OPENOBSERVE_INITIAL_CONTEXT: String = "_o2.openobserve_initial_context"
         const val HOSTNAME_PATTERN =
             "(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]{1,4}[a-zA-Z0-9]{2,3})\\.)+" +
                 "([A-Za-z]|[A-Za-z][A-Za-z0-9-]{1,2}[A-Za-z0-9])"

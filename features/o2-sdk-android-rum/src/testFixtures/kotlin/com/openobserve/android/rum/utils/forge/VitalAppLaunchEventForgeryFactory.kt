@@ -61,7 +61,7 @@ class VitalAppLaunchEventForgeryFactory : ForgeryFactory<VitalAppLaunchEvent> {
                 session = forge.aNullable { VitalAppLaunchEvent.OoSession(getForgery()) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") }
             ),
-            ootags = forge.aNullable { ddTagsString() },
+            o2tags = forge.aNullable { ddTagsString() },
             view = VitalAppLaunchEvent.VitalAppLaunchEventView(
                 id = forge.getForgery<UUID>().toString(),
                 referrer = forge.aNullable { getForgery<URL>().toString() },

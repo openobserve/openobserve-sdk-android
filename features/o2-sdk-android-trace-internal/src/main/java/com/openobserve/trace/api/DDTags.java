@@ -36,7 +36,7 @@ public class DDTags {
   public static final String TRACE_START_TIME = "t0";
 
   /* Tags below are for internal use only. */
-  static final String INTERNAL_HOST_NAME = "_oo.hostname";
+  static final String INTERNAL_HOST_NAME = "_o2.hostname";
   public static final String RUNTIME_ID_TAG = "runtime-id";
   public static final String RUNTIME_VERSION_TAG = "runtime_version";
   static final String SERVICE = "service";
@@ -44,21 +44,21 @@ public class DDTags {
   static final String HOST_TAG = "host";
   public static final String LANGUAGE_TAG_KEY = "language";
   public static final String LANGUAGE_TAG_VALUE = "jvm";
-  public static final String ORIGIN_KEY = "_oo.origin";
-  public static final String SPAN_LINKS = "_oo.span_links";
+  public static final String ORIGIN_KEY = "_o2.origin";
+  public static final String SPAN_LINKS = "_o2.span_links";
   public static final String LIBRARY_VERSION_TAG_KEY = "library_version";
-  public static final String CI_ENV_VARS = "_oo.ci.env_vars";
-  public static final String CI_ITR_TESTS_SKIPPED = "_oo.ci.itr.tests_skipped";
-  public static final String MEASURED = "_oo.measured";
+  public static final String CI_ENV_VARS = "_o2.ci.env_vars";
+  public static final String CI_ITR_TESTS_SKIPPED = "_o2.ci.itr.tests_skipped";
+  public static final String MEASURED = "_o2.measured";
   public static final String PID_TAG = "process_id";
-  public static final String SCHEMA_VERSION_TAG_KEY = "_oo.trace_span_attribute_schema";
-  public static final String PEER_SERVICE_SOURCE = "_oo.peer.service.source";
-  public static final String PEER_SERVICE_REMAPPED_FROM = "_oo.peer.service.remapped_from";
-  public static final String INTERNAL_GIT_REPOSITORY_URL = "_oo.git.repository_url";
-  public static final String INTERNAL_GIT_COMMIT_SHA = "_oo.git.commit.sha";
+  public static final String SCHEMA_VERSION_TAG_KEY = "_o2.trace_span_attribute_schema";
+  public static final String PEER_SERVICE_SOURCE = "_o2.peer.service.source";
+  public static final String PEER_SERVICE_REMAPPED_FROM = "_o2.peer.service.remapped_from";
+  public static final String INTERNAL_GIT_REPOSITORY_URL = "_o2.git.repository_url";
+  public static final String INTERNAL_GIT_COMMIT_SHA = "_o2.git.commit.sha";
 
-  public static final String PROFILING_ENABLED = "_oo.profiling.enabled";
+  public static final String PROFILING_ENABLED = "_o2.profiling.enabled";
 
-  public static final String PROFILING_CONTEXT_ENGINE = "_oo.profiling.ctx";
-  public static final String BASE_SERVICE = "_oo.base_service";
+  public static final String PROFILING_CONTEXT_ENGINE = "_o2.profiling.ctx";
+  public static final String BASE_SERVICE = "_o2.base_service";
 }

@@ -123,7 +123,7 @@ public final class CommonTaskExecutor extends AbstractExecutorService {
     private final ScheduledExecutorService executorService;
 
     private ShutdownCallback(final ScheduledExecutorService executorService) {
-      super("oo-exec-shutdown-hook");
+      super("o2-exec-shutdown-hook");
       this.executorService = executorService;
     }
 

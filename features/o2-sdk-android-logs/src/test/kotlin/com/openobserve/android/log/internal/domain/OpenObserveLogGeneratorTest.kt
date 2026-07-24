@@ -777,7 +777,7 @@ internal class OpenObserveLogGeneratorTest {
         )
 
         // Then
-        val deserializedTags = log.ootags.split(",")
+        val deserializedTags = log.o2tags.split(",")
         assertThat(deserializedTags)
             .contains("${LogAttributes.APPLICATION_VERSION}:${fakeOpenObserveContext.version}")
             .contains("${LogAttributes.VARIANT}:${fakeOpenObserveContext.variant}")
@@ -823,7 +823,7 @@ internal class OpenObserveLogGeneratorTest {
         )
 
         // THEN
-        val deserializedTags = log.ootags.split(",")
+        val deserializedTags = log.o2tags.split(",")
         assertThat(deserializedTags)
             .contains("${LogAttributes.ENV}:${fakeOpenObserveContext.env}")
     }
@@ -874,7 +874,7 @@ internal class OpenObserveLogGeneratorTest {
         )
 
         // THEN
-        val deserializedTags = log.ootags.split(",")
+        val deserializedTags = log.o2tags.split(",")
         assertThat(deserializedTags)
             .contains("${LogAttributes.APPLICATION_VERSION}:${fakeOpenObserveContext.version}")
     }
@@ -925,7 +925,7 @@ internal class OpenObserveLogGeneratorTest {
         )
 
         // THEN
-        val deserializedTags = log.ootags.split(",")
+        val deserializedTags = log.o2tags.split(",")
         assertThat(deserializedTags)
             .contains("${LogAttributes.VARIANT}:${fakeOpenObserveContext.variant}")
     }
@@ -976,7 +976,7 @@ internal class OpenObserveLogGeneratorTest {
         )
 
         // Then
-        val deserializedTags = log.ootags.split(",")
+        val deserializedTags = log.o2tags.split(",")
         assertThat(deserializedTags)
             .contains("${LogAttributes.SERVICE}:$fakeServiceName")
     }
@@ -1001,7 +1001,7 @@ internal class OpenObserveLogGeneratorTest {
         )
 
         // Then
-        val deserializedTags = log.ootags.split(",")
+        val deserializedTags = log.o2tags.split(",")
         assertThat(deserializedTags)
             .contains("${LogAttributes.SERVICE}:${fakeOpenObserveContext.service}")
     }

@@ -469,7 +469,7 @@ internal class ResourceEventAssert(actual: ResourceEvent) :
     fun hasTraceId(expected: String?): ResourceEventAssert {
         assertThat(actual.oo.traceId)
             .overridingErrorMessage(
-                "Expected event data to have _oo.trace_id $expected but was ${actual.oo.traceId}"
+                "Expected event data to have _o2.trace_id $expected but was ${actual.oo.traceId}"
             )
             .isEqualTo(expected)
         return this
@@ -478,7 +478,7 @@ internal class ResourceEventAssert(actual: ResourceEvent) :
     fun hasSpanId(expected: String?): ResourceEventAssert {
         assertThat(actual.oo.spanId)
             .overridingErrorMessage(
-                "Expected event data to have _oo.span_id $expected but was ${actual.oo.spanId}"
+                "Expected event data to have _o2.span_id $expected but was ${actual.oo.spanId}"
             )
             .isEqualTo(expected)
         return this
@@ -487,7 +487,7 @@ internal class ResourceEventAssert(actual: ResourceEvent) :
     fun hasRulePsr(expected: Number?): ResourceEventAssert {
         assertThat(actual.oo.rulePsr)
             .overridingErrorMessage(
-                "Expected event data to have _oo.rule_psr $expected but was ${actual.oo.rulePsr}"
+                "Expected event data to have _o2.rule_psr $expected but was ${actual.oo.rulePsr}"
             )
             .isEqualTo(expected)
         return this

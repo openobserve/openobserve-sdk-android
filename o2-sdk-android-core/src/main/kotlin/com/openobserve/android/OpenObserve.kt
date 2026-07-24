@@ -444,10 +444,10 @@ object OpenObserve {
     internal const val CANNOT_CREATE_SDK_INSTANCE_ID_ERROR =
         "Cannot create SDK instance ID, stopping SDK initialization."
 
-    internal const val DD_SOURCE_TAG = "_oo.source"
-    internal const val DD_SDK_VERSION_TAG = "_oo.sdk_version"
-    internal const val DD_APP_VERSION_TAG = "_oo.version"
-    internal const val DD_NATIVE_SOURCE_TYPE = "_oo.native_source_type"
+    internal const val DD_SOURCE_TAG = "_o2.source"
+    internal const val DD_SDK_VERSION_TAG = "_o2.sdk_version"
+    internal const val DD_APP_VERSION_TAG = "_o2.version"
+    internal const val DD_NATIVE_SOURCE_TYPE = "_o2.native_source_type"
 
     // endregion
 }

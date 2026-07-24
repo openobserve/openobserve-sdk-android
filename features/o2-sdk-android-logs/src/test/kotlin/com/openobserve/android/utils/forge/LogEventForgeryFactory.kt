@@ -57,7 +57,7 @@ internal class LogEventForgeryFactory : ForgeryFactory<LogEvent> {
                 excludedKeys = reservedKeysAsSet,
                 filterThreshold = 0f
             ),
-            ootags = forge.exhaustiveTags().joinToString(separator = ","),
+            o2tags = forge.exhaustiveTags().joinToString(separator = ","),
             usr = forge.aNullable {
                 LogEvent.Usr(
                     anonymousId = userInfo?.anonymousId,

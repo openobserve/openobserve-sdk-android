@@ -136,7 +136,7 @@ fun Project.publishingConfig(
         signingExtension.apply {
             val privateKey = System.getenv("GPG_PRIVATE_KEY")
             val password = System.getenv("GPG_PASSWORD")
-            isRequired = !hasProperty("oo-skip-signing")
+            isRequired = !hasProperty("o2-skip-signing")
             useInMemoryPgpKeys(privateKey, password)
             sign(publishingExtension.publications.getByName(MavenConfig.PUBLICATION))
         }

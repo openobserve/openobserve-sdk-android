@@ -115,8 +115,8 @@ internal class WebViewLogEventConsumer(
             LogAttributes.SERVICE to ooContext.service
         )
         val eventDdTags = try {
-            event.get(OOTAGS_KEY_NAME)?.asString?.let {
-                it.split(OOTAGS_SEPARATOR)
+            event.get(O2TAGS_KEY_NAME)?.asString?.let {
+                it.split(O2TAGS_SEPARATOR)
                     .mapNotNull { tag ->
                         @Suppress("UnsafeThirdPartyFunctionCall") // safe indexOf invocation
                         val splitIndex = tag.indexOf(":")
@@ -155,16 +155,16 @@ internal class WebViewLogEventConsumer(
             emptyMap<String, String>()
         }
         event.addProperty(
-            OOTAGS_KEY_NAME,
+            O2TAGS_KEY_NAME,
             (eventDdTags + sdkDdTags)
                 .map { "${it.key}:${it.value}" }
-                .joinToString(OOTAGS_SEPARATOR)
+                .joinToString(O2TAGS_SEPARATOR)
         )
     }
 
     companion object {
-        const val OOTAGS_SEPARATOR = ","
-        const val OOTAGS_KEY_NAME = "ootags"
+        const val O2TAGS_SEPARATOR = ","
+        const val O2TAGS_KEY_NAME = "o2tags"
         const val DATE_KEY_NAME = "date"
         const val USER_LOG_EVENT_TYPE = "log"
         const val INTERNAL_LOG_EVENT_TYPE = "internal_log"

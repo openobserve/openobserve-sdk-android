@@ -448,7 +448,7 @@ class HeadBasedSamplingTest {
                 )
                 hasMostSignificant64BitsTraceId(mostSignificantTraceId)
                 hasParentId("0000000000000000")
-                // OpenTelemetry span will have _oo.rule_psr instead of _oo.agent_psr
+                // OpenTelemetry span will have _o2.rule_psr instead of _o2.agent_psr
                 hasRulePsr(1.0)
                 hasSamplingPriority(OpenObserveTracingConstants.PrioritySampling.USER_KEEP)
                 hasGenericMetricValue("_top_level", 1)
@@ -960,7 +960,7 @@ class HeadBasedSamplingTest {
                 )
                 hasMostSignificant64BitsTraceId(mostSignificantTraceId)
                 hasParentId("0000000000000000")
-                // OpenTelemetry span will have _oo.rule_psr instead of _oo.agent_psr
+                // OpenTelemetry span will have _o2.rule_psr instead of _o2.agent_psr
                 hasRulePsr(1.0)
                 hasSamplingPriority(OpenObserveTracingConstants.PrioritySampling.USER_KEEP)
                 hasGenericMetricValue("_top_level", 1)
@@ -1162,6 +1162,6 @@ class HeadBasedSamplingTest {
         private const val OPENOBSERVE_TRACE_ID_HEADER = "x-datadog-trace-id"
         private const val OPENOBSERVE_SPAN_ID_HEADER = "x-datadog-parent-id"
         private const val OPENOBSERVE_SAMPLING_PRIORITY_HEADER = "x-datadog-sampling-priority"
-        private const val MOST_SIGNIFICANT_TRACE_ID_KEY = "_oo.p.tid"
+        private const val MOST_SIGNIFICANT_TRACE_ID_KEY = "_o2.p.tid"
     }
 }

@@ -789,7 +789,7 @@ internal class RumFeature(
         internal const val DEFAULT_TELEMETRY_CONFIGURATION_SAMPLE_RATE: Float = 20f
         internal const val DEFAULT_LONG_TASK_THRESHOLD_MS = 100L
         internal const val DD_TELEMETRY_CONFIG_SAMPLE_RATE_TAG =
-            "_oo.telemetry.configuration_sample_rate"
+            "_o2.telemetry.configuration_sample_rate"
 
         internal val DEFAULT_RUM_CONFIG = Configuration(
             customEndpointUrl = null,

@@ -493,7 +493,7 @@ internal class CoreSpanBuilderTest : DDCoreSpecification() {
                         null,
                         PropagationTags.factory().fromHeaderValue(
                             PropagationTags.HeaderType.OPENOBSERVE,
-                            "_oo.p.dm=934086a686-4,_oo.p.anytag=value"
+                            "_o2.p.dm=934086a686-4,_o2.p.anytag=value"
                         ),
                         null,
                         TracePropagationStyle.OPENOBSERVE

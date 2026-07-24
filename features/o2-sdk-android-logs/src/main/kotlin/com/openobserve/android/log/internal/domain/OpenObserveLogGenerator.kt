@@ -205,7 +205,7 @@ internal class OpenObserveLogGenerator(
             usr = usr,
             account = account,
             network = network,
-            ootags = combinedTags.joinToString(separator = ","),
+            o2tags = combinedTags.joinToString(separator = ","),
             additionalProperties = combinedAttributes,
             os = resolveOsInfo(deviceInfo),
             device = resolveDeviceInfo(deviceInfo),

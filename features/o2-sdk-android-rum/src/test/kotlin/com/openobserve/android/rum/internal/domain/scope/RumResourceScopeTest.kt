@@ -2793,7 +2793,7 @@ internal class RumResourceScopeTest {
         // Given
         val attributes = forge.exhaustiveAttributes(excludedKeys = fakeResourceAttributes.keys) +
             mapOf(
-                "_oo.resource_timings"
+                "_o2.resource_timings"
                     to forge.getForgery(ResourceTiming::class.java).asTimingsPayload()
             )
 
@@ -2826,7 +2826,7 @@ internal class RumResourceScopeTest {
     ) {
         // Given
         val attributes = forge.exhaustiveAttributes(excludedKeys = fakeResourceAttributes.keys) +
-            mapOf("_oo.resource_timings" to timing.asTimingsPayload())
+            mapOf("_o2.resource_timings" to timing.asTimingsPayload())
 
         mockEvent = RumRawEvent.StopResource(fakeKey, statusCode, size, kind, attributes)
 

@@ -301,7 +301,7 @@ class ApmNetworkInstrumentation internal constructor(
         internal const val ALL_IN_SAMPLE_RATE: Double = 100.0
         internal const val SPAN_NAME = "%s.request"
         internal const val RESOURCE_NAME_404 = "404"
-        internal const val AGENT_PSR_ATTRIBUTE = "_oo.agent_psr"
+        internal const val AGENT_PSR_ATTRIBUTE = "_o2.agent_psr"
         internal const val URL_QUERY_PARAMS_BLOCK_SEPARATOR = '?'
         internal const val WARNING_TRACING_NO_HOSTS =
             "You added a ApmNetworkInstrumentation to your %s instrumentation, " +

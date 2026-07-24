@@ -208,14 +208,14 @@ internal abstract class TracesTest {
         // region SpanEvent.Meta
 
         const val VERSION_KEY = "version"
-        const val DD_KEY = "_oo"
+        const val DD_KEY = "_o2"
         const val SPAN_KEY = "span"
         const val TRACER_KEY = "tracer"
         const val USR_KEY = "usr"
         const val DEVICE_KEY = "device"
         const val OS_KEY = "os"
 
-        const val MOST_SIGNIFICANT_64_BITS_TRACE_ID_KEY = "_oo.p.id"
+        const val MOST_SIGNIFICANT_64_BITS_TRACE_ID_KEY = "_o2.p.id"
         const val VARIANT_KEY = "variant"
 
         // endregion

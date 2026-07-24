@@ -11,10 +11,10 @@ import java.util.concurrent.ThreadFactory;
 /** A {@link ThreadFactory} implementation that starts all {@link Thread} as daemons. */
 public final class DaemonThreadFactory implements ThreadFactory {
   public static final DaemonThreadFactory TRACE_PROCESSOR =
-      new DaemonThreadFactory("oo-trace-processor");
-  public static final DaemonThreadFactory TRACE_WRITER = new DaemonThreadFactory("oo-trace-writer");
+      new DaemonThreadFactory("o2-trace-processor");
+  public static final DaemonThreadFactory TRACE_WRITER = new DaemonThreadFactory("o2-trace-writer");
   public static final DaemonThreadFactory TASK_SCHEDULER =
-      new DaemonThreadFactory("oo-task-scheduler");
+      new DaemonThreadFactory("o2-task-scheduler");
 
   private final String threadName;
 

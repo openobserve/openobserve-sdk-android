@@ -104,11 +104,11 @@ public class InstrumentationTags {
   public static final String TWILIO_SID = "twilio.sid";
   public static final String TWILIO_STATUS = "twilio.status";
   public static final String TWILIO_PARENT_SID = "twilio.parentSid";
-  public static final String DBM_TRACE_INJECTED = "_oo.dbm_trace_injected";
-  public static final UTF8BytesString DD_MEASURED = UTF8BytesString.create("_oo.measured");
-  public static final UTF8BytesString DD_TOP_LEVEL = UTF8BytesString.create("_oo.top_level");
+  public static final String DBM_TRACE_INJECTED = "_o2.dbm_trace_injected";
+  public static final UTF8BytesString DD_MEASURED = UTF8BytesString.create("_o2.measured");
+  public static final UTF8BytesString DD_TOP_LEVEL = UTF8BytesString.create("_o2.top_level");
   public static final UTF8BytesString DD_PARTIAL_VERSION =
-      UTF8BytesString.create("_oo.partial_version");
+      UTF8BytesString.create("_o2.partial_version");
   public static final UTF8BytesString DD_WAS_LONG_RUNNING =
-      UTF8BytesString.create("_oo.was_long_running");
+      UTF8BytesString.create("_o2.was_long_running");
 }

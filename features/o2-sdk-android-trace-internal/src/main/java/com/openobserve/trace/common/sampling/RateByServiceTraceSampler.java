@@ -26,7 +26,7 @@ public class RateByServiceTraceSampler implements Sampler, PrioritySampler, Remo
 
     private volatile RateSamplersByEnvAndService serviceRates;
     private static final Logger log = LoggerFactory.getLogger(RateByServiceTraceSampler.class);
-    public static final String SAMPLING_AGENT_RATE = "_oo.agent_psr";
+    public static final String SAMPLING_AGENT_RATE = "_o2.agent_psr";
 
     public RateByServiceTraceSampler() {
         this(DEFAULT_RATE);

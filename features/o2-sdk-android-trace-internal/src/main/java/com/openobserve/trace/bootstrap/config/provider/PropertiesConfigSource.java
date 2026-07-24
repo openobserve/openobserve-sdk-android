@@ -8,7 +8,7 @@ import java.util.Properties;
 
 final class PropertiesConfigSource extends ConfigProvider.Source {
   // start key with underscore, so it isn't visible using the public 'get' method
-  static final String CONFIG_FILE_STATUS = "_oo.config.file.status";
+  static final String CONFIG_FILE_STATUS = "_o2.config.file.status";
 
   private final Properties props;
   private final boolean useSystemPropertyFormat;

@@ -64,7 +64,7 @@ comments:
       - '**/buildSrc/src/test/kotlin/com/example/model/**'
       # Fixture files for the NoOpFactory annotation processor tests, read as text data rather than compiled.
       - '**/tools/noopfactory/src/test/resources/**'
-      # Vendored test files ported from the upstream oo-trace-java library.
+      # Vendored test files ported from the upstream o2-trace-java library.
       - '**/features/o2-sdk-android-trace-internal/src/test/kotlin/com/openobserve/trace/**'
 
 complexity:

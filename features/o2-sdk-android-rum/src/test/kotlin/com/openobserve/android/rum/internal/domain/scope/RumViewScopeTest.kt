@@ -4655,14 +4655,14 @@ internal class RumViewScopeTest {
         testedScope.activeActionScope = mockActionScope
         val attributes = forge.exhaustiveAttributes(excludedKeys = fakeAttributes.keys)
         val attributesWithCrash = attributes.toMutableMap()
-        attributesWithCrash["_oo.error.is_crash"] = true
+        attributesWithCrash["_o2.error.is_crash"] = true
         fakeEvent = RumRawEvent.AddError(
             message,
             source,
             throwable,
             stacktrace = null,
             isFatal = false,
-            // empty list, because _oo.error.is_crash is coming from Cross Platform, this not a native crash
+            // empty list, because _o2.error.is_crash is coming from Cross Platform, this not a native crash
             threads = emptyList(),
             attributes = attributesWithCrash,
             sourceType = sourceType
@@ -4813,7 +4813,7 @@ internal class RumViewScopeTest {
         testedScope.activeActionScope = mockActionScope
         val attributes = forge.exhaustiveAttributes(excludedKeys = fakeAttributes.keys)
         val attributesWithCrash = attributes.toMutableMap()
-        attributesWithCrash["_oo.error.is_crash"] = false
+        attributesWithCrash["_o2.error.is_crash"] = false
         fakeEvent = RumRawEvent.AddError(
             message,
             source,

@@ -23,14 +23,14 @@ stages:
     - source ./ci/scripts/vault_config.sh
     - source ./ci/scripts/get-secret.sh
 
-  setup-oo-tracer:
-    - export DD_TRACER_FOLDER="$HOME/oo-java-agent"
+  setup-o2-tracer:
+    - export DD_TRACER_FOLDER="$HOME/o2-java-agent"
     - mkdir -p "$DD_TRACER_FOLDER"
-    - curl -Lo "$DD_TRACER_FOLDER/oo-java-agent.jar" https://dtdg.co/latest-java-tracer
+    - curl -Lo "$DD_TRACER_FOLDER/o2-java-agent.jar" https://dtdg.co/latest-java-tracer
     - export DD_API_KEY=$(get_secret $DD_ANDROID_SECRET__API_KEY)
     - export DD_CIVISIBILITY_AGENTLESS_ENABLED=true
 
-  setup-oo-ci-cli:
+  setup-o2-ci-cli:
     - npm install -g @datadog/datadog-ci
     - export OPENOBSERVE_API_KEY=$(get_secret $DD_ANDROID_SECRET__API_KEY)
 
@@ -45,14 +45,14 @@ stages:
     - echo "no" | ~/android_sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force --name "$EMULATOR_NAME" --package "$ANDROID_EMULATOR_IMAGE"
   setup-macos-ami-runner:
     - !reference [ .snippets, source-secrets-macos ]
-    - !reference [ .snippets, setup-oo-tracer ]
-    - !reference [ .snippets, setup-oo-ci-cli ]
+    - !reference [ .snippets, setup-o2-tracer ]
+    - !reference [ .snippets, setup-o2-ci-cli ]
     - !reference [ .snippets, install-android-api-components ]
   run-legacy-integration-instrumented:
     - set +e
     - exit_code=0
     - $ANDROID_HOME/emulator/emulator -avd "$EMULATOR_NAME" -grpc-use-jwt -no-snapstorage -no-audio -no-window -no-boot-anim -verbose -qemu -machine virt &
-    - GRADLE_OPTS="-Xmx3072m -javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG" DD_TAGS="test.configuration.android_api:$ANDROID_API" ./gradlew :instrumented:integration:connectedDebugAndroidTest --stacktrace --no-daemon $( (( $ANDROID_API <= 23 )) && echo "-Puse-api21-java-backport -Puse-desugaring" ) || exit_code=$?
+    - GRADLE_OPTS="-Xmx3072m -javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG" DD_TAGS="test.configuration.android_api:$ANDROID_API" ./gradlew :instrumented:integration:connectedDebugAndroidTest --stacktrace --no-daemon $( (( $ANDROID_API <= 23 )) && echo "-Puse-api21-java-backport -Puse-desugaring" ) || exit_code=$?
     - $ANDROID_HOME/platform-tools/adb emu kill
     - datadog-ci junit upload --service o2-sdk-android --tags test.configuration.android_api:$ANDROID_API --xpath-tag test.suite=/testcase/@classname instrumented/integration/build/outputs/androidTest-results/connected/debug/
     - if [[ "$exit_code" -ne 0 ]]; then exit 1; fi
@@ -61,7 +61,7 @@ stages:
     - set +e
     - exit_code=0
     - $ANDROID_HOME/emulator/emulator -avd "$EMULATOR_NAME" -grpc-use-jwt -no-snapstorage -no-audio -no-window -no-boot-anim -verbose -qemu -machine virt &
-    - GRADLE_OPTS="-Xmx3072m -javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG" DD_TAGS="test.configuration.android_api:$ANDROID_API" ./gradlew :reliability:core-it:connectedDebugAndroidTest --stacktrace --no-daemon $( (( $ANDROID_API <= 23 )) && echo "-Puse-api21-java-backport -Puse-desugaring" ) || exit_code=$?
+    - GRADLE_OPTS="-Xmx3072m -javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG" DD_TAGS="test.configuration.android_api:$ANDROID_API" ./gradlew :reliability:core-it:connectedDebugAndroidTest --stacktrace --no-daemon $( (( $ANDROID_API <= 23 )) && echo "-Puse-api21-java-backport -Puse-desugaring" ) || exit_code=$?
     - $ANDROID_HOME/platform-tools/adb emu kill
     - datadog-ci junit upload --service o2-sdk-android --tags test.configuration.android_api:$ANDROID_API --xpath-tag test.suite=/testcase/@classname reliability/core-it/build/outputs/androidTest-results/connected/debug/
     - if [[ "$exit_code" -ne 0 ]]; then exit 1; fi
@@ -70,7 +70,7 @@ stages:
     - set +e
     - exit_code=0
     - $ANDROID_HOME/emulator/emulator -avd "$EMULATOR_NAME" -grpc-use-jwt -no-snapstorage -no-audio -no-window -no-boot-anim -verbose -qemu -machine virt &
-    - GRADLE_OPTS="-Xmx3072m -javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG" DD_TAGS="test.configuration.android_api:$ANDROID_API" ./gradlew :features:o2-sdk-android-ndk:connectedDebugAndroidTest --stacktrace --no-daemon $( (( $ANDROID_API <= 23 )) && echo "-Puse-api21-java-backport -Puse-desugaring" ) || exit_code=$?
+    - GRADLE_OPTS="-Xmx3072m -javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG" DD_TAGS="test.configuration.android_api:$ANDROID_API" ./gradlew :features:o2-sdk-android-ndk:connectedDebugAndroidTest --stacktrace --no-daemon $( (( $ANDROID_API <= 23 )) && echo "-Puse-api21-java-backport -Puse-desugaring" ) || exit_code=$?
     - $ANDROID_HOME/platform-tools/adb emu kill
     - datadog-ci junit upload --service o2-sdk-android --tags test.configuration.android_api:$ANDROID_API --xpath-tag test.suite=/testcase/@classname features/o2-sdk-android-ndk/build/outputs/androidTest-results/connected/debug/
     - if [[ "$exit_code" -ne 0 ]]; then exit 1; fi
@@ -164,11 +164,11 @@ test:debug:
   script:
     - rm -rf ~/.gradle/daemon/
     - export DD_AGENT_HOST="$BUILDENV_HOST_IP"
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :o2-sdk-android-core:testDebugUnitTest --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :o2-sdk-android-internal:testDebugUnitTest --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :unitTestDebugFeatures --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :unitTestDebugIntegrations --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :unitTestDebugSamples --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :o2-sdk-android-core:testDebugUnitTest --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :o2-sdk-android-internal:testDebugUnitTest --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :unitTestDebugFeatures --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :unitTestDebugIntegrations --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:debug" ./gradlew :unitTestDebugSamples --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
   artifacts:
     when: always
     expire_in: 1 week
@@ -205,10 +205,10 @@ test:kover:
     - export DD_API_KEY=$(get_secret $DD_ANDROID_SECRET__API_KEY)
     - export DD_APP_KEY=$(get_secret $DD_ANDROID_SECRET__APP_KEY)
     - CODECOV_TOKEN=$(get_secret $DD_ANDROID_SECRET__CODECOV_TOKEN)
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :o2-sdk-android-core:koverXmlReportRelease  --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :o2-sdk-android-internal:koverXmlReportRelease  --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :koverReportFeatures  --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :koverReportIntegrations  --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :o2-sdk-android-core:koverXmlReportRelease  --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :o2-sdk-android-internal:koverXmlReportRelease  --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :koverReportFeatures  --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :koverReportIntegrations  --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
     - bash <(cat ./ci/scripts/codecov.sh) -t $CODECOV_TOKEN
     - npm install -g @datadog/datadog-ci
     - datadog-ci coverage upload --format=jacoco . || true
@@ -276,7 +276,7 @@ test-pyramid:single-fit-logs:
   script:
     - rm -rf ~/.gradle/daemon/
     - export DD_AGENT_HOST="$BUILDENV_HOST_IP"
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :reliability:single-fit:logs:testReleaseUnitTest --stacktrace --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :reliability:single-fit:logs:testReleaseUnitTest --stacktrace --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
   artifacts:
     when: always
     expire_in: 1 week
@@ -293,7 +293,7 @@ test-pyramid:single-fit-rum:
   script:
     - rm -rf ~/.gradle/daemon/
     - export DD_AGENT_HOST="$BUILDENV_HOST_IP"
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :reliability:single-fit:rum:testReleaseUnitTest --stacktrace --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :reliability:single-fit:rum:testReleaseUnitTest --stacktrace --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
   artifacts:
     when: always
     expire_in: 1 week
@@ -310,7 +310,7 @@ test-pyramid:single-fit-trace:
   script:
     - rm -rf ~/.gradle/daemon/
     - export DD_AGENT_HOST="$BUILDENV_HOST_IP"
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :reliability:single-fit:trace:testReleaseUnitTest --stacktrace --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :reliability:single-fit:trace:testReleaseUnitTest --stacktrace --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
   artifacts:
     when: always
     expire_in: 1 week
@@ -327,7 +327,7 @@ test-pyramid:single-fit-okhttp:
   script:
     - rm -rf ~/.gradle/daemon/
     - export DD_AGENT_HOST="$BUILDENV_HOST_IP"
-    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :reliability:single-fit:okhttp:testReleaseUnitTest --stacktrace --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/oo-java-agent.jar=$DD_COMMON_AGENT_CONFIG
+    - GRADLE_OPTS="-Xmx3072m" DD_TAGS="test.configuration.variant:release" ./gradlew :reliability:single-fit:okhttp:testReleaseUnitTest --stacktrace --no-daemon --build-cache --gradle-user-home cache/ -Dorg.gradle.jvmargs=-javaagent:$DD_TRACER_FOLDER/o2-java-agent.jar=$DD_COMMON_AGENT_CONFIG
   artifacts:
     when: always
     expire_in: 1 week
@@ -608,11 +608,11 @@ notify:dogfood-app:
   image: $CI_IMAGE_DOCKER
   id_tokens:
     DDOCTOSTS_ID_TOKEN:
-      aud: oo-octo-sts
+      aud: o2-octo-sts
   stage: notify
   when: on_success
   script:
-    - export GITHUB_TOKEN=$(oo-octo-sts token --scope DataDog/datadog-android --policy all.gitlab.pr)
+    - export GITHUB_TOKEN=$(o2-octo-sts token --scope DataDog/datadog-android --policy all.gitlab.pr)
     - pip3 install GitPython requests
     - python3 ./ci/scripts/dogfood.py -v $CI_COMMIT_TAG -t app
 
@@ -623,11 +623,11 @@ notify:dogfood-demo:
   image: $CI_IMAGE_DOCKER
   id_tokens:
     DDOCTOSTS_ID_TOKEN:
-      aud: oo-octo-sts
+      aud: o2-octo-sts
   stage: notify
   when: on_success
   script:
-    - export GITHUB_TOKEN=$(oo-octo-sts token --scope DataDog/shopist-android --policy all.gitlab.pr)
+    - export GITHUB_TOKEN=$(o2-octo-sts token --scope DataDog/shopist-android --policy all.gitlab.pr)
     - pip3 install GitPython requests
     - python3 ./ci/scripts/dogfood.py -v $CI_COMMIT_TAG -t demo
 
@@ -638,11 +638,11 @@ notify:dogfood-gradle-plugin:
   image: $CI_IMAGE_DOCKER
   id_tokens:
     DDOCTOSTS_ID_TOKEN:
-      aud: oo-octo-sts
+      aud: o2-octo-sts
   stage: notify
   when: on_success
   script:
-    - export GITHUB_TOKEN=$(oo-octo-sts token --scope openobserve/openobserve-sdk-android-gradle-plugin --policy all.gitlab.pr)
+    - export GITHUB_TOKEN=$(o2-octo-sts token --scope openobserve/openobserve-sdk-android-gradle-plugin --policy all.gitlab.pr)
     - pip3 install GitPython requests
     - python3 ./ci/scripts/dogfood.py -v $CI_COMMIT_TAG -t gradle-plugin
 

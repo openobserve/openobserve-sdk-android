@@ -12,8 +12,8 @@ package com.openobserve.android.internal.network
  */
 // TODO RUM-13454 - move these headers to [HttpSpec]
 enum class GraphQLHeaders(val headerValue: String) {
-    DD_GRAPHQL_NAME_HEADER("_oo-custom-header-graph-ql-operation-name"),
-    DD_GRAPHQL_VARIABLES_HEADER("_oo-custom-header-graph-ql-variables"),
-    DD_GRAPHQL_TYPE_HEADER("_oo-custom-header-graph-ql-operation-type"),
-    DD_GRAPHQL_PAYLOAD_HEADER("_oo-custom-header-graph-ql-payload")
+    DD_GRAPHQL_NAME_HEADER("_o2-custom-header-graph-ql-operation-name"),
+    DD_GRAPHQL_VARIABLES_HEADER("_o2-custom-header-graph-ql-variables"),
+    DD_GRAPHQL_TYPE_HEADER("_o2-custom-header-graph-ql-operation-type"),
+    DD_GRAPHQL_PAYLOAD_HEADER("_o2-custom-header-graph-ql-payload")
 }

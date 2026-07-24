@@ -27,20 +27,20 @@ interface LocalAttribute {
          * The creation(head) sample rate only exists for long-lived metrics such as method performance.
          * Created metric still could not be sent, it depends on the [REPORTING_SAMPLING_RATE] sample rate.
          */
-        CREATION_SAMPLING_RATE("_oo.local.head_sampling_rate_key"),
+        CREATION_SAMPLING_RATE("_o2.local.head_sampling_rate_key"),
 
         /**
          * Sampling rate that is used to decide to send or not to send the metric.
          * Each metric should have reporting(tail) sampling rate.
          * It's possible that metric has only reporting(tail) sampling rate.
          */
-        REPORTING_SAMPLING_RATE("_oo.local.tail_sampling_rate_key"),
+        REPORTING_SAMPLING_RATE("_o2.local.tail_sampling_rate_key"),
 
         /**
          * Indicates which instrumentation was used to track the view scope.
          * See [ViewScopeInstrumentationType] for possible values.
          */
-        VIEW_SCOPE_INSTRUMENTATION_TYPE("_oo.local.view_instrumentation_type_key");
+        VIEW_SCOPE_INSTRUMENTATION_TYPE("_o2.local.view_instrumentation_type_key");
 
         override fun toString(): String {
             return string

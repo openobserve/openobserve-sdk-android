@@ -122,7 +122,7 @@ fi
 # --- 4. publish ---------------------------------------------------------------
 if [ "$PUBLISH" = "0" ]; then
   echo "==> DRY RUN: publishToMavenLocal (~/.m2/repository/ai/openobserve)"
-  ./gradlew publishToMavenLocal -Poo-skip-signing
+  ./gradlew publishToMavenLocal -Po2-skip-signing
   echo "OK (dry run). Inspect ~/.m2/repository/ai/openobserve, then re-run with --publish."
 else
   : "${CENTRAL_PUBLISHER_USERNAME:?set Sonatype token}" "${CENTRAL_PUBLISHER_PASSWORD:?}"

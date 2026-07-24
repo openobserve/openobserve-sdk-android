@@ -1118,7 +1118,7 @@ public class CoreTracer implements AgentTracer.TracerAPI {
         private final WeakReference<CoreTracer> reference;
 
         private ShutdownHook(final CoreTracer tracer) {
-            super(AGENT_THREAD_GROUP, "oo-tracer-shutdown-hook");
+            super(AGENT_THREAD_GROUP, "o2-tracer-shutdown-hook");
             reference = new WeakReference<>(tracer);
         }
 

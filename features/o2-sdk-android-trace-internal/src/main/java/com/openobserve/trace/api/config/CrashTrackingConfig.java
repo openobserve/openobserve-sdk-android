@@ -1,7 +1,7 @@
 package com.openobserve.trace.api.config;
 
 /**
- * These config options will only work with oo-java-agent, not with oo-trace-ot.
+ * These config options will only work with o2-java-agent, not with o2-trace-ot.
  *
  * <p>Configure via system properties, environment variables, or config properties file. See online
  * documentation for details.

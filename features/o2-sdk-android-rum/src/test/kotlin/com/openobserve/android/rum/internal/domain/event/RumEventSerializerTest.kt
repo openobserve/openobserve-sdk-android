@@ -95,7 +95,7 @@ internal class RumEventSerializerTest {
                 hasField("id", event.view.id)
                 hasField("url", event.view.url)
             }
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
                 hasNullableField("span_id", event.oo.spanId)
                 hasNullableField("trace_id", event.oo.traceId)
@@ -212,7 +212,7 @@ internal class RumEventSerializerTest {
                 hasField("id", event.view.id)
                 hasField("url", event.view.url)
             }
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
             }
 
@@ -310,7 +310,7 @@ internal class RumEventSerializerTest {
                     }
                 }
             }
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
             }
 
@@ -404,7 +404,7 @@ internal class RumEventSerializerTest {
                 hasField("id", event.view.id)
                 hasField("url", event.view.url)
             }
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
             }
 
@@ -491,7 +491,7 @@ internal class RumEventSerializerTest {
                 hasField("id", event.view.id)
                 hasField("url", event.view.url)
             }
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
             }
             .hasNullableField("service", event.service)
@@ -590,7 +590,7 @@ internal class RumEventSerializerTest {
                 view.referrer?.let { hasField("referrer", it) }
                 view.name?.let { hasField("name", it) }
             }
-            .hasField("_oo") {
+            .hasField("_o2") {
                 event.oo.browserSdkVersion?.let { hasField("browser_sdk_version", it) }
             }
             .hasNullableField("service", event.service)
@@ -662,7 +662,7 @@ internal class RumEventSerializerTest {
                 hasField("type", event.session.type.name.lowercase(Locale.US))
                 event.session.hasReplay?.let { hasField("has_replay", it) }
             }
-            .hasField("_oo") {
+            .hasField("_o2") {
                 event.oo.browserSdkVersion?.let { hasField("browser_sdk_version", it) }
             }
             .hasNullableField("service", event.service)
@@ -723,7 +723,7 @@ internal class RumEventSerializerTest {
         val jsonObject = JsonParser.parseString(serialized).asJsonObject
         assertThat(jsonObject)
             .hasField("type", "telemetry")
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
             }
             .hasField("date", event.date)
@@ -784,7 +784,7 @@ internal class RumEventSerializerTest {
         val jsonObject = JsonParser.parseString(serialized).asJsonObject
         assertThat(jsonObject)
             .hasField("type", "telemetry")
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
             }
             .hasField("date", event.date)
@@ -854,7 +854,7 @@ internal class RumEventSerializerTest {
         val jsonObject = JsonParser.parseString(serialized).asJsonObject
         assertThat(jsonObject)
             .hasField("type", "telemetry")
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
             }
             .hasField("date", event.date)
@@ -1072,7 +1072,7 @@ internal class RumEventSerializerTest {
         val jsonObject = JsonParser.parseString(serialized).asJsonObject
         assertThat(jsonObject)
             .hasField("type", "telemetry")
-            .hasField("_oo") {
+            .hasField("_o2") {
                 hasField("format_version", 2L)
             }
             .hasField("date", event.date)
@@ -1187,7 +1187,7 @@ internal class RumEventSerializerTest {
             .doesNotHaveField("account")
             .doesNotHaveField("os")
             .doesNotHaveField("device")
-            .doesNotHaveField("_oo")
+            .doesNotHaveField("_o2")
     }
 
     @Test
