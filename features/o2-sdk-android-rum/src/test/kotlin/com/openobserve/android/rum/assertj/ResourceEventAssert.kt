@@ -467,27 +467,27 @@ internal class ResourceEventAssert(actual: ResourceEvent) :
     }
 
     fun hasTraceId(expected: String?): ResourceEventAssert {
-        assertThat(actual.oo.traceId)
+        assertThat(actual.o2.traceId)
             .overridingErrorMessage(
-                "Expected event data to have _o2.trace_id $expected but was ${actual.oo.traceId}"
+                "Expected event data to have _o2.trace_id $expected but was ${actual.o2.traceId}"
             )
             .isEqualTo(expected)
         return this
     }
 
     fun hasSpanId(expected: String?): ResourceEventAssert {
-        assertThat(actual.oo.spanId)
+        assertThat(actual.o2.spanId)
             .overridingErrorMessage(
-                "Expected event data to have _o2.span_id $expected but was ${actual.oo.spanId}"
+                "Expected event data to have _o2.span_id $expected but was ${actual.o2.spanId}"
             )
             .isEqualTo(expected)
         return this
     }
 
     fun hasRulePsr(expected: Number?): ResourceEventAssert {
-        assertThat(actual.oo.rulePsr)
+        assertThat(actual.o2.rulePsr)
             .overridingErrorMessage(
-                "Expected event data to have _o2.rule_psr $expected but was ${actual.oo.rulePsr}"
+                "Expected event data to have _o2.rule_psr $expected but was ${actual.o2.rulePsr}"
             )
             .isEqualTo(expected)
         return this
@@ -522,10 +522,10 @@ internal class ResourceEventAssert(actual: ResourceEvent) :
     }
 
     fun hasStartReason(reason: RumSessionScope.StartReason): ResourceEventAssert {
-        assertThat(actual.oo.session?.sessionPrecondition)
+        assertThat(actual.o2.session?.sessionPrecondition)
             .overridingErrorMessage(
                 "Expected event to have a session sessionPrecondition of ${reason.name} " +
-                    "but was ${actual.oo.session?.sessionPrecondition}"
+                    "but was ${actual.o2.session?.sessionPrecondition}"
             )
             .isEqualTo(reason.toResourceSessionPrecondition())
         return this
@@ -671,10 +671,10 @@ internal class ResourceEventAssert(actual: ResourceEvent) :
     }
 
     fun hasSampleRate(sampleRate: Float?): ResourceEventAssert {
-        assertThat(actual.oo.configuration?.sessionSampleRate ?: 0)
+        assertThat(actual.o2.configuration?.sessionSampleRate ?: 0)
             .overridingErrorMessage(
                 "Expected RUM event to have sample rate: $sampleRate" +
-                    " but instead was: ${actual.oo.configuration?.sessionSampleRate}"
+                    " but instead was: ${actual.o2.configuration?.sessionSampleRate}"
             )
             .isEqualTo(sampleRate)
         return this

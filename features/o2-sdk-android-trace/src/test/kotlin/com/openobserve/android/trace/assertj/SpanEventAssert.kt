@@ -111,40 +111,40 @@ internal class SpanEventAssert(actual: SpanEvent) :
     }
 
     fun hasSpanSource(spanSource: String): SpanEventAssert {
-        assertThat(actual.meta.oo.source)
+        assertThat(actual.meta.o2.source)
             .overridingErrorMessage(
                 "Expected SpanEvent to have _o2.source: $spanSource" +
-                    " but instead was: ${actual.meta.oo.source}"
+                    " but instead was: ${actual.meta.o2.source}"
             )
             .isEqualTo(spanSource)
         return this
     }
 
     fun hasApplicationId(applicationId: String?): SpanEventAssert {
-        assertThat(actual.meta.oo.application?.id)
+        assertThat(actual.meta.o2.application?.id)
             .overridingErrorMessage(
                 "Expected SpanEvent to have _o2.application.id: $applicationId" +
-                    " but instead was: ${actual.meta.oo.application?.id}"
+                    " but instead was: ${actual.meta.o2.application?.id}"
             )
             .isEqualTo(applicationId)
         return this
     }
 
     fun hasSessionId(sessionId: String?): SpanEventAssert {
-        assertThat(actual.meta.oo.session?.id)
+        assertThat(actual.meta.o2.session?.id)
             .overridingErrorMessage(
                 "Expected SpanEvent to have _o2.session.id: $sessionId" +
-                    " but instead was: ${actual.meta.oo.session?.id}"
+                    " but instead was: ${actual.meta.o2.session?.id}"
             )
             .isEqualTo(sessionId)
         return this
     }
 
     fun hasViewId(viewId: String?): SpanEventAssert {
-        assertThat(actual.meta.oo.view?.id)
+        assertThat(actual.meta.o2.view?.id)
             .overridingErrorMessage(
                 "Expected SpanEvent to have _o2.view.id: $viewId" +
-                    " but instead was: ${actual.meta.oo.view?.id}"
+                    " but instead was: ${actual.meta.o2.view?.id}"
             )
             .isEqualTo(viewId)
         return this

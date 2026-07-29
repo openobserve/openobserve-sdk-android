@@ -105,17 +105,17 @@ data class com.openobserve.android.trace.model.SpanEvent
       fun fromJson(kotlin.String): Metrics
       fun fromJsonObject(com.google.gson.JsonObject): Metrics
   data class Meta
-    constructor(kotlin.String, Oo, Span, Tracer, Usr, Account? = null, Network? = null, Device, Os, kotlin.collections.Map<kotlin.String, kotlin.String> = mapOf())
+    constructor(kotlin.String, O2, Span, Tracer, Usr, Account? = null, Network? = null, Device, Os, kotlin.collections.Map<kotlin.String, kotlin.String> = mapOf())
     fun toJson(): com.google.gson.JsonElement
     companion object 
       fun fromJson(kotlin.String): Meta
       fun fromJsonObject(com.google.gson.JsonObject): Meta
-  data class Oo
+  data class O2
     constructor(kotlin.String? = "android", Application? = null, Session? = null, View? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   class Span
     val kind: kotlin.String
     fun toJson(): com.google.gson.JsonElement

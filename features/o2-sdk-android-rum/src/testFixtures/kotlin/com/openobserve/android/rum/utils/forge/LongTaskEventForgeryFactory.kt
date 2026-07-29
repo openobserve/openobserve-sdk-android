@@ -109,8 +109,8 @@ class LongTaskEventForgeryFactory :
                     additionalProperties = forge.exhaustiveAttributes()
                 )
             },
-            oo = LongTaskEvent.Oo(
-                session = forge.aNullable { LongTaskEvent.OoSession(getForgery()) },
+            o2 = LongTaskEvent.O2(
+                session = forge.aNullable { LongTaskEvent.O2Session(getForgery()) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") }
             ),
             o2tags = forge.aNullable { ddTagsString() }

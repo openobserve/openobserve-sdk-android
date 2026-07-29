@@ -41,13 +41,13 @@ internal class WebViewRumEventMapper(
             event.addProperty(DATE_KEY_NAME, eventDate + timeOffset)
         }
         event.add(CONTAINER_KEY_NAME, containerObject)
-        val oo = event.get(DD_KEY_NAME)?.asJsonObject
-        if (oo != null) {
-            val ddSession = oo.get(DD_SESSION_KEY_NAME)?.asJsonObject ?: JsonObject()
-            oo.add(DD_SESSION_KEY_NAME, ddSession)
+        val o2 = event.get(DD_KEY_NAME)?.asJsonObject
+        if (o2 != null) {
+            val ddSession = o2.get(DD_SESSION_KEY_NAME)?.asJsonObject ?: JsonObject()
+            o2.add(DD_SESSION_KEY_NAME, ddSession)
             if (!sessionReplayEnabled) {
                 // RUM-4084 disable webview SR if host app doesn't have SR
-                oo.remove(DD_REPLAY_STATS)
+                o2.remove(DD_REPLAY_STATS)
             }
         }
 

@@ -119,8 +119,8 @@ class ActionEventForgeryFactory :
             context = forge.aNullable {
                 ActionEvent.Context(additionalProperties = forge.exhaustiveAttributes())
             },
-            oo = ActionEvent.Oo(
-                session = forge.aNullable { ActionEvent.OoSession(aNullable { getForgery() }) },
+            o2 = ActionEvent.O2(
+                session = forge.aNullable { ActionEvent.O2Session(aNullable { getForgery() }) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") }
             ),
             o2tags = forge.aNullable { ddTagsString() }

@@ -191,24 +191,39 @@
       "why": "REQ#2 wire prefix: lowercase intake header names dd-client-token, dd-application-id -> oo-*. \\b guards add-/odd-; dd-sdk-android was already renamed earlier. Does not touch x-datadog-* (that's datadog-, not dd-)."
     },
     {
+      "regex": "\\bDdDevice\\b",
+      "to": "O2Device",
+      "why": "The _dd telemetry namespace (schema key -> _o2 by the _dd rule) drives json2kotlin to generate the Kotlin types O2/O2Device/O2Session and property o2. Its CONSUMERS must match those generated names. These namespace types are split out here, BEFORE the general \\bDd([A-Z]) -> Oo rule, because that rule is overloaded: it also renames the public classes DdRumContentProvider/DdProfilingContentProvider/DdSpan (which stay Oo* until the identifier rename). Oo/OoDevice/OoSession never collide with those class names."
+    },
+    {
+      "regex": "\\bDdSession\\b",
+      "to": "O2Session",
+      "why": "The _dd telemetry namespace (schema key -> _o2 by the _dd rule) drives json2kotlin to generate the Kotlin types O2/O2Device/O2Session and property o2. Its CONSUMERS must match those generated names. These namespace types are split out here, BEFORE the general \\bDd([A-Z]) -> Oo rule, because that rule is overloaded: it also renames the public classes DdRumContentProvider/DdProfilingContentProvider/DdSpan (which stay Oo* until the identifier rename). Oo/OoDevice/OoSession never collide with those class names."
+    },
+    {
+      "regex": "\\bDd\\b",
+      "to": "O2",
+      "why": "The _dd telemetry namespace (schema key -> _o2 by the _dd rule) drives json2kotlin to generate the Kotlin types O2/O2Device/O2Session and property o2. Its CONSUMERS must match those generated names. These namespace types are split out here, BEFORE the general \\bDd([A-Z]) -> Oo rule, because that rule is overloaded: it also renames the public classes DdRumContentProvider/DdProfilingContentProvider/DdSpan (which stay Oo* until the identifier rename). Oo/OoDevice/OoSession never collide with those class names. Bare Dd is the top-level namespace type (LogEvent.Dd etc.); \\bDd\\b cannot match DdRum*/DdSpan* (word char follows Dd there)."
+    },
+    {
       "regex": "\\bDd([A-Z][A-Za-z0-9]*)",
       "to": "Oo$1",
       "why": "the schema `_dd`->`_oo` rename regenerates the event models' nested classes as Oo* (OoSession, OoDevice, ...). The hand-written scopes/generators reference the OLD Dd* names (ErrorEvent.DdSession, LogEvent.DdDevice) + the DdRumContentProvider auto-init class -> Oo*. Boundary-guarded so it never matches mid-identifier."
     },
     {
       "regex": "\\.Dd\\b",
-      "to": ".Oo",
-      "why": "bare generated nested class `.Dd` (LogEvent.Dd(, ErrorEvent.Dd(, ...) -> `.Oo` to match the regenerated `_oo` model. Not caught by the Dd<Suffix> rule (Dd is followed by '(' not [A-Z])."
+      "to": ".O2",
+      "why": "bare generated nested class `.Dd` (LogEvent.Dd(, ErrorEvent.Dd(, ...) -> `.Oo` to match the regenerated `_oo` model. Not caught by the Dd<Suffix> rule (Dd is followed by '(' not [A-Z]). RETARGETED .Oo->.O2 for the _o2 namespace member access."
     },
     {
       "regex": "\\bdd = ",
-      "to": "oo = ",
-      "why": "the event models' `_dd`->`_oo` field is the named constructor arg `dd = <Event>.Dd(...)` in every RUM/log scope + telemetry handler -> `oo = `. All `dd = ` occurrences in shipped source are this model arg."
+      "to": "o2 = ",
+      "why": "the event models' `_dd`->`_oo` field is the named constructor arg `dd = <Event>.Dd(...)` in every RUM/log scope + telemetry handler -> `oo = `. All `dd = ` occurrences in shipped source are this model arg. RETARGETED oo=->o2= : the _o2 namespace named argument / local-var declaration."
     },
     {
       "regex": "\\.dd\\b",
-      "to": ".oo",
-      "why": "property access on the event models' renamed field: `event.dd.copy(...)`, `.dd.documentVersion`, `element.dd` -> `.oo`. Matches the regenerated `val oo: Oo` property."
+      "to": ".o2",
+      "why": "property access on the event models' renamed field: `event.dd.copy(...)`, `.dd.documentVersion`, `element.dd` -> `.oo`. Matches the regenerated `val oo: Oo` property. RETARGETED .oo->.o2 for the _o2 namespace property access."
     },
     {
       "regex": "\\b_dd\\b",

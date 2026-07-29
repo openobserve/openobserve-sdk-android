@@ -35,7 +35,7 @@ data class com.openobserve.android.log.LogsConfiguration
     fun setEventMapper(com.openobserve.android.event.EventMapper<com.openobserve.android.log.model.LogEvent>): Builder
     fun build(): LogsConfiguration
 data class com.openobserve.android.log.model.LogEvent
-  constructor(LogEventDevice, Os, Status, kotlin.String, kotlin.String, kotlin.String, Logger, Oo, Usr? = null, Account? = null, Network? = null, Error? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String, kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
+  constructor(LogEventDevice, Os, Status, kotlin.String, kotlin.String, kotlin.String, Logger, O2, Usr? = null, Account? = null, Network? = null, Error? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String, kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
   fun toJson(): com.google.gson.JsonElement
   companion object 
     fun fromJson(kotlin.String): LogEvent
@@ -58,12 +58,12 @@ data class com.openobserve.android.log.model.LogEvent
     companion object 
       fun fromJson(kotlin.String): Logger
       fun fromJsonObject(com.google.gson.JsonObject): Logger
-  data class Oo
-    constructor(OoDevice)
+  data class O2
+    constructor(O2Device)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Usr
     constructor(kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
     fun toJson(): com.google.gson.JsonElement
@@ -88,12 +88,12 @@ data class com.openobserve.android.log.model.LogEvent
     companion object 
       fun fromJson(kotlin.String): Error
       fun fromJsonObject(com.google.gson.JsonObject): Error
-  data class OoDevice
+  data class O2Device
     constructor(kotlin.String)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoDevice
-      fun fromJsonObject(com.google.gson.JsonObject): OoDevice
+      fun fromJson(kotlin.String): O2Device
+      fun fromJsonObject(com.google.gson.JsonObject): O2Device
   data class Client
     constructor(SimCarrier? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String)
     fun toJson(): com.google.gson.JsonElement

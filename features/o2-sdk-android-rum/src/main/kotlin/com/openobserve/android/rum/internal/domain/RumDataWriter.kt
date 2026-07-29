@@ -37,7 +37,7 @@ internal class RumDataWriter(
 
             val eventMeta = RumEventMeta.View(
                 viewId = element.view.id,
-                documentVersion = element.oo.documentVersion,
+                documentVersion = element.o2.documentVersion,
                 hasAccessibility = hasAccessibility
             )
             val serializedEventMeta =

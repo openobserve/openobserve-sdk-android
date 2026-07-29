@@ -349,60 +349,60 @@ class CrossFeatureTest {
         ) {
 
         fun hasApplicationId(applicationId: String): SpanEventAssert {
-            assertThat(actual.meta.oo.application?.id)
+            assertThat(actual.meta.o2.application?.id)
                 .overridingErrorMessage(
                     "Expected span with operation name = ${actual.name} to have" +
-                        " RUM Application ID = $applicationId, but was ${actual.meta.oo.application?.id}."
+                        " RUM Application ID = $applicationId, but was ${actual.meta.o2.application?.id}."
                 )
                 .isEqualTo(applicationId)
             return this
         }
 
         fun hasNoApplicationId(): SpanEventAssert {
-            assertThat(actual.meta.oo.application?.id)
+            assertThat(actual.meta.o2.application?.id)
                 .overridingErrorMessage(
                     "Expected span with operation name = ${actual.name} to not have" +
-                        " RUM Application ID, but was ${actual.meta.oo.application?.id}."
+                        " RUM Application ID, but was ${actual.meta.o2.application?.id}."
                 )
                 .isNull()
             return this
         }
 
         fun hasSessionId(sessionId: String): SpanEventAssert {
-            assertThat(actual.meta.oo.session?.id)
+            assertThat(actual.meta.o2.session?.id)
                 .overridingErrorMessage(
                     "Expected span with operation name = ${actual.name} to have" +
-                        " RUM Session ID = $sessionId, but was ${actual.meta.oo.session?.id}."
+                        " RUM Session ID = $sessionId, but was ${actual.meta.o2.session?.id}."
                 )
                 .isEqualTo(sessionId)
             return this
         }
 
         fun hasNoSessionId(): SpanEventAssert {
-            assertThat(actual.meta.oo.session?.id)
+            assertThat(actual.meta.o2.session?.id)
                 .overridingErrorMessage(
                     "Expected span with operation name = ${actual.name} to not have" +
-                        " RUM Session ID, but was ${actual.meta.oo.session?.id}."
+                        " RUM Session ID, but was ${actual.meta.o2.session?.id}."
                 )
                 .isNull()
             return this
         }
 
         fun hasViewId(viewId: String): SpanEventAssert {
-            assertThat(actual.meta.oo.view?.id)
+            assertThat(actual.meta.o2.view?.id)
                 .overridingErrorMessage(
                     "Expected span with operation name = ${actual.name} to have" +
-                        " RUM View ID = $viewId, but was ${actual.meta.oo.view?.id}."
+                        " RUM View ID = $viewId, but was ${actual.meta.o2.view?.id}."
                 )
                 .isEqualTo(viewId)
             return this
         }
 
         fun hasNoViewId(): SpanEventAssert {
-            assertThat(actual.meta.oo.view?.id)
+            assertThat(actual.meta.o2.view?.id)
                 .overridingErrorMessage(
                     "Expected span with operation name = ${actual.name} to not have" +
-                        " RUM View ID, but was ${actual.meta.oo.view?.id}."
+                        " RUM View ID, but was ${actual.meta.o2.view?.id}."
                 )
                 .isNull()
             return this

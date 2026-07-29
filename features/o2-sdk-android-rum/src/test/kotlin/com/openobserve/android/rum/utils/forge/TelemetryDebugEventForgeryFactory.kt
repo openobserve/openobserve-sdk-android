@@ -40,7 +40,7 @@ internal class TelemetryDebugEventForgeryFactory : ForgeryFactory<TelemetryDebug
                     forge.getForgery<UUID>().toString()
                 )
             },
-            oo = TelemetryDebugEvent.Oo(),
+            o2 = TelemetryDebugEvent.O2(),
             telemetry = TelemetryDebugEvent.Telemetry(
                 message = forge.anAlphabeticalString()
             )

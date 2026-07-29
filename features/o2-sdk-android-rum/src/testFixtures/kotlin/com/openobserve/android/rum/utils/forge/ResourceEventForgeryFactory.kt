@@ -146,8 +146,8 @@ class ResourceEventForgeryFactory :
                     additionalProperties = forge.exhaustiveAttributes()
                 )
             },
-            oo = ResourceEvent.Oo(
-                session = forge.aNullable { ResourceEvent.OoSession(aNullable { getForgery() }) },
+            o2 = ResourceEvent.O2(
+                session = forge.aNullable { ResourceEvent.O2Session(aNullable { getForgery() }) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") },
                 spanId = forge.aNullable { aNumericalString() },
                 traceId = forge.aNullable { aNumericalString() }

@@ -143,8 +143,8 @@ class ViewEventForgeryFactory : ForgeryFactory<ViewEvent> {
                     additionalProperties = exhaustiveAttributes()
                 )
             },
-            oo = ViewEvent.Oo(
-                session = forge.aNullable { ViewEvent.OoSession(aNullable { getForgery() }) },
+            o2 = ViewEvent.O2(
+                session = forge.aNullable { ViewEvent.O2Session(aNullable { getForgery() }) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") },
                 documentVersion = forge.aPositiveLong(strict = true),
                 configuration = forge.aNullable {

@@ -269,17 +269,17 @@ public final class com/openobserve/android/flags/model/FlagEvaluation$Companion 
 public final class com/openobserve/android/flags/model/FlagEvaluation$Context {
 	public static final field Companion Lcom/openobserve/android/flags/model/FlagEvaluation$Context$Companion;
 	public fun <init> ()V
-	public fun <init> (Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;)V
-	public synthetic fun <init> (Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;Lcom/openobserve/android/flags/model/FlagEvaluation$O2;)V
+	public synthetic fun <init> (Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;Lcom/openobserve/android/flags/model/FlagEvaluation$O2;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;
-	public final fun component2 ()Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;
-	public final fun copy (Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;)Lcom/openobserve/android/flags/model/FlagEvaluation$Context;
-	public static synthetic fun copy$default (Lcom/openobserve/android/flags/model/FlagEvaluation$Context;Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;ILjava/lang/Object;)Lcom/openobserve/android/flags/model/FlagEvaluation$Context;
+	public final fun component2 ()Lcom/openobserve/android/flags/model/FlagEvaluation$O2;
+	public final fun copy (Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;Lcom/openobserve/android/flags/model/FlagEvaluation$O2;)Lcom/openobserve/android/flags/model/FlagEvaluation$Context;
+	public static synthetic fun copy$default (Lcom/openobserve/android/flags/model/FlagEvaluation$Context;Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;Lcom/openobserve/android/flags/model/FlagEvaluation$O2;ILjava/lang/Object;)Lcom/openobserve/android/flags/model/FlagEvaluation$Context;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/flags/model/FlagEvaluation$Context;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/flags/model/FlagEvaluation$Context;
 	public final fun getEvaluation ()Lcom/openobserve/android/flags/model/FlagEvaluation$Evaluation;
-	public final fun getOo ()Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;
+	public final fun getO2 ()Lcom/openobserve/android/flags/model/FlagEvaluation$O2;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
@@ -352,19 +352,19 @@ public final class com/openobserve/android/flags/model/FlagEvaluation$Identifier
 	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/flags/model/FlagEvaluation$Identifier;
 }
 
-public final class com/openobserve/android/flags/model/FlagEvaluation$Oo {
-	public static final field Companion Lcom/openobserve/android/flags/model/FlagEvaluation$Oo$Companion;
+public final class com/openobserve/android/flags/model/FlagEvaluation$O2 {
+	public static final field Companion Lcom/openobserve/android/flags/model/FlagEvaluation$O2$Companion;
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/String;Lcom/openobserve/android/flags/model/FlagEvaluation$Rum;Ljava/util/Map;)V
 	public synthetic fun <init> (Ljava/lang/String;Lcom/openobserve/android/flags/model/FlagEvaluation$Rum;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Lcom/openobserve/android/flags/model/FlagEvaluation$Rum;
 	public final fun component3 ()Ljava/util/Map;
-	public final fun copy (Ljava/lang/String;Lcom/openobserve/android/flags/model/FlagEvaluation$Rum;Ljava/util/Map;)Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;
-	public static synthetic fun copy$default (Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;Ljava/lang/String;Lcom/openobserve/android/flags/model/FlagEvaluation$Rum;Ljava/util/Map;ILjava/lang/Object;)Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;
+	public final fun copy (Ljava/lang/String;Lcom/openobserve/android/flags/model/FlagEvaluation$Rum;Ljava/util/Map;)Lcom/openobserve/android/flags/model/FlagEvaluation$O2;
+	public static synthetic fun copy$default (Lcom/openobserve/android/flags/model/FlagEvaluation$O2;Ljava/lang/String;Lcom/openobserve/android/flags/model/FlagEvaluation$Rum;Ljava/util/Map;ILjava/lang/Object;)Lcom/openobserve/android/flags/model/FlagEvaluation$O2;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/flags/model/FlagEvaluation$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/flags/model/FlagEvaluation$O2;
 	public final fun getAdditionalProperties ()Ljava/util/Map;
 	public final fun getRum ()Lcom/openobserve/android/flags/model/FlagEvaluation$Rum;
 	public final fun getService ()Ljava/lang/String;
@@ -373,9 +373,9 @@ public final class com/openobserve/android/flags/model/FlagEvaluation$Oo {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/flags/model/FlagEvaluation$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/flags/model/FlagEvaluation$Oo;
+public final class com/openobserve/android/flags/model/FlagEvaluation$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/flags/model/FlagEvaluation$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/flags/model/FlagEvaluation$O2;
 }
 
 public final class com/openobserve/android/flags/model/FlagEvaluation$Rum {

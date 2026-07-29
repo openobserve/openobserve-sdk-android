@@ -350,8 +350,8 @@ internal class RumActionScope(
                     isLowRam = ooContext.deviceInfo.isLowRam
                 ),
                 context = ActionEvent.Context(additionalProperties = getCustomAttributes().toMutableMap()),
-                oo = ActionEvent.Oo(
-                    session = ActionEvent.OoSession(
+                o2 = ActionEvent.O2(
+                    session = ActionEvent.O2Session(
                         sessionPrecondition = rumContext.sessionStartReason.toActionSessionPrecondition()
                     ),
                     configuration = ActionEvent.Configuration(sessionSampleRate = sampleRate)

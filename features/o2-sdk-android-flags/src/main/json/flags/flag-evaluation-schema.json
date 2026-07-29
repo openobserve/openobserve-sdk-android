@@ -45,7 +45,7 @@
           "description": "Evaluation context (excluding targetingKey)",
           "additionalProperties": true
         },
-        "oo": {
+        "o2": {
           "type": "object",
           "description": "OpenObserve-specific context",
           "properties": {

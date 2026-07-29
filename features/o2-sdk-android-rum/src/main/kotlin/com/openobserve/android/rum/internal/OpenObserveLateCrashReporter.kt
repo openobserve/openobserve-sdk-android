@@ -257,8 +257,8 @@ internal class OpenObserveLateCrashReporter(
                 totalRam = deviceInfo.totalRam,
                 isLowRam = deviceInfo.isLowRam
             ),
-            oo = ErrorEvent.Oo(
-                session = ErrorEvent.OoSession(),
+            o2 = ErrorEvent.O2(
+                session = ErrorEvent.O2Session(),
                 configuration = ErrorEvent.Configuration(sessionSampleRate = viewEvent.sampleRate)
             ),
             context = ErrorEvent.Context(additionalProperties = additionalProperties),
@@ -323,14 +323,14 @@ internal class OpenObserveLateCrashReporter(
                 crash = newCrash,
                 isActive = false
             ),
-            oo = lastViewEvent.oo.copy(
-                documentVersion = lastViewEvent.oo.documentVersion + 1
+            o2 = lastViewEvent.o2.copy(
+                documentVersion = lastViewEvent.o2.documentVersion + 1
             )
         )
     }
 
     private val ViewEvent.sampleRate: Float
-        get() = oo.configuration?.sessionSampleRate?.toFloat() ?: 0f
+        get() = o2.configuration?.sessionSampleRate?.toFloat() ?: 0f
 
     private val ViewEvent.isWithinSessionAvailability: Boolean
         get() {

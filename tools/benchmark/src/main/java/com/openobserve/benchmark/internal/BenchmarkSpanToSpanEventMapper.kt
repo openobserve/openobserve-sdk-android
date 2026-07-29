@@ -40,7 +40,7 @@ internal class BenchmarkSpanToSpanEventMapper {
         }
         return SpanEvent.Meta(
             version = "",
-            oo = SpanEvent.Oo(),
+            o2 = SpanEvent.O2(),
             span = SpanEvent.Span(),
             tracer = SpanEvent.Tracer(version = ""),
             usr = SpanEvent.Usr(),

@@ -366,11 +366,11 @@ internal class RumResourceScope(
                     isLowRam = ooContext.deviceInfo.isLowRam
                 ),
                 context = ResourceEvent.Context(additionalProperties = getCustomAttributes().toMutableMap()),
-                oo = ResourceEvent.Oo(
+                o2 = ResourceEvent.O2(
                     traceId = traceId,
                     spanId = spanId,
                     rulePsr = rulePsr,
-                    session = ResourceEvent.OoSession(
+                    session = ResourceEvent.O2Session(
                         sessionPrecondition = rumContext.sessionStartReason.toResourceSessionPrecondition()
                     ),
                     configuration = ResourceEvent.Configuration(sessionSampleRate = sampleRate)
@@ -530,8 +530,8 @@ internal class RumResourceScope(
                     isLowRam = ooContext.deviceInfo.isLowRam
                 ),
                 context = ErrorEvent.Context(additionalProperties = getCustomAttributes().toMutableMap()),
-                oo = ErrorEvent.Oo(
-                    session = ErrorEvent.OoSession(
+                o2 = ErrorEvent.O2(
+                    session = ErrorEvent.O2Session(
                         sessionPrecondition = rumContext.sessionStartReason.toErrorSessionPrecondition()
                     ),
                     configuration = ErrorEvent.Configuration(sessionSampleRate = sampleRate)

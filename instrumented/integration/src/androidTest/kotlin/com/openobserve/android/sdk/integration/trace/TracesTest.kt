@@ -220,7 +220,7 @@ internal abstract class TracesTest {
 
         // endregion
 
-        // region SpanEvent.Oo
+        // region SpanEvent.O2
 
         const val SOURCE_KEY = "source"
 

@@ -44,7 +44,7 @@ internal class TelemetryErrorEventForgeryFactory : ForgeryFactory<TelemetryError
                     forge.getForgery<UUID>().toString()
                 )
             },
-            oo = TelemetryErrorEvent.Oo(),
+            o2 = TelemetryErrorEvent.O2(),
             telemetry = TelemetryErrorEvent.Telemetry(
                 message = forge.anAlphabeticalString(),
                 error = TelemetryErrorEvent.Error(

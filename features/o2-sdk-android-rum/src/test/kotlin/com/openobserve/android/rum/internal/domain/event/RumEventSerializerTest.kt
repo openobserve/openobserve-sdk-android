@@ -97,8 +97,8 @@ internal class RumEventSerializerTest {
             }
             .hasField("_o2") {
                 hasField("format_version", 2L)
-                hasNullableField("span_id", event.oo.spanId)
-                hasNullableField("trace_id", event.oo.traceId)
+                hasNullableField("span_id", event.o2.spanId)
+                hasNullableField("trace_id", event.o2.traceId)
             }
 
         event.usr?.let { usr ->
@@ -591,7 +591,7 @@ internal class RumEventSerializerTest {
                 view.name?.let { hasField("name", it) }
             }
             .hasField("_o2") {
-                event.oo.browserSdkVersion?.let { hasField("browser_sdk_version", it) }
+                event.o2.browserSdkVersion?.let { hasField("browser_sdk_version", it) }
             }
             .hasNullableField("service", event.service)
 
@@ -663,7 +663,7 @@ internal class RumEventSerializerTest {
                 event.session.hasReplay?.let { hasField("has_replay", it) }
             }
             .hasField("_o2") {
-                event.oo.browserSdkVersion?.let { hasField("browser_sdk_version", it) }
+                event.o2.browserSdkVersion?.let { hasField("browser_sdk_version", it) }
             }
             .hasNullableField("service", event.service)
 

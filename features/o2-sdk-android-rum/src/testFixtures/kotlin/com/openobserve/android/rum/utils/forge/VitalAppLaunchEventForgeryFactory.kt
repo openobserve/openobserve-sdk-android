@@ -57,8 +57,8 @@ class VitalAppLaunchEventForgeryFactory : ForgeryFactory<VitalAppLaunchEvent> {
                     additionalProperties = forge.exhaustiveAttributes()
                 )
             },
-            oo = VitalAppLaunchEvent.Oo(
-                session = forge.aNullable { VitalAppLaunchEvent.OoSession(getForgery()) },
+            o2 = VitalAppLaunchEvent.O2(
+                session = forge.aNullable { VitalAppLaunchEvent.O2Session(getForgery()) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") }
             ),
             o2tags = forge.aNullable { ddTagsString() },

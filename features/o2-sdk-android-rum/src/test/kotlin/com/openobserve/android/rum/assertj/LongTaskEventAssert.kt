@@ -261,10 +261,10 @@ internal class LongTaskEventAssert(actual: LongTaskEvent) :
     }
 
     fun hasStartReason(reason: RumSessionScope.StartReason): LongTaskEventAssert {
-        assertThat(actual.oo.session?.sessionPrecondition)
+        assertThat(actual.o2.session?.sessionPrecondition)
             .overridingErrorMessage(
                 "Expected event to have a session sessionPrecondition of ${reason.name} " +
-                    "but was ${actual.oo.session?.sessionPrecondition}"
+                    "but was ${actual.o2.session?.sessionPrecondition}"
             )
             .isEqualTo(reason.toLongTaskSessionPrecondition())
         return this
@@ -410,10 +410,10 @@ internal class LongTaskEventAssert(actual: LongTaskEvent) :
     }
 
     fun hasSampleRate(sampleRate: Float?): LongTaskEventAssert {
-        assertThat(actual.oo.configuration?.sessionSampleRate ?: 0)
+        assertThat(actual.o2.configuration?.sessionSampleRate ?: 0)
             .overridingErrorMessage(
                 "Expected RUM event to have sample rate: $sampleRate" +
-                    " but instead was: ${actual.oo.configuration?.sessionSampleRate}"
+                    " but instead was: ${actual.o2.configuration?.sessionSampleRate}"
             )
             .isEqualTo(sampleRate)
         return this

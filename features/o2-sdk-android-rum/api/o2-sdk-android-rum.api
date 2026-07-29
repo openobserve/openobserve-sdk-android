@@ -511,8 +511,8 @@ public final class com/openobserve/android/rum/metric/networksettled/TimeBasedIn
 
 public final class com/openobserve/android/rum/model/ActionEvent {
 	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$Companion;
-	public fun <init> (JLcom/openobserve/android/rum/model/ActionEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;Lcom/openobserve/android/rum/model/ActionEvent$Usr;Lcom/openobserve/android/rum/model/ActionEvent$Account;Lcom/openobserve/android/rum/model/ActionEvent$Connectivity;Lcom/openobserve/android/rum/model/ActionEvent$Display;Lcom/openobserve/android/rum/model/ActionEvent$Synthetics;Lcom/openobserve/android/rum/model/ActionEvent$CiTest;Lcom/openobserve/android/rum/model/ActionEvent$Os;Lcom/openobserve/android/rum/model/ActionEvent$Device;Lcom/openobserve/android/rum/model/ActionEvent$Oo;Lcom/openobserve/android/rum/model/ActionEvent$Context;Lcom/openobserve/android/rum/model/ActionEvent$Container;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventAction;)V
-	public synthetic fun <init> (JLcom/openobserve/android/rum/model/ActionEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;Lcom/openobserve/android/rum/model/ActionEvent$Usr;Lcom/openobserve/android/rum/model/ActionEvent$Account;Lcom/openobserve/android/rum/model/ActionEvent$Connectivity;Lcom/openobserve/android/rum/model/ActionEvent$Display;Lcom/openobserve/android/rum/model/ActionEvent$Synthetics;Lcom/openobserve/android/rum/model/ActionEvent$CiTest;Lcom/openobserve/android/rum/model/ActionEvent$Os;Lcom/openobserve/android/rum/model/ActionEvent$Device;Lcom/openobserve/android/rum/model/ActionEvent$Oo;Lcom/openobserve/android/rum/model/ActionEvent$Context;Lcom/openobserve/android/rum/model/ActionEvent$Container;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventAction;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (JLcom/openobserve/android/rum/model/ActionEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;Lcom/openobserve/android/rum/model/ActionEvent$Usr;Lcom/openobserve/android/rum/model/ActionEvent$Account;Lcom/openobserve/android/rum/model/ActionEvent$Connectivity;Lcom/openobserve/android/rum/model/ActionEvent$Display;Lcom/openobserve/android/rum/model/ActionEvent$Synthetics;Lcom/openobserve/android/rum/model/ActionEvent$CiTest;Lcom/openobserve/android/rum/model/ActionEvent$Os;Lcom/openobserve/android/rum/model/ActionEvent$Device;Lcom/openobserve/android/rum/model/ActionEvent$O2;Lcom/openobserve/android/rum/model/ActionEvent$Context;Lcom/openobserve/android/rum/model/ActionEvent$Container;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventAction;)V
+	public synthetic fun <init> (JLcom/openobserve/android/rum/model/ActionEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;Lcom/openobserve/android/rum/model/ActionEvent$Usr;Lcom/openobserve/android/rum/model/ActionEvent$Account;Lcom/openobserve/android/rum/model/ActionEvent$Connectivity;Lcom/openobserve/android/rum/model/ActionEvent$Display;Lcom/openobserve/android/rum/model/ActionEvent$Synthetics;Lcom/openobserve/android/rum/model/ActionEvent$CiTest;Lcom/openobserve/android/rum/model/ActionEvent$Os;Lcom/openobserve/android/rum/model/ActionEvent$Device;Lcom/openobserve/android/rum/model/ActionEvent$O2;Lcom/openobserve/android/rum/model/ActionEvent$Context;Lcom/openobserve/android/rum/model/ActionEvent$Container;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventAction;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()J
 	public final fun component10 ()Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;
 	public final fun component11 ()Lcom/openobserve/android/rum/model/ActionEvent$Usr;
@@ -523,7 +523,7 @@ public final class com/openobserve/android/rum/model/ActionEvent {
 	public final fun component16 ()Lcom/openobserve/android/rum/model/ActionEvent$CiTest;
 	public final fun component17 ()Lcom/openobserve/android/rum/model/ActionEvent$Os;
 	public final fun component18 ()Lcom/openobserve/android/rum/model/ActionEvent$Device;
-	public final fun component19 ()Lcom/openobserve/android/rum/model/ActionEvent$Oo;
+	public final fun component19 ()Lcom/openobserve/android/rum/model/ActionEvent$O2;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ActionEvent$Application;
 	public final fun component20 ()Lcom/openobserve/android/rum/model/ActionEvent$Context;
 	public final fun component21 ()Lcom/openobserve/android/rum/model/ActionEvent$Container;
@@ -535,8 +535,8 @@ public final class com/openobserve/android/rum/model/ActionEvent {
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;
 	public final fun component9 ()Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;
-	public final fun copy (JLcom/openobserve/android/rum/model/ActionEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;Lcom/openobserve/android/rum/model/ActionEvent$Usr;Lcom/openobserve/android/rum/model/ActionEvent$Account;Lcom/openobserve/android/rum/model/ActionEvent$Connectivity;Lcom/openobserve/android/rum/model/ActionEvent$Display;Lcom/openobserve/android/rum/model/ActionEvent$Synthetics;Lcom/openobserve/android/rum/model/ActionEvent$CiTest;Lcom/openobserve/android/rum/model/ActionEvent$Os;Lcom/openobserve/android/rum/model/ActionEvent$Device;Lcom/openobserve/android/rum/model/ActionEvent$Oo;Lcom/openobserve/android/rum/model/ActionEvent$Context;Lcom/openobserve/android/rum/model/ActionEvent$Container;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventAction;)Lcom/openobserve/android/rum/model/ActionEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent;JLcom/openobserve/android/rum/model/ActionEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;Lcom/openobserve/android/rum/model/ActionEvent$Usr;Lcom/openobserve/android/rum/model/ActionEvent$Account;Lcom/openobserve/android/rum/model/ActionEvent$Connectivity;Lcom/openobserve/android/rum/model/ActionEvent$Display;Lcom/openobserve/android/rum/model/ActionEvent$Synthetics;Lcom/openobserve/android/rum/model/ActionEvent$CiTest;Lcom/openobserve/android/rum/model/ActionEvent$Os;Lcom/openobserve/android/rum/model/ActionEvent$Device;Lcom/openobserve/android/rum/model/ActionEvent$Oo;Lcom/openobserve/android/rum/model/ActionEvent$Context;Lcom/openobserve/android/rum/model/ActionEvent$Container;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventAction;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent;
+	public final fun copy (JLcom/openobserve/android/rum/model/ActionEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;Lcom/openobserve/android/rum/model/ActionEvent$Usr;Lcom/openobserve/android/rum/model/ActionEvent$Account;Lcom/openobserve/android/rum/model/ActionEvent$Connectivity;Lcom/openobserve/android/rum/model/ActionEvent$Display;Lcom/openobserve/android/rum/model/ActionEvent$Synthetics;Lcom/openobserve/android/rum/model/ActionEvent$CiTest;Lcom/openobserve/android/rum/model/ActionEvent$Os;Lcom/openobserve/android/rum/model/ActionEvent$Device;Lcom/openobserve/android/rum/model/ActionEvent$O2;Lcom/openobserve/android/rum/model/ActionEvent$Context;Lcom/openobserve/android/rum/model/ActionEvent$Container;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventAction;)Lcom/openobserve/android/rum/model/ActionEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent;JLcom/openobserve/android/rum/model/ActionEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSource;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventView;Lcom/openobserve/android/rum/model/ActionEvent$Usr;Lcom/openobserve/android/rum/model/ActionEvent$Account;Lcom/openobserve/android/rum/model/ActionEvent$Connectivity;Lcom/openobserve/android/rum/model/ActionEvent$Display;Lcom/openobserve/android/rum/model/ActionEvent$Synthetics;Lcom/openobserve/android/rum/model/ActionEvent$CiTest;Lcom/openobserve/android/rum/model/ActionEvent$Os;Lcom/openobserve/android/rum/model/ActionEvent$Device;Lcom/openobserve/android/rum/model/ActionEvent$O2;Lcom/openobserve/android/rum/model/ActionEvent$Context;Lcom/openobserve/android/rum/model/ActionEvent$Container;Lcom/openobserve/android/rum/model/ActionEvent$ActionEventAction;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent;
@@ -552,8 +552,8 @@ public final class com/openobserve/android/rum/model/ActionEvent {
 	public final fun getDate ()J
 	public final fun getDevice ()Lcom/openobserve/android/rum/model/ActionEvent$Device;
 	public final fun getDisplay ()Lcom/openobserve/android/rum/model/ActionEvent$Display;
-	public final fun getOo ()Lcom/openobserve/android/rum/model/ActionEvent$Oo;
-	public final fun getOotags ()Ljava/lang/String;
+	public final fun getO2 ()Lcom/openobserve/android/rum/model/ActionEvent$O2;
+	public final fun getO2tags ()Ljava/lang/String;
 	public final fun getOs ()Lcom/openobserve/android/rum/model/ActionEvent$Os;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/rum/model/ActionEvent$ActionEventSession;
@@ -1179,66 +1179,66 @@ public final class com/openobserve/android/rum/model/ActionEvent$NameSource$Comp
 	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$NameSource;
 }
 
-public final class com/openobserve/android/rum/model/ActionEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$Oo$Companion;
+public final class com/openobserve/android/rum/model/ActionEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$O2$Companion;
 	public fun <init> ()V
-	public fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$OoSession;Lcom/openobserve/android/rum/model/ActionEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$OoAction;)V
-	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$OoSession;Lcom/openobserve/android/rum/model/ActionEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$OoAction;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/rum/model/ActionEvent$OoSession;
+	public fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$O2Session;Lcom/openobserve/android/rum/model/ActionEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$O2Action;)V
+	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$O2Session;Lcom/openobserve/android/rum/model/ActionEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$O2Action;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/rum/model/ActionEvent$O2Session;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ActionEvent$Configuration;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Lcom/openobserve/android/rum/model/ActionEvent$OoAction;
-	public final fun copy (Lcom/openobserve/android/rum/model/ActionEvent$OoSession;Lcom/openobserve/android/rum/model/ActionEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$OoAction;)Lcom/openobserve/android/rum/model/ActionEvent$Oo;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent$Oo;Lcom/openobserve/android/rum/model/ActionEvent$OoSession;Lcom/openobserve/android/rum/model/ActionEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$OoAction;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent$Oo;
+	public final fun component5 ()Lcom/openobserve/android/rum/model/ActionEvent$O2Action;
+	public final fun copy (Lcom/openobserve/android/rum/model/ActionEvent$O2Session;Lcom/openobserve/android/rum/model/ActionEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$O2Action;)Lcom/openobserve/android/rum/model/ActionEvent$O2;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent$O2;Lcom/openobserve/android/rum/model/ActionEvent$O2Session;Lcom/openobserve/android/rum/model/ActionEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ActionEvent$O2Action;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent$O2;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$Oo;
-	public final fun getAction ()Lcom/openobserve/android/rum/model/ActionEvent$OoAction;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$O2;
+	public final fun getAction ()Lcom/openobserve/android/rum/model/ActionEvent$O2Action;
 	public final fun getBrowserSdkVersion ()Ljava/lang/String;
 	public final fun getConfiguration ()Lcom/openobserve/android/rum/model/ActionEvent$Configuration;
 	public final fun getFormatVersion ()J
 	public final fun getSdkName ()Ljava/lang/String;
-	public final fun getSession ()Lcom/openobserve/android/rum/model/ActionEvent$OoSession;
+	public final fun getSession ()Lcom/openobserve/android/rum/model/ActionEvent$O2Session;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ActionEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$Oo;
+public final class com/openobserve/android/rum/model/ActionEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$O2;
 }
 
-public final class com/openobserve/android/rum/model/ActionEvent$OoAction {
-	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$OoAction$Companion;
+public final class com/openobserve/android/rum/model/ActionEvent$O2Action {
+	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$O2Action$Companion;
 	public fun <init> ()V
-	public fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$Position;Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;Lcom/openobserve/android/rum/model/ActionEvent$NameSource;)V
-	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$Position;Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;Lcom/openobserve/android/rum/model/ActionEvent$NameSource;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$Position;Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;Lcom/openobserve/android/rum/model/ActionEvent$NameSource;)V
+	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$Position;Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;Lcom/openobserve/android/rum/model/ActionEvent$NameSource;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/rum/model/ActionEvent$Position;
-	public final fun component2 ()Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;
+	public final fun component2 ()Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;
 	public final fun component3 ()Lcom/openobserve/android/rum/model/ActionEvent$NameSource;
-	public final fun copy (Lcom/openobserve/android/rum/model/ActionEvent$Position;Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;Lcom/openobserve/android/rum/model/ActionEvent$NameSource;)Lcom/openobserve/android/rum/model/ActionEvent$OoAction;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent$OoAction;Lcom/openobserve/android/rum/model/ActionEvent$Position;Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;Lcom/openobserve/android/rum/model/ActionEvent$NameSource;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent$OoAction;
+	public final fun copy (Lcom/openobserve/android/rum/model/ActionEvent$Position;Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;Lcom/openobserve/android/rum/model/ActionEvent$NameSource;)Lcom/openobserve/android/rum/model/ActionEvent$O2Action;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent$O2Action;Lcom/openobserve/android/rum/model/ActionEvent$Position;Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;Lcom/openobserve/android/rum/model/ActionEvent$NameSource;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent$O2Action;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$OoAction;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$OoAction;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2Action;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$O2Action;
 	public final fun getNameSource ()Lcom/openobserve/android/rum/model/ActionEvent$NameSource;
 	public final fun getPosition ()Lcom/openobserve/android/rum/model/ActionEvent$Position;
-	public final fun getTarget ()Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;
+	public final fun getTarget ()Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;
 	public fun hashCode ()I
 	public final fun setNameSource (Lcom/openobserve/android/rum/model/ActionEvent$NameSource;)V
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ActionEvent$OoAction$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$OoAction;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$OoAction;
+public final class com/openobserve/android/rum/model/ActionEvent$O2Action$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2Action;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$O2Action;
 }
 
-public final class com/openobserve/android/rum/model/ActionEvent$OoActionTarget {
-	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget$Companion;
+public final class com/openobserve/android/rum/model/ActionEvent$O2ActionTarget {
+	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget$Companion;
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -1247,11 +1247,11 @@ public final class com/openobserve/android/rum/model/ActionEvent$OoActionTarget 
 	public final fun component3 ()Ljava/lang/Long;
 	public final fun component4 ()Ljava/lang/Long;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;
 	public final fun getComposedPathSelector ()Ljava/lang/String;
 	public final fun getHeight ()Ljava/lang/Long;
 	public final fun getPermanentId ()Ljava/lang/String;
@@ -1262,23 +1262,23 @@ public final class com/openobserve/android/rum/model/ActionEvent$OoActionTarget 
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ActionEvent$OoActionTarget$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$OoActionTarget;
+public final class com/openobserve/android/rum/model/ActionEvent$O2ActionTarget$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$O2ActionTarget;
 }
 
-public final class com/openobserve/android/rum/model/ActionEvent$OoSession {
-	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$OoSession$Companion;
+public final class com/openobserve/android/rum/model/ActionEvent$O2Session {
+	public static final field Companion Lcom/openobserve/android/rum/model/ActionEvent$O2Session$Companion;
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$Plan;Lcom/openobserve/android/rum/model/ActionEvent$SessionPrecondition;)V
 	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ActionEvent$Plan;Lcom/openobserve/android/rum/model/ActionEvent$SessionPrecondition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/rum/model/ActionEvent$Plan;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ActionEvent$SessionPrecondition;
-	public final fun copy (Lcom/openobserve/android/rum/model/ActionEvent$Plan;Lcom/openobserve/android/rum/model/ActionEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/ActionEvent$OoSession;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent$OoSession;Lcom/openobserve/android/rum/model/ActionEvent$Plan;Lcom/openobserve/android/rum/model/ActionEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent$OoSession;
+	public final fun copy (Lcom/openobserve/android/rum/model/ActionEvent$Plan;Lcom/openobserve/android/rum/model/ActionEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/ActionEvent$O2Session;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ActionEvent$O2Session;Lcom/openobserve/android/rum/model/ActionEvent$Plan;Lcom/openobserve/android/rum/model/ActionEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ActionEvent$O2Session;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$OoSession;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$OoSession;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2Session;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$O2Session;
 	public final fun getPlan ()Lcom/openobserve/android/rum/model/ActionEvent$Plan;
 	public final fun getSessionPrecondition ()Lcom/openobserve/android/rum/model/ActionEvent$SessionPrecondition;
 	public fun hashCode ()I
@@ -1286,9 +1286,9 @@ public final class com/openobserve/android/rum/model/ActionEvent$OoSession {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ActionEvent$OoSession$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$OoSession;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$OoSession;
+public final class com/openobserve/android/rum/model/ActionEvent$O2Session$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ActionEvent$O2Session;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ActionEvent$O2Session;
 }
 
 public final class com/openobserve/android/rum/model/ActionEvent$Os {
@@ -1506,8 +1506,8 @@ public final class com/openobserve/android/rum/model/ActionEvent$Viewport$Compan
 
 public final class com/openobserve/android/rum/model/ErrorEvent {
 	public static final field Companion Lcom/openobserve/android/rum/model/ErrorEvent$Companion;
-	public fun <init> (JLcom/openobserve/android/rum/model/ErrorEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;Lcom/openobserve/android/rum/model/ErrorEvent$Usr;Lcom/openobserve/android/rum/model/ErrorEvent$Account;Lcom/openobserve/android/rum/model/ErrorEvent$Connectivity;Lcom/openobserve/android/rum/model/ErrorEvent$Display;Lcom/openobserve/android/rum/model/ErrorEvent$Synthetics;Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;Lcom/openobserve/android/rum/model/ErrorEvent$Os;Lcom/openobserve/android/rum/model/ErrorEvent$Device;Lcom/openobserve/android/rum/model/ErrorEvent$Oo;Lcom/openobserve/android/rum/model/ErrorEvent$Context;Lcom/openobserve/android/rum/model/ErrorEvent$Action;Lcom/openobserve/android/rum/model/ErrorEvent$Container;Lcom/openobserve/android/rum/model/ErrorEvent$Error;Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;Lcom/openobserve/android/rum/model/ErrorEvent$Context;)V
-	public synthetic fun <init> (JLcom/openobserve/android/rum/model/ErrorEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;Lcom/openobserve/android/rum/model/ErrorEvent$Usr;Lcom/openobserve/android/rum/model/ErrorEvent$Account;Lcom/openobserve/android/rum/model/ErrorEvent$Connectivity;Lcom/openobserve/android/rum/model/ErrorEvent$Display;Lcom/openobserve/android/rum/model/ErrorEvent$Synthetics;Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;Lcom/openobserve/android/rum/model/ErrorEvent$Os;Lcom/openobserve/android/rum/model/ErrorEvent$Device;Lcom/openobserve/android/rum/model/ErrorEvent$Oo;Lcom/openobserve/android/rum/model/ErrorEvent$Context;Lcom/openobserve/android/rum/model/ErrorEvent$Action;Lcom/openobserve/android/rum/model/ErrorEvent$Container;Lcom/openobserve/android/rum/model/ErrorEvent$Error;Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;Lcom/openobserve/android/rum/model/ErrorEvent$Context;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (JLcom/openobserve/android/rum/model/ErrorEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;Lcom/openobserve/android/rum/model/ErrorEvent$Usr;Lcom/openobserve/android/rum/model/ErrorEvent$Account;Lcom/openobserve/android/rum/model/ErrorEvent$Connectivity;Lcom/openobserve/android/rum/model/ErrorEvent$Display;Lcom/openobserve/android/rum/model/ErrorEvent$Synthetics;Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;Lcom/openobserve/android/rum/model/ErrorEvent$Os;Lcom/openobserve/android/rum/model/ErrorEvent$Device;Lcom/openobserve/android/rum/model/ErrorEvent$O2;Lcom/openobserve/android/rum/model/ErrorEvent$Context;Lcom/openobserve/android/rum/model/ErrorEvent$Action;Lcom/openobserve/android/rum/model/ErrorEvent$Container;Lcom/openobserve/android/rum/model/ErrorEvent$Error;Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;Lcom/openobserve/android/rum/model/ErrorEvent$Context;)V
+	public synthetic fun <init> (JLcom/openobserve/android/rum/model/ErrorEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;Lcom/openobserve/android/rum/model/ErrorEvent$Usr;Lcom/openobserve/android/rum/model/ErrorEvent$Account;Lcom/openobserve/android/rum/model/ErrorEvent$Connectivity;Lcom/openobserve/android/rum/model/ErrorEvent$Display;Lcom/openobserve/android/rum/model/ErrorEvent$Synthetics;Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;Lcom/openobserve/android/rum/model/ErrorEvent$Os;Lcom/openobserve/android/rum/model/ErrorEvent$Device;Lcom/openobserve/android/rum/model/ErrorEvent$O2;Lcom/openobserve/android/rum/model/ErrorEvent$Context;Lcom/openobserve/android/rum/model/ErrorEvent$Action;Lcom/openobserve/android/rum/model/ErrorEvent$Container;Lcom/openobserve/android/rum/model/ErrorEvent$Error;Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;Lcom/openobserve/android/rum/model/ErrorEvent$Context;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()J
 	public final fun component10 ()Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;
 	public final fun component11 ()Lcom/openobserve/android/rum/model/ErrorEvent$Usr;
@@ -1518,7 +1518,7 @@ public final class com/openobserve/android/rum/model/ErrorEvent {
 	public final fun component16 ()Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;
 	public final fun component17 ()Lcom/openobserve/android/rum/model/ErrorEvent$Os;
 	public final fun component18 ()Lcom/openobserve/android/rum/model/ErrorEvent$Device;
-	public final fun component19 ()Lcom/openobserve/android/rum/model/ErrorEvent$Oo;
+	public final fun component19 ()Lcom/openobserve/android/rum/model/ErrorEvent$O2;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ErrorEvent$Application;
 	public final fun component20 ()Lcom/openobserve/android/rum/model/ErrorEvent$Context;
 	public final fun component21 ()Lcom/openobserve/android/rum/model/ErrorEvent$Action;
@@ -1533,8 +1533,8 @@ public final class com/openobserve/android/rum/model/ErrorEvent {
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;
 	public final fun component9 ()Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;
-	public final fun copy (JLcom/openobserve/android/rum/model/ErrorEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;Lcom/openobserve/android/rum/model/ErrorEvent$Usr;Lcom/openobserve/android/rum/model/ErrorEvent$Account;Lcom/openobserve/android/rum/model/ErrorEvent$Connectivity;Lcom/openobserve/android/rum/model/ErrorEvent$Display;Lcom/openobserve/android/rum/model/ErrorEvent$Synthetics;Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;Lcom/openobserve/android/rum/model/ErrorEvent$Os;Lcom/openobserve/android/rum/model/ErrorEvent$Device;Lcom/openobserve/android/rum/model/ErrorEvent$Oo;Lcom/openobserve/android/rum/model/ErrorEvent$Context;Lcom/openobserve/android/rum/model/ErrorEvent$Action;Lcom/openobserve/android/rum/model/ErrorEvent$Container;Lcom/openobserve/android/rum/model/ErrorEvent$Error;Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;Lcom/openobserve/android/rum/model/ErrorEvent$Context;)Lcom/openobserve/android/rum/model/ErrorEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ErrorEvent;JLcom/openobserve/android/rum/model/ErrorEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;Lcom/openobserve/android/rum/model/ErrorEvent$Usr;Lcom/openobserve/android/rum/model/ErrorEvent$Account;Lcom/openobserve/android/rum/model/ErrorEvent$Connectivity;Lcom/openobserve/android/rum/model/ErrorEvent$Display;Lcom/openobserve/android/rum/model/ErrorEvent$Synthetics;Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;Lcom/openobserve/android/rum/model/ErrorEvent$Os;Lcom/openobserve/android/rum/model/ErrorEvent$Device;Lcom/openobserve/android/rum/model/ErrorEvent$Oo;Lcom/openobserve/android/rum/model/ErrorEvent$Context;Lcom/openobserve/android/rum/model/ErrorEvent$Action;Lcom/openobserve/android/rum/model/ErrorEvent$Container;Lcom/openobserve/android/rum/model/ErrorEvent$Error;Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;Lcom/openobserve/android/rum/model/ErrorEvent$Context;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ErrorEvent;
+	public final fun copy (JLcom/openobserve/android/rum/model/ErrorEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;Lcom/openobserve/android/rum/model/ErrorEvent$Usr;Lcom/openobserve/android/rum/model/ErrorEvent$Account;Lcom/openobserve/android/rum/model/ErrorEvent$Connectivity;Lcom/openobserve/android/rum/model/ErrorEvent$Display;Lcom/openobserve/android/rum/model/ErrorEvent$Synthetics;Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;Lcom/openobserve/android/rum/model/ErrorEvent$Os;Lcom/openobserve/android/rum/model/ErrorEvent$Device;Lcom/openobserve/android/rum/model/ErrorEvent$O2;Lcom/openobserve/android/rum/model/ErrorEvent$Context;Lcom/openobserve/android/rum/model/ErrorEvent$Action;Lcom/openobserve/android/rum/model/ErrorEvent$Container;Lcom/openobserve/android/rum/model/ErrorEvent$Error;Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;Lcom/openobserve/android/rum/model/ErrorEvent$Context;)Lcom/openobserve/android/rum/model/ErrorEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ErrorEvent;JLcom/openobserve/android/rum/model/ErrorEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSource;Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventView;Lcom/openobserve/android/rum/model/ErrorEvent$Usr;Lcom/openobserve/android/rum/model/ErrorEvent$Account;Lcom/openobserve/android/rum/model/ErrorEvent$Connectivity;Lcom/openobserve/android/rum/model/ErrorEvent$Display;Lcom/openobserve/android/rum/model/ErrorEvent$Synthetics;Lcom/openobserve/android/rum/model/ErrorEvent$CiTest;Lcom/openobserve/android/rum/model/ErrorEvent$Os;Lcom/openobserve/android/rum/model/ErrorEvent$Device;Lcom/openobserve/android/rum/model/ErrorEvent$O2;Lcom/openobserve/android/rum/model/ErrorEvent$Context;Lcom/openobserve/android/rum/model/ErrorEvent$Action;Lcom/openobserve/android/rum/model/ErrorEvent$Container;Lcom/openobserve/android/rum/model/ErrorEvent$Error;Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;Lcom/openobserve/android/rum/model/ErrorEvent$Context;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ErrorEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent;
@@ -1553,8 +1553,8 @@ public final class com/openobserve/android/rum/model/ErrorEvent {
 	public final fun getError ()Lcom/openobserve/android/rum/model/ErrorEvent$Error;
 	public final fun getFeatureFlags ()Lcom/openobserve/android/rum/model/ErrorEvent$Context;
 	public final fun getFreeze ()Lcom/openobserve/android/rum/model/ErrorEvent$Freeze;
-	public final fun getOo ()Lcom/openobserve/android/rum/model/ErrorEvent$Oo;
-	public final fun getOotags ()Ljava/lang/String;
+	public final fun getO2 ()Lcom/openobserve/android/rum/model/ErrorEvent$O2;
+	public final fun getO2tags ()Ljava/lang/String;
 	public final fun getOs ()Lcom/openobserve/android/rum/model/ErrorEvent$Os;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/rum/model/ErrorEvent$ErrorEventSession;
@@ -2341,49 +2341,49 @@ public final class com/openobserve/android/rum/model/ErrorEvent$Method$Companion
 	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$Method;
 }
 
-public final class com/openobserve/android/rum/model/ErrorEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/rum/model/ErrorEvent$Oo$Companion;
+public final class com/openobserve/android/rum/model/ErrorEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/rum/model/ErrorEvent$O2$Companion;
 	public fun <init> ()V
-	public fun <init> (Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;)V
-	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;
+	public fun <init> (Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;)V
+	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;
-	public final fun copy (Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;)Lcom/openobserve/android/rum/model/ErrorEvent$Oo;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ErrorEvent$Oo;Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ErrorEvent$Oo;
+	public final fun copy (Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;)Lcom/openobserve/android/rum/model/ErrorEvent$O2;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ErrorEvent$O2;Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ErrorEvent$O2;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent$O2;
 	public final fun getBrowserSdkVersion ()Ljava/lang/String;
 	public final fun getConfiguration ()Lcom/openobserve/android/rum/model/ErrorEvent$Configuration;
 	public final fun getFormatVersion ()J
 	public final fun getProfiling ()Lcom/openobserve/android/rum/model/ErrorEvent$Profiling;
 	public final fun getSdkName ()Ljava/lang/String;
-	public final fun getSession ()Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;
+	public final fun getSession ()Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ErrorEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent$Oo;
+public final class com/openobserve/android/rum/model/ErrorEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent$O2;
 }
 
-public final class com/openobserve/android/rum/model/ErrorEvent$OoSession {
-	public static final field Companion Lcom/openobserve/android/rum/model/ErrorEvent$OoSession$Companion;
+public final class com/openobserve/android/rum/model/ErrorEvent$O2Session {
+	public static final field Companion Lcom/openobserve/android/rum/model/ErrorEvent$O2Session$Companion;
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/rum/model/ErrorEvent$Plan;Lcom/openobserve/android/rum/model/ErrorEvent$SessionPrecondition;)V
 	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ErrorEvent$Plan;Lcom/openobserve/android/rum/model/ErrorEvent$SessionPrecondition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/rum/model/ErrorEvent$Plan;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ErrorEvent$SessionPrecondition;
-	public final fun copy (Lcom/openobserve/android/rum/model/ErrorEvent$Plan;Lcom/openobserve/android/rum/model/ErrorEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;Lcom/openobserve/android/rum/model/ErrorEvent$Plan;Lcom/openobserve/android/rum/model/ErrorEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;
+	public final fun copy (Lcom/openobserve/android/rum/model/ErrorEvent$Plan;Lcom/openobserve/android/rum/model/ErrorEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;Lcom/openobserve/android/rum/model/ErrorEvent$Plan;Lcom/openobserve/android/rum/model/ErrorEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;
 	public final fun getPlan ()Lcom/openobserve/android/rum/model/ErrorEvent$Plan;
 	public final fun getSessionPrecondition ()Lcom/openobserve/android/rum/model/ErrorEvent$SessionPrecondition;
 	public fun hashCode ()I
@@ -2391,9 +2391,9 @@ public final class com/openobserve/android/rum/model/ErrorEvent$OoSession {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ErrorEvent$OoSession$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent$OoSession;
+public final class com/openobserve/android/rum/model/ErrorEvent$O2Session$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ErrorEvent$O2Session;
 }
 
 public final class com/openobserve/android/rum/model/ErrorEvent$Os {
@@ -2709,8 +2709,8 @@ public final class com/openobserve/android/rum/model/ErrorEvent$Viewport$Compani
 
 public final class com/openobserve/android/rum/model/LongTaskEvent {
 	public static final field Companion Lcom/openobserve/android/rum/model/LongTaskEvent$Companion;
-	public fun <init> (JLcom/openobserve/android/rum/model/LongTaskEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;Lcom/openobserve/android/rum/model/LongTaskEvent$Account;Lcom/openobserve/android/rum/model/LongTaskEvent$Connectivity;Lcom/openobserve/android/rum/model/LongTaskEvent$Display;Lcom/openobserve/android/rum/model/LongTaskEvent$Synthetics;Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;Lcom/openobserve/android/rum/model/LongTaskEvent$Os;Lcom/openobserve/android/rum/model/LongTaskEvent$Device;Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;Lcom/openobserve/android/rum/model/LongTaskEvent$Context;Lcom/openobserve/android/rum/model/LongTaskEvent$Action;Lcom/openobserve/android/rum/model/LongTaskEvent$Container;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;)V
-	public synthetic fun <init> (JLcom/openobserve/android/rum/model/LongTaskEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;Lcom/openobserve/android/rum/model/LongTaskEvent$Account;Lcom/openobserve/android/rum/model/LongTaskEvent$Connectivity;Lcom/openobserve/android/rum/model/LongTaskEvent$Display;Lcom/openobserve/android/rum/model/LongTaskEvent$Synthetics;Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;Lcom/openobserve/android/rum/model/LongTaskEvent$Os;Lcom/openobserve/android/rum/model/LongTaskEvent$Device;Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;Lcom/openobserve/android/rum/model/LongTaskEvent$Context;Lcom/openobserve/android/rum/model/LongTaskEvent$Action;Lcom/openobserve/android/rum/model/LongTaskEvent$Container;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (JLcom/openobserve/android/rum/model/LongTaskEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;Lcom/openobserve/android/rum/model/LongTaskEvent$Account;Lcom/openobserve/android/rum/model/LongTaskEvent$Connectivity;Lcom/openobserve/android/rum/model/LongTaskEvent$Display;Lcom/openobserve/android/rum/model/LongTaskEvent$Synthetics;Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;Lcom/openobserve/android/rum/model/LongTaskEvent$Os;Lcom/openobserve/android/rum/model/LongTaskEvent$Device;Lcom/openobserve/android/rum/model/LongTaskEvent$O2;Lcom/openobserve/android/rum/model/LongTaskEvent$Context;Lcom/openobserve/android/rum/model/LongTaskEvent$Action;Lcom/openobserve/android/rum/model/LongTaskEvent$Container;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;)V
+	public synthetic fun <init> (JLcom/openobserve/android/rum/model/LongTaskEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;Lcom/openobserve/android/rum/model/LongTaskEvent$Account;Lcom/openobserve/android/rum/model/LongTaskEvent$Connectivity;Lcom/openobserve/android/rum/model/LongTaskEvent$Display;Lcom/openobserve/android/rum/model/LongTaskEvent$Synthetics;Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;Lcom/openobserve/android/rum/model/LongTaskEvent$Os;Lcom/openobserve/android/rum/model/LongTaskEvent$Device;Lcom/openobserve/android/rum/model/LongTaskEvent$O2;Lcom/openobserve/android/rum/model/LongTaskEvent$Context;Lcom/openobserve/android/rum/model/LongTaskEvent$Action;Lcom/openobserve/android/rum/model/LongTaskEvent$Container;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()J
 	public final fun component10 ()Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;
 	public final fun component11 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;
@@ -2721,7 +2721,7 @@ public final class com/openobserve/android/rum/model/LongTaskEvent {
 	public final fun component16 ()Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;
 	public final fun component17 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Os;
 	public final fun component18 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Device;
-	public final fun component19 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;
+	public final fun component19 ()Lcom/openobserve/android/rum/model/LongTaskEvent$O2;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Application;
 	public final fun component20 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Context;
 	public final fun component21 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Action;
@@ -2734,8 +2734,8 @@ public final class com/openobserve/android/rum/model/LongTaskEvent {
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;
 	public final fun component9 ()Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;
-	public final fun copy (JLcom/openobserve/android/rum/model/LongTaskEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;Lcom/openobserve/android/rum/model/LongTaskEvent$Account;Lcom/openobserve/android/rum/model/LongTaskEvent$Connectivity;Lcom/openobserve/android/rum/model/LongTaskEvent$Display;Lcom/openobserve/android/rum/model/LongTaskEvent$Synthetics;Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;Lcom/openobserve/android/rum/model/LongTaskEvent$Os;Lcom/openobserve/android/rum/model/LongTaskEvent$Device;Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;Lcom/openobserve/android/rum/model/LongTaskEvent$Context;Lcom/openobserve/android/rum/model/LongTaskEvent$Action;Lcom/openobserve/android/rum/model/LongTaskEvent$Container;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;)Lcom/openobserve/android/rum/model/LongTaskEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/LongTaskEvent;JLcom/openobserve/android/rum/model/LongTaskEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;Lcom/openobserve/android/rum/model/LongTaskEvent$Account;Lcom/openobserve/android/rum/model/LongTaskEvent$Connectivity;Lcom/openobserve/android/rum/model/LongTaskEvent$Display;Lcom/openobserve/android/rum/model/LongTaskEvent$Synthetics;Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;Lcom/openobserve/android/rum/model/LongTaskEvent$Os;Lcom/openobserve/android/rum/model/LongTaskEvent$Device;Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;Lcom/openobserve/android/rum/model/LongTaskEvent$Context;Lcom/openobserve/android/rum/model/LongTaskEvent$Action;Lcom/openobserve/android/rum/model/LongTaskEvent$Container;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/LongTaskEvent;
+	public final fun copy (JLcom/openobserve/android/rum/model/LongTaskEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;Lcom/openobserve/android/rum/model/LongTaskEvent$Account;Lcom/openobserve/android/rum/model/LongTaskEvent$Connectivity;Lcom/openobserve/android/rum/model/LongTaskEvent$Display;Lcom/openobserve/android/rum/model/LongTaskEvent$Synthetics;Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;Lcom/openobserve/android/rum/model/LongTaskEvent$Os;Lcom/openobserve/android/rum/model/LongTaskEvent$Device;Lcom/openobserve/android/rum/model/LongTaskEvent$O2;Lcom/openobserve/android/rum/model/LongTaskEvent$Context;Lcom/openobserve/android/rum/model/LongTaskEvent$Action;Lcom/openobserve/android/rum/model/LongTaskEvent$Container;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;)Lcom/openobserve/android/rum/model/LongTaskEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/LongTaskEvent;JLcom/openobserve/android/rum/model/LongTaskEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSource;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;Lcom/openobserve/android/rum/model/LongTaskEvent$Usr;Lcom/openobserve/android/rum/model/LongTaskEvent$Account;Lcom/openobserve/android/rum/model/LongTaskEvent$Connectivity;Lcom/openobserve/android/rum/model/LongTaskEvent$Display;Lcom/openobserve/android/rum/model/LongTaskEvent$Synthetics;Lcom/openobserve/android/rum/model/LongTaskEvent$CiTest;Lcom/openobserve/android/rum/model/LongTaskEvent$Os;Lcom/openobserve/android/rum/model/LongTaskEvent$Device;Lcom/openobserve/android/rum/model/LongTaskEvent$O2;Lcom/openobserve/android/rum/model/LongTaskEvent$Context;Lcom/openobserve/android/rum/model/LongTaskEvent$Action;Lcom/openobserve/android/rum/model/LongTaskEvent$Container;Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/LongTaskEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent;
@@ -2752,8 +2752,8 @@ public final class com/openobserve/android/rum/model/LongTaskEvent {
 	public final fun getDevice ()Lcom/openobserve/android/rum/model/LongTaskEvent$Device;
 	public final fun getDisplay ()Lcom/openobserve/android/rum/model/LongTaskEvent$Display;
 	public final fun getLongTask ()Lcom/openobserve/android/rum/model/LongTaskEvent$LongTask;
-	public final fun getOo ()Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;
-	public final fun getOotags ()Ljava/lang/String;
+	public final fun getO2 ()Lcom/openobserve/android/rum/model/LongTaskEvent$O2;
+	public final fun getO2tags ()Ljava/lang/String;
 	public final fun getOs ()Lcom/openobserve/android/rum/model/LongTaskEvent$Os;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventSession;
@@ -3324,51 +3324,51 @@ public final class com/openobserve/android/rum/model/LongTaskEvent$LongTaskEvent
 	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$LongTaskEventView;
 }
 
-public final class com/openobserve/android/rum/model/LongTaskEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/rum/model/LongTaskEvent$Oo$Companion;
+public final class com/openobserve/android/rum/model/LongTaskEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/rum/model/LongTaskEvent$O2$Companion;
 	public fun <init> ()V
-	public fun <init> (Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;)V
-	public synthetic fun <init> (Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;
+	public fun <init> (Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;)V
+	public synthetic fun <init> (Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/Boolean;
 	public final fun component6 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;
-	public final fun copy (Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;)Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;
+	public final fun copy (Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/LongTaskEvent$O2;Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2;
 	public final fun getBrowserSdkVersion ()Ljava/lang/String;
 	public final fun getConfiguration ()Lcom/openobserve/android/rum/model/LongTaskEvent$Configuration;
 	public final fun getDiscarded ()Ljava/lang/Boolean;
 	public final fun getFormatVersion ()J
 	public final fun getProfiling ()Lcom/openobserve/android/rum/model/LongTaskEvent$Profiling;
 	public final fun getSdkName ()Ljava/lang/String;
-	public final fun getSession ()Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;
+	public final fun getSession ()Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/LongTaskEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$Oo;
+public final class com/openobserve/android/rum/model/LongTaskEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2;
 }
 
-public final class com/openobserve/android/rum/model/LongTaskEvent$OoSession {
-	public static final field Companion Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession$Companion;
+public final class com/openobserve/android/rum/model/LongTaskEvent$O2Session {
+	public static final field Companion Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session$Companion;
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/rum/model/LongTaskEvent$Plan;Lcom/openobserve/android/rum/model/LongTaskEvent$SessionPrecondition;)V
 	public synthetic fun <init> (Lcom/openobserve/android/rum/model/LongTaskEvent$Plan;Lcom/openobserve/android/rum/model/LongTaskEvent$SessionPrecondition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/rum/model/LongTaskEvent$Plan;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/LongTaskEvent$SessionPrecondition;
-	public final fun copy (Lcom/openobserve/android/rum/model/LongTaskEvent$Plan;Lcom/openobserve/android/rum/model/LongTaskEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;Lcom/openobserve/android/rum/model/LongTaskEvent$Plan;Lcom/openobserve/android/rum/model/LongTaskEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;
+	public final fun copy (Lcom/openobserve/android/rum/model/LongTaskEvent$Plan;Lcom/openobserve/android/rum/model/LongTaskEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;Lcom/openobserve/android/rum/model/LongTaskEvent$Plan;Lcom/openobserve/android/rum/model/LongTaskEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;
 	public final fun getPlan ()Lcom/openobserve/android/rum/model/LongTaskEvent$Plan;
 	public final fun getSessionPrecondition ()Lcom/openobserve/android/rum/model/LongTaskEvent$SessionPrecondition;
 	public fun hashCode ()I
@@ -3376,9 +3376,9 @@ public final class com/openobserve/android/rum/model/LongTaskEvent$OoSession {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/LongTaskEvent$OoSession$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$OoSession;
+public final class com/openobserve/android/rum/model/LongTaskEvent$O2Session$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/LongTaskEvent$O2Session;
 }
 
 public final class com/openobserve/android/rum/model/LongTaskEvent$Os {
@@ -3604,8 +3604,8 @@ public final class com/openobserve/android/rum/model/LongTaskEvent$Viewport$Comp
 
 public final class com/openobserve/android/rum/model/ResourceEvent {
 	public static final field Companion Lcom/openobserve/android/rum/model/ResourceEvent$Companion;
-	public fun <init> (JLcom/openobserve/android/rum/model/ResourceEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;Lcom/openobserve/android/rum/model/ResourceEvent$Usr;Lcom/openobserve/android/rum/model/ResourceEvent$Account;Lcom/openobserve/android/rum/model/ResourceEvent$Connectivity;Lcom/openobserve/android/rum/model/ResourceEvent$Display;Lcom/openobserve/android/rum/model/ResourceEvent$Synthetics;Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;Lcom/openobserve/android/rum/model/ResourceEvent$Os;Lcom/openobserve/android/rum/model/ResourceEvent$Device;Lcom/openobserve/android/rum/model/ResourceEvent$Oo;Lcom/openobserve/android/rum/model/ResourceEvent$Context;Lcom/openobserve/android/rum/model/ResourceEvent$Action;Lcom/openobserve/android/rum/model/ResourceEvent$Container;Lcom/openobserve/android/rum/model/ResourceEvent$Resource;)V
-	public synthetic fun <init> (JLcom/openobserve/android/rum/model/ResourceEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;Lcom/openobserve/android/rum/model/ResourceEvent$Usr;Lcom/openobserve/android/rum/model/ResourceEvent$Account;Lcom/openobserve/android/rum/model/ResourceEvent$Connectivity;Lcom/openobserve/android/rum/model/ResourceEvent$Display;Lcom/openobserve/android/rum/model/ResourceEvent$Synthetics;Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;Lcom/openobserve/android/rum/model/ResourceEvent$Os;Lcom/openobserve/android/rum/model/ResourceEvent$Device;Lcom/openobserve/android/rum/model/ResourceEvent$Oo;Lcom/openobserve/android/rum/model/ResourceEvent$Context;Lcom/openobserve/android/rum/model/ResourceEvent$Action;Lcom/openobserve/android/rum/model/ResourceEvent$Container;Lcom/openobserve/android/rum/model/ResourceEvent$Resource;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (JLcom/openobserve/android/rum/model/ResourceEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;Lcom/openobserve/android/rum/model/ResourceEvent$Usr;Lcom/openobserve/android/rum/model/ResourceEvent$Account;Lcom/openobserve/android/rum/model/ResourceEvent$Connectivity;Lcom/openobserve/android/rum/model/ResourceEvent$Display;Lcom/openobserve/android/rum/model/ResourceEvent$Synthetics;Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;Lcom/openobserve/android/rum/model/ResourceEvent$Os;Lcom/openobserve/android/rum/model/ResourceEvent$Device;Lcom/openobserve/android/rum/model/ResourceEvent$O2;Lcom/openobserve/android/rum/model/ResourceEvent$Context;Lcom/openobserve/android/rum/model/ResourceEvent$Action;Lcom/openobserve/android/rum/model/ResourceEvent$Container;Lcom/openobserve/android/rum/model/ResourceEvent$Resource;)V
+	public synthetic fun <init> (JLcom/openobserve/android/rum/model/ResourceEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;Lcom/openobserve/android/rum/model/ResourceEvent$Usr;Lcom/openobserve/android/rum/model/ResourceEvent$Account;Lcom/openobserve/android/rum/model/ResourceEvent$Connectivity;Lcom/openobserve/android/rum/model/ResourceEvent$Display;Lcom/openobserve/android/rum/model/ResourceEvent$Synthetics;Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;Lcom/openobserve/android/rum/model/ResourceEvent$Os;Lcom/openobserve/android/rum/model/ResourceEvent$Device;Lcom/openobserve/android/rum/model/ResourceEvent$O2;Lcom/openobserve/android/rum/model/ResourceEvent$Context;Lcom/openobserve/android/rum/model/ResourceEvent$Action;Lcom/openobserve/android/rum/model/ResourceEvent$Container;Lcom/openobserve/android/rum/model/ResourceEvent$Resource;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()J
 	public final fun component10 ()Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;
 	public final fun component11 ()Lcom/openobserve/android/rum/model/ResourceEvent$Usr;
@@ -3616,7 +3616,7 @@ public final class com/openobserve/android/rum/model/ResourceEvent {
 	public final fun component16 ()Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;
 	public final fun component17 ()Lcom/openobserve/android/rum/model/ResourceEvent$Os;
 	public final fun component18 ()Lcom/openobserve/android/rum/model/ResourceEvent$Device;
-	public final fun component19 ()Lcom/openobserve/android/rum/model/ResourceEvent$Oo;
+	public final fun component19 ()Lcom/openobserve/android/rum/model/ResourceEvent$O2;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ResourceEvent$Application;
 	public final fun component20 ()Lcom/openobserve/android/rum/model/ResourceEvent$Context;
 	public final fun component21 ()Lcom/openobserve/android/rum/model/ResourceEvent$Action;
@@ -3629,8 +3629,8 @@ public final class com/openobserve/android/rum/model/ResourceEvent {
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;
 	public final fun component9 ()Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;
-	public final fun copy (JLcom/openobserve/android/rum/model/ResourceEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;Lcom/openobserve/android/rum/model/ResourceEvent$Usr;Lcom/openobserve/android/rum/model/ResourceEvent$Account;Lcom/openobserve/android/rum/model/ResourceEvent$Connectivity;Lcom/openobserve/android/rum/model/ResourceEvent$Display;Lcom/openobserve/android/rum/model/ResourceEvent$Synthetics;Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;Lcom/openobserve/android/rum/model/ResourceEvent$Os;Lcom/openobserve/android/rum/model/ResourceEvent$Device;Lcom/openobserve/android/rum/model/ResourceEvent$Oo;Lcom/openobserve/android/rum/model/ResourceEvent$Context;Lcom/openobserve/android/rum/model/ResourceEvent$Action;Lcom/openobserve/android/rum/model/ResourceEvent$Container;Lcom/openobserve/android/rum/model/ResourceEvent$Resource;)Lcom/openobserve/android/rum/model/ResourceEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ResourceEvent;JLcom/openobserve/android/rum/model/ResourceEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;Lcom/openobserve/android/rum/model/ResourceEvent$Usr;Lcom/openobserve/android/rum/model/ResourceEvent$Account;Lcom/openobserve/android/rum/model/ResourceEvent$Connectivity;Lcom/openobserve/android/rum/model/ResourceEvent$Display;Lcom/openobserve/android/rum/model/ResourceEvent$Synthetics;Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;Lcom/openobserve/android/rum/model/ResourceEvent$Os;Lcom/openobserve/android/rum/model/ResourceEvent$Device;Lcom/openobserve/android/rum/model/ResourceEvent$Oo;Lcom/openobserve/android/rum/model/ResourceEvent$Context;Lcom/openobserve/android/rum/model/ResourceEvent$Action;Lcom/openobserve/android/rum/model/ResourceEvent$Container;Lcom/openobserve/android/rum/model/ResourceEvent$Resource;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ResourceEvent;
+	public final fun copy (JLcom/openobserve/android/rum/model/ResourceEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;Lcom/openobserve/android/rum/model/ResourceEvent$Usr;Lcom/openobserve/android/rum/model/ResourceEvent$Account;Lcom/openobserve/android/rum/model/ResourceEvent$Connectivity;Lcom/openobserve/android/rum/model/ResourceEvent$Display;Lcom/openobserve/android/rum/model/ResourceEvent$Synthetics;Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;Lcom/openobserve/android/rum/model/ResourceEvent$Os;Lcom/openobserve/android/rum/model/ResourceEvent$Device;Lcom/openobserve/android/rum/model/ResourceEvent$O2;Lcom/openobserve/android/rum/model/ResourceEvent$Context;Lcom/openobserve/android/rum/model/ResourceEvent$Action;Lcom/openobserve/android/rum/model/ResourceEvent$Container;Lcom/openobserve/android/rum/model/ResourceEvent$Resource;)Lcom/openobserve/android/rum/model/ResourceEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ResourceEvent;JLcom/openobserve/android/rum/model/ResourceEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSession;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventSource;Lcom/openobserve/android/rum/model/ResourceEvent$ResourceEventView;Lcom/openobserve/android/rum/model/ResourceEvent$Usr;Lcom/openobserve/android/rum/model/ResourceEvent$Account;Lcom/openobserve/android/rum/model/ResourceEvent$Connectivity;Lcom/openobserve/android/rum/model/ResourceEvent$Display;Lcom/openobserve/android/rum/model/ResourceEvent$Synthetics;Lcom/openobserve/android/rum/model/ResourceEvent$CiTest;Lcom/openobserve/android/rum/model/ResourceEvent$Os;Lcom/openobserve/android/rum/model/ResourceEvent$Device;Lcom/openobserve/android/rum/model/ResourceEvent$O2;Lcom/openobserve/android/rum/model/ResourceEvent$Context;Lcom/openobserve/android/rum/model/ResourceEvent$Action;Lcom/openobserve/android/rum/model/ResourceEvent$Container;Lcom/openobserve/android/rum/model/ResourceEvent$Resource;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ResourceEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent;
@@ -3646,8 +3646,8 @@ public final class com/openobserve/android/rum/model/ResourceEvent {
 	public final fun getDate ()J
 	public final fun getDevice ()Lcom/openobserve/android/rum/model/ResourceEvent$Device;
 	public final fun getDisplay ()Lcom/openobserve/android/rum/model/ResourceEvent$Display;
-	public final fun getOo ()Lcom/openobserve/android/rum/model/ResourceEvent$Oo;
-	public final fun getOotags ()Ljava/lang/String;
+	public final fun getO2 ()Lcom/openobserve/android/rum/model/ResourceEvent$O2;
+	public final fun getO2tags ()Ljava/lang/String;
 	public final fun getOs ()Lcom/openobserve/android/rum/model/ResourceEvent$Os;
 	public final fun getResource ()Lcom/openobserve/android/rum/model/ResourceEvent$Resource;
 	public final fun getService ()Ljava/lang/String;
@@ -4231,12 +4231,12 @@ public final class com/openobserve/android/rum/model/ResourceEvent$Method$Compan
 	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$Method;
 }
 
-public final class com/openobserve/android/rum/model/ResourceEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/rum/model/ResourceEvent$Oo$Companion;
+public final class com/openobserve/android/rum/model/ResourceEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/rum/model/ResourceEvent$O2$Companion;
 	public fun <init> ()V
-	public fun <init> (Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Boolean;)V
-	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;
+	public fun <init> (Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -4245,11 +4245,11 @@ public final class com/openobserve/android/rum/model/ResourceEvent$Oo {
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/Number;
 	public final fun component9 ()Ljava/lang/Boolean;
-	public final fun copy (Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Boolean;)Lcom/openobserve/android/rum/model/ResourceEvent$Oo;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ResourceEvent$Oo;Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Boolean;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ResourceEvent$Oo;
+	public final fun copy (Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Boolean;)Lcom/openobserve/android/rum/model/ResourceEvent$O2;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ResourceEvent$O2;Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Number;Ljava/lang/Boolean;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ResourceEvent$O2;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent$O2;
 	public final fun getBrowserSdkVersion ()Ljava/lang/String;
 	public final fun getConfiguration ()Lcom/openobserve/android/rum/model/ResourceEvent$Configuration;
 	public final fun getDiscarded ()Ljava/lang/Boolean;
@@ -4257,7 +4257,7 @@ public final class com/openobserve/android/rum/model/ResourceEvent$Oo {
 	public final fun getParentSpanId ()Ljava/lang/String;
 	public final fun getRulePsr ()Ljava/lang/Number;
 	public final fun getSdkName ()Ljava/lang/String;
-	public final fun getSession ()Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;
+	public final fun getSession ()Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;
 	public final fun getSpanId ()Ljava/lang/String;
 	public final fun getTraceId ()Ljava/lang/String;
 	public fun hashCode ()I
@@ -4265,23 +4265,23 @@ public final class com/openobserve/android/rum/model/ResourceEvent$Oo {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ResourceEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent$Oo;
+public final class com/openobserve/android/rum/model/ResourceEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent$O2;
 }
 
-public final class com/openobserve/android/rum/model/ResourceEvent$OoSession {
-	public static final field Companion Lcom/openobserve/android/rum/model/ResourceEvent$OoSession$Companion;
+public final class com/openobserve/android/rum/model/ResourceEvent$O2Session {
+	public static final field Companion Lcom/openobserve/android/rum/model/ResourceEvent$O2Session$Companion;
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/rum/model/ResourceEvent$Plan;Lcom/openobserve/android/rum/model/ResourceEvent$SessionPrecondition;)V
 	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ResourceEvent$Plan;Lcom/openobserve/android/rum/model/ResourceEvent$SessionPrecondition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/rum/model/ResourceEvent$Plan;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ResourceEvent$SessionPrecondition;
-	public final fun copy (Lcom/openobserve/android/rum/model/ResourceEvent$Plan;Lcom/openobserve/android/rum/model/ResourceEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;Lcom/openobserve/android/rum/model/ResourceEvent$Plan;Lcom/openobserve/android/rum/model/ResourceEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;
+	public final fun copy (Lcom/openobserve/android/rum/model/ResourceEvent$Plan;Lcom/openobserve/android/rum/model/ResourceEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;Lcom/openobserve/android/rum/model/ResourceEvent$Plan;Lcom/openobserve/android/rum/model/ResourceEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;
 	public final fun getPlan ()Lcom/openobserve/android/rum/model/ResourceEvent$Plan;
 	public final fun getSessionPrecondition ()Lcom/openobserve/android/rum/model/ResourceEvent$SessionPrecondition;
 	public fun hashCode ()I
@@ -4289,9 +4289,9 @@ public final class com/openobserve/android/rum/model/ResourceEvent$OoSession {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ResourceEvent$OoSession$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent$OoSession;
+public final class com/openobserve/android/rum/model/ResourceEvent$O2Session$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ResourceEvent$O2Session;
 }
 
 public final class com/openobserve/android/rum/model/ResourceEvent$OperationType : java/lang/Enum {
@@ -4903,8 +4903,8 @@ public final class com/openobserve/android/rum/model/ResourceEvent$Worker$Compan
 
 public final class com/openobserve/android/rum/model/ViewEvent {
 	public static final field Companion Lcom/openobserve/android/rum/model/ViewEvent$Companion;
-	public fun <init> (JLcom/openobserve/android/rum/model/ViewEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;Lcom/openobserve/android/rum/model/ViewEvent$Usr;Lcom/openobserve/android/rum/model/ViewEvent$Account;Lcom/openobserve/android/rum/model/ViewEvent$Connectivity;Lcom/openobserve/android/rum/model/ViewEvent$Display;Lcom/openobserve/android/rum/model/ViewEvent$Synthetics;Lcom/openobserve/android/rum/model/ViewEvent$CiTest;Lcom/openobserve/android/rum/model/ViewEvent$Os;Lcom/openobserve/android/rum/model/ViewEvent$Device;Lcom/openobserve/android/rum/model/ViewEvent$Oo;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Container;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Privacy;)V
-	public synthetic fun <init> (JLcom/openobserve/android/rum/model/ViewEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;Lcom/openobserve/android/rum/model/ViewEvent$Usr;Lcom/openobserve/android/rum/model/ViewEvent$Account;Lcom/openobserve/android/rum/model/ViewEvent$Connectivity;Lcom/openobserve/android/rum/model/ViewEvent$Display;Lcom/openobserve/android/rum/model/ViewEvent$Synthetics;Lcom/openobserve/android/rum/model/ViewEvent$CiTest;Lcom/openobserve/android/rum/model/ViewEvent$Os;Lcom/openobserve/android/rum/model/ViewEvent$Device;Lcom/openobserve/android/rum/model/ViewEvent$Oo;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Container;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Privacy;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (JLcom/openobserve/android/rum/model/ViewEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;Lcom/openobserve/android/rum/model/ViewEvent$Usr;Lcom/openobserve/android/rum/model/ViewEvent$Account;Lcom/openobserve/android/rum/model/ViewEvent$Connectivity;Lcom/openobserve/android/rum/model/ViewEvent$Display;Lcom/openobserve/android/rum/model/ViewEvent$Synthetics;Lcom/openobserve/android/rum/model/ViewEvent$CiTest;Lcom/openobserve/android/rum/model/ViewEvent$Os;Lcom/openobserve/android/rum/model/ViewEvent$Device;Lcom/openobserve/android/rum/model/ViewEvent$O2;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Container;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Privacy;)V
+	public synthetic fun <init> (JLcom/openobserve/android/rum/model/ViewEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;Lcom/openobserve/android/rum/model/ViewEvent$Usr;Lcom/openobserve/android/rum/model/ViewEvent$Account;Lcom/openobserve/android/rum/model/ViewEvent$Connectivity;Lcom/openobserve/android/rum/model/ViewEvent$Display;Lcom/openobserve/android/rum/model/ViewEvent$Synthetics;Lcom/openobserve/android/rum/model/ViewEvent$CiTest;Lcom/openobserve/android/rum/model/ViewEvent$Os;Lcom/openobserve/android/rum/model/ViewEvent$Device;Lcom/openobserve/android/rum/model/ViewEvent$O2;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Container;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Privacy;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()J
 	public final fun component10 ()Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;
 	public final fun component11 ()Lcom/openobserve/android/rum/model/ViewEvent$Usr;
@@ -4915,7 +4915,7 @@ public final class com/openobserve/android/rum/model/ViewEvent {
 	public final fun component16 ()Lcom/openobserve/android/rum/model/ViewEvent$CiTest;
 	public final fun component17 ()Lcom/openobserve/android/rum/model/ViewEvent$Os;
 	public final fun component18 ()Lcom/openobserve/android/rum/model/ViewEvent$Device;
-	public final fun component19 ()Lcom/openobserve/android/rum/model/ViewEvent$Oo;
+	public final fun component19 ()Lcom/openobserve/android/rum/model/ViewEvent$O2;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ViewEvent$Application;
 	public final fun component20 ()Lcom/openobserve/android/rum/model/ViewEvent$Context;
 	public final fun component21 ()Lcom/openobserve/android/rum/model/ViewEvent$Container;
@@ -4928,8 +4928,8 @@ public final class com/openobserve/android/rum/model/ViewEvent {
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;
 	public final fun component9 ()Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;
-	public final fun copy (JLcom/openobserve/android/rum/model/ViewEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;Lcom/openobserve/android/rum/model/ViewEvent$Usr;Lcom/openobserve/android/rum/model/ViewEvent$Account;Lcom/openobserve/android/rum/model/ViewEvent$Connectivity;Lcom/openobserve/android/rum/model/ViewEvent$Display;Lcom/openobserve/android/rum/model/ViewEvent$Synthetics;Lcom/openobserve/android/rum/model/ViewEvent$CiTest;Lcom/openobserve/android/rum/model/ViewEvent$Os;Lcom/openobserve/android/rum/model/ViewEvent$Device;Lcom/openobserve/android/rum/model/ViewEvent$Oo;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Container;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Privacy;)Lcom/openobserve/android/rum/model/ViewEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ViewEvent;JLcom/openobserve/android/rum/model/ViewEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;Lcom/openobserve/android/rum/model/ViewEvent$Usr;Lcom/openobserve/android/rum/model/ViewEvent$Account;Lcom/openobserve/android/rum/model/ViewEvent$Connectivity;Lcom/openobserve/android/rum/model/ViewEvent$Display;Lcom/openobserve/android/rum/model/ViewEvent$Synthetics;Lcom/openobserve/android/rum/model/ViewEvent$CiTest;Lcom/openobserve/android/rum/model/ViewEvent$Os;Lcom/openobserve/android/rum/model/ViewEvent$Device;Lcom/openobserve/android/rum/model/ViewEvent$Oo;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Container;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Privacy;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ViewEvent;
+	public final fun copy (JLcom/openobserve/android/rum/model/ViewEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;Lcom/openobserve/android/rum/model/ViewEvent$Usr;Lcom/openobserve/android/rum/model/ViewEvent$Account;Lcom/openobserve/android/rum/model/ViewEvent$Connectivity;Lcom/openobserve/android/rum/model/ViewEvent$Display;Lcom/openobserve/android/rum/model/ViewEvent$Synthetics;Lcom/openobserve/android/rum/model/ViewEvent$CiTest;Lcom/openobserve/android/rum/model/ViewEvent$Os;Lcom/openobserve/android/rum/model/ViewEvent$Device;Lcom/openobserve/android/rum/model/ViewEvent$O2;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Container;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Privacy;)Lcom/openobserve/android/rum/model/ViewEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ViewEvent;JLcom/openobserve/android/rum/model/ViewEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSession;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventSource;Lcom/openobserve/android/rum/model/ViewEvent$ViewEventView;Lcom/openobserve/android/rum/model/ViewEvent$Usr;Lcom/openobserve/android/rum/model/ViewEvent$Account;Lcom/openobserve/android/rum/model/ViewEvent$Connectivity;Lcom/openobserve/android/rum/model/ViewEvent$Display;Lcom/openobserve/android/rum/model/ViewEvent$Synthetics;Lcom/openobserve/android/rum/model/ViewEvent$CiTest;Lcom/openobserve/android/rum/model/ViewEvent$Os;Lcom/openobserve/android/rum/model/ViewEvent$Device;Lcom/openobserve/android/rum/model/ViewEvent$O2;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Container;Lcom/openobserve/android/rum/model/ViewEvent$Context;Lcom/openobserve/android/rum/model/ViewEvent$Privacy;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ViewEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent;
@@ -4945,8 +4945,8 @@ public final class com/openobserve/android/rum/model/ViewEvent {
 	public final fun getDevice ()Lcom/openobserve/android/rum/model/ViewEvent$Device;
 	public final fun getDisplay ()Lcom/openobserve/android/rum/model/ViewEvent$Display;
 	public final fun getFeatureFlags ()Lcom/openobserve/android/rum/model/ViewEvent$Context;
-	public final fun getOo ()Lcom/openobserve/android/rum/model/ViewEvent$Oo;
-	public final fun getOotags ()Ljava/lang/String;
+	public final fun getO2 ()Lcom/openobserve/android/rum/model/ViewEvent$O2;
+	public final fun getO2tags ()Ljava/lang/String;
 	public final fun getOs ()Lcom/openobserve/android/rum/model/ViewEvent$Os;
 	public final fun getPrivacy ()Lcom/openobserve/android/rum/model/ViewEvent$Privacy;
 	public final fun getService ()Ljava/lang/String;
@@ -5781,26 +5781,26 @@ public final class com/openobserve/android/rum/model/ViewEvent$LongTask$Companio
 	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$LongTask;
 }
 
-public final class com/openobserve/android/rum/model/ViewEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/rum/model/ViewEvent$Oo$Companion;
-	public fun <init> (Lcom/openobserve/android/rum/model/ViewEvent$OoSession;Lcom/openobserve/android/rum/model/ViewEvent$Configuration;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;Lcom/openobserve/android/rum/model/ViewEvent$OoCls;Lcom/openobserve/android/rum/model/ViewEvent$Profiling;)V
-	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ViewEvent$OoSession;Lcom/openobserve/android/rum/model/ViewEvent$Configuration;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;Lcom/openobserve/android/rum/model/ViewEvent$OoCls;Lcom/openobserve/android/rum/model/ViewEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/rum/model/ViewEvent$OoSession;
+public final class com/openobserve/android/rum/model/ViewEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/rum/model/ViewEvent$O2$Companion;
+	public fun <init> (Lcom/openobserve/android/rum/model/ViewEvent$O2Session;Lcom/openobserve/android/rum/model/ViewEvent$Configuration;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;Lcom/openobserve/android/rum/model/ViewEvent$Profiling;)V
+	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ViewEvent$O2Session;Lcom/openobserve/android/rum/model/ViewEvent$Configuration;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;Lcom/openobserve/android/rum/model/ViewEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/rum/model/ViewEvent$O2Session;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ViewEvent$Configuration;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()J
 	public final fun component6 ()Ljava/util/List;
 	public final fun component7 ()Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;
-	public final fun component8 ()Lcom/openobserve/android/rum/model/ViewEvent$OoCls;
+	public final fun component8 ()Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;
 	public final fun component9 ()Lcom/openobserve/android/rum/model/ViewEvent$Profiling;
-	public final fun copy (Lcom/openobserve/android/rum/model/ViewEvent$OoSession;Lcom/openobserve/android/rum/model/ViewEvent$Configuration;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;Lcom/openobserve/android/rum/model/ViewEvent$OoCls;Lcom/openobserve/android/rum/model/ViewEvent$Profiling;)Lcom/openobserve/android/rum/model/ViewEvent$Oo;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ViewEvent$Oo;Lcom/openobserve/android/rum/model/ViewEvent$OoSession;Lcom/openobserve/android/rum/model/ViewEvent$Configuration;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;Lcom/openobserve/android/rum/model/ViewEvent$OoCls;Lcom/openobserve/android/rum/model/ViewEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ViewEvent$Oo;
+	public final fun copy (Lcom/openobserve/android/rum/model/ViewEvent$O2Session;Lcom/openobserve/android/rum/model/ViewEvent$Configuration;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;Lcom/openobserve/android/rum/model/ViewEvent$Profiling;)Lcom/openobserve/android/rum/model/ViewEvent$O2;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ViewEvent$O2;Lcom/openobserve/android/rum/model/ViewEvent$O2Session;Lcom/openobserve/android/rum/model/ViewEvent$Configuration;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;Lcom/openobserve/android/rum/model/ViewEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ViewEvent$O2;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$O2;
 	public final fun getBrowserSdkVersion ()Ljava/lang/String;
-	public final fun getCls ()Lcom/openobserve/android/rum/model/ViewEvent$OoCls;
+	public final fun getCls ()Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;
 	public final fun getConfiguration ()Lcom/openobserve/android/rum/model/ViewEvent$Configuration;
 	public final fun getDocumentVersion ()J
 	public final fun getFormatVersion ()J
@@ -5808,51 +5808,51 @@ public final class com/openobserve/android/rum/model/ViewEvent$Oo {
 	public final fun getProfiling ()Lcom/openobserve/android/rum/model/ViewEvent$Profiling;
 	public final fun getReplayStats ()Lcom/openobserve/android/rum/model/ViewEvent$ReplayStats;
 	public final fun getSdkName ()Ljava/lang/String;
-	public final fun getSession ()Lcom/openobserve/android/rum/model/ViewEvent$OoSession;
+	public final fun getSession ()Lcom/openobserve/android/rum/model/ViewEvent$O2Session;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ViewEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$Oo;
+public final class com/openobserve/android/rum/model/ViewEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$O2;
 }
 
-public final class com/openobserve/android/rum/model/ViewEvent$OoCls {
-	public static final field Companion Lcom/openobserve/android/rum/model/ViewEvent$OoCls$Companion;
+public final class com/openobserve/android/rum/model/ViewEvent$O2Cls {
+	public static final field Companion Lcom/openobserve/android/rum/model/ViewEvent$O2Cls$Companion;
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/Number;)V
 	public synthetic fun <init> (Ljava/lang/Number;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/Number;
-	public final fun copy (Ljava/lang/Number;)Lcom/openobserve/android/rum/model/ViewEvent$OoCls;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ViewEvent$OoCls;Ljava/lang/Number;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ViewEvent$OoCls;
+	public final fun copy (Ljava/lang/Number;)Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;Ljava/lang/Number;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$OoCls;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$OoCls;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;
 	public final fun getDevicePixelRatio ()Ljava/lang/Number;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ViewEvent$OoCls$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$OoCls;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$OoCls;
+public final class com/openobserve/android/rum/model/ViewEvent$O2Cls$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$O2Cls;
 }
 
-public final class com/openobserve/android/rum/model/ViewEvent$OoSession {
-	public static final field Companion Lcom/openobserve/android/rum/model/ViewEvent$OoSession$Companion;
+public final class com/openobserve/android/rum/model/ViewEvent$O2Session {
+	public static final field Companion Lcom/openobserve/android/rum/model/ViewEvent$O2Session$Companion;
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/rum/model/ViewEvent$Plan;Lcom/openobserve/android/rum/model/ViewEvent$SessionPrecondition;)V
 	public synthetic fun <init> (Lcom/openobserve/android/rum/model/ViewEvent$Plan;Lcom/openobserve/android/rum/model/ViewEvent$SessionPrecondition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/rum/model/ViewEvent$Plan;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/ViewEvent$SessionPrecondition;
-	public final fun copy (Lcom/openobserve/android/rum/model/ViewEvent$Plan;Lcom/openobserve/android/rum/model/ViewEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/ViewEvent$OoSession;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ViewEvent$OoSession;Lcom/openobserve/android/rum/model/ViewEvent$Plan;Lcom/openobserve/android/rum/model/ViewEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ViewEvent$OoSession;
+	public final fun copy (Lcom/openobserve/android/rum/model/ViewEvent$Plan;Lcom/openobserve/android/rum/model/ViewEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/ViewEvent$O2Session;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/ViewEvent$O2Session;Lcom/openobserve/android/rum/model/ViewEvent$Plan;Lcom/openobserve/android/rum/model/ViewEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/ViewEvent$O2Session;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$OoSession;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$OoSession;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$O2Session;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$O2Session;
 	public final fun getPlan ()Lcom/openobserve/android/rum/model/ViewEvent$Plan;
 	public final fun getSessionPrecondition ()Lcom/openobserve/android/rum/model/ViewEvent$SessionPrecondition;
 	public fun hashCode ()I
@@ -5860,9 +5860,9 @@ public final class com/openobserve/android/rum/model/ViewEvent$OoSession {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/ViewEvent$OoSession$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$OoSession;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$OoSession;
+public final class com/openobserve/android/rum/model/ViewEvent$O2Session$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/ViewEvent$O2Session;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/ViewEvent$O2Session;
 }
 
 public final class com/openobserve/android/rum/model/ViewEvent$Os {
@@ -6492,8 +6492,8 @@ public final class com/openobserve/android/rum/model/ViewEvent$Viewport$Companio
 
 public final class com/openobserve/android/rum/model/VitalAppLaunchEvent {
 	public static final field Companion Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Companion;
-	public fun <init> (JLcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Account;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Vital;)V
-	public synthetic fun <init> (JLcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Account;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Vital;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (JLcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Account;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Vital;)V
+	public synthetic fun <init> (JLcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Account;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Vital;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()J
 	public final fun component10 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;
 	public final fun component11 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;
@@ -6504,7 +6504,7 @@ public final class com/openobserve/android/rum/model/VitalAppLaunchEvent {
 	public final fun component16 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;
 	public final fun component17 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;
 	public final fun component18 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;
-	public final fun component19 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;
+	public final fun component19 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;
 	public final fun component20 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;
 	public final fun component21 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;
@@ -6516,8 +6516,8 @@ public final class com/openobserve/android/rum/model/VitalAppLaunchEvent {
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;
 	public final fun component9 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;
-	public final fun copy (JLcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Account;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Vital;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent;JLcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Account;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Vital;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent;
+	public final fun copy (JLcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Account;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Vital;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent;JLcom/openobserve/android/rum/model/VitalAppLaunchEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSource;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventView;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Usr;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Account;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$CiTest;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Context;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Container;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Vital;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent;
@@ -6532,8 +6532,8 @@ public final class com/openobserve/android/rum/model/VitalAppLaunchEvent {
 	public final fun getDate ()J
 	public final fun getDevice ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Device;
 	public final fun getDisplay ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Display;
-	public final fun getOo ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;
-	public final fun getOotags ()Ljava/lang/String;
+	public final fun getO2 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;
+	public final fun getO2tags ()Ljava/lang/String;
 	public final fun getOs ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Os;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAppLaunchEventSession;
@@ -6935,49 +6935,49 @@ public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$Interfa
 	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Interface;
 }
 
-public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo$Companion;
+public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2$Companion;
 	public fun <init> ()V
-	public fun <init> (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;)V
-	public synthetic fun <init> (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;
+	public fun <init> (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;)V
+	public synthetic fun <init> (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;
-	public final fun copy (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;
+	public final fun copy (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;
 	public final fun getBrowserSdkVersion ()Ljava/lang/String;
 	public final fun getConfiguration ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Configuration;
 	public final fun getFormatVersion ()J
 	public final fun getProfiling ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Profiling;
 	public final fun getSdkName ()Ljava/lang/String;
-	public final fun getSession ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;
+	public final fun getSession ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Oo;
+public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2;
 }
 
-public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession {
-	public static final field Companion Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession$Companion;
+public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session {
+	public static final field Companion Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session$Companion;
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Plan;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$SessionPrecondition;)V
 	public synthetic fun <init> (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Plan;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$SessionPrecondition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Plan;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$SessionPrecondition;
-	public final fun copy (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Plan;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Plan;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;
+	public final fun copy (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Plan;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Plan;Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;
 	public final fun getPlan ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$Plan;
 	public final fun getSessionPrecondition ()Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$SessionPrecondition;
 	public fun hashCode ()I
@@ -6985,9 +6985,9 @@ public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$OoSessi
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$OoSession;
+public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalAppLaunchEvent$O2Session;
 }
 
 public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$Os {
@@ -7314,8 +7314,8 @@ public final class com/openobserve/android/rum/model/VitalAppLaunchEvent$VitalAp
 
 public final class com/openobserve/android/rum/model/VitalOperationStepEvent {
 	public static final field Companion Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Companion;
-	public fun <init> (JLcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Account;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Vital;)V
-	public synthetic fun <init> (JLcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Account;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Vital;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (JLcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Account;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Vital;)V
+	public synthetic fun <init> (JLcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Account;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Vital;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()J
 	public final fun component10 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;
 	public final fun component11 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;
@@ -7326,7 +7326,7 @@ public final class com/openobserve/android/rum/model/VitalOperationStepEvent {
 	public final fun component16 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;
 	public final fun component17 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;
 	public final fun component18 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;
-	public final fun component19 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;
+	public final fun component19 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;
 	public final fun component20 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;
 	public final fun component21 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;
@@ -7338,8 +7338,8 @@ public final class com/openobserve/android/rum/model/VitalOperationStepEvent {
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;
 	public final fun component9 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;
-	public final fun copy (JLcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Account;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Vital;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalOperationStepEvent;JLcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Account;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Vital;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent;
+	public final fun copy (JLcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Account;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Vital;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalOperationStepEvent;JLcom/openobserve/android/rum/model/VitalOperationStepEvent$Application;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSource;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventView;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Usr;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Account;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Connectivity;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Synthetics;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$CiTest;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Context;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Container;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Vital;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent;
@@ -7354,8 +7354,8 @@ public final class com/openobserve/android/rum/model/VitalOperationStepEvent {
 	public final fun getDate ()J
 	public final fun getDevice ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Device;
 	public final fun getDisplay ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Display;
-	public final fun getOo ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;
-	public final fun getOotags ()Ljava/lang/String;
+	public final fun getO2 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;
+	public final fun getO2tags ()Ljava/lang/String;
 	public final fun getOs ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Os;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$VitalOperationStepEventSession;
@@ -7758,49 +7758,49 @@ public final class com/openobserve/android/rum/model/VitalOperationStepEvent$Int
 	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Interface;
 }
 
-public final class com/openobserve/android/rum/model/VitalOperationStepEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo$Companion;
+public final class com/openobserve/android/rum/model/VitalOperationStepEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2$Companion;
 	public fun <init> ()V
-	public fun <init> (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;)V
-	public synthetic fun <init> (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;
+	public fun <init> (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;)V
+	public synthetic fun <init> (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;
-	public final fun copy (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;
+	public final fun copy (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;Ljava/lang/String;Ljava/lang/String;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;
 	public final fun getBrowserSdkVersion ()Ljava/lang/String;
 	public final fun getConfiguration ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Configuration;
 	public final fun getFormatVersion ()J
 	public final fun getProfiling ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Profiling;
 	public final fun getSdkName ()Ljava/lang/String;
-	public final fun getSession ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;
+	public final fun getSession ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;
 	public fun hashCode ()I
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/VitalOperationStepEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Oo;
+public final class com/openobserve/android/rum/model/VitalOperationStepEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2;
 }
 
-public final class com/openobserve/android/rum/model/VitalOperationStepEvent$OoSession {
-	public static final field Companion Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession$Companion;
+public final class com/openobserve/android/rum/model/VitalOperationStepEvent$O2Session {
+	public static final field Companion Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session$Companion;
 	public fun <init> ()V
 	public fun <init> (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Plan;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$SessionPrecondition;)V
 	public synthetic fun <init> (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Plan;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$SessionPrecondition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Plan;
 	public final fun component2 ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$SessionPrecondition;
-	public final fun copy (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Plan;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;
-	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Plan;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;
+	public final fun copy (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Plan;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$SessionPrecondition;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;
+	public static synthetic fun copy$default (Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Plan;Lcom/openobserve/android/rum/model/VitalOperationStepEvent$SessionPrecondition;ILjava/lang/Object;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;
 	public fun equals (Ljava/lang/Object;)Z
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;
 	public final fun getPlan ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$Plan;
 	public final fun getSessionPrecondition ()Lcom/openobserve/android/rum/model/VitalOperationStepEvent$SessionPrecondition;
 	public fun hashCode ()I
@@ -7808,9 +7808,9 @@ public final class com/openobserve/android/rum/model/VitalOperationStepEvent$OoS
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/openobserve/android/rum/model/VitalOperationStepEvent$OoSession$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$OoSession;
+public final class com/openobserve/android/rum/model/VitalOperationStepEvent$O2Session$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/rum/model/VitalOperationStepEvent$O2Session;
 }
 
 public final class com/openobserve/android/rum/model/VitalOperationStepEvent$Os {
@@ -8371,9 +8371,9 @@ public final class com/openobserve/android/sqlite/OpenObserveDatabaseErrorHandle
 
 public final class com/openobserve/android/telemetry/model/TelemetryConfigurationEvent {
 	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Companion;
-	public fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;)V
-	public synthetic fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;
+	public fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;)V
+	public synthetic fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;
 	public final fun component10 ()Ljava/lang/Number;
 	public final fun component11 ()Ljava/util/List;
 	public final fun component12 ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;
@@ -8385,8 +8385,8 @@ public final class com/openobserve/android/telemetry/model/TelemetryConfiguratio
 	public final fun component7 ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;
 	public final fun component8 ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;
 	public final fun component9 ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;
-	public final fun copy (Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;ILjava/lang/Object;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent;
+	public final fun copy (Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Telemetry;ILjava/lang/Object;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent;
@@ -8395,7 +8395,7 @@ public final class com/openobserve/android/telemetry/model/TelemetryConfiguratio
 	public final fun getDate ()J
 	public final fun getEffectiveSampleRate ()Ljava/lang/Number;
 	public final fun getExperimentalFeatures ()Ljava/util/List;
-	public final fun getOo ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;
+	public final fun getO2 ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Session;
 	public final fun getSource ()Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Source;
@@ -8748,18 +8748,18 @@ public final class com/openobserve/android/telemetry/model/TelemetryConfiguratio
 	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Device;
 }
 
-public final class com/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo$Companion;
+public final class com/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2$Companion;
 	public fun <init> ()V
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;
 	public final fun getFormatVersion ()J
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 }
 
-public final class com/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Oo;
+public final class com/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryConfigurationEvent$O2;
 }
 
 public final class com/openobserve/android/telemetry/model/TelemetryConfigurationEvent$Os {
@@ -9009,9 +9009,9 @@ public final class com/openobserve/android/telemetry/model/TelemetryConfiguratio
 
 public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent {
 	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Companion;
-	public fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;)V
-	public synthetic fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;
+	public fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;)V
+	public synthetic fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;
 	public final fun component10 ()Ljava/lang/Number;
 	public final fun component11 ()Ljava/util/List;
 	public final fun component12 ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;
@@ -9023,8 +9023,8 @@ public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent {
 	public final fun component7 ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;
 	public final fun component8 ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;
 	public final fun component9 ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;
-	public final fun copy (Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;ILjava/lang/Object;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent;
+	public final fun copy (Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Telemetry;ILjava/lang/Object;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent;
@@ -9033,7 +9033,7 @@ public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent {
 	public final fun getDate ()J
 	public final fun getEffectiveSampleRate ()Ljava/lang/Number;
 	public final fun getExperimentalFeatures ()Ljava/util/List;
-	public final fun getOo ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;
+	public final fun getO2 ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Session;
 	public final fun getSource ()Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Source;
@@ -9123,18 +9123,18 @@ public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent$D
 	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Device;
 }
 
-public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo$Companion;
+public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2$Companion;
 	public fun <init> ()V
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;
 	public final fun getFormatVersion ()J
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 }
 
-public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$Oo;
+public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryDebugEvent$O2;
 }
 
 public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent$Os {
@@ -9256,9 +9256,9 @@ public final class com/openobserve/android/telemetry/model/TelemetryDebugEvent$V
 
 public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent {
 	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Companion;
-	public fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;)V
-	public synthetic fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;
+	public fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;)V
+	public synthetic fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;
 	public final fun component10 ()Ljava/lang/Number;
 	public final fun component11 ()Ljava/util/List;
 	public final fun component12 ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;
@@ -9270,8 +9270,8 @@ public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent {
 	public final fun component7 ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;
 	public final fun component8 ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;
 	public final fun component9 ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;
-	public final fun copy (Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;ILjava/lang/Object;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent;
+	public final fun copy (Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Telemetry;ILjava/lang/Object;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent;
@@ -9280,7 +9280,7 @@ public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent {
 	public final fun getDate ()J
 	public final fun getEffectiveSampleRate ()Ljava/lang/Number;
 	public final fun getExperimentalFeatures ()Ljava/util/List;
-	public final fun getOo ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;
+	public final fun getO2 ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Session;
 	public final fun getSource ()Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Source;
@@ -9394,18 +9394,18 @@ public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent$E
 	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Error;
 }
 
-public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo$Companion;
+public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2$Companion;
 	public fun <init> ()V
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;
 	public final fun getFormatVersion ()J
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 }
 
-public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$Oo;
+public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryErrorEvent$O2;
 }
 
 public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent$Os {
@@ -9529,9 +9529,9 @@ public final class com/openobserve/android/telemetry/model/TelemetryErrorEvent$V
 
 public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent {
 	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Companion;
-	public fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;)V
-	public synthetic fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;
+	public fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;)V
+	public synthetic fun <init> (Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;
 	public final fun component10 ()Ljava/lang/Number;
 	public final fun component11 ()Ljava/util/List;
 	public final fun component12 ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;
@@ -9543,8 +9543,8 @@ public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent {
 	public final fun component7 ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;
 	public final fun component8 ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;
 	public final fun component9 ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;
-	public final fun copy (Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent;
-	public static synthetic fun copy$default (Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;ILjava/lang/Object;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent;
+	public final fun copy (Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent;
+	public static synthetic fun copy$default (Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;JLjava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;Ljava/lang/String;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Application;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$View;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Action;Ljava/lang/Number;Ljava/util/List;Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Telemetry;ILjava/lang/Object;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent;
 	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent;
@@ -9553,7 +9553,7 @@ public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent {
 	public final fun getDate ()J
 	public final fun getEffectiveSampleRate ()Ljava/lang/Number;
 	public final fun getExperimentalFeatures ()Ljava/util/List;
-	public final fun getOo ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;
+	public final fun getO2 ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;
 	public final fun getService ()Ljava/lang/String;
 	public final fun getSession ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Session;
 	public final fun getSource ()Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Source;
@@ -9658,18 +9658,18 @@ public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent$D
 	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Device;
 }
 
-public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo {
-	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo$Companion;
+public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent$O2 {
+	public static final field Companion Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2$Companion;
 	public fun <init> ()V
-	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;
-	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;
+	public static final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;
+	public static final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;
 	public final fun getFormatVersion ()J
 	public final fun toJson ()Lcom/google/gson/JsonElement;
 }
 
-public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo$Companion {
-	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;
-	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$Oo;
+public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent$O2$Companion {
+	public final fun fromJson (Ljava/lang/String;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;
+	public final fun fromJsonObject (Lcom/google/gson/JsonObject;)Lcom/openobserve/android/telemetry/model/TelemetryUsageEvent$O2;
 }
 
 public final class com/openobserve/android/telemetry/model/TelemetryUsageEvent$Os {

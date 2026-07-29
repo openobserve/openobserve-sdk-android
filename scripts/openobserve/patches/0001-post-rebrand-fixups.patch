@@ -69,7 +69,7 @@ index 3b6057b84..427ef21fe 100644
            "additionalProperties": true
          },
 -        "dd": {
-+        "oo": {
++        "o2": {
            "type": "object",
            "description": "OpenObserve-specific context",
            "properties": {
@@ -121,7 +121,7 @@ index 1ded33f24..f4da38c03 100644
  
      private val ViewEvent.sampleRate: Float
 -        get() = dd.configuration?.sessionSampleRate?.toFloat() ?: 0f
-+        get() = oo.configuration?.sessionSampleRate?.toFloat() ?: 0f
++        get() = o2.configuration?.sessionSampleRate?.toFloat() ?: 0f
  
      private val ViewEvent.isWithinSessionAvailability: Boolean
          get() {
@@ -159,8 +159,8 @@ index 8b5c15bc9..09053d97e 100644
          resolveSpanLinks(event)?.let { meta[SPAN_LINKS_KEY] = it }
          return SpanEvent.Meta(
              version = ooContext.version,
--            oo = dd,
-+            oo = oo,
+-            o2 = dd,
++            o2 = o2,
              span = SpanEvent.Span(),
              tracer = SpanEvent.Tracer(
                  version = ooContext.sdkVersion
@@ -171,17 +171,17 @@ index 1ceece9b1..fec5bffef 100644
 @@ -42,12 +42,12 @@ internal class WebViewRumEventMapper(
          }
          event.add(CONTAINER_KEY_NAME, containerObject)
-         val oo = event.get(DD_KEY_NAME)?.asJsonObject
+         val o2 = event.get(DD_KEY_NAME)?.asJsonObject
 -        if (dd != null) {
 -            val ddSession = dd.get(DD_SESSION_KEY_NAME)?.asJsonObject ?: JsonObject()
 -            dd.add(DD_SESSION_KEY_NAME, ddSession)
-+        if (oo != null) {
-+            val ddSession = oo.get(DD_SESSION_KEY_NAME)?.asJsonObject ?: JsonObject()
-+            oo.add(DD_SESSION_KEY_NAME, ddSession)
++        if (o2 != null) {
++            val ddSession = o2.get(DD_SESSION_KEY_NAME)?.asJsonObject ?: JsonObject()
++            o2.add(DD_SESSION_KEY_NAME, ddSession)
              if (!sessionReplayEnabled) {
                  // RUM-4084 disable webview SR if host app doesn't have SR
 -                dd.remove(DD_REPLAY_STATS)
-+                oo.remove(DD_REPLAY_STATS)
++                o2.remove(DD_REPLAY_STATS)
              }
          }
  

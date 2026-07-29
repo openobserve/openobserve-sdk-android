@@ -98,9 +98,9 @@ internal class EvaluationAggregationStatsTest {
         assertThat(event.error).isNull()
         assertThat(event.targetingRule).isNull()
         assertThat(event.context).isNotNull()
-        assertThat(event.context?.oo?.service).isEqualTo(fakeOpenObserveContext.service)
-        assertThat(event.context?.oo?.rum?.application?.id).isEqualTo(fakeApplicationId)
-        assertThat(event.context?.oo?.rum?.view?.url).isEqualTo(fakeViewName)
+        assertThat(event.context?.o2?.service).isEqualTo(fakeOpenObserveContext.service)
+        assertThat(event.context?.o2?.rum?.application?.id).isEqualTo(fakeApplicationId)
+        assertThat(event.context?.o2?.rum?.view?.url).isEqualTo(fakeViewName)
     }
 
     @Test
@@ -263,7 +263,7 @@ internal class EvaluationAggregationStatsTest {
         val event = stats.toEvaluationEvent(fakeOpenObserveContext)
 
         // Then
-        assertThat(event.context?.oo?.rum).isNull()
+        assertThat(event.context?.o2?.rum).isNull()
     }
 
     @Test
@@ -276,8 +276,8 @@ internal class EvaluationAggregationStatsTest {
         val event = stats.toEvaluationEvent(fakeOpenObserveContext)
 
         // Then
-        assertThat(event.context?.oo?.rum?.application?.id).isEqualTo(fakeApplicationId)
-        assertThat(event.context?.oo?.rum?.view).isNull()
+        assertThat(event.context?.o2?.rum?.application?.id).isEqualTo(fakeApplicationId)
+        assertThat(event.context?.o2?.rum?.view).isNull()
     }
 
     // endregion

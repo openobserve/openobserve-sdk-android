@@ -387,7 +387,7 @@ class com.openobserve.android.sqlite.OpenObserveDatabaseErrorHandler : android.d
   constructor(String? = null, android.database.DatabaseErrorHandler = DefaultDatabaseErrorHandler())
   override fun onCorruption(android.database.sqlite.SQLiteDatabase)
 data class com.openobserve.android.rum.model.ActionEvent
-  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, ActionEventSession, ActionEventSource? = null, ActionEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, Oo, Context? = null, Container? = null, ActionEventAction)
+  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, ActionEventSession, ActionEventSource? = null, ActionEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, O2, Context? = null, Container? = null, ActionEventAction)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
@@ -459,13 +459,13 @@ data class com.openobserve.android.rum.model.ActionEvent
     companion object 
       fun fromJson(kotlin.String): Device
       fun fromJsonObject(com.google.gson.JsonObject): Device
-  data class Oo
-    constructor(OoSession? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, OoAction? = null)
+  data class O2
+    constructor(O2Session? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, O2Action? = null)
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Context
     constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
     fun toJson(): com.google.gson.JsonElement
@@ -496,24 +496,24 @@ data class com.openobserve.android.rum.model.ActionEvent
     companion object 
       fun fromJson(kotlin.String): Viewport
       fun fromJsonObject(com.google.gson.JsonObject): Viewport
-  data class OoSession
+  data class O2Session
     constructor(Plan? = null, SessionPrecondition? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoSession
-      fun fromJsonObject(com.google.gson.JsonObject): OoSession
+      fun fromJson(kotlin.String): O2Session
+      fun fromJsonObject(com.google.gson.JsonObject): O2Session
   data class Configuration
     constructor(kotlin.Number, kotlin.Number? = null, kotlin.Number? = null, kotlin.Number? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
       fun fromJson(kotlin.String): Configuration
       fun fromJsonObject(com.google.gson.JsonObject): Configuration
-  data class OoAction
-    constructor(Position? = null, OoActionTarget? = null, NameSource? = null)
+  data class O2Action
+    constructor(Position? = null, O2ActionTarget? = null, NameSource? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoAction
-      fun fromJsonObject(com.google.gson.JsonObject): OoAction
+      fun fromJson(kotlin.String): O2Action
+      fun fromJsonObject(com.google.gson.JsonObject): O2Action
   data class ContainerView
     constructor(kotlin.String)
     fun toJson(): com.google.gson.JsonElement
@@ -562,12 +562,12 @@ data class com.openobserve.android.rum.model.ActionEvent
     companion object 
       fun fromJson(kotlin.String): Position
       fun fromJsonObject(com.google.gson.JsonObject): Position
-  data class OoActionTarget
+  data class O2ActionTarget
     constructor(kotlin.String? = null, kotlin.String? = null, kotlin.Long? = null, kotlin.Long? = null, kotlin.String? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoActionTarget
-      fun fromJsonObject(com.google.gson.JsonObject): OoActionTarget
+      fun fromJson(kotlin.String): O2ActionTarget
+      fun fromJsonObject(com.google.gson.JsonObject): O2ActionTarget
   enum ActionEventSource
     constructor(kotlin.String)
     - ANDROID
@@ -688,7 +688,7 @@ data class com.openobserve.android.rum.model.ActionEvent
     companion object 
       fun fromJson(kotlin.String): Type
 data class com.openobserve.android.rum.model.ErrorEvent
-  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, ErrorEventSession, ErrorEventSource? = null, ErrorEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, Oo, Context? = null, Action? = null, Container? = null, Error, Freeze? = null, Context? = null)
+  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, ErrorEventSession, ErrorEventSource? = null, ErrorEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, O2, Context? = null, Action? = null, Container? = null, Error, Freeze? = null, Context? = null)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
@@ -760,13 +760,13 @@ data class com.openobserve.android.rum.model.ErrorEvent
     companion object 
       fun fromJson(kotlin.String): Device
       fun fromJsonObject(com.google.gson.JsonObject): Device
-  data class Oo
-    constructor(OoSession? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, Profiling? = null)
+  data class O2
+    constructor(O2Session? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, Profiling? = null)
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Context
     constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
     fun toJson(): com.google.gson.JsonElement
@@ -809,12 +809,12 @@ data class com.openobserve.android.rum.model.ErrorEvent
     companion object 
       fun fromJson(kotlin.String): Viewport
       fun fromJsonObject(com.google.gson.JsonObject): Viewport
-  data class OoSession
+  data class O2Session
     constructor(Plan? = null, SessionPrecondition? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoSession
-      fun fromJsonObject(com.google.gson.JsonObject): OoSession
+      fun fromJson(kotlin.String): O2Session
+      fun fromJsonObject(com.google.gson.JsonObject): O2Session
   data class Configuration
     constructor(kotlin.Number, kotlin.Number? = null, kotlin.Number? = null, kotlin.Number? = null)
     fun toJson(): com.google.gson.JsonElement
@@ -1069,7 +1069,7 @@ data class com.openobserve.android.rum.model.ErrorEvent
     companion object 
       fun fromJson(kotlin.String): ProviderType
 data class com.openobserve.android.rum.model.LongTaskEvent
-  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, LongTaskEventSession, LongTaskEventSource? = null, LongTaskEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, Oo, Context? = null, Action? = null, Container? = null, LongTask)
+  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, LongTaskEventSession, LongTaskEventSource? = null, LongTaskEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, O2, Context? = null, Action? = null, Container? = null, LongTask)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
@@ -1141,13 +1141,13 @@ data class com.openobserve.android.rum.model.LongTaskEvent
     companion object 
       fun fromJson(kotlin.String): Device
       fun fromJsonObject(com.google.gson.JsonObject): Device
-  data class Oo
-    constructor(OoSession? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, kotlin.Boolean? = null, Profiling? = null)
+  data class O2
+    constructor(O2Session? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, kotlin.Boolean? = null, Profiling? = null)
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Context
     constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
     fun toJson(): com.google.gson.JsonElement
@@ -1184,12 +1184,12 @@ data class com.openobserve.android.rum.model.LongTaskEvent
     companion object 
       fun fromJson(kotlin.String): Viewport
       fun fromJsonObject(com.google.gson.JsonObject): Viewport
-  data class OoSession
+  data class O2Session
     constructor(Plan? = null, SessionPrecondition? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoSession
-      fun fromJsonObject(com.google.gson.JsonObject): OoSession
+      fun fromJson(kotlin.String): O2Session
+      fun fromJsonObject(com.google.gson.JsonObject): O2Session
   data class Configuration
     constructor(kotlin.Number, kotlin.Number? = null, kotlin.Number? = null, kotlin.Number? = null)
     fun toJson(): com.google.gson.JsonElement
@@ -1337,7 +1337,7 @@ data class com.openobserve.android.rum.model.LongTaskEvent
     companion object 
       fun fromJson(kotlin.String): InvokerType
 data class com.openobserve.android.rum.model.ResourceEvent
-  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, ResourceEventSession, ResourceEventSource? = null, ResourceEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, Oo, Context? = null, Action? = null, Container? = null, Resource)
+  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, ResourceEventSession, ResourceEventSource? = null, ResourceEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, O2, Context? = null, Action? = null, Container? = null, Resource)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
@@ -1409,13 +1409,13 @@ data class com.openobserve.android.rum.model.ResourceEvent
     companion object 
       fun fromJson(kotlin.String): Device
       fun fromJsonObject(com.google.gson.JsonObject): Device
-  data class Oo
-    constructor(OoSession? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.Number? = null, kotlin.Boolean? = null)
+  data class O2
+    constructor(O2Session? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.Number? = null, kotlin.Boolean? = null)
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Context
     constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
     fun toJson(): com.google.gson.JsonElement
@@ -1452,12 +1452,12 @@ data class com.openobserve.android.rum.model.ResourceEvent
     companion object 
       fun fromJson(kotlin.String): Viewport
       fun fromJsonObject(com.google.gson.JsonObject): Viewport
-  data class OoSession
+  data class O2Session
     constructor(Plan? = null, SessionPrecondition? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoSession
-      fun fromJsonObject(com.google.gson.JsonObject): OoSession
+      fun fromJson(kotlin.String): O2Session
+      fun fromJsonObject(com.google.gson.JsonObject): O2Session
   data class Configuration
     constructor(kotlin.Number, kotlin.Number? = null, kotlin.Number? = null, kotlin.Number? = null)
     fun toJson(): com.google.gson.JsonElement
@@ -1730,7 +1730,7 @@ data class com.openobserve.android.rum.model.ResourceEvent
     companion object 
       fun fromJson(kotlin.String): OperationType
 data class com.openobserve.android.rum.model.ViewEvent
-  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, ViewEventSession, ViewEventSource? = null, ViewEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, Oo, Context? = null, Container? = null, Context? = null, Privacy? = null)
+  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, ViewEventSession, ViewEventSource? = null, ViewEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, O2, Context? = null, Container? = null, Context? = null, Privacy? = null)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
@@ -1802,13 +1802,13 @@ data class com.openobserve.android.rum.model.ViewEvent
     companion object 
       fun fromJson(kotlin.String): Device
       fun fromJsonObject(com.google.gson.JsonObject): Device
-  data class Oo
-    constructor(OoSession? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, kotlin.Long, kotlin.collections.List<PageState>? = null, ReplayStats? = null, OoCls? = null, Profiling? = null)
+  data class O2
+    constructor(O2Session? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, kotlin.Long, kotlin.collections.List<PageState>? = null, ReplayStats? = null, O2Cls? = null, Profiling? = null)
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Context
     constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
     fun toJson(): com.google.gson.JsonElement
@@ -1923,12 +1923,12 @@ data class com.openobserve.android.rum.model.ViewEvent
     companion object 
       fun fromJson(kotlin.String): Scroll
       fun fromJsonObject(com.google.gson.JsonObject): Scroll
-  data class OoSession
+  data class O2Session
     constructor(Plan? = null, SessionPrecondition? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoSession
-      fun fromJsonObject(com.google.gson.JsonObject): OoSession
+      fun fromJson(kotlin.String): O2Session
+      fun fromJsonObject(com.google.gson.JsonObject): O2Session
   data class Configuration
     constructor(kotlin.Number, kotlin.Number? = null, kotlin.Number? = null, kotlin.Number? = null, kotlin.Boolean? = null)
     fun toJson(): com.google.gson.JsonElement
@@ -1947,12 +1947,12 @@ data class com.openobserve.android.rum.model.ViewEvent
     companion object 
       fun fromJson(kotlin.String): ReplayStats
       fun fromJsonObject(com.google.gson.JsonObject): ReplayStats
-  data class OoCls
+  data class O2Cls
     constructor(kotlin.Number? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoCls
-      fun fromJsonObject(com.google.gson.JsonObject): OoCls
+      fun fromJson(kotlin.String): O2Cls
+      fun fromJsonObject(com.google.gson.JsonObject): O2Cls
   data class Profiling
     constructor(ProfilingStatus? = null, ErrorReason? = null)
     fun toJson(): com.google.gson.JsonElement
@@ -2155,7 +2155,7 @@ data class com.openobserve.android.rum.model.ViewEvent
     companion object 
       fun fromJson(kotlin.String): ErrorReason
 data class com.openobserve.android.rum.model.VitalAppLaunchEvent
-  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, VitalAppLaunchEventSession, VitalAppLaunchEventSource? = null, VitalAppLaunchEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, Oo, Context? = null, Container? = null, Vital)
+  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, VitalAppLaunchEventSession, VitalAppLaunchEventSource? = null, VitalAppLaunchEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, O2, Context? = null, Container? = null, Vital)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
@@ -2227,13 +2227,13 @@ data class com.openobserve.android.rum.model.VitalAppLaunchEvent
     companion object 
       fun fromJson(kotlin.String): Device
       fun fromJsonObject(com.google.gson.JsonObject): Device
-  data class Oo
-    constructor(OoSession? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, Profiling? = null)
+  data class O2
+    constructor(O2Session? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, Profiling? = null)
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Context
     constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
     fun toJson(): com.google.gson.JsonElement
@@ -2265,12 +2265,12 @@ data class com.openobserve.android.rum.model.VitalAppLaunchEvent
     companion object 
       fun fromJson(kotlin.String): Viewport
       fun fromJsonObject(com.google.gson.JsonObject): Viewport
-  data class OoSession
+  data class O2Session
     constructor(Plan? = null, SessionPrecondition? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoSession
-      fun fromJsonObject(com.google.gson.JsonObject): OoSession
+      fun fromJson(kotlin.String): O2Session
+      fun fromJsonObject(com.google.gson.JsonObject): O2Session
   data class Configuration
     constructor(kotlin.Number, kotlin.Number? = null, kotlin.Number? = null, kotlin.Number? = null)
     fun toJson(): com.google.gson.JsonElement
@@ -2408,7 +2408,7 @@ data class com.openobserve.android.rum.model.VitalAppLaunchEvent
     companion object 
       fun fromJson(kotlin.String): ErrorReason
 data class com.openobserve.android.rum.model.VitalOperationStepEvent
-  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, VitalOperationStepEventSession, VitalOperationStepEventSource? = null, VitalOperationStepEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, Oo, Context? = null, Container? = null, Vital)
+  constructor(kotlin.Long, Application, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, kotlin.String? = null, VitalOperationStepEventSession, VitalOperationStepEventSource? = null, VitalOperationStepEventView, Usr? = null, Account? = null, Connectivity? = null, Display? = null, Synthetics? = null, CiTest? = null, Os? = null, Device? = null, O2, Context? = null, Container? = null, Vital)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
@@ -2480,13 +2480,13 @@ data class com.openobserve.android.rum.model.VitalOperationStepEvent
     companion object 
       fun fromJson(kotlin.String): Device
       fun fromJsonObject(com.google.gson.JsonObject): Device
-  data class Oo
-    constructor(OoSession? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, Profiling? = null)
+  data class O2
+    constructor(O2Session? = null, Configuration? = null, kotlin.String? = null, kotlin.String? = null, Profiling? = null)
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Context
     constructor(kotlin.collections.MutableMap<kotlin.String, kotlin.Any?> = mutableMapOf())
     fun toJson(): com.google.gson.JsonElement
@@ -2518,12 +2518,12 @@ data class com.openobserve.android.rum.model.VitalOperationStepEvent
     companion object 
       fun fromJson(kotlin.String): Viewport
       fun fromJsonObject(com.google.gson.JsonObject): Viewport
-  data class OoSession
+  data class O2Session
     constructor(Plan? = null, SessionPrecondition? = null)
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): OoSession
-      fun fromJsonObject(com.google.gson.JsonObject): OoSession
+      fun fromJson(kotlin.String): O2Session
+      fun fromJsonObject(com.google.gson.JsonObject): O2Session
   data class Configuration
     constructor(kotlin.Number, kotlin.Number? = null, kotlin.Number? = null, kotlin.Number? = null)
     fun toJson(): com.google.gson.JsonElement
@@ -2664,18 +2664,18 @@ data class com.openobserve.android.rum.model.VitalOperationStepEvent
     companion object 
       fun fromJson(kotlin.String): ErrorReason
 data class com.openobserve.android.telemetry.model.TelemetryConfigurationEvent
-  constructor(Oo, kotlin.Long, kotlin.String, Source, kotlin.String, Application? = null, Session? = null, View? = null, Action? = null, kotlin.Number? = null, kotlin.collections.List<kotlin.String>? = null, Telemetry)
+  constructor(O2, kotlin.Long, kotlin.String, Source, kotlin.String, Application? = null, Session? = null, View? = null, Action? = null, kotlin.Number? = null, kotlin.collections.List<kotlin.String>? = null, Telemetry)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
     fun fromJson(kotlin.String): TelemetryConfigurationEvent
     fun fromJsonObject(com.google.gson.JsonObject): TelemetryConfigurationEvent
-  class Oo
+  class O2
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Application
     constructor(kotlin.String)
     fun toJson(): com.google.gson.JsonElement
@@ -2804,18 +2804,18 @@ data class com.openobserve.android.telemetry.model.TelemetryConfigurationEvent
     companion object 
       fun fromJson(kotlin.String): TrackResourceHeaders
 data class com.openobserve.android.telemetry.model.TelemetryDebugEvent
-  constructor(Oo, kotlin.Long, kotlin.String, Source, kotlin.String, Application? = null, Session? = null, View? = null, Action? = null, kotlin.Number? = null, kotlin.collections.List<kotlin.String>? = null, Telemetry)
+  constructor(O2, kotlin.Long, kotlin.String, Source, kotlin.String, Application? = null, Session? = null, View? = null, Action? = null, kotlin.Number? = null, kotlin.collections.List<kotlin.String>? = null, Telemetry)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
     fun fromJson(kotlin.String): TelemetryDebugEvent
     fun fromJsonObject(com.google.gson.JsonObject): TelemetryDebugEvent
-  class Oo
+  class O2
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Application
     constructor(kotlin.String)
     fun toJson(): com.google.gson.JsonElement
@@ -2876,18 +2876,18 @@ data class com.openobserve.android.telemetry.model.TelemetryDebugEvent
     companion object 
       fun fromJson(kotlin.String): Source
 data class com.openobserve.android.telemetry.model.TelemetryErrorEvent
-  constructor(Oo, kotlin.Long, kotlin.String, Source, kotlin.String, Application? = null, Session? = null, View? = null, Action? = null, kotlin.Number? = null, kotlin.collections.List<kotlin.String>? = null, Telemetry)
+  constructor(O2, kotlin.Long, kotlin.String, Source, kotlin.String, Application? = null, Session? = null, View? = null, Action? = null, kotlin.Number? = null, kotlin.collections.List<kotlin.String>? = null, Telemetry)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
     fun fromJson(kotlin.String): TelemetryErrorEvent
     fun fromJsonObject(com.google.gson.JsonObject): TelemetryErrorEvent
-  class Oo
+  class O2
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Application
     constructor(kotlin.String)
     fun toJson(): com.google.gson.JsonElement
@@ -2954,18 +2954,18 @@ data class com.openobserve.android.telemetry.model.TelemetryErrorEvent
     companion object 
       fun fromJson(kotlin.String): Source
 data class com.openobserve.android.telemetry.model.TelemetryUsageEvent
-  constructor(Oo, kotlin.Long, kotlin.String, Source, kotlin.String, Application? = null, Session? = null, View? = null, Action? = null, kotlin.Number? = null, kotlin.collections.List<kotlin.String>? = null, Telemetry)
+  constructor(O2, kotlin.Long, kotlin.String, Source, kotlin.String, Application? = null, Session? = null, View? = null, Action? = null, kotlin.Number? = null, kotlin.collections.List<kotlin.String>? = null, Telemetry)
   val type: kotlin.String
   fun toJson(): com.google.gson.JsonElement
   companion object 
     fun fromJson(kotlin.String): TelemetryUsageEvent
     fun fromJsonObject(com.google.gson.JsonObject): TelemetryUsageEvent
-  class Oo
+  class O2
     val formatVersion: kotlin.Long
     fun toJson(): com.google.gson.JsonElement
     companion object 
-      fun fromJson(kotlin.String): Oo
-      fun fromJsonObject(com.google.gson.JsonObject): Oo
+      fun fromJson(kotlin.String): O2
+      fun fromJsonObject(com.google.gson.JsonObject): O2
   data class Application
     constructor(kotlin.String)
     fun toJson(): com.google.gson.JsonElement

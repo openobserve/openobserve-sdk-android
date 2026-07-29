@@ -37,7 +37,7 @@ internal data class EvaluationAggregationStats(
         // Build context with OpenObserve-specific information
         val eventContext = FlagEvaluation.Context(
             evaluation = null, // Evaluation context reserved for future use
-            oo = FlagEvaluation.Oo(
+            o2 = FlagEvaluation.O2(
                 service = ooContext.service,
                 rum = rumApplicationId?.let { appId ->
                     FlagEvaluation.Rum(

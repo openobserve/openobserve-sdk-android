@@ -56,8 +56,8 @@ class VitalOperationStepEventForgeryFactory : ForgeryFactory<VitalOperationStepE
                     additionalProperties = forge.exhaustiveAttributes()
                 )
             },
-            oo = VitalOperationStepEvent.Oo(
-                session = forge.aNullable { VitalOperationStepEvent.OoSession(getForgery()) },
+            o2 = VitalOperationStepEvent.O2(
+                session = forge.aNullable { VitalOperationStepEvent.O2Session(getForgery()) },
                 browserSdkVersion = forge.aNullable { aStringMatching("\\d+\\.\\d+\\.\\d+") }
             ),
             o2tags = forge.aNullable { ddTagsString() },
