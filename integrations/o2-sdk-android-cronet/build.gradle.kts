@@ -56,8 +56,15 @@ dependencies {
     implementation(project(":features:o2-sdk-android-trace"))
 
     unmock(libs.robolectric)
-    // Trying to add most recent lib version in order to test the instrumentation, see CronetApiInstrumentationTest
-    testImplementation("${libs.cronetApi.get().module}:+")
+    // Pinned to the same version the module ships against (see `api(libs.cronetApi)` above).
+    // This was `:+` to exercise the instrumentation against the newest Cronet, but a floating
+    // version makes the build non-reproducible: whether a release succeeds depends on what
+    // Chromium published that morning. It resolved to 500.0.1 against a shipped 141.7340.3
+    // and broke compilation outright -- Proxy's constructor went private and gained
+    // HttpConnectCallback / onBeforeTunnelRequest / onTunnelHeadersReceived.
+    // Testing an API consumers never link against was also the wrong target. If drift
+    // detection is wanted back, it belongs in a scheduled job, not the release path.
+    testImplementation(libs.cronetApi)
     testImplementation(testFixtures(project(":o2-sdk-android-core")))
     testImplementation(testFixtures(project(":o2-sdk-android-internal")))
     testImplementation(testFixtures(project(":features:o2-sdk-android-rum")))
