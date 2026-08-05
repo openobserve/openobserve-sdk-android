@@ -129,7 +129,15 @@ else
   : "${GPG_PRIVATE_KEY:?set signing key}" "${GPG_PASSWORD:?}"
   echo "==> publishToSonatype + close & release staging repo"
   ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository --stacktrace
-  FULL_VERSION="$VERSION-$TYPE${NUMBER}"
+  # A release build carries no suffix: Version.Type.Release renders "" (Version.kt),
+  # so the artifact is 0.1.0, not 0.1.0-release1. Getting this wrong is not cosmetic
+  # -- FULL_VERSION is interpolated into the VERIFY curl URLs below, which would then
+  # 404 and read as a failed publish.
+  if [ "$TYPE" = "release" ]; then
+    FULL_VERSION="$VERSION"
+  else
+    FULL_VERSION="$VERSION-$TYPE${NUMBER}"
+  fi
   echo "OK. Published ai.openobserve:o2-sdk-android-* $FULL_VERSION to Maven Central (sync ~15-30 min)."
   cat <<EOF
 
