@@ -373,11 +373,11 @@ internal open class TracingInterceptorNonDdTracerTest {
             assertThat(lastValue.headers)
                 .hasTraceParentHeader(
                     fakeTraceIdAsString,
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false
                 )
                 .hasTraceStateHeaderWithOnlyOpenObserveVendorValues(
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false,
                     fakeOrigin
                 )
@@ -514,11 +514,11 @@ internal open class TracingInterceptorNonDdTracerTest {
             assertThat(lastValue.headers)
                 .hasTraceParentHeader(
                     fakeTraceIdAsString,
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false
                 )
                 .hasTraceStateHeaderWithOnlyOpenObserveVendorValues(
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false,
                     fakeOrigin
                 )
@@ -906,11 +906,11 @@ internal open class TracingInterceptorNonDdTracerTest {
             assertThat(lastValue.headers)
                 .hasTraceParentHeader(
                     fakeTraceIdAsString,
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false
                 )
                 .hasTraceStateHeaderWithOnlyOpenObserveVendorValues(
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false,
                     fakeOrigin
                 )

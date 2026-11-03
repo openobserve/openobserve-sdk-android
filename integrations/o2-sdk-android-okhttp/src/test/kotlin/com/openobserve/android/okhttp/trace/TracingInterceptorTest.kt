@@ -399,11 +399,11 @@ internal open class TracingInterceptorTest {
             assertThat(lastValue.headers)
                 .hasTraceParentHeader(
                     fakeTraceIdAsString,
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false
                 )
                 .hasTraceStateHeaderWithOnlyOpenObserveVendorValues(
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false,
                     getExpectedOrigin()
                 )
@@ -457,11 +457,11 @@ internal open class TracingInterceptorTest {
             assertThat(lastValue.headers)
                 .hasTraceParentHeader(
                     fakeTraceIdAsString,
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false
                 )
                 .hasTraceStateHeaderWithOnlyOpenObserveVendorValues(
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false,
                     getExpectedOrigin()
                 )
@@ -603,11 +603,11 @@ internal open class TracingInterceptorTest {
             assertThat(lastValue.headers)
                 .hasTraceParentHeader(
                     fakeTraceIdAsString,
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false
                 )
                 .hasTraceStateHeaderWithOnlyOpenObserveVendorValues(
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false,
                     getExpectedOrigin()
                 )
@@ -656,11 +656,11 @@ internal open class TracingInterceptorTest {
             assertThat(lastValue.headers)
                 .hasTraceParentHeader(
                     fakeTraceIdAsString,
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false
                 )
                 .hasTraceStateHeaderWithOnlyOpenObserveVendorValues(
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false,
                     getExpectedOrigin()
                 )
@@ -1077,11 +1077,11 @@ internal open class TracingInterceptorTest {
             assertThat(lastValue.headers)
                 .hasTraceParentHeader(
                     fakeTraceIdAsString,
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false
                 )
                 .hasTraceStateHeaderWithOnlyOpenObserveVendorValues(
-                    mockSpan.context().spanId.toString(),
+                    _TraceInternalProxy.spanIdConverter.toHexStringPadded(mockSpan.context().spanId),
                     isSampled = false,
                     getExpectedOrigin()
                 )

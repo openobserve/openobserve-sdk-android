@@ -38,6 +38,7 @@ import com.openobserve.android.trace.TraceContextInjection
 import com.openobserve.android.trace.TracingHeaderType
 import com.openobserve.android.trace.api.span.OpenObserveSpan
 import com.openobserve.android.trace.api.tracer.OpenObserveTracer
+import com.openobserve.android.trace.internal._TraceInternalProxy
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -224,7 +225,7 @@ open class OpenObserveInterceptor internal constructor(
             )
             buildMap {
                 put(RumAttributes.TRACE_ID, span.context().traceId.toHexString())
-                put(RumAttributes.SPAN_ID, span.context().spanId.toString())
+                put(RumAttributes.SPAN_ID, _TraceInternalProxy.spanIdConverter.toHexStringPadded(span.context().spanId))
                 put(RumAttributes.RULE_PSR, (traceSampler.getSampleRate() ?: ZERO_SAMPLE_RATE) / ALL_IN_SAMPLE_RATE)
                 putAll(graphQLAttributes)
                 putAll(graphQLErrorAttributes)

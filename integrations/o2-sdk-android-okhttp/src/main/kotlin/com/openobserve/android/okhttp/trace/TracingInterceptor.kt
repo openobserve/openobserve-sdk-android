@@ -528,7 +528,7 @@ internal constructor(
     private fun handleW3CNotSampledHeaders(span: OpenObserveSpan, requestBuilder: Request.Builder) {
         if (traceContextInjection == TraceContextInjection.ALL) {
             val traceId = span.context().traceId.toHexString()
-            val spanId = span.context().spanId.toString()
+            val spanId = _TraceInternalProxy.spanIdConverter.toHexStringPadded(span.context().spanId)
             requestBuilder.addHeader(
                 W3C_TRACEPARENT_KEY,
                 @Suppress("UnsafeThirdPartyFunctionCall") // Format string is static

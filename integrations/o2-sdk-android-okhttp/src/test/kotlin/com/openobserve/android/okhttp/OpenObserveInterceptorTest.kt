@@ -28,6 +28,7 @@ import com.openobserve.android.trace.DeterministicTraceSampler
 import com.openobserve.android.trace.TraceContextInjection
 import com.openobserve.android.trace.TracingHeaderType
 import com.openobserve.android.trace.api.tracer.OpenObserveTracer
+import com.openobserve.android.trace.internal._TraceInternalProxy
 import com.openobserve.android.utils.verifyLog
 import com.openobserve.tools.unit.extensions.TestConfigurationExtension
 import com.openobserve.tools.unit.forge.BaseConfigurator
@@ -268,7 +269,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         val expectedStartAttrs = emptyMap<String, Any?>()
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val mimeType = fakeMediaType?.type
@@ -312,7 +313,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         val expectedStartAttrs = emptyMap<String, Any?>()
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val mimeType = fakeMediaType?.type
@@ -359,7 +360,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         val expectedStartAttrs = emptyMap<String, Any?>()
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val kind = RumResourceKind.NATIVE
@@ -401,7 +402,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         val expectedStartAttrs = emptyMap<String, Any?>()
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val mimeType = fakeMediaType?.type
@@ -539,7 +540,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         val expectedStartAttrs = emptyMap<String, Any?>()
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val mimeType = fakeMediaType?.type
@@ -631,7 +632,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         }
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val mimeType = fakeMediaType?.type
@@ -676,7 +677,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         }
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val mimeType = fakeMediaType?.type
@@ -818,7 +819,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         val expectedStartAttrs = emptyMap<String, Any?>()
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val mimeType = fakeMediaType?.type
@@ -916,7 +917,7 @@ internal class OpenObserveInterceptorTest : TracingInterceptorNotSendingSpanTest
         val expectedStartAttrs = emptyMap<String, Any?>()
         val expectedStopAttrs = mapOf(
             RumAttributes.TRACE_ID to fakeTraceIdAsString,
-            RumAttributes.SPAN_ID to fakeSpanId.toString(),
+            RumAttributes.SPAN_ID to _TraceInternalProxy.spanIdConverter.toHexStringPadded(fakeSpanId),
             RumAttributes.RULE_PSR to fakeTracingSampleRate / 100
         ) + fakeAttributes
         val mimeType = fakeMediaType?.type

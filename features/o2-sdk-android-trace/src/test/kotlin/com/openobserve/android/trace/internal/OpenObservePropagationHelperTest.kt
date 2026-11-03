@@ -18,6 +18,7 @@ import com.openobserve.android.trace.api.trace.OpenObserveTraceId
 import com.openobserve.android.trace.api.tracer.OpenObserveTracer
 import com.openobserve.android.trace.internal.net.TraceContext
 import com.openobserve.android.utils.forge.Configurator
+import com.openobserve.trace.api.DDSpanId
 import com.openobserve.trace.bootstrap.instrumentation.api.AgentSpan
 import com.openobserve.trace.core.propagation.B3HttpCodec
 import com.openobserve.trace.core.propagation.OpenObserveHttpCodec
@@ -26,6 +27,7 @@ import com.openobserve.trace.core.propagation.W3CHttpCodec
 import fr.xgouchet.elmyr.Forge
 import fr.xgouchet.elmyr.annotation.Forgery
 import fr.xgouchet.elmyr.annotation.IntForgery
+import fr.xgouchet.elmyr.annotation.LongForgery
 import fr.xgouchet.elmyr.annotation.StringForgery
 import fr.xgouchet.elmyr.junit5.ForgeConfiguration
 import fr.xgouchet.elmyr.junit5.ForgeExtension
@@ -860,6 +862,32 @@ internal class OpenObservePropagationHelperTest {
             B3HttpCodec.SAMPLING_PRIORITY_KEY,
             OpenObservePropagationHelper.B3M_DROP_SAMPLING_DECISION
         )
+    }
+
+    @Test
+    fun `M add drop sampling W3C headers W propagateNotSampledHeaders() {ALL injection type, TRACECONTEXT}`(
+        @LongForgery fakeSpanId: Long,
+        @StringForgery(regex = "[a-f0-9]{32}") fakeTraceId: String
+    ) {
+        // Given
+        val tracingHeaderTypes = setOf(TracingHeaderType.TRACECONTEXT)
+        whenever(mockTraceId.toHexString()) doReturn fakeTraceId
+        whenever(mockSpanContext.spanId) doReturn fakeSpanId
+        val expectedParentId = DDSpanId.toHexStringPadded(fakeSpanId)
+
+        // When
+        testedHelper.propagateNotSampledHeaders(
+            mockRequestModifier,
+            mockTracer,
+            mockSpan,
+            tracingHeaderTypes,
+            TraceContextInjection.ALL,
+            null
+        )
+
+        // Then
+        verify(mockRequestModifier).addHeader(W3CHttpCodec.TRACE_PARENT_KEY, "00-$fakeTraceId-$expectedParentId-00")
+        verify(mockRequestModifier).addHeader(W3CHttpCodec.TRACE_STATE_KEY, "o2=p:$expectedParentId;s:0")
     }
 
     private fun createMockRequestWithTags(

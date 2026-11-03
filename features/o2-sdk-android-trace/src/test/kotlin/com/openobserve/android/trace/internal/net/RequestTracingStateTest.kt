@@ -12,6 +12,7 @@ import com.openobserve.android.trace.api.span.OpenObserveSpan
 import com.openobserve.android.trace.api.span.OpenObserveSpanContext
 import com.openobserve.android.trace.api.trace.OpenObserveTraceId
 import com.openobserve.android.utils.forge.Configurator
+import com.openobserve.trace.api.DDSpanId
 import fr.xgouchet.elmyr.annotation.FloatForgery
 import fr.xgouchet.elmyr.annotation.LongForgery
 import fr.xgouchet.elmyr.annotation.StringForgery
@@ -137,7 +138,7 @@ internal class RequestTracingStateTest {
 
         // Then
         assertThat(result).containsEntry(fakeTraceIdKey, fakeTraceIdHex)
-        assertThat(result).containsEntry(fakeSpanIdKey, fakeSpanId.toString())
+        assertThat(result).containsEntry(fakeSpanIdKey, DDSpanId.toHexStringPadded(fakeSpanId))
         assertThat(result).containsEntry(fakeRulePsrKey, fakeSampleRate / 100f)
     }
 

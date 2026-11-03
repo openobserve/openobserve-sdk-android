@@ -9,6 +9,7 @@ import com.openobserve.android.api.instrumentation.network.HttpRequestInfo
 import com.openobserve.android.api.instrumentation.network.HttpRequestInfoBuilder
 import com.openobserve.android.lint.InternalApi
 import com.openobserve.android.trace.api.span.OpenObserveSpan
+import com.openobserve.trace.api.DDSpanId
 
 /**
  * For internal usage only.
@@ -61,7 +62,7 @@ fun RequestTracingState?.toAttributesMap(
     ?.let { span ->
         buildMap {
             put(traceIdKey, span.context().traceId.toHexString())
-            put(spanIdKey, span.context().spanId.toString())
+            put(spanIdKey, DDSpanId.toHexStringPadded(span.context().spanId))
             put(rulePsrKey, (sampleRate ?: ZERO_SAMPLE_RATE) / ALL_IN_SAMPLE_RATE)
         }
     }.orEmpty()

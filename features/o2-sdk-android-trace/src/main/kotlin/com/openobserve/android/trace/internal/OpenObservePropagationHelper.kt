@@ -387,7 +387,7 @@ class OpenObservePropagationHelper internal constructor() {
             traceOrigin: String?
         ) {
             val traceId = span.context().traceId.toHexString()
-            val spanId = span.context().spanId.toString()
+            val spanId = DDSpanId.toHexStringPadded(span.context().spanId)
             addHeader(
                 W3CHttpCodec.TRACE_PARENT_KEY,
                 @Suppress("UnsafeThirdPartyFunctionCall") // Format string is static
